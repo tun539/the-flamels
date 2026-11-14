@@ -1,0 +1,146 @@
+[
+  {
+    "id": "bass",
+    "acronym": "BASS",
+    "title": "Burning and Suppression of Solids",
+    "objectives": "Examines burning and extinction of fuel samples in microgravity.",
+    "theme": "suppression",
+    "platform": null,
+    "material": null,
+    "gravity": "microgravity",
+    "hardware": null,
+    "verification": "metadata_verified",
+    "runs": [],
+    "limitations": "NASA overview metadata only. No measured runs, material-specific safety conclusions or quantitative predictions are included. Theme labels are editorial classification.",
+    "sources": [
+      {
+        "url": "https://www.nasa.gov/glenn/glenn-expertise-space-exploration/physical-sciences-program/combustion-science/",
+        "title": "NASA Combustion Science",
+        "locator": "Burning and Suppression of Solids",
+        "summary": "Examines burning and extinction of fuel samples in microgravity.",
+        "retrieved_at": "2026-11-14T01:57:47.452629+00:00",
+        "checksum": "3ede20592e5fef2dabe776f76a0c643ea3453b58994e7bdb2f2009964026a25f"
+      }
+    ]
+  },
+  {
+    "id": "daft",
+    "acronym": "DAFT",
+    "title": "Dust and Aerosol Measurement Feasibility Test",
+    "objectives": "Tests whether a modified particle measurement instrument performs in microgravity for smoke research.",
+    "theme": "detection",
+    "platform": null,
+    "material": null,
+    "gravity": "microgravity",
+    "hardware": null,
+    "verification": "metadata_verified",
+    "runs": [],
+    "limitations": "NASA overview metadata only. No measured runs, material-specific safety conclusions or quantitative predictions are included. Theme labels are editorial classification.",
+    "sources": [
+      {
+        "url": "https://www.nasa.gov/glenn/glenn-expertise-space-exploration/physical-sciences-program/combustion-science/",
+        "title": "NASA Combustion Science",
+        "locator": "Dust and Aerosol Measurement Feasibility Test",
+        "summary": "Tests whether a modified particle measurement instrument performs in microgravity for smoke research.",
+        "retrieved_at": "2026-11-14T01:57:47.452648+00:00",
+        "checksum": "3ede20592e5fef2dabe776f76a0c643ea3453b58994e7bdb2f2009964026a25f"
+      }
+    ]
+  },
+  {
+    "id": "flex",
+    "acronym": "FLEX",
+    "title": "Flame Extinguishment Experiment",
+    "objectives": "Studies inert-gas suppression and limiting oxygen conditions for combustion in microgravity.",
+    "theme": "suppression",
+    "platform": null,
+    "material": null,
+    "gravity": "microgravity",
+    "hardware": null,
+    "verification": "metadata_verified",
+    "runs": [],
+    "limitations": "NASA overview metadata only. No measured runs, material-specific safety conclusions or quantitative predictions are included. Theme labels are editorial classification.",
+    "sources": [
+      {
+        "url": "https://www.nasa.gov/glenn/glenn-expertise-space-exploration/physical-sciences-program/combustion-science/",
+        "title": "NASA Combustion Science",
+        "locator": "Flame Extinguishment Experiment",
+        "summary": "Studies inert-gas suppression and limiting oxygen conditions for combustion in microgravity.",
+        "retrieved_at": "2026-11-14T01:57:47.452652+00:00",
+        "checksum": "3ede20592e5fef2dabe776f76a0c643ea3453b58994e7bdb2f2009964026a25f"
+      }
+    ]
+  },
+  {
+    "id": "same",
+    "acronym": "SAME",
+    "title": "Smoke Aerosol Measurement Experiment",
+    "objectives": "Studies smoke aerosols relevant to spacecraft smoke detection.",
+    "theme": "detection",
+    "platform": null,
+    "material": null,
+    "gravity": null,
+    "hardware": null,
+    "verification": "metadata_verified",
+    "runs": [],
+    "limitations": "NASA overview metadata only. No measured runs, material-specific safety conclusions or quantitative predictions are included. Theme labels are editorial classification.",
+    "sources": [
+      {
+        "url": "https://www.nasa.gov/glenn/glenn-expertise-space-exploration/physical-sciences-program/combustion-science/",
+        "title": "NASA Combustion Science",
+        "locator": "Smoke Aerosol Measurement Experiment",
+        "summary": "Studies smoke aerosols relevant to spacecraft smoke detection.",
+        "retrieved_at": "2026-11-14T01:57:47.452655+00:00",
+        "checksum": "3ede20592e5fef2dabe776f76a0c643ea3453b58994e7bdb2f2009964026a25f"
+      }
+    ]
+  },
+  {
+    "id": "slice",
+    "acronym": "SLICE",
+    "title": "Structure & Liftoff in Combustion Experiment",
+    "objectives": "Studies coflow laminar diffusion flames.",
+    "theme": "fundamental",
+    "platform": null,
+    "material": null,
+    "gravity": null,
+    "hardware": null,
+    "verification": "metadata_verified",
+    "runs": [],
+    "limitations": "NASA overview metadata only. No measured runs, material-specific safety conclusions or quantitative predictions are included. Theme labels are editorial classification.",
+    "sources": [
+      {
+        "url": "https://www.nasa.gov/glenn/glenn-expertise-space-exploration/physical-sciences-program/combustion-science/",
+        "title": "NASA Combustion Science",
+        "locator": "Structure & Liftoff in Combustion Experiment",
+        "summary": "Studies coflow laminar diffusion flames.",
+        "retrieved_at": "2026-11-14T01:57:47.452661+00:00",
+        "checksum": "3ede20592e5fef2dabe776f76a0c643ea3453b58994e7bdb2f2009964026a25f"
+      }
+    ]
+  },
+  {
+    "id": "spice",
+    "acronym": "SPICE",
+    "title": "Smoke Point in Co-flow Experiment",
+    "objectives": "Studies stability and extinction of jet diffusion flames.",
+    "theme": "fundamental",
+    "platform": null,
+    "material": null,
+    "gravity": null,
+    "hardware": null,
+    "verification": "metadata_verified",
+    "runs": [],
+    "limitations": "NASA overview metadata only. No measured runs, material-specific safety conclusions or quantitative predictions are included. Theme labels are editorial classification.",
+    "sources": [
+      {
+        "url": "https://www.nasa.gov/glenn/glenn-expertise-space-exploration/physical-sciences-program/combustion-science/",
+        "title": "NASA Combustion Science",
+        "locator": "Smoke Point in Co-flow Experiment",
+        "summary": "Studies stability and extinction of jet diffusion flames.",
+        "retrieved_at": "2026-11-14T01:57:47.452677+00:00",
+        "checksum": "3ede20592e5fef2dabe776f76a0c643ea3453b58994e7bdb2f2009964026a25f"
+      }
+    ]
+  }
+]

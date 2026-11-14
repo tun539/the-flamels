@@ -1,13 +1,21 @@
 services:
   backend:
-    build: ./backend
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    environment:
+      FLAMEATLAS_DB: /state/flameatlas.db
+    volumes:
+      - flameatlas-data:/state
     ports:
-      - "8000:8000"
+      - "127.0.0.1:8000:8000"
   frontend:
     build: ./frontend
     environment:
       BACKEND_URL: http://backend:8000
     ports:
-      - "3000:3000"
+      - "127.0.0.1:3000:3000"
     depends_on:
       - backend
+volumes:
+  flameatlas-data:
