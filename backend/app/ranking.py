@@ -8,7 +8,7 @@ def rank(item, scenario: Scenario):
         for key, tolerance in [('oxygen_fraction',.01),('pressure_kpa',5),('airflow_m_s',.05)]:
             value=run.get(key)
             atmosphere.append(None if value is None else float(abs(value-getattr(scenario,key)) <= tolerance))
-        scores = {'theme':float(item['theme']==scenario.theme), 'atmosphere':None if None in atmosphere else min(atmosphere)}
+        scores = {'theme':float(item['theme']==scenario.theme), 'atmosphere':0.0 if 0.0 in atmosphere else (None if None in atmosphere else min(atmosphere))}
         for key in ['material','gravity','measurement']:
             actual=run.get(key)
             requested=getattr(scenario,key)

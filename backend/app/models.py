@@ -1,5 +1,5 @@
 from typing import Literal
-from pydantic import BaseModel, Field, HttpUrl, ConfigDict
+from pydantic import BaseModel, Field, HttpUrl, ConfigDict, model_validator
 
 class Source(BaseModel):
     url: HttpUrl
@@ -9,7 +9,22 @@ class Source(BaseModel):
     retrieved_at: str
     checksum: str | None = None
 
+class Measurement(BaseModel):
+    model_config = ConfigDict(extra='forbid')
+    id: str = Field(pattern=r'^[a-zA-Z0-9_-]{1,80}$')
+    quantity: str = Field(min_length=1,max_length=100)
+    value: float = Field(allow_inf_nan=False)
+    unit: str = Field(min_length=1,max_length=50)
+    time_s: float | None = Field(default=None,ge=0,allow_inf_nan=False)
+    uncertainty: float | None = Field(default=None,ge=0,allow_inf_nan=False)
+    method: str = Field(min_length=1,max_length=500)
+    source_url: HttpUrl
+    source_locator: str = Field(min_length=1,max_length=500)
+
 class Run(BaseModel):
+    model_config = ConfigDict(extra='forbid')
+    original_values: dict = Field(default_factory=dict)
+    measurements: list[Measurement] = Field(default_factory=list,max_length=5000)
     id: str
     oxygen_fraction: float | None = Field(default=None, ge=0, le=1, allow_inf_nan=False)
     pressure_kpa: float | None = Field(default=None, gt=0, allow_inf_nan=False)
@@ -34,6 +49,17 @@ class Investigation(BaseModel):
     verification: Literal['metadata_verified','unverified','synthetic'] = 'unverified'
     sources: list[Source] = Field(min_length=1, max_length=20)
     runs: list[Run] = Field(default_factory=list, max_length=1000)
+    @model_validator(mode='after')
+    def consistent_runs(self):
+        ids=[run.id for run in self.runs]
+        if len(ids)!=len(set(ids)):raise ValueError('Duplicate run id')
+        allowed={str(source.url) for source in self.sources}
+        for run in self.runs:
+            mids=[m.id for m in run.measurements]
+            if len(mids)!=len(set(mids)):raise ValueError('Duplicate measurement id within run')
+            if any(str(m.source_url) not in allowed for m in run.measurements):raise ValueError('Measurement must cite an investigation source URL')
+        return self
+
     limitations: str = 'Metadata does not establish quantitative experimental outcomes.'
 
 class Scenario(BaseModel):

@@ -1,0 +1,30 @@
+import {test,expect} from '@playwright/test';
+test.beforeEach(async({page})=>{page.on('pageerror',error=>console.error('Browser error:',error.message))});
+test('research journey and document library',async({page})=>{
+ await page.goto('/');await expect(page.getByRole('heading',{name:'BASS',exact:true})).toBeVisible();
+ await page.getByRole('button',{name:'Library',exact:true}).click();
+ await expect(page.getByRole('heading',{name:'Thư viện tài liệu'})).toBeVisible();
+ await expect(page.locator('.source-table thead th')).toHaveCount(10);
+ await expect(page.locator('.source-table tbody tr')).toHaveCount(16);
+ await page.getByLabel('Tìm tài liệu').fill('Evaluation of burning');
+ await page.getByRole('button',{name:/Đọc Evaluation/}).click();
+ await expect(page.getByRole('heading',{name:'Giới hạn áp dụng'})).toBeVisible();
+ await expect(page.locator('blockquote')).toHaveCount(3);
+ await page.getByRole('button',{name:'Explore',exact:true}).click();
+ await page.getByRole('checkbox').nth(0).check();await page.getByRole('checkbox').nth(1).check();
+ await page.getByRole('button',{name:'Compare (2)',exact:true}).click();await expect(page.getByRole('table')).toBeVisible();
+ await page.getByRole('button',{name:'Scenario',exact:true}).click();await page.getByRole('button',{name:'Evaluate scenario'}).click();
+ await expect(page.getByText('pO₂ =',{exact:false})).toBeVisible();
+ await page.getByRole('button',{name:'Assistant',exact:true}).click();await page.getByLabel('Question',{exact:true}).fill('PMMA');
+ await page.getByRole('button',{name:'Find evidence'}).click();await expect(page.locator('blockquote').first()).toBeVisible();
+ const download=page.waitForEvent('download');await page.getByRole('button',{name:'Download JSON'}).click();expect((await download).suggestedFilename()).toBe('flameatlas.json');
+ await page.getByRole('button',{name:'Coverage',exact:true}).click();await expect(page.getByRole('table')).toBeVisible();
+});
+test('mobile navigation and unknown evidence',async({page})=>{
+ await page.setViewportSize({width:390,height:844});await page.goto('/');
+ await page.getByRole('button',{name:'Library',exact:true}).click();await expect(page.locator('.source-table')).toBeVisible();
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
+ await page.getByRole('button',{name:'Assistant',exact:true}).click();await page.getByLabel('Question',{exact:true}).fill('zzzzqwertyz');await page.getByRole('button',{name:'Find evidence'}).click();
+ await expect(page.getByText('Chưa đủ bằng chứng trong bộ dữ liệu hiện tại.',{exact:true})).toBeVisible();
+ await page.screenshot({path:'test-results/mobile.png',fullPage:true});
+});

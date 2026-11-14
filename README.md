@@ -5,6 +5,7 @@ Microgravity combustion evidence workspace. Six NASA-sourced investigation metad
 ## Run
 
 ```sh
+cp .env.example .env
 docker compose up --build
 ```
 
@@ -28,6 +29,10 @@ npm ci
 npm run dev
 ```
 
+## Source library and reading
+
+Open **Library** for the ten-column source table: 10 data links, 5 papers and PSI-117. Select **Đọc** for summaries, cited findings and limitations. **Coverage** shows which experimental conditions are actually present. See [delivery status](docs/completion-status.md) and [testing](docs/testing.md).
+
 ## Features
 
 - SQLite and FTS5 study catalogue; study detail and source links.
@@ -44,7 +49,7 @@ The six seed records verify metadata from NASA's Combustion Science overview. Th
 
 Relevance is not fire hazard. Unknown metadata contributes an interval, not a positive match. No quantitative combustion predictions, certified safety recommendations, or partial-gravity extrapolation are provided.
 
-The assistant currently provides deterministic retrieval. Optional generative LLM/embedding adapters, measurement time-series plots, advanced ingestion mapping, and authenticated cloud deployment are not implemented.
+The assistant defaults to deterministic retrieval. Optional server-side OpenAI evidence selection and cached embedding reranking are configured in .env.example. Measurement plots and import field/unit mapping are available for supplied data. Shared cloud deployment requires authentication and deployment hardening.
 
 ## Tests
 

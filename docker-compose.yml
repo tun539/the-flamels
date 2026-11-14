@@ -5,6 +5,10 @@ services:
       dockerfile: backend/Dockerfile
     environment:
       FLAMEATLAS_DB: /state/flameatlas.db
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_MODEL: ${OPENAI_MODEL:-}
+      OPENAI_EMBEDDING_MODEL: ${OPENAI_EMBEDDING_MODEL:-}
+      FLAMEATLAS_WRITE_TOKEN: ${FLAMEATLAS_WRITE_TOKEN:-}
     volumes:
       - flameatlas-data:/state
     ports:
@@ -13,6 +17,7 @@ services:
     build: ./frontend
     environment:
       BACKEND_URL: http://backend:8000
+      FLAMEATLAS_WRITE_TOKEN: ${FLAMEATLAS_WRITE_TOKEN:-}
     ports:
       - "127.0.0.1:3000:3000"
     depends_on:

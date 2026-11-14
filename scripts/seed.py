@@ -10,3 +10,6 @@ with connect() as db:
   item=Investigation.model_validate(record).model_dump(mode='json')
   if not db.execute('SELECT 1 FROM investigations WHERE id=?',(item['id'],)).fetchone():put(db,item)
 print('Seeded verified metadata; experimental run count remains zero.')
+
+from backend.app.library import seed_library
+print(f'Indexed {len(seed_library())} source documents.')

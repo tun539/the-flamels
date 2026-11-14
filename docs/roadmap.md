@@ -1,12 +1,9 @@
-# Completion status
+# Current scope and remaining dependencies
 
-Implemented: source-backed seed metadata, persistent catalogue and FTS5, detail, comparison, scenario relevance intervals, evidence retrieval, JSON/CSV import preview/commit, JSON/CSV/HTML export, responsive interface, Docker persistence and unit/API tests.
+The research MVP now includes the source reader/library, evidence retrieval with optional AI adapters, source-backed summaries, metadata coverage, measurement schema/plots, explicit import mapping and original-unit provenance.
 
-Remaining for the full original brief:
-- Acquire and validate real run-level measurements and uncertainty; measurement charts and coverage matrix.
-- Optional server-side LLM/embedding adapters with citation validation.
-- Rich field-mapping and original-unit transformation history during import.
-- Dedicated SourceDocument/EvidenceChunk/Measurement relational entities and versioned migrations.
-- Authentication and deployment hardening before hosting for multiple users.
+External dependencies: retrieve and independently validate actual PSI run files; supply a server-side API key/model to exercise the optional paid AI path. Unreadable resources are marked explicitly.
 
-Extensions: video analysis, knowledge graph, independently validated predictive models, scheduled synchronization, accounts/workspaces.
+Post-MVP: video analysis, knowledge graph, independently validated prediction, recurring synchronization and multi-user authentication. These are not prerequisites for the local research workflow.
+
+See completion-status.md and testing.md for delivered capabilities and verification results.

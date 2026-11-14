@@ -4,5 +4,5 @@ COPY backend/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 COPY backend ./backend
 COPY scripts ./scripts
-COPY data/seed.json ./data/seed.json
+COPY data ./data
 CMD ["sh", "-c", "python scripts/seed.py && uvicorn backend.app.main:app --host 0.0.0.0 --port 8000"]

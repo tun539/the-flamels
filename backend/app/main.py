@@ -10,22 +10,29 @@ from .catalogue import all_items, connect, put
 from .models import Investigation, Scenario
 from .ranking import rank, VERSION
 from .science import oxygen_partial_pressure
+from .library import resources, search_evidence
+from .ai import select_evidence, semantic_rerank
+from .ingestion import normalize
 
-app=FastAPI(title='FlameAtlas',version='0.2.0')
+app=FastAPI(title='FlameAtlas',version='0.3.0')
+from .limits import RequestLimits
+app.add_middleware(RequestLimits)
 
 class Selection(BaseModel):
     ids: list[str] = Field(min_length=2,max_length=4)
 class Question(BaseModel):
     question: str = Field(min_length=2,max_length=2000)
 class ImportPayload(BaseModel):
+    mapping: dict[str,str] = Field(default_factory=dict)
+    units: dict[str,str] = Field(default_factory=dict)
     records: list[dict] = Field(max_length=100)
 class ExportPayload(BaseModel):
-    ids: list[str] = Field(default_factory=list,max_length=1000)
+    ids: list[str] | None = Field(default=None,max_length=1000)
     format: str = 'json'
     scenario: Scenario | None = None
 
 @app.get('/api/health')
-def health(): return {'status':'ok','version':'0.2.0'}
+def health(): return {'status':'ok','version':'0.3.0'}
 
 @app.get('/api/investigations')
 def investigations(q: str='',theme: str='',gravity: str='',verified: bool=False):
@@ -56,19 +63,29 @@ def evaluate(scenario: Scenario):
 
 @app.post('/api/assistant/query')
 def assistant(question: Question):
-    candidates=all_items(question.question)
-    candidates=[i for i in candidates if i['verification']=='metadata_verified'][:5]
-    citations=[]
-    for item in candidates:
-        for index,source in enumerate(item['sources']):
-            citations.append({'id':f"{item['id']}-{index}",**source})
-    return {'mode':'Evidence retrieval mode','answer':'Các nguồn liên quan được liệt kê dưới đây; nội dung mô tả không chứng minh kết quả định lượng.' if citations else 'Chưa đủ bằng chứng trong bộ dữ liệu hiện tại. Hãy tìm theo mã nghiên cứu hoặc bổ sung tài liệu có liên quan.','claims':[{'text':s['summary'],'evidence_ids':[s['id']],'type':'source_summary'} for s in citations],'citations':citations,'applicable_conditions':['Only the conditions explicitly reported in each source apply.'],'limitations':['Template-based retrieval; no LLM-generated answer.','This catalogue contains metadata, not a complete run-level measurement database.'],'evidence_gaps':['Quantitative conclusions require experimental runs and measurement provenance.'],'suggested_next_steps':['Open the cited source and inspect its methods and conditions.']}
+    citations=search_evidence(question.question)
+    if not citations:
+        for item in all_items(question.question):
+            if item['verification']=='metadata_verified':
+                citations.extend({'id':f"{item['id']}-{index}",**source} for index,source in enumerate(item['sources']))
+    warning=None
+    try: citations=semantic_rerank(question.question,citations[:12])
+    except Exception: warning='Semantic search unavailable; keyword retrieval used.'
+    citations,mode,ai_warning=select_evidence(question.question,citations[:6])
+    limitations=['Curated source summaries; not certified safety guidance.','Read source conditions and limitations before applying results.']
+    limitations.extend(x for x in [warning,ai_warning] if x)
+    return {'mode':mode,'answer':'Các bằng chứng liên quan được trình bày kèm nguồn và phạm vi áp dụng.' if citations else 'Chưa đủ bằng chứng trong bộ dữ liệu hiện tại.',
+            'claims':[{'text':c['summary'],'evidence_ids':[c['id']],'type':c.get('kind','source_summary')} for c in citations],
+            'citations':citations,'limitations':limitations,'applicable_conditions':[c.get('limitations','See source') for c in citations],
+            'evidence_gaps':['PSI raw run files are not yet verified; paper findings are not complete experimental runs.'],
+            'suggested_next_steps':['Open the source at the cited section.']}
 
-def validate(records):
+
+def validate(records,mapping=None,units=None):
     valid=[];errors=[];seen={i['id'] for i in all_items()}
     for index,record in enumerate(records):
         try:
-            item=Investigation.model_validate(record).model_dump(mode='json')
+            item=Investigation.model_validate(normalize(record,mapping or {},units or {})).model_dump(mode='json')
             if item['id'] in seen: raise ValueError('Duplicate investigation id')
             # Uploaded evidence is not automatically certified by the application.
             if item['verification']=='metadata_verified': item['verification']='unverified'
@@ -78,12 +95,12 @@ def validate(records):
 
 @app.post('/api/import/preview')
 def preview(payload: ImportPayload):
-    valid,errors=validate(payload.records)
+    valid,errors=validate(payload.records,payload.mapping,payload.units)
     return {'valid':valid,'errors':errors,'count':len(valid)}
 
 @app.post('/api/import/commit')
 def commit(payload: ImportPayload):
-    valid,errors=validate(payload.records)
+    valid,errors=validate(payload.records,payload.mapping,payload.units)
     if errors: raise HTTPException(422,errors)
     checksum=hashlib.sha256(json.dumps(payload.records,sort_keys=True).encode()).hexdigest()
     try:
@@ -98,11 +115,11 @@ def commit(payload: ImportPayload):
 
 @app.post('/api/export')
 def export(payload: ExportPayload):
-    items=[i for i in all_items() if not payload.ids or i['id'] in payload.ids]
+    items=[i for i in all_items() if payload.ids is None or i['id'] in payload.ids]
     bundle={'investigations':items,'scenario':payload.scenario.model_dump() if payload.scenario else None,'methodology_version':VERSION,'ranking':[rank(i,payload.scenario) for i in items if i['verification']!='synthetic'] if payload.scenario else [],'limitations':['Research support tool. Not a certified fire safety assessment.']}
     if payload.format=='json': content=json.dumps(bundle,ensure_ascii=False,indent=2);mime='application/json';suffix='json'
     elif payload.format=='csv':
-        stream=io.StringIO(); writer=csv.DictWriter(stream,fieldnames=['id','acronym','title','objectives','theme','platform','material','gravity','verification','sources','runs','limitations']);writer.writeheader()
+        stream=io.StringIO(); writer=csv.DictWriter(stream,fieldnames=['id','acronym','title','objectives','theme','platform','material','gravity','hardware','verification','sources','runs','limitations']);writer.writeheader()
         for item in items: writer.writerow({k:json.dumps(item[k],ensure_ascii=False) if isinstance(item.get(k),list) else ("'"+str(item[k]) if str(item.get(k,'')).startswith(('=','+','-','@')) else item.get(k)) for k in writer.fieldnames})
         content=stream.getvalue();mime='text/csv';suffix='csv'
     elif payload.format=='html':
@@ -134,3 +151,28 @@ def source_detail(source_id: str):
         for index, source in enumerate(item['sources']):
             if source_id == f"{item['id']}-{index}": return {'id':source_id, **source}
     raise HTTPException(404,'Source not found')
+
+@app.get('/api/library')
+def list_library(q: str='',kind: str=''):
+    items=resources(q,kind)
+    return {'items':items,'total':len(items),'data_links':sum(r['id'].startswith('data-') for r in items)}
+
+@app.get('/api/library/{document_id}')
+def read_document(document_id: str):
+    item=next((r for r in resources() if r['id']==document_id),None)
+    if not item:raise HTTPException(404,'Document not found')
+    return item
+
+@app.get('/api/coverage')
+def coverage():
+    fields=['oxygen_fraction','pressure_kpa','airflow_m_s','material','gravity','geometry','measurement']
+    items=all_items()
+    return {'fields':fields,'rows':[{'id':i['id'],'acronym':i['acronym'],'runs':len(i['runs']),
+      'known':{f:sum(r.get(f) is not None and r.get(f)!='' for r in i['runs']) for f in fields}} for i in items],
+      'measurements':sum(len(r.get('measurements',[])) for i in items for r in i['runs']),
+      'note':'Counts describe imported run metadata, not experimental safety coverage.'}
+
+@app.get('/api/measurements/{investigation_id}')
+def measurements(investigation_id: str):
+    item=detail(investigation_id)
+    return {'verification':item['verification'],'items':[dict(run_id=r['id'],**m) for r in item['runs'] for m in r.get('measurements',[])]}
