@@ -1,4 +1,5 @@
 import {test,expect} from '@playwright/test';
+import {readFile} from 'node:fs/promises';
 test.beforeEach(async({page})=>{page.on('pageerror',error=>console.error('Browser error:',error.message))});
 test('research journey and document library',async({page})=>{
  await page.goto('/');await expect(page.getByRole('heading',{name:'BASS',exact:true})).toBeVisible();
@@ -27,4 +28,39 @@ test('mobile navigation and unknown evidence',async({page})=>{
  await page.getByRole('button',{name:'Assistant',exact:true}).click();await page.getByLabel('Question',{exact:true}).fill('zzzzqwertyz');await page.getByRole('button',{name:'Find evidence'}).click();
  await expect(page.getByText('Chưa đủ bằng chứng trong bộ dữ liệu hiện tại.',{exact:true})).toBeVisible();
  await page.screenshot({path:'test-results/mobile.png',fullPage:true});
+});
+test('import, measured observations, comparison and export round trip',async({page})=>{
+ const source={url:'https://example.com/test-fixture',title:'Synthetic test fixture',locator:'Test only',summary:'Artificial software test data, not experimental evidence.',retrieved_at:'2026-11-15'};
+ const record={id:'e2e-fixture',acronym:'E2E fixture',title:'Synthetic test fixture',objectives:'Test import and export',theme:'fundamental',verification:'synthetic',hardware:'Test hardware',sources:[source],runs:[{id:'test-run',oxygen_fraction:21,pressure_kpa:100000,airflow_m_s:10,source_locator:'Test only',measurements:[{id:'test-point',quantity:'temperature',value:1,unit:'K',time_s:0,method:'Synthetic test method',source_url:source.url,source_locator:'Test only'}]}]};
+ await page.goto('/');await page.getByRole('button',{name:'Import',exact:true}).click();
+ await page.getByLabel('JSON records',{exact:true}).fill(JSON.stringify([record]));
+ await page.getByLabel('oxygen_fraction input units').selectOption('%');
+ await page.getByLabel('pressure_kpa input units').selectOption('Pa');
+ await page.getByLabel('airflow_m_s input units').selectOption('cm/s');
+ await page.getByRole('button',{name:'Validate and preview'}).click();
+ await expect(page.getByText('1 valid records · 0 errors',{exact:true})).toBeVisible();
+ await page.getByRole('button',{name:'Confirm import'}).click();await expect(page.getByText('Imported 1 records.',{exact:true})).toBeVisible();
+ await page.getByRole('button',{name:'Explore',exact:true}).click();
+ await page.getByLabel('Search studies').fill('E2E');await page.getByRole('button',{name:'Search',exact:true}).click();
+ await expect(page.getByRole('heading',{name:'E2E fixture',exact:true})).toBeVisible();
+ await page.getByRole('button',{name:'View evidence →'}).click();
+ await expect(page.getByRole('img',{name:/Observed points/})).toBeVisible();
+ await expect(page.getByText('Record status: synthetic.',{exact:false})).toBeVisible();
+ const downloadPromise=page.waitForEvent('download');await page.getByRole('button',{name:'Download JSON'}).click();
+ const download=await downloadPromise;const bundle=JSON.parse(await readFile((await download.path())!,'utf8'));
+ expect(bundle.investigations).toHaveLength(1);
+ const run=bundle.investigations[0].runs[0];expect(run.oxygen_fraction).toBe(.21);expect(run.pressure_kpa).toBe(100);expect(run.airflow_m_s).toBe(.1);expect(run.original_values.pressure_kpa.unit).toBe('Pa');
+ bundle.investigations[0].id='e2e-fixture-copy';bundle.investigations[0].acronym='E2E copy';bundle.investigations[0].runs[0].measurements[0].method='Different synthetic test method';
+ await page.getByRole('button',{name:'Import',exact:true}).click();
+ await page.getByLabel('JSON records',{exact:true}).fill(JSON.stringify(bundle));await page.getByRole('button',{name:'Validate and preview'}).click();
+ await expect(page.getByText('1 valid records · 0 errors',{exact:true})).toBeVisible();await page.getByRole('button',{name:'Confirm import'}).click();
+ await expect(page.getByLabel('JSON records',{exact:true})).toHaveValue('');
+ await page.getByRole('button',{name:'Explore',exact:true}).click();await expect(page.getByRole('checkbox')).toHaveCount(2);
+ await page.getByRole('checkbox').nth(0).check();await page.getByRole('checkbox').nth(1).check();await page.getByRole('button',{name:'Compare (2)'}).click();
+ await expect(page.getByRole('heading',{name:'Run conditions by record'})).toBeVisible();
+ await expect(page.getByText('Different quantities, units or measurement methods are present.',{exact:false})).toBeVisible();
+ await expect(page.getByRole('table')).toHaveCount(3);
+ await expect(page.getByRole('cell',{name:'0.21',exact:true})).toHaveCount(2);
+ await expect(page.getByText('2 synthetic records excluded',{exact:false})).toBeVisible();
+ await page.screenshot({path:'test-results/run-comparison.png',fullPage:true});
 });

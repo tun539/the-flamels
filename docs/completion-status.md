@@ -10,6 +10,9 @@
 - Explicit field mapping and canonical unit conversion retaining original values; preview and commit use the same validation.
 - Run metadata coverage table and measurement plots grouped by run, quantity, unit and method; missing data has an explicit empty state.
 - Existing investigation search/detail, 2–4 study comparison, conservative ranking, scenario evaluation and CSV/JSON/HTML export remain available.
+- Comparison displays actual run combinations and warns about differing quantities, units or methods. Exported JSON bundles can be imported directly without converting canonical units again.
+
+Synthetic records are excluded from overview metrics, evidence coverage and scenario ranking. They remain visibly labeled when inspected or compared.
 
 ## External data limits
 

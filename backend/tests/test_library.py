@@ -83,7 +83,8 @@ class LibraryTests(unittest.TestCase):
   record['runs']=[{'id':'fixture','source_locator':'Test only','measurements':[{'id':'m','quantity':'temperature','value':1,'unit':'K','method':'Test fixture, not experimental evidence','source_url':record['sources'][0]['url'],'source_locator':'Test only'}]}]
   self.assertEqual(self.client.post('/api/import/commit',json={'records':[record]}).status_code,200)
   self.assertEqual(self.client.get('/api/measurements/test-fixture').json()['items'][0]['value'],1)
-  self.assertEqual(self.client.get('/api/coverage').json()['measurements'],1)
+  self.assertEqual(self.client.get('/api/coverage').json()['measurements'],0)
+  overview=self.client.get('/api/overview').json();self.assertEqual(overview['runs'],0);self.assertEqual(overview['synthetic_records'],1)
   csv=self.client.post('/api/export',json={'format':'csv'}).text
   parsed=self.client.post('/api/import/csv',json={'content':csv}).json()['records'][0]
   self.assertEqual(parsed['hardware'],'Test fixture');self.assertEqual(parsed['runs'][0]['measurements'][0]['value'],1)

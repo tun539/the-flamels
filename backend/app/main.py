@@ -42,8 +42,8 @@ def investigations(q: str='',theme: str='',gravity: str='',verified: bool=False)
 
 @app.get('/api/overview')
 def overview():
-    items=all_items()
-    return {'investigations':len(items),'runs':sum(len(i['runs']) for i in items),'sources':len({s['url'] for i in items for s in i['sources']}),'verified':sum(i['verification']=='metadata_verified' for i in items),'themes':{t:sum(i['theme']==t for i in items) for t in ['prevention','detection','suppression','fundamental']}}
+    all_records=all_items();items=[i for i in all_records if i['verification']!='synthetic']
+    return {'synthetic_records':len(all_records)-len(items),'investigations':len(items),'runs':sum(len(i['runs']) for i in items),'sources':len({s['url'] for i in items for s in i['sources']}),'verified':sum(i['verification']=='metadata_verified' for i in items),'themes':{t:sum(i['theme']==t for i in items) for t in ['prevention','detection','suppression','fundamental']}}
 
 @app.get('/api/investigations/{id}')
 def detail(id: str):
@@ -166,11 +166,11 @@ def read_document(document_id: str):
 @app.get('/api/coverage')
 def coverage():
     fields=['oxygen_fraction','pressure_kpa','airflow_m_s','material','gravity','geometry','measurement']
-    items=all_items()
+    items=[i for i in all_items() if i['verification']!='synthetic']
     return {'fields':fields,'rows':[{'id':i['id'],'acronym':i['acronym'],'runs':len(i['runs']),
       'known':{f:sum(r.get(f) is not None and r.get(f)!='' for r in i['runs']) for f in fields}} for i in items],
       'measurements':sum(len(r.get('measurements',[])) for i in items for r in i['runs']),
-      'note':'Counts describe imported run metadata, not experimental safety coverage.'}
+      'note':'Counts exclude synthetic records and describe imported run metadata, not experimental safety coverage.'}
 
 @app.get('/api/measurements/{investigation_id}')
 def measurements(investigation_id: str):

@@ -40,6 +40,8 @@ Open **Library** for the ten-column source table: 10 data links, 5 papers and PS
 - Scenario evaluation with conservative relevance bounds, metadata coverage and mismatch flags.
 - Evidence retrieval assistant without API keys, with source summaries and locators.
 - Validated JSON/CSV import, preview and explicit commit; duplicate detection and import checksums.
+- JSON exports can be imported directly; canonical values are not converted a second time. Original units remain attached to each run.
+- Comparison includes individual run conditions and flags different measurement quantities, units or methods.
 - CSV, JSON and printable HTML exports including provenance and scenario ranking.
 - Responsive interface, loading/error/empty states and retry.
 
