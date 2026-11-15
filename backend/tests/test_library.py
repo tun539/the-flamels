@@ -16,7 +16,7 @@ class LibraryTests(unittest.TestCase):
   self.client=TestClient(app);seed_library()
  def tearDown(self):catalogue.DB=self.previous;self.temp.cleanup()
  def test_ten_links_five_papers_psi(self):
-  items=resources();self.assertEqual(len(items),30)
+  items=resources();self.assertEqual(len(items),47)
   self.assertEqual(sum(r['id'].startswith('data-') for r in items),10)
   self.assertEqual(sum(r['kind']=='paper' for r in items),5)
   self.assertEqual(self.client.get('/api/library/paper-03').status_code,200)
@@ -24,7 +24,7 @@ class LibraryTests(unittest.TestCase):
  def test_idempotent_seed(self):
   seed_library()
   with catalogue.connect() as db:
-   self.assertEqual(db.execute('SELECT count(*) FROM source_documents').fetchone()[0],30)
+   self.assertEqual(db.execute('SELECT count(*) FROM source_documents').fetchone()[0],47)
    self.assertEqual(db.execute('SELECT count(*) FROM schema_migrations').fetchone()[0],1)
  def test_vietnamese_retrieval_and_unknown(self):
   self.assertTrue(search_evidence('thông lượng PMMA'))
@@ -97,7 +97,8 @@ class LibraryTests(unittest.TestCase):
    for parent in item.get('parent_ids',[]):self.assertIn(parent,by_id)
   citations=search_evidence('Saffire VI')
   self.assertTrue(any(c['document_id']=='nasa-saffire-vi' for c in citations))
-  self.assertFalse(any(c['document_id']=='psi-25' for c in search_evidence('PSI-25')))
+  self.assertTrue(all(c['document_id']=='psi-25' for c in search_evidence('PSI-25')))
+  self.assertTrue(search_evidence('PSI-25'))
   self.assertEqual(self.client.get('/api/library/nasa-bass-report').json()['publisher'],'NASA')
 
  def test_psi_rows_and_context_exclusion(self):
@@ -112,3 +113,25 @@ class LibraryTests(unittest.TestCase):
   self.assertFalse(any(c['document_id'] in ['psi-181','psi-108'] for c in search_evidence('silicone solders PSI-181 PSI-108')))
   for id in ['psi-117','psi-159','psi-10','psi-62','psi-60','psi-181','psi-142','psi-108']:
    self.assertEqual(self.client.get('/api/library/'+id).json()['status'],'reviewed')
+
+ def test_batch_accessions_and_saffire_extraction(self):
+  ids=[101,115,98,39,102,106,99,107,100,21,25,20,68,22,23,69,26,47]
+  documents=resources();self.assertEqual(len({d['url'] for d in documents}),len(documents))
+  for id in ids:self.assertEqual(len([d for d in documents if d['id']==f'psi-{id}']),1)
+  self.assertFalse(search_evidence('PSI-999999'))
+  self.assertTrue(all(c['document_id']=='psi-101' for c in search_evidence('PSI-101')))
+  seeds=json.loads(Path('data/psi-seed.json').read_text())
+  for record in seeds:Investigation.model_validate(record)
+  self.assertEqual(sum(len(s['runs']) for s in seeds),18)
+  self.assertEqual(sum(len(r['measurements']) for s in seeds for r in s['runs']),17)
+  saffire=next(s for s in seeds if s['id']=='psi-99-saffire')
+  self.assertEqual(len(saffire['runs']),9)
+  self.assertIsNone(saffire['runs'][5]['material']);self.assertIsNone(saffire['runs'][8]['material'])
+  self.assertEqual(saffire['runs'][0]['measurements'],[])
+  self.assertEqual(saffire['runs'][0]['original_values']['source_row']['Burn Time (s)'],'Insignificant')
+  self.assertTrue(all(r['oxygen_fraction'] is None for r in saffire['runs']))
+  self.assertTrue(all(r['airflow_m_s']==.2 for r in saffire['runs']))
+  self.assertEqual(next(s for s in seeds if s['id']=='psi-100-saffire')['runs'][0]['measurements'],[])
+  import hashlib
+  expected=hashlib.sha256(Path('data/saffire-observed-tables.json').read_bytes()).hexdigest()
+  for record in seeds[1:]:self.assertEqual(record['sources'][0]['checksum'],expected)

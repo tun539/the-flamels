@@ -10,7 +10,7 @@ with connect() as db:
  for record in records:
   item=Investigation.model_validate(record).model_dump(mode='json')
   if not db.execute('SELECT 1 FROM investigations WHERE id=?',(item['id'],)).fetchone():put(db,item)
-print('Seeded investigation metadata and partial PSI-159 experimental rows (5 runs, 10 observations).')
+print(f"Seeded {len(records)} investigations, {sum(len(i['runs']) for i in records)} runs and {sum(len(r.get('measurements',[])) for i in records for r in i['runs'])} observations.")
 
 from backend.app.library import seed_library
 print(f'Indexed {len(seed_library())} source documents.')

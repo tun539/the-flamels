@@ -323,5 +323,633 @@
         ]
       }
     ]
+  },
+  {
+    "id": "psi-98-saffire",
+    "acronym": "Saffire-I",
+    "title": "Spacecraft Fire Safety Experiment-I (SAFFIRE-I)",
+    "objectives": "Saffire-I nghiên cứu cháy vật liệu SIBAL quy mô lớn trên Cygnus sau khi rời ISS.",
+    "theme": "prevention",
+    "platform": "Uncrewed Cygnus",
+    "gravity": "microgravity",
+    "material": null,
+    "hardware": "Saffire flow duct",
+    "verification": "metadata_verified",
+    "limitations": "Đã nhập hai mẫu S1/S2 từ bảng 5 dòng; các dòng flow visualization và trống không phải run. Metadata Project và Approach có khác biệt về nền tảng; dùng Cygnus theo Approach, giữ cảnh báo. Nhãn chiều dài/rộng trong bảng khác mô tả văn bản, không tự sửa.",
+    "sources": [
+      {
+        "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-98",
+        "title": "Spacecraft Fire Safety Experiment-I (SAFFIRE-I)",
+        "locator": "Version 4; Experimental Table; named sample rows",
+        "summary": "Complete default summary table: 5 rows; only S1/S2 are samples. Dimension labels conflict with narrative; no correction applied.",
+        "retrieved_at": "2026-11-15",
+        "checksum": "ec7876a5a4411bfce0efcd9f958a9c8f7c8190ffd2f0529016a7c7d4974250b6"
+      }
+    ],
+    "runs": [
+      {
+        "id": "S1",
+        "material": "SIBAL Fabric",
+        "gravity": "microgravity",
+        "geometry": null,
+        "oxygen_fraction": null,
+        "pressure_kpa": null,
+        "airflow_m_s": 0.2,
+        "measurement": "burn duration",
+        "source_locator": "PSI-98 Version 4; Experimental Table; Sample S1",
+        "original_values": {
+          "source_row": {
+            "Sample Number": "S1",
+            "Material": "SIBAL Fabric",
+            "Sample Thickness (cm)": "0.37",
+            "Sample Length (cm)": "40.6",
+            "Sample Width (cm)": "94",
+            "Air Flow (cm/s)": "20",
+            "Percent O2": "21.5 - 21.7",
+            "Ignition Power (W)": "182",
+            "Ignition Time (s)": "8",
+            "Burn Time (s)": "420",
+            "Flow Direction": "Concurrent",
+            "Camera 1": "S1C1",
+            "Camera 2": "S1C2"
+          },
+          "airflow_m_s": {
+            "value": "20",
+            "unit": "cm/s",
+            "factor": 0.01
+          },
+          "quality_notes": "Đã nhập hai mẫu S1/S2 từ bảng 5 dòng; các dòng flow visualization và trống không phải run. Metadata Project và Approach có khác biệt về nền tảng; dùng Cygnus theo Approach, giữ cảnh báo. Nhãn chiều dài/rộng trong bảng khác mô tả văn bản, không tự sửa."
+        },
+        "measurements": [
+          {
+            "id": "burn-duration",
+            "quantity": "burn duration",
+            "value": 420.0,
+            "unit": "s",
+            "method": "NASA experimental summary; duration method and uncertainty not reported",
+            "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-98",
+            "source_locator": "PSI-98 Version 4; Experimental Table; Sample S1"
+          }
+        ]
+      },
+      {
+        "id": "S2",
+        "material": "SIBAL Fabric",
+        "gravity": "microgravity",
+        "geometry": null,
+        "oxygen_fraction": null,
+        "pressure_kpa": null,
+        "airflow_m_s": 0.2,
+        "measurement": "burn duration",
+        "source_locator": "PSI-98 Version 4; Experimental Table; Sample S2",
+        "original_values": {
+          "source_row": {
+            "Sample Number": "S2",
+            "Material": "SIBAL Fabric",
+            "Sample Thickness (cm)": "0.37",
+            "Sample Length (cm)": "40.6",
+            "Sample Width (cm)": "94",
+            "Air Flow (cm/s)": "20",
+            "Percent O2": "~ 21.5",
+            "Ignition Power (W)": "182",
+            "Ignition Time (s)": "8",
+            "Burn Time (s)": "70",
+            "Flow Direction": "Opposed",
+            "Camera 1": "S2C1",
+            "Camera 2": "S2C2"
+          },
+          "airflow_m_s": {
+            "value": "20",
+            "unit": "cm/s",
+            "factor": 0.01
+          },
+          "quality_notes": "Đã nhập hai mẫu S1/S2 từ bảng 5 dòng; các dòng flow visualization và trống không phải run. Metadata Project và Approach có khác biệt về nền tảng; dùng Cygnus theo Approach, giữ cảnh báo. Nhãn chiều dài/rộng trong bảng khác mô tả văn bản, không tự sửa."
+        },
+        "measurements": [
+          {
+            "id": "burn-duration",
+            "quantity": "burn duration",
+            "value": 70.0,
+            "unit": "s",
+            "method": "NASA experimental summary; duration method and uncertainty not reported",
+            "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-98",
+            "source_locator": "PSI-98 Version 4; Experimental Table; Sample S2"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "psi-99-saffire",
+    "acronym": "Saffire-II",
+    "title": "Spacecraft Fire Experiment-II (SAFFIRE-II)",
+    "objectives": "Saffire-II khảo sát các mẫu silicone, SIBAL, PMMA và Nomex trên Cygnus.",
+    "theme": "prevention",
+    "platform": "Uncrewed Cygnus",
+    "gravity": "microgravity",
+    "material": null,
+    "hardware": "Saffire flow duct",
+    "verification": "metadata_verified",
+    "limitations": "Đã giữ đủ bảng tóm tắt 16 dòng và nhập 9 mẫu 2-1 đến 2-9. Oxy là xấp xỉ hoặc khoảng; vật liệu trống ở 2-6 và 2-9 giữ null. Insignificant không được đổi thành 0. Các nhãn ?-g và Samle Thickness được giữ nguyên.",
+    "sources": [
+      {
+        "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-99",
+        "title": "Spacecraft Fire Experiment-II (SAFFIRE-II)",
+        "locator": "Version 5; Experimental Table; named sample rows",
+        "summary": "Complete default summary table: 16 rows, only 2-1 to 2-9 are samples. Table typos and ambiguous microgravity/ground comparison columns preserved.",
+        "retrieved_at": "2026-11-15",
+        "checksum": "ec7876a5a4411bfce0efcd9f958a9c8f7c8190ffd2f0529016a7c7d4974250b6"
+      }
+    ],
+    "runs": [
+      {
+        "id": "2-1",
+        "material": "Silicone",
+        "gravity": "microgravity",
+        "geometry": null,
+        "oxygen_fraction": null,
+        "pressure_kpa": null,
+        "airflow_m_s": 0.2,
+        "measurement": null,
+        "source_locator": "PSI-99 Version 5; Experimental Table; Sample 2-1",
+        "original_values": {
+          "source_row": {
+            "Sample Number": "2-1",
+            "Material": "Silicone",
+            "Samle Thickness": "0.27 mm",
+            "Sample Length": "29 cm",
+            "Sample Width (cm)": "5 cm",
+            "Air Flow (cm/s)": "20 cm/s",
+            "Percent O2 (Note 1)": "~ 21.5",
+            "Ignition Power (W)": "80 W",
+            "Ignition Time (s)": "9.2 s",
+            "Burn Time (s)": "Insignificant",
+            "Flow Direction": "Concurrent",
+            "?-g Burn Length": "~ 0",
+            "?-g Spread Length": "n/a",
+            "1-g Burn Length": "Complete",
+            "1-g Spread Rate": "Acceleratory",
+            "Camera 1": "S1C1",
+            "Camera 2": "S1C2"
+          },
+          "airflow_m_s": {
+            "value": "20 cm/s",
+            "unit": "cm/s",
+            "factor": 0.01
+          },
+          "quality_notes": "Đã giữ đủ bảng tóm tắt 16 dòng và nhập 9 mẫu 2-1 đến 2-9. Oxy là xấp xỉ hoặc khoảng; vật liệu trống ở 2-6 và 2-9 giữ null. Insignificant không được đổi thành 0. Các nhãn ?-g và Samle Thickness được giữ nguyên."
+        },
+        "measurements": []
+      },
+      {
+        "id": "2-2",
+        "material": "Silicone",
+        "gravity": "microgravity",
+        "geometry": null,
+        "oxygen_fraction": null,
+        "pressure_kpa": null,
+        "airflow_m_s": 0.2,
+        "measurement": null,
+        "source_locator": "PSI-99 Version 5; Experimental Table; Sample 2-2",
+        "original_values": {
+          "source_row": {
+            "Sample Number": "2-2",
+            "Material": "Silicone",
+            "Samle Thickness": "0.61 mm",
+            "Sample Length": "29 cm",
+            "Sample Width (cm)": "5 cm",
+            "Air Flow (cm/s)": "20 cm/s",
+            "Percent O2 (Note 1)": "~ 22.1",
+            "Ignition Power (W)": "80 W",
+            "Ignition Time (s)": "9.2 s",
+            "Burn Time (s)": "Insignificant",
+            "Flow Direction": "Concurrent",
+            "?-g Burn Length": "~ 0",
+            "?-g Spread Length": "n/a",
+            "1-g Burn Length": "7.6 cm",
+            "1-g Spread Rate": "1.2 mm/s",
+            "Camera 1": "n/a",
+            "Camera 2": "S2C2"
+          },
+          "airflow_m_s": {
+            "value": "20 cm/s",
+            "unit": "cm/s",
+            "factor": 0.01
+          },
+          "quality_notes": "Đã giữ đủ bảng tóm tắt 16 dòng và nhập 9 mẫu 2-1 đến 2-9. Oxy là xấp xỉ hoặc khoảng; vật liệu trống ở 2-6 và 2-9 giữ null. Insignificant không được đổi thành 0. Các nhãn ?-g và Samle Thickness được giữ nguyên."
+        },
+        "measurements": []
+      },
+      {
+        "id": "2-3",
+        "material": "Silicone",
+        "gravity": "microgravity",
+        "geometry": null,
+        "oxygen_fraction": null,
+        "pressure_kpa": null,
+        "airflow_m_s": 0.2,
+        "measurement": null,
+        "source_locator": "PSI-99 Version 5; Experimental Table; Sample 2-3",
+        "original_values": {
+          "source_row": {
+            "Sample Number": "2-3",
+            "Material": "Silicone",
+            "Samle Thickness": "1.03 mm",
+            "Sample Length": "29 cm",
+            "Sample Width (cm)": "5 cm",
+            "Air Flow (cm/s)": "20 cm/s",
+            "Percent O2 (Note 1)": "~ 22.1",
+            "Ignition Power (W)": "80 W",
+            "Ignition Time (s)": "9.2 s",
+            "Burn Time (s)": "Insignificant",
+            "Flow Direction": "Concurrent",
+            "?-g Burn Length": "~ 0",
+            "?-g Spread Length": "n/a",
+            "1-g Burn Length": "~ 0",
+            "1-g Spread Rate": "n/a",
+            "Camera 1": "",
+            "Camera 2": "S3C2"
+          },
+          "airflow_m_s": {
+            "value": "20 cm/s",
+            "unit": "cm/s",
+            "factor": 0.01
+          },
+          "quality_notes": "Đã giữ đủ bảng tóm tắt 16 dòng và nhập 9 mẫu 2-1 đến 2-9. Oxy là xấp xỉ hoặc khoảng; vật liệu trống ở 2-6 và 2-9 giữ null. Insignificant không được đổi thành 0. Các nhãn ?-g và Samle Thickness được giữ nguyên."
+        },
+        "measurements": []
+      },
+      {
+        "id": "2-4",
+        "material": "Silicone",
+        "gravity": "microgravity",
+        "geometry": null,
+        "oxygen_fraction": null,
+        "pressure_kpa": null,
+        "airflow_m_s": 0.2,
+        "measurement": null,
+        "source_locator": "PSI-99 Version 5; Experimental Table; Sample 2-4",
+        "original_values": {
+          "source_row": {
+            "Sample Number": "2-4",
+            "Material": "Silicone",
+            "Samle Thickness": "037 mm",
+            "Sample Length": "29 cm",
+            "Sample Width (cm)": "5 cm",
+            "Air Flow (cm/s)": "20 cm/s",
+            "Percent O2 (Note 1)": "~ 22.1",
+            "Ignition Power (W)": "80 W",
+            "Ignition Time (s)": "9.2 s",
+            "Burn Time (s)": "Insignificant",
+            "Flow Direction": "Opposed",
+            "?-g Burn Length": "~ 0",
+            "?-g Spread Length": "n/a",
+            "1-g Burn Length": "Complete",
+            "1-g Spread Rate": "0.6 mm/s",
+            "Camera 1": "S4C1",
+            "Camera 2": "S4C1"
+          },
+          "airflow_m_s": {
+            "value": "20 cm/s",
+            "unit": "cm/s",
+            "factor": 0.01
+          },
+          "quality_notes": "Đã giữ đủ bảng tóm tắt 16 dòng và nhập 9 mẫu 2-1 đến 2-9. Oxy là xấp xỉ hoặc khoảng; vật liệu trống ở 2-6 và 2-9 giữ null. Insignificant không được đổi thành 0. Các nhãn ?-g và Samle Thickness được giữ nguyên."
+        },
+        "measurements": []
+      },
+      {
+        "id": "2-5",
+        "material": "Cotton-Fiberglass (SIBAL)",
+        "gravity": "microgravity",
+        "geometry": null,
+        "oxygen_fraction": null,
+        "pressure_kpa": null,
+        "airflow_m_s": 0.2,
+        "measurement": "burn duration",
+        "source_locator": "PSI-99 Version 5; Experimental Table; Sample 2-5",
+        "original_values": {
+          "source_row": {
+            "Sample Number": "2-5",
+            "Material": "Cotton-Fiberglass (SIBAL)",
+            "Samle Thickness": "037 mm",
+            "Sample Length": "29 cm",
+            "Sample Width (cm)": "5 cm",
+            "Air Flow (cm/s)": "20 cm/s",
+            "Percent O2 (Note 1)": "~ 22.1",
+            "Ignition Power (W)": "80 W",
+            "Ignition Time (s)": "9.2 s",
+            "Burn Time (s)": "145 s",
+            "Flow Direction": "Concurrent",
+            "?-g Burn Length": "29 cm",
+            "?-g Spread Length": "2.1 mm/s",
+            "1-g Burn Length": "Complete",
+            "1-g Spread Rate": "Acceleratory",
+            "Camera 1": "S5C1",
+            "Camera 2": "S5C2"
+          },
+          "airflow_m_s": {
+            "value": "20 cm/s",
+            "unit": "cm/s",
+            "factor": 0.01
+          },
+          "quality_notes": "Đã giữ đủ bảng tóm tắt 16 dòng và nhập 9 mẫu 2-1 đến 2-9. Oxy là xấp xỉ hoặc khoảng; vật liệu trống ở 2-6 và 2-9 giữ null. Insignificant không được đổi thành 0. Các nhãn ?-g và Samle Thickness được giữ nguyên."
+        },
+        "measurements": [
+          {
+            "id": "burn-duration",
+            "quantity": "burn duration",
+            "value": 145.0,
+            "unit": "s",
+            "method": "NASA experimental summary; duration method and uncertainty not reported",
+            "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-99",
+            "source_locator": "PSI-99 Version 5; Experimental Table; Sample 2-5"
+          }
+        ]
+      },
+      {
+        "id": "2-6",
+        "material": null,
+        "gravity": "microgravity",
+        "geometry": null,
+        "oxygen_fraction": null,
+        "pressure_kpa": null,
+        "airflow_m_s": 0.2,
+        "measurement": "burn duration",
+        "source_locator": "PSI-99 Version 5; Experimental Table; Sample 2-6",
+        "original_values": {
+          "source_row": {
+            "Sample Number": "2-6",
+            "Material": "",
+            "Samle Thickness": "037 mm",
+            "Sample Length": "29 cm",
+            "Sample Width (cm)": "5 cm",
+            "Air Flow (cm/s)": "20 cm/s",
+            "Percent O2 (Note 1)": "~ 22.1",
+            "Ignition Power (W)": "80 W",
+            "Ignition Time (s)": "9.2 s",
+            "Burn Time (s)": "115 s",
+            "Flow Direction": "Concurrent",
+            "?-g Burn Length": "29 cm",
+            "?-g Spread Length": "2.6 mm/s",
+            "1-g Burn Length": "Complete",
+            "1-g Spread Rate": "Acceleratory",
+            "Camera 1": "S6C1",
+            "Camera 2": "S56C2"
+          },
+          "airflow_m_s": {
+            "value": "20 cm/s",
+            "unit": "cm/s",
+            "factor": 0.01
+          },
+          "quality_notes": "Đã giữ đủ bảng tóm tắt 16 dòng và nhập 9 mẫu 2-1 đến 2-9. Oxy là xấp xỉ hoặc khoảng; vật liệu trống ở 2-6 và 2-9 giữ null. Insignificant không được đổi thành 0. Các nhãn ?-g và Samle Thickness được giữ nguyên."
+        },
+        "measurements": [
+          {
+            "id": "burn-duration",
+            "quantity": "burn duration",
+            "value": 115.0,
+            "unit": "s",
+            "method": "NASA experimental summary; duration method and uncertainty not reported",
+            "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-99",
+            "source_locator": "PSI-99 Version 5; Experimental Table; Sample 2-6"
+          }
+        ]
+      },
+      {
+        "id": "2-7",
+        "material": "PMMA & Nomex",
+        "gravity": "microgravity",
+        "geometry": null,
+        "oxygen_fraction": null,
+        "pressure_kpa": null,
+        "airflow_m_s": 0.2,
+        "measurement": "burn duration",
+        "source_locator": "PSI-99 Version 5; Experimental Table; Sample 2-7",
+        "original_values": {
+          "source_row": {
+            "Sample Number": "2-7",
+            "Material": "PMMA & Nomex",
+            "Samle Thickness": "0.85 and 0.37 mm",
+            "Sample Length": "5 and 24 cm",
+            "Sample Width (cm)": "5 cm",
+            "Air Flow (cm/s)": "20 cm/s",
+            "Percent O2 (Note 1)": "~ 22.1",
+            "Ignition Power (W)": "80 W",
+            "Ignition Time (s)": "9.2 s",
+            "Burn Time (s)": "140 s",
+            "Flow Direction": "Concurrent",
+            "?-g Burn Length": "5 cm & 0 (note 2)",
+            "?-g Spread Length": "n/a (Nomex)",
+            "1-g Burn Length": "~ 0 (Nomex)",
+            "1-g Spread Rate": "n/a (Nomex)",
+            "Camera 1": "S7C1",
+            "Camera 2": "n/a"
+          },
+          "airflow_m_s": {
+            "value": "20 cm/s",
+            "unit": "cm/s",
+            "factor": 0.01
+          },
+          "quality_notes": "Đã giữ đủ bảng tóm tắt 16 dòng và nhập 9 mẫu 2-1 đến 2-9. Oxy là xấp xỉ hoặc khoảng; vật liệu trống ở 2-6 và 2-9 giữ null. Insignificant không được đổi thành 0. Các nhãn ?-g và Samle Thickness được giữ nguyên."
+        },
+        "measurements": [
+          {
+            "id": "burn-duration",
+            "quantity": "burn duration",
+            "value": 140.0,
+            "unit": "s",
+            "method": "NASA experimental summary; duration method and uncertainty not reported",
+            "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-99",
+            "source_locator": "PSI-99 Version 5; Experimental Table; Sample 2-7"
+          }
+        ]
+      },
+      {
+        "id": "2-8",
+        "material": "PMMA",
+        "gravity": "microgravity",
+        "geometry": null,
+        "oxygen_fraction": null,
+        "pressure_kpa": null,
+        "airflow_m_s": 0.2,
+        "measurement": "burn duration",
+        "source_locator": "PSI-99 Version 5; Experimental Table; Sample 2-8",
+        "original_values": {
+          "source_row": {
+            "Sample Number": "2-8",
+            "Material": "PMMA",
+            "Samle Thickness": "See Fig. 5",
+            "Sample Length": "29 cm",
+            "Sample Width (cm)": "5 cm",
+            "Air Flow (cm/s)": "20 cm/s",
+            "Percent O2 (Note 1)": "22.1 to 22.0",
+            "Ignition Power (W)": "97 W",
+            "Ignition Time (s)": "30 s",
+            "Burn Time (s)": "600 s",
+            "Flow Direction": "Concurrent",
+            "?-g Burn Length": "~ 10 cm (note 3)",
+            "?-g Spread Length": "Note 4",
+            "1-g Burn Length": "Complete",
+            "1-g Spread Rate": "Acceleratory",
+            "Camera 1": "S8C1",
+            "Camera 2": "n/a"
+          },
+          "airflow_m_s": {
+            "value": "20 cm/s",
+            "unit": "cm/s",
+            "factor": 0.01
+          },
+          "quality_notes": "Đã giữ đủ bảng tóm tắt 16 dòng và nhập 9 mẫu 2-1 đến 2-9. Oxy là xấp xỉ hoặc khoảng; vật liệu trống ở 2-6 và 2-9 giữ null. Insignificant không được đổi thành 0. Các nhãn ?-g và Samle Thickness được giữ nguyên."
+        },
+        "measurements": [
+          {
+            "id": "burn-duration",
+            "quantity": "burn duration",
+            "value": 600.0,
+            "unit": "s",
+            "method": "NASA experimental summary; duration method and uncertainty not reported",
+            "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-99",
+            "source_locator": "PSI-99 Version 5; Experimental Table; Sample 2-8"
+          }
+        ]
+      },
+      {
+        "id": "2-9",
+        "material": null,
+        "gravity": "microgravity",
+        "geometry": null,
+        "oxygen_fraction": null,
+        "pressure_kpa": null,
+        "airflow_m_s": 0.2,
+        "measurement": "burn duration",
+        "source_locator": "PSI-99 Version 5; Experimental Table; Sample 2-9",
+        "original_values": {
+          "source_row": {
+            "Sample Number": "2-9",
+            "Material": "",
+            "Samle Thickness": "1 cm",
+            "Sample Length": "29 cm",
+            "Sample Width (cm)": "5 cm",
+            "Air Flow (cm/s)": "20 cm/s",
+            "Percent O2 (Note 1)": "22.0 to 21.9",
+            "Ignition Power (W)": "97 W",
+            "Ignition Time (s)": "30 s",
+            "Burn Time (s)": "900 s",
+            "Flow Direction": "Concurrent",
+            "?-g Burn Length": "~ 10 cm (note 4)",
+            "?-g Spread Length": "Note 4",
+            "1-g Burn Length": "Complete",
+            "1-g Spread Rate": "Acceleratory",
+            "Camera 1": "S9C1",
+            "Camera 2": "n/a"
+          },
+          "airflow_m_s": {
+            "value": "20 cm/s",
+            "unit": "cm/s",
+            "factor": 0.01
+          },
+          "quality_notes": "Đã giữ đủ bảng tóm tắt 16 dòng và nhập 9 mẫu 2-1 đến 2-9. Oxy là xấp xỉ hoặc khoảng; vật liệu trống ở 2-6 và 2-9 giữ null. Insignificant không được đổi thành 0. Các nhãn ?-g và Samle Thickness được giữ nguyên."
+        },
+        "measurements": [
+          {
+            "id": "burn-duration",
+            "quantity": "burn duration",
+            "value": 900.0,
+            "unit": "s",
+            "method": "NASA experimental summary; duration method and uncertainty not reported",
+            "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-99",
+            "source_locator": "PSI-99 Version 5; Experimental Table; Sample 2-9"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "psi-100-saffire",
+    "acronym": "Saffire-III",
+    "title": "Spacecraft Fire Experiment-III (SAFFIRE-III)",
+    "objectives": "Saffire-III dùng mẫu SIBAL trên Cygnus với dòng concurrent và opposed.",
+    "theme": "prevention",
+    "platform": "Uncrewed Cygnus",
+    "gravity": "microgravity",
+    "material": null,
+    "hardware": "Saffire flow duct",
+    "verification": "metadata_verified",
+    "limitations": "Bảng có hai mẫu và một dòng trống; đã nhập điều kiện hai mẫu. Bảng không báo cáo burn time hoặc đầu ra khác, nên không tạo số đo.",
+    "sources": [
+      {
+        "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-100",
+        "title": "Spacecraft Fire Experiment-III (SAFFIRE-III)",
+        "locator": "Version 4; Experimental Table; named sample rows",
+        "summary": "Complete default summary table: two sample rows and one blank row; no measured outcome columns.",
+        "retrieved_at": "2026-11-15",
+        "checksum": "ec7876a5a4411bfce0efcd9f958a9c8f7c8190ffd2f0529016a7c7d4974250b6"
+      }
+    ],
+    "runs": [
+      {
+        "id": "S1",
+        "material": "SIBAL Fabric",
+        "gravity": "microgravity",
+        "geometry": null,
+        "oxygen_fraction": null,
+        "pressure_kpa": null,
+        "airflow_m_s": 0.3,
+        "measurement": null,
+        "source_locator": "PSI-100 Version 4; Experimental Table; Sample S1",
+        "original_values": {
+          "source_row": {
+            "Sample Number": "S1",
+            "Material": "SIBAL Fabric",
+            "Sample Thickness": ".33 cm",
+            "Sample Length": "94 cm",
+            "Sample Width": "40.6 cm",
+            "Air Flow": "30 cm/s",
+            "Direction": "Concurrent",
+            "Camera 1": "S1C1",
+            "Camera 2": "S1C2"
+          },
+          "airflow_m_s": {
+            "value": "30 cm/s",
+            "unit": "cm/s",
+            "factor": 0.01
+          },
+          "quality_notes": "Bảng có hai mẫu và một dòng trống; đã nhập điều kiện hai mẫu. Bảng không báo cáo burn time hoặc đầu ra khác, nên không tạo số đo."
+        },
+        "measurements": []
+      },
+      {
+        "id": "S2",
+        "material": "SIBAL Fabric",
+        "gravity": "microgravity",
+        "geometry": null,
+        "oxygen_fraction": null,
+        "pressure_kpa": null,
+        "airflow_m_s": 0.3,
+        "measurement": null,
+        "source_locator": "PSI-100 Version 4; Experimental Table; Sample S2",
+        "original_values": {
+          "source_row": {
+            "Sample Number": "S2",
+            "Material": "SIBAL Fabric",
+            "Sample Thickness": ".33 cm",
+            "Sample Length": "94 cm",
+            "Sample Width": "40.6 cm",
+            "Air Flow": "30 cm/s",
+            "Direction": "Opposed",
+            "Camera 1": "S2C1",
+            "Camera 2": "S2C2"
+          },
+          "airflow_m_s": {
+            "value": "30 cm/s",
+            "unit": "cm/s",
+            "factor": 0.01
+          },
+          "quality_notes": "Bảng có hai mẫu và một dòng trống; đã nhập điều kiện hai mẫu. Bảng không báo cáo burn time hoặc đầu ra khác, nên không tạo số đo."
+        },
+        "measurements": []
+      }
+    ]
   }
 ]

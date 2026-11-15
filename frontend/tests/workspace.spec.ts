@@ -6,7 +6,7 @@ test('research journey and document library',async({page})=>{
  await page.getByRole('button',{name:'Library',exact:true}).click();
  await expect(page.getByRole('heading',{name:'Thư viện tài liệu'})).toBeVisible();
  await expect(page.locator('.source-table thead th')).toHaveCount(10);
- await expect(page.locator('.source-table tbody tr')).toHaveCount(30);
+ await expect(page.locator('.source-table tbody tr')).toHaveCount(47);
  await page.getByLabel('Tìm tài liệu').fill('SoFIE — Growth');
  await page.getByRole('button',{name:/Đọc SoFIE/}).click();
  await expect(page.getByRole('heading',{name:'Nguồn dẫn tới tài liệu'})).toBeVisible();
@@ -30,6 +30,12 @@ test('research journey and document library',async({page})=>{
  await page.getByRole('button',{name:'View evidence →'}).click();
  await expect(page.getByText('50 s',{exact:true})).toBeVisible();
  await expect(page.getByText('290.617198 degC',{exact:true})).toBeVisible();
+ await page.getByRole('button',{name:'← Back to studies'}).click();
+ await page.getByLabel('Search studies').fill('Saffire-II');await page.getByRole('button',{name:'Search',exact:true}).click();
+ await expect(page.getByRole('heading',{name:'Saffire-II',exact:true})).toBeVisible();
+ await page.getByRole('button',{name:'View evidence →'}).click();
+ await expect(page.getByText('145 s',{exact:true})).toBeVisible();
+ await expect(page.getByText('900 s',{exact:true})).toBeVisible();
 });
 test('mobile navigation and unknown evidence',async({page})=>{
  await page.setViewportSize({width:390,height:844});await page.goto('/');

@@ -1,6 +1,6 @@
-# Current PSI update
+# Current data inventory
 
-See [PSI accessions](psi-accessions.md): 30 resources, 7 investigation records, 5 imported PSI-159 runs and 10 summary observations. The eight supplied PSI pages were read in a browser; PSI-181/108 are context only. Earlier zero-run and PSI-117 access statements below describe the prior delivery.
+See [PSI batch two](psi-batch-two.md): 47 resources, 10 investigation records, 18 imported runs and 17 numerical observations. Source summary rows and full raw archives are distinguished. The older delivery section below is retained as historical scope.
 
 # Delivery status — 2026-11-15
 

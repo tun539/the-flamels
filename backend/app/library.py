@@ -30,7 +30,9 @@ def search_evidence(question):
     stop={'the','and','what','which','how','does','can','is','in','of','to','a','có','là','và','nào','cho','của','về','trong','các','những','tôi','hãy','thì','để','cần','không'}
     terms=[t for t in re.findall(r'[^\W_]+',question.casefold()) if t not in stop][:24]
     if not terms:return []
-    query=' OR '.join('"'+t+'"' for t in terms)
+    accession=re.fullmatch(r'\s*psi[- ]?(\d+)\s*',question,re.IGNORECASE)
+    if accession:terms=['psi',accession.group(1)]
+    query=(' AND ' if accession else ' OR ').join('"'+t+'"' for t in terms)
     with connect() as db:
         rows=db.execute('SELECT c.*,s.payload FROM evidence_search f JOIN evidence_chunks c ON c.id=f.id JOIN source_documents s ON s.id=c.document_id WHERE evidence_search MATCH ? ORDER BY bm25(evidence_search),c.id LIMIT 12',(query,)).fetchall()
     return [dict(id=r['id'],title=(d:=json.loads(r['payload']))['title'],url=d['url'],summary=r['text'],locator=r['locator'],kind=r['kind'],limitations=d['limitations'],document_id=r['document_id']) for r in rows]
