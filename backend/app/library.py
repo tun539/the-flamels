@@ -13,11 +13,11 @@ def seed_library():
             for old in db.execute('SELECT id FROM evidence_chunks WHERE document_id=?',(record['id'],)).fetchall():
                 db.execute('DELETE FROM evidence_search WHERE id=?',(old['id'],))
             db.execute('DELETE FROM evidence_chunks WHERE document_id=?',(record['id'],))
-            chunks=[{'id':record['id']+'-summary','text':record['summary'],'locator':record['locator'],'type':'source_summary'},*record['findings']] if record['status']=='reviewed' else []
+            chunks=[{'id':record['id']+'-summary','text':record['summary'],'locator':record['locator'],'type':'source_summary'},*record['findings']] if record['status']=='reviewed' and record.get('research_scope')!='context_only' else []
             for chunk in chunks:
                 db.execute('INSERT INTO evidence_chunks VALUES (?,?,?,?,?) ON CONFLICT(id) DO UPDATE SET text=excluded.text,locator=excluded.locator,kind=excluded.kind',(chunk['id'],record['id'],chunk['text'],chunk['locator'],chunk['type']))
                 db.execute('DELETE FROM evidence_search WHERE id=?',(chunk['id'],))
-                db.execute('INSERT INTO evidence_search VALUES (?,?)',(chunk['id'],record['title']+' '+str(record['material'] or '')+' '+chunk['text']))
+                db.execute('INSERT INTO evidence_search VALUES (?,?)',(chunk['id'],record['id']+' '+record['title']+' '+str(record['material'] or '')+' '+chunk['text']))
     return records
 
 def resources(q='',kind=''):

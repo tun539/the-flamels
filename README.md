@@ -1,6 +1,6 @@
 # FlameAtlas — The Flamels
 
-Microgravity combustion evidence workspace. Six NASA-sourced investigation metadata records; no fabricated measurement runs.
+Microgravity combustion evidence workspace. Seven investigation records, including a partial PSI-159 import with five source-backed runs and ten observations.
 
 ## Run
 
@@ -41,7 +41,7 @@ npm run dev
 
 ## Source library and reading
 
-Open **Library** for the ten-column source table: 10 data links, 5 Sheet papers, PSI-117 and 7 related NASA resources (23 total). Select **Đọc** for summaries, cited findings and limitations. **Coverage** shows which experimental conditions are actually present. See [new sources and Codespace update](docs/source-expansion.md), [delivery status](docs/completion-status.md) and [testing](docs/testing.md).
+Open **Library** for the ten-column source table: 10 data links, 5 Sheet papers, nine PSI accessions and related NASA resources (30 total). Select **Đọc** for summaries, cited findings and limitations. **Coverage** shows which experimental conditions are actually present. See [new sources and Codespace update](docs/source-expansion.md), [delivery status](docs/completion-status.md) and [testing](docs/testing.md).
 
 ## Features
 
@@ -57,7 +57,7 @@ Open **Library** for the ten-column source table: 10 data links, 5 Sheet papers,
 
 ## Data and scientific scope
 
-The six seed records verify metadata from NASA's Combustion Science overview. There are **zero imported experimental runs**. A NASA page snapshot and checksum accompany the seed. Editorial theme labels are not experimental findings. Imported records are unverified until independently reviewed.
+Six overview seed records verify metadata from NASA's Combustion Science overview. The additional CFI-G record contains **five imported experimental summary rows and ten observations**, a partial PSI-159 table extraction. A NASA page snapshot and checksum accompany the seed. Editorial theme labels are not experimental findings. Imported records are unverified until independently reviewed.
 
 Relevance is not fire hazard. Unknown metadata contributes an interval, not a positive match. No quantitative combustion predictions, certified safety recommendations, or partial-gravity extrapolation are provided.
 
@@ -72,6 +72,6 @@ npm run typecheck
 npm run build
 ```
 
-See [requirements](docs/product-requirements.txt), [methodology](docs/methodology.md), [data dictionary](docs/data-dictionary.md), [demo](docs/demo.md), and [remaining work](docs/roadmap.md).
+See [PSI accessions and partial import](docs/psi-accessions.md), [requirements](docs/product-requirements.txt), [methodology](docs/methodology.md), [data dictionary](docs/data-dictionary.md), [demo](docs/demo.md), and [remaining work](docs/roadmap.md).
 
 Research support tool. Not a certified fire safety assessment.

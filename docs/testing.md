@@ -20,3 +20,7 @@ Provider tests mock OpenAI Responses and embeddings; they check invented citatio
 ## Source expansion verification — 2026-11-15
 
 26 backend tests passed after adding the seven related NASA resources. Production build and TypeScript checking passed. Desktop browser journey verifies 23 library rows, source ancestry, paper reader, comparison, scenario, assistant and export.
+
+## PSI import verification — 2026-11-15
+
+27 backend tests passed, including context-only source exclusion, PSI identifier retrieval, source-row preservation and the partial PSI-159 observations API. Production build/TypeScript passed. The desktop browser journey verifies 30 library rows and the displayed 50 s duration and 290.617198 degC peak burner temperature from the first PSI-159 test.

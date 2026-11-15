@@ -16,7 +16,7 @@ class LibraryTests(unittest.TestCase):
   self.client=TestClient(app);seed_library()
  def tearDown(self):catalogue.DB=self.previous;self.temp.cleanup()
  def test_ten_links_five_papers_psi(self):
-  items=resources();self.assertEqual(len(items),23)
+  items=resources();self.assertEqual(len(items),30)
   self.assertEqual(sum(r['id'].startswith('data-') for r in items),10)
   self.assertEqual(sum(r['kind']=='paper' for r in items),5)
   self.assertEqual(self.client.get('/api/library/paper-03').status_code,200)
@@ -24,7 +24,7 @@ class LibraryTests(unittest.TestCase):
  def test_idempotent_seed(self):
   seed_library()
   with catalogue.connect() as db:
-   self.assertEqual(db.execute('SELECT count(*) FROM source_documents').fetchone()[0],23)
+   self.assertEqual(db.execute('SELECT count(*) FROM source_documents').fetchone()[0],30)
    self.assertEqual(db.execute('SELECT count(*) FROM schema_migrations').fetchone()[0],1)
  def test_vietnamese_retrieval_and_unknown(self):
   self.assertTrue(search_evidence('thông lượng PMMA'))
@@ -32,9 +32,9 @@ class LibraryTests(unittest.TestCase):
   ids={c['id'] for c in result['citations']};self.assertTrue(ids)
   for claim in result['claims']:self.assertTrue(set(claim['evidence_ids'])<=ids)
   self.assertFalse(self.client.post('/api/assistant/query',json={'question':'zzzzqwertyz'}).json()['citations'])
- def test_inaccessible_sources_not_claims(self):
-  self.assertFalse(search_evidence('PSI-117'))
-  self.assertEqual(resources('PSI-117')[0]['status'],'external_only')
+ def test_browser_verified_psi_metadata_searchable(self):
+  self.assertTrue(search_evidence('PSI-117'))
+  self.assertEqual(resources('PSI-117')[0]['status'],'reviewed')
  def test_unit_conversion_and_missing(self):
   item=normalize({'runs':[{'oxygen_fraction':21,'pressure_kpa':100000,'airflow_m_s':None}]},{},{'oxygen_fraction':'%','pressure_kpa':'Pa'})
   run=item['runs'][0];self.assertEqual(run['oxygen_fraction'],.21);self.assertEqual(run['pressure_kpa'],100)
@@ -99,3 +99,16 @@ class LibraryTests(unittest.TestCase):
   self.assertTrue(any(c['document_id']=='nasa-saffire-vi' for c in citations))
   self.assertFalse(any(c['document_id']=='psi-25' for c in search_evidence('PSI-25')))
   self.assertEqual(self.client.get('/api/library/nasa-bass-report').json()['publisher'],'NASA')
+
+ def test_psi_rows_and_context_exclusion(self):
+  records=json.loads(Path('data/psi-seed.json').read_text())
+  item=Investigation.model_validate(records[0]).model_dump(mode='json')
+  self.assertEqual(len(item['runs']),5)
+  self.assertTrue(all(r['oxygen_fraction'] is None for r in item['runs']))
+  self.assertEqual(item['runs'][0]['measurements'][0]['value'],50)
+  self.assertEqual(item['runs'][0]['original_values']['chamber_pressure']['normalized_kpa'],94.43956)
+  with catalogue.connect() as db:catalogue.put(db,item)
+  self.assertEqual(len(self.client.get('/api/measurements/psi-159-cfi-g').json()['items']),10)
+  self.assertFalse(any(c['document_id'] in ['psi-181','psi-108'] for c in search_evidence('silicone solders PSI-181 PSI-108')))
+  for id in ['psi-117','psi-159','psi-10','psi-62','psi-60','psi-181','psi-142','psi-108']:
+   self.assertEqual(self.client.get('/api/library/'+id).json()['status'],'reviewed')

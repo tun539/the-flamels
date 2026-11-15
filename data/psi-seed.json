@@ -1,0 +1,327 @@
+[
+  {
+    "id": "psi-159-cfi-g",
+    "acronym": "CFI-G",
+    "title": "ACME — Cool Flames Investigation with Gases (CFI-G)",
+    "objectives": "Nghiên cứu ngọn lửa khuếch tán hình cầu trên ISS; có bảng điều kiện và đầu ra của các test.",
+    "theme": "fundamental",
+    "platform": "ISS",
+    "gravity": "microgravity",
+    "material": "ethane",
+    "hardware": "ACME; CIR",
+    "verification": "metadata_verified",
+    "limitations": "Đã nhập 5 dòng đầu bảng đang chọn (180 dòng được giao diện báo); không phải toàn bộ các bảng hoặc kho 1.90 TB. Nồng độ oxy tùy cấu hình đầu đốt, không phải cabin. Peak burner temperature is not flame temperature; Tad is not imported as a measured outcome. Method and uncertainties are not reported in this summary.",
+    "sources": [
+      {
+        "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159",
+        "title": "ACME — Cool Flames Investigation with Gases (CFI-G)",
+        "locator": "Version 1; default Experimental Table, rows 1–5, Test IDs preserved",
+        "summary": "Five rendered experimental summary rows transcribed and checked; partial dataset only.",
+        "retrieved_at": "2026-11-15",
+        "checksum": "d1bfc6ae23267eec3e75362e7cb2cc7393876804527b3e30832c9007e4602d82"
+      }
+    ],
+    "runs": [
+      {
+        "id": "test-21088A1",
+        "material": "ethane",
+        "gravity": "microgravity",
+        "geometry": "spherical porous burner; normal diffusion flame",
+        "oxygen_fraction": null,
+        "pressure_kpa": null,
+        "airflow_m_s": null,
+        "measurement": "burn duration; peak burner temperature",
+        "source_locator": "Version 1; default Experimental Table; Test 21088A1; row 1",
+        "original_values": {
+          "source_row": {
+            "Flame Type": "Normal",
+            "Day": "1",
+            "Fuel": "ethane",
+            "Test": "21088A1",
+            "Cool flame?": "",
+            "XO2 before test": "0.3939",
+            "XO2 after test": "0.389822946",
+            "approx p (bar)": "0.9443956",
+            "Xf": "1",
+            "mHC (mg/s)": "2",
+            "TFP": "No",
+            "Tad (K)": "2719.323211",
+            "Zst": "0.102651783",
+            "Hot ignition": "Yes",
+            "burn time (sec)": "50",
+            "Self-ext or flow term": "SE",
+            "Peak burner T (C )": "290.617198",
+            "Comments": ""
+          },
+          "chamber_pressure": {
+            "value": "0.9443956",
+            "unit": "bar",
+            "normalized_kpa": 94.43956,
+            "factor": 100
+          },
+          "oxygen_context": "XO2 before/after from burner experiment; deliberately not mapped to cabin atmosphere"
+        },
+        "measurements": [
+          {
+            "id": "duration",
+            "quantity": "burn duration",
+            "value": 50.0,
+            "unit": "s",
+            "method": "Experimental summary column; instrument/method not reported",
+            "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159",
+            "source_locator": "Version 1; default Experimental Table; Test 21088A1; row 1"
+          },
+          {
+            "id": "peak-burner-temperature",
+            "quantity": "peak burner temperature",
+            "value": 290.617198,
+            "unit": "degC",
+            "method": "Experimental summary column; sensor/calibration not reported",
+            "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159",
+            "source_locator": "Version 1; default Experimental Table; Test 21088A1; row 1"
+          }
+        ]
+      },
+      {
+        "id": "test-21088B1",
+        "material": "ethane",
+        "gravity": "microgravity",
+        "geometry": "spherical porous burner; normal diffusion flame",
+        "oxygen_fraction": null,
+        "pressure_kpa": null,
+        "airflow_m_s": null,
+        "measurement": "burn duration; peak burner temperature",
+        "source_locator": "Version 1; default Experimental Table; Test 21088 B1; row 2",
+        "original_values": {
+          "source_row": {
+            "Flame Type": "Normal",
+            "Day": "1",
+            "Fuel": "ethane",
+            "Test": "21088 B1",
+            "Cool flame?": "",
+            "XO2 before test": "0.389822946",
+            "XO2 after test": "0.386321188",
+            "approx p (bar)": "0.9443956",
+            "Xf": "1",
+            "mHC (mg/s)": "2",
+            "TFP": "Yes",
+            "Tad (K)": "2713.594987",
+            "Zst": "0.101747543",
+            "Hot ignition": "Yes",
+            "burn time (sec)": "43",
+            "Self-ext or flow term": "SE",
+            "Peak burner T (C )": "276.009368",
+            "Comments": ""
+          },
+          "chamber_pressure": {
+            "value": "0.9443956",
+            "unit": "bar",
+            "normalized_kpa": 94.43956,
+            "factor": 100
+          },
+          "oxygen_context": "XO2 before/after from burner experiment; deliberately not mapped to cabin atmosphere"
+        },
+        "measurements": [
+          {
+            "id": "duration",
+            "quantity": "burn duration",
+            "value": 43.0,
+            "unit": "s",
+            "method": "Experimental summary column; instrument/method not reported",
+            "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159",
+            "source_locator": "Version 1; default Experimental Table; Test 21088 B1; row 2"
+          },
+          {
+            "id": "peak-burner-temperature",
+            "quantity": "peak burner temperature",
+            "value": 276.009368,
+            "unit": "degC",
+            "method": "Experimental summary column; sensor/calibration not reported",
+            "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159",
+            "source_locator": "Version 1; default Experimental Table; Test 21088 B1; row 2"
+          }
+        ]
+      },
+      {
+        "id": "test-21088C1",
+        "material": "ethane",
+        "gravity": "microgravity",
+        "geometry": "spherical porous burner; normal diffusion flame",
+        "oxygen_fraction": null,
+        "pressure_kpa": null,
+        "airflow_m_s": null,
+        "measurement": "burn duration; peak burner temperature",
+        "source_locator": "Version 1; default Experimental Table; Test 21088 C1; row 3",
+        "original_values": {
+          "source_row": {
+            "Flame Type": "Normal",
+            "Day": "1",
+            "Fuel": "ethane",
+            "Test": "21088 C1",
+            "Cool flame?": "",
+            "XO2 before test": "0.386321188",
+            "XO2 after test": "0.382905163",
+            "approx p (bar)": "0.9443956",
+            "Xf": "1",
+            "mHC (mg/s)": "2",
+            "TFP": "Yes",
+            "Tad (K)": "2708.596221",
+            "Zst": "0.100968644",
+            "Hot ignition": "Yes",
+            "burn time (sec)": "42",
+            "Self-ext or flow term": "SE",
+            "Peak burner T (C )": "266.374008",
+            "Comments": "hit burner T limit"
+          },
+          "chamber_pressure": {
+            "value": "0.9443956",
+            "unit": "bar",
+            "normalized_kpa": 94.43956,
+            "factor": 100
+          },
+          "oxygen_context": "XO2 before/after from burner experiment; deliberately not mapped to cabin atmosphere"
+        },
+        "measurements": [
+          {
+            "id": "duration",
+            "quantity": "burn duration",
+            "value": 42.0,
+            "unit": "s",
+            "method": "Experimental summary column; instrument/method not reported",
+            "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159",
+            "source_locator": "Version 1; default Experimental Table; Test 21088 C1; row 3"
+          },
+          {
+            "id": "peak-burner-temperature",
+            "quantity": "peak burner temperature",
+            "value": 266.374008,
+            "unit": "degC",
+            "method": "Experimental summary column; sensor/calibration not reported",
+            "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159",
+            "source_locator": "Version 1; default Experimental Table; Test 21088 C1; row 3"
+          }
+        ]
+      },
+      {
+        "id": "test-21088D1",
+        "material": "ethane",
+        "gravity": "microgravity",
+        "geometry": "spherical porous burner; normal diffusion flame",
+        "oxygen_fraction": null,
+        "pressure_kpa": null,
+        "airflow_m_s": null,
+        "measurement": "burn duration; peak burner temperature",
+        "source_locator": "Version 1; default Experimental Table; Test 21088 D1; row 4",
+        "original_values": {
+          "source_row": {
+            "Flame Type": "Normal",
+            "Day": "1",
+            "Fuel": "ethane",
+            "Test": "21088 D1",
+            "Cool flame?": "",
+            "XO2 before test": "0.382905163",
+            "XO2 after test": "0.380426741",
+            "approx p (bar)": "0.9443956",
+            "Xf": "1",
+            "mHC (mg/s)": "1",
+            "TFP": "Yes",
+            "Tad (K)": "2703.647801",
+            "Zst": "0.100206801",
+            "Hot ignition": "Yes",
+            "burn time (sec)": "61",
+            "Self-ext or flow term": "FT",
+            "Peak burner T (C )": "459.195642",
+            "Comments": "FC=flow cut"
+          },
+          "chamber_pressure": {
+            "value": "0.9443956",
+            "unit": "bar",
+            "normalized_kpa": 94.43956,
+            "factor": 100
+          },
+          "oxygen_context": "XO2 before/after from burner experiment; deliberately not mapped to cabin atmosphere"
+        },
+        "measurements": [
+          {
+            "id": "duration",
+            "quantity": "burn duration",
+            "value": 61.0,
+            "unit": "s",
+            "method": "Experimental summary column; instrument/method not reported",
+            "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159",
+            "source_locator": "Version 1; default Experimental Table; Test 21088 D1; row 4"
+          },
+          {
+            "id": "peak-burner-temperature",
+            "quantity": "peak burner temperature",
+            "value": 459.195642,
+            "unit": "degC",
+            "method": "Experimental summary column; sensor/calibration not reported",
+            "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159",
+            "source_locator": "Version 1; default Experimental Table; Test 21088 D1; row 4"
+          }
+        ]
+      },
+      {
+        "id": "test-21088F1",
+        "material": "ethane",
+        "gravity": "microgravity",
+        "geometry": "spherical porous burner; normal diffusion flame",
+        "oxygen_fraction": null,
+        "pressure_kpa": null,
+        "airflow_m_s": null,
+        "measurement": "burn duration; peak burner temperature",
+        "source_locator": "Version 1; default Experimental Table; Test 21088 F1; row 5",
+        "original_values": {
+          "source_row": {
+            "Flame Type": "Normal",
+            "Day": "1",
+            "Fuel": "ethane",
+            "Test": "21088 F1",
+            "Cool flame?": "",
+            "XO2 before test": "0.380426741",
+            "XO2 after test": "0.379858042",
+            "approx p (bar)": "0.9443956",
+            "Xf": "1",
+            "mHC (mg/s)": "0.5",
+            "TFP": "Yes",
+            "Tad (K)": "2700.011998",
+            "Zst": "0.099652813",
+            "Hot ignition": "Yes",
+            "burn time (sec)": "28",
+            "Self-ext or flow term": "FT",
+            "Peak burner T (C )": "532.162657",
+            "Comments": "Lowest flow rate for ignition"
+          },
+          "chamber_pressure": {
+            "value": "0.9443956",
+            "unit": "bar",
+            "normalized_kpa": 94.43956,
+            "factor": 100
+          },
+          "oxygen_context": "XO2 before/after from burner experiment; deliberately not mapped to cabin atmosphere"
+        },
+        "measurements": [
+          {
+            "id": "duration",
+            "quantity": "burn duration",
+            "value": 28.0,
+            "unit": "s",
+            "method": "Experimental summary column; instrument/method not reported",
+            "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159",
+            "source_locator": "Version 1; default Experimental Table; Test 21088 F1; row 5"
+          },
+          {
+            "id": "peak-burner-temperature",
+            "quantity": "peak burner temperature",
+            "value": 532.162657,
+            "unit": "degC",
+            "method": "Experimental summary column; sensor/calibration not reported",
+            "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159",
+            "source_locator": "Version 1; default Experimental Table; Test 21088 F1; row 5"
+          }
+        ]
+      }
+    ]
+  }
+]

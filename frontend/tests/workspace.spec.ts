@@ -6,7 +6,7 @@ test('research journey and document library',async({page})=>{
  await page.getByRole('button',{name:'Library',exact:true}).click();
  await expect(page.getByRole('heading',{name:'Thư viện tài liệu'})).toBeVisible();
  await expect(page.locator('.source-table thead th')).toHaveCount(10);
- await expect(page.locator('.source-table tbody tr')).toHaveCount(23);
+ await expect(page.locator('.source-table tbody tr')).toHaveCount(30);
  await page.getByLabel('Tìm tài liệu').fill('SoFIE — Growth');
  await page.getByRole('button',{name:/Đọc SoFIE/}).click();
  await expect(page.getByRole('heading',{name:'Nguồn dẫn tới tài liệu'})).toBeVisible();
@@ -24,6 +24,12 @@ test('research journey and document library',async({page})=>{
  await page.getByRole('button',{name:'Find evidence'}).click();await expect(page.locator('blockquote').first()).toBeVisible();
  const download=page.waitForEvent('download');await page.getByRole('button',{name:'Download JSON'}).click();expect((await download).suggestedFilename()).toBe('flameatlas.json');
  await page.getByRole('button',{name:'Coverage',exact:true}).click();await expect(page.getByRole('table')).toBeVisible();
+ await page.getByRole('button',{name:'Explore',exact:true}).click();
+ await page.getByLabel('Search studies').fill('CFI-G');await page.getByRole('button',{name:'Search',exact:true}).click();
+ await expect(page.getByRole('button',{name:'View evidence →'})).toHaveCount(1);
+ await page.getByRole('button',{name:'View evidence →'}).click();
+ await expect(page.getByText('50 s',{exact:true})).toBeVisible();
+ await expect(page.getByText('290.617198 degC',{exact:true})).toBeVisible();
 });
 test('mobile navigation and unknown evidence',async({page})=>{
  await page.setViewportSize({width:390,height:844});await page.goto('/');

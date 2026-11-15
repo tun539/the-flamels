@@ -1,3 +1,7 @@
+# Current PSI update
+
+See [PSI accessions](psi-accessions.md): 30 resources, 7 investigation records, 5 imported PSI-159 runs and 10 summary observations. The eight supplied PSI pages were read in a browser; PSI-181/108 are context only. Earlier zero-run and PSI-117 access statements below describe the prior delivery.
+
 # Delivery status — 2026-11-15
 
 ## Implemented
