@@ -1,0 +1,15 @@
+{
+  "name": "FlameAtlas MVP",
+  "image": "mcr.microsoft.com/devcontainers/python:1-3.12-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {"version": "22"}
+  },
+  "forwardPorts": [3000],
+  "portsAttributes": {
+    "3000": {"label": "FlameAtlas MVP", "onAutoForward": "openBrowser"},
+    "8000": {"label": "Internal API", "onAutoForward": "ignore"}
+  },
+  "postCreateCommand": "bash scripts/setup.sh",
+  "postStartCommand": ".venv/bin/python scripts/run_mvp.py --background",
+  "waitFor": "postCreateCommand"
+}

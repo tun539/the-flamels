@@ -15,3 +15,4 @@ Provider tests mock OpenAI Responses and embeddings; they check invented citatio
 - All three browser journeys passed against the production build: desktop research workflow, mobile navigation/unknown evidence, and import → observations → export/reimport → run comparison. The constrained local headless binary required each journey to run in a separate invocation; standard CI runs both with Playwright Chromium.
 - Mobile screenshot reviewed at 390 px; the document table scrolls within its container.
 - Docker startup and live paid AI requests were not executed in this environment.
+- Production launcher `python3 scripts/run_mvp.py` successfully started both servers; proxied health, overview, library, PMMA evidence query and dashboard HTTP checks passed. Shutdown also completed cleanly. The GitHub Codespaces container itself still requires a signed-in creation session and has not been verified remotely.

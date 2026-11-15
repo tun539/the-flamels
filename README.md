@@ -4,6 +4,16 @@ Microgravity combustion evidence workspace. Six NASA-sourced investigation metad
 
 ## Run
 
+### Open on GitHub without installing locally
+
+[Open FlameAtlas in GitHub Codespaces](https://codespaces.new/tun539/the-flamels?quickstart=1)
+
+Create a Codespace on `main`. Setup installs Python/Node dependencies and builds the MVP; startup launches both servers automatically. Open **Ports → 3000 → Open in Browser** when ready. Keep port visibility private: the app does not provide multi-user authentication. Codespaces availability and usage depend on your GitHub account; stop the Codespace when finished. This is an interactive development runtime, not permanent public hosting.
+
+If startup fails, inspect `.runtime/mvp.log`. Run `.venv/bin/python scripts/run_mvp.py --background` to start again. Data stays in that Codespace's `data/flameatlas.db`; export it before deleting the Codespace.
+
+### Docker
+
 ```sh
 cp .env.example .env
 docker compose up --build
