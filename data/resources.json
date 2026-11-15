@@ -334,5 +334,187 @@
     "checked_at": "2026-11-14",
     "findings": [],
     "checksum": null
+  },
+  {
+    "id": "nasa-bass-report",
+    "title": "Burning and Suppression of Solids–II (BASS-II) Summary Report",
+    "url": "https://ntrs.nasa.gov/citations/20210011385",
+    "kind": "report",
+    "summary": "Báo cáo BASS-II mô tả thử nghiệm trong MSG trên ISS, thay đổi nồng độ oxy, dòng thông gió, loại nhiên liệu, độ dày và hình học.",
+    "limitations": "Chỉ đọc abstract và metadata NTRS; chưa trích bảng từng test từ PDF. Kết quả tổng hợp không tạo thành run hoặc giới hạn an toàn.",
+    "locator": "NTRS 20210011385, abstract; published 2021-10-01",
+    "parent_ids": [
+      "data-02",
+      "paper-03"
+    ],
+    "discovery_method": "Topic expansion from verified sheet source; official NASA search and page retrieval",
+    "sheet_cell": "C3 → nguồn liên quan",
+    "material": null,
+    "gravity": "microgravity",
+    "status": "reviewed",
+    "doi": null,
+    "checked_at": "2026-11-15",
+    "publisher": "NASA",
+    "extraction_method": "Official HTML abstract/description; curated Vietnamese summary",
+    "checksum": null,
+    "findings": [
+      {
+        "id": "nasa-bass-report-f1",
+        "text": "Tác giả tính tốc độ tỏa nhiệt từ lượng oxy tiêu thụ và thời gian cháy; phần lớn các test được báo cáo thấp hơn nhiều so với 100 W.",
+        "locator": "Abstract, final sentences",
+        "type": "author_interpretation"
+      },
+      {
+        "id": "nasa-bass-report-f2",
+        "text": "CSA-CP đo O₂ và CO; máy theo dõi CO₂ ghi nhận trước và sau test. Quan hệ CO/CO₂ khác nhau theo hình học và dòng khí.",
+        "locator": "Abstract, instrumentation and gas analysis",
+        "type": "observed"
+      }
+    ]
+  },
+  {
+    "id": "nasa-saffire-vi",
+    "title": "Preliminary Results from the Saffire VI Experiment",
+    "url": "https://ntrs.nasa.gov/citations/20240002981",
+    "kind": "report",
+    "summary": "Bài hội nghị ICES-2024-365 trình bày kết quả sơ bộ Saffire VI trên Cygnus và so sánh với một số mẫu từ Saffire IV/V.",
+    "limitations": "Chỉ đọc abstract NTRS; đây là báo cáo sơ bộ, không phải tệp raw. Không ghép các khoảng hoặc hình học thành tổ hợp run.",
+    "locator": "NTRS 20240002981, abstract",
+    "parent_ids": [
+      "data-02"
+    ],
+    "discovery_method": "Topic expansion from verified sheet source; official NASA search and page retrieval",
+    "sheet_cell": "C3 → nguồn liên quan",
+    "material": "PMMA; cotton/fiberglass; Nomex",
+    "gravity": "microgravity",
+    "status": "reviewed",
+    "doi": null,
+    "checked_at": "2026-11-15",
+    "publisher": "NASA",
+    "extraction_method": "Official HTML abstract/description; curated Vietnamese summary",
+    "checksum": null,
+    "findings": [
+      {
+        "id": "nasa-saffire-vi-f1",
+        "text": "Trong các thử nghiệm được abstract thảo luận, tác giả nhận thấy mức tăng nhiệt độ và áp suất tàu ít đáng kể hơn mức tăng CO₂ và CO.",
+        "locator": "Abstract, final sentence",
+        "type": "author_interpretation"
+      }
+    ]
+  },
+  {
+    "id": "nasa-sofie",
+    "title": "Solid Fuel Ignition and Extinction (SoFIE)",
+    "url": "https://science.nasa.gov/biological-physical/investigations/sofie/",
+    "kind": "overview",
+    "summary": "SoFIE nghiên cứu bắt cháy và tính cháy vật liệu rắn dùng trên tàu; insert đặt trong Combustion Integrated Rack cho phép thay đổi oxy và áp suất.",
+    "limitations": "Mô tả chương trình và mục tiêu, không có dữ liệu run trong trang đã đọc. Lịch ghi trên trang không được dùng để khẳng định trạng thái vận hành hiện tại.",
+    "locator": "Facility Description; Science Objectives",
+    "parent_ids": [
+      "data-02"
+    ],
+    "discovery_method": "Topic expansion from verified sheet source; official NASA search and page retrieval",
+    "sheet_cell": "C3 → nguồn liên quan",
+    "material": "Solid spacecraft materials",
+    "gravity": "microgravity",
+    "status": "reviewed",
+    "doi": null,
+    "checked_at": "2026-11-15",
+    "publisher": "NASA",
+    "extraction_method": "Official HTML abstract/description; curated Vietnamese summary",
+    "checksum": null,
+    "findings": []
+  },
+  {
+    "id": "nasa-sofie-gel",
+    "title": "SoFIE — Growth and Extinction Limit (GEL)",
+    "url": "https://science.nasa.gov/biological-physical/investigations/sofie-gel/",
+    "kind": "overview",
+    "summary": "SoFIE-GEL khảo sát tăng trưởng và tắt ngọn lửa quanh cầu PMMA dày, xét vận tốc dòng, phần trăm oxy, áp suất và gia nhiệt bên trong.",
+    "limitations": "Đây là thiết kế/mục tiêu thí nghiệm; trang không cung cấp giá trị điều kiện từng run. Không suy ra hành vi ở trọng lực Mặt Trăng từ mô tả này.",
+    "locator": "Experiment Description",
+    "parent_ids": [
+      "nasa-sofie"
+    ],
+    "discovery_method": "Topic expansion from verified sheet source; official NASA search and page retrieval",
+    "sheet_cell": "C3 → nguồn liên quan",
+    "material": "PMMA sphere",
+    "gravity": "microgravity",
+    "status": "reviewed",
+    "doi": null,
+    "checked_at": "2026-11-15",
+    "publisher": "NASA",
+    "extraction_method": "Official HTML abstract/description; curated Vietnamese summary",
+    "checksum": null,
+    "findings": []
+  },
+  {
+    "id": "nasa-flare",
+    "title": "Flammability Limits At Reduced-g Experiment (FLARE)",
+    "url": "https://www.nasa.gov/glenn/glenn-expertise-space-exploration/physical-sciences-program/combustion-science/flammability-limits-at-reduced-g-experiment-flare/",
+    "kind": "overview",
+    "summary": "FLARE đặt mục tiêu liên hệ giới hạn cháy vật liệu giữa trọng lực thường và vi trọng lực, kết hợp thử nghiệm mặt đất, bay parabol và thử nghiệm ISS/KIBO.",
+    "limitations": "Trang mô tả kế hoạch có mốc thời gian cũ. Mục tiêu tương quan chưa phải mô hình đã được kiểm chứng có thể áp dụng trong dashboard.",
+    "locator": "Experimental Approach; Relevance/Impact",
+    "parent_ids": [
+      "data-02"
+    ],
+    "discovery_method": "Topic expansion from verified sheet source; official NASA search and page retrieval",
+    "sheet_cell": "C3 → nguồn liên quan",
+    "material": null,
+    "gravity": "normal gravity; reduced gravity; microgravity",
+    "status": "reviewed",
+    "doi": null,
+    "checked_at": "2026-11-15",
+    "publisher": "NASA",
+    "extraction_method": "Official HTML abstract/description; curated Vietnamese summary",
+    "checksum": null,
+    "findings": []
+  },
+  {
+    "id": "nasa-fire-synthesis",
+    "title": "Studying Combustion and Fire Safety",
+    "url": "https://www.nasa.gov/missions/station/iss-research/studying-combustion-and-fire-safety/",
+    "kind": "overview",
+    "summary": "NASA tổng hợp các nghiên cứu FLEX, BRE, BASS-II, SoFIE-GEL, Saffire và confined combustion, kèm liên kết tài liệu nghiên cứu.",
+    "limitations": "Bài tổng hợp dùng để tìm tài liệu gốc, không làm nguồn số đo run. Các kết quả phụ thuộc cấu hình và không thiết lập vật liệu an toàn nhất.",
+    "locator": "BASS-II, SoFIE-GEL and Saffire paragraphs",
+    "parent_ids": [
+      "data-02"
+    ],
+    "discovery_method": "Topic expansion from verified sheet source; official NASA search and page retrieval",
+    "sheet_cell": "C3 → nguồn liên quan",
+    "material": null,
+    "gravity": "microgravity",
+    "status": "reviewed",
+    "doi": null,
+    "checked_at": "2026-11-15",
+    "publisher": "NASA",
+    "extraction_method": "Official HTML abstract/description; curated Vietnamese summary",
+    "checksum": null,
+    "findings": []
+  },
+  {
+    "id": "psi-25",
+    "title": "PSI-25 — BASS-II catalogue reference",
+    "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25",
+    "kind": "dataset_portal",
+    "summary": "Kết quả tìm kiếm NASA PSI nhận diện PSI-25 là BASS-II, kèm DOI 10.60555/4qc4-de67.",
+    "limitations": "Chỉ metadata từ chỉ mục tìm kiếm đọc được; trang trực tiếp không trả nội dung và chưa tải được tệp. Không lập claim từ mục này.",
+    "locator": "NASA PSI indexed catalogue result; direct page unreadable",
+    "parent_ids": [
+      "data-01"
+    ],
+    "discovery_method": "Topic expansion from verified sheet source; official NASA search and page retrieval",
+    "sheet_cell": "C2 → nguồn liên quan",
+    "material": null,
+    "gravity": "microgravity",
+    "status": "external_only",
+    "doi": "10.60555/4qc4-de67",
+    "checked_at": "2026-11-15",
+    "publisher": "NASA",
+    "extraction_method": "Official HTML abstract/description; curated Vietnamese summary",
+    "checksum": null,
+    "findings": []
   }
 ]

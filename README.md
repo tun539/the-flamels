@@ -41,7 +41,7 @@ npm run dev
 
 ## Source library and reading
 
-Open **Library** for the ten-column source table: 10 data links, 5 papers and PSI-117. Select **Đọc** for summaries, cited findings and limitations. **Coverage** shows which experimental conditions are actually present. See [delivery status](docs/completion-status.md) and [testing](docs/testing.md).
+Open **Library** for the ten-column source table: 10 data links, 5 Sheet papers, PSI-117 and 7 related NASA resources (23 total). Select **Đọc** for summaries, cited findings and limitations. **Coverage** shows which experimental conditions are actually present. See [new sources and Codespace update](docs/source-expansion.md), [delivery status](docs/completion-status.md) and [testing](docs/testing.md).
 
 ## Features
 

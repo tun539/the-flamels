@@ -16,7 +16,7 @@ class LibraryTests(unittest.TestCase):
   self.client=TestClient(app);seed_library()
  def tearDown(self):catalogue.DB=self.previous;self.temp.cleanup()
  def test_ten_links_five_papers_psi(self):
-  items=resources();self.assertEqual(len(items),16)
+  items=resources();self.assertEqual(len(items),23)
   self.assertEqual(sum(r['id'].startswith('data-') for r in items),10)
   self.assertEqual(sum(r['kind']=='paper' for r in items),5)
   self.assertEqual(self.client.get('/api/library/paper-03').status_code,200)
@@ -24,7 +24,7 @@ class LibraryTests(unittest.TestCase):
  def test_idempotent_seed(self):
   seed_library()
   with catalogue.connect() as db:
-   self.assertEqual(db.execute('SELECT count(*) FROM source_documents').fetchone()[0],16)
+   self.assertEqual(db.execute('SELECT count(*) FROM source_documents').fetchone()[0],23)
    self.assertEqual(db.execute('SELECT count(*) FROM schema_migrations').fetchone()[0],1)
  def test_vietnamese_retrieval_and_unknown(self):
   self.assertTrue(search_evidence('thông lượng PMMA'))
@@ -89,3 +89,13 @@ class LibraryTests(unittest.TestCase):
   parsed=self.client.post('/api/import/csv',json={'content':csv}).json()['records'][0]
   self.assertEqual(parsed['hardware'],'Test fixture');self.assertEqual(parsed['runs'][0]['measurements'][0]['value'],1)
   with catalogue.connect() as db:self.assertEqual(db.execute('SELECT count(*) FROM measurements').fetchone()[0],1)
+
+ def test_expanded_source_provenance_and_findings(self):
+  items=resources();by_id={r['id']:r for r in items}
+  self.assertEqual(sum(bool(r.get('parent_ids')) for r in items),7)
+  for item in items:
+   for parent in item.get('parent_ids',[]):self.assertIn(parent,by_id)
+  citations=search_evidence('Saffire VI')
+  self.assertTrue(any(c['document_id']=='nasa-saffire-vi' for c in citations))
+  self.assertFalse(any(c['document_id']=='psi-25' for c in search_evidence('PSI-25')))
+  self.assertEqual(self.client.get('/api/library/nasa-bass-report').json()['publisher'],'NASA')

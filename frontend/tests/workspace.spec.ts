@@ -6,7 +6,11 @@ test('research journey and document library',async({page})=>{
  await page.getByRole('button',{name:'Library',exact:true}).click();
  await expect(page.getByRole('heading',{name:'Thư viện tài liệu'})).toBeVisible();
  await expect(page.locator('.source-table thead th')).toHaveCount(10);
- await expect(page.locator('.source-table tbody tr')).toHaveCount(16);
+ await expect(page.locator('.source-table tbody tr')).toHaveCount(23);
+ await page.getByLabel('Tìm tài liệu').fill('SoFIE — Growth');
+ await page.getByRole('button',{name:/Đọc SoFIE/}).click();
+ await expect(page.getByRole('heading',{name:'Nguồn dẫn tới tài liệu'})).toBeVisible();
+ await page.getByRole('button',{name:'← Trở lại thư viện'}).click();
  await page.getByLabel('Tìm tài liệu').fill('Evaluation of burning');
  await page.getByRole('button',{name:/Đọc Evaluation/}).click();
  await expect(page.getByRole('heading',{name:'Giới hạn áp dụng'})).toBeVisible();

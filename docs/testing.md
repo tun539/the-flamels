@@ -16,3 +16,7 @@ Provider tests mock OpenAI Responses and embeddings; they check invented citatio
 - Mobile screenshot reviewed at 390 px; the document table scrolls within its container.
 - Docker startup and live paid AI requests were not executed in this environment.
 - Production launcher `python3 scripts/run_mvp.py` successfully started both servers; proxied health, overview, library, PMMA evidence query and dashboard HTTP checks passed. Shutdown also completed cleanly. The GitHub Codespaces container itself still requires a signed-in creation session and has not been verified remotely.
+
+## Source expansion verification — 2026-11-15
+
+26 backend tests passed after adding the seven related NASA resources. Production build and TypeScript checking passed. Desktop browser journey verifies 23 library rows, source ancestry, paper reader, comparison, scenario, assistant and export.

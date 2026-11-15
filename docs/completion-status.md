@@ -2,8 +2,8 @@
 
 ## Implemented
 
-- Library with exactly ten display columns, ten source-data links, five paper summaries and PSI-117.
-- Source reader with nine curated findings, section/page locators, DOI links, verification/access state and applicability limits.
+- Library with exactly ten display columns, ten source-data links, five paper summaries, PSI-117 and seven related NASA resources (23 total).
+- Source reader with twelve curated findings, section/page locators, DOI links, verification/access state and applicability limits.
 - Private Drive PDFs are not redistributed. Original files open using the reader's existing Drive access.
 - SQLite migrations for source documents, evidence chunks, measurements and embedding cache.
 - Vietnamese/English keyword evidence search; optional OpenAI Responses evidence selection and cached embedding reranking. Only known evidence IDs can be returned; displayed claim text is taken from curated evidence, not generated scientific assertions.
