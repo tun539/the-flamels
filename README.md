@@ -39,6 +39,10 @@ npm ci
 npm run dev
 ```
 
+## Product presentation
+
+Open **Presentation ↗** in the workspace header or visit `/present` for the product showcase. It includes source composition, campaign-specific observation plots, a coverage matrix, source search, presentation controls and print/PDF styles. The showcase works without the API using a versioned repository snapshot. See [presentation guide](docs/presentation.md).
+
 ## Source library and reading
 
 Open **Library** for the ten-column source table: 10 data links, 5 Sheet papers, 26 PSI accessions and related NASA resources (47 total). Select **Đọc** for summaries, cited findings and limitations. **Coverage** shows which experimental conditions are actually present. See [new sources and Codespace update](docs/source-expansion.md), [delivery status](docs/completion-status.md) and [testing](docs/testing.md).

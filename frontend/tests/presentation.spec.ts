@@ -1,0 +1,32 @@
+import {test,expect} from '@playwright/test';
+test('presentation graphs retain source scope and missing observations',async({page})=>{
+ const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.goto('/present');
+ await expect(page.getByRole('heading',{name:'Bằng chứng trước. Suy luận sau.'})).toBeVisible();
+ await expect(page.getByRole('img',{name:'Phân loại 47 nguồn'})).toBeVisible();
+ await expect(page.getByRole('group',{name:/burn duration Saffire-II; n=5/})).toBeVisible();
+ await page.getByRole('button',{name:'Mẫu 2-9: 900 s',exact:true}).click();
+ await expect(page.getByText('2-9 · Vật liệu chưa báo cáo',{exact:true})).toBeVisible();
+ await page.getByRole('button',{name:'Xem bảng số liệu +'}).click();
+ await expect(page.getByRole('cell',{name:'Insignificant',exact:true})).toHaveCount(4);
+ await page.getByLabel('Chiến dịch',{exact:true}).selectOption('psi-100-saffire');
+ await expect(page.getByText('Điều kiện có sẵn. Đầu ra còn thiếu.')).toBeVisible();
+ await page.getByLabel('Chiến dịch',{exact:true}).selectOption('psi-159-cfi-g');
+ await page.getByLabel('Đại lượng',{exact:true}).selectOption('peak burner temperature');
+ await expect(page.getByRole('group',{name:/peak burner temperature CFI-G; n=5/})).toBeVisible();
+ await page.getByLabel('Tìm tài liệu nguồn',{exact:true}).fill('PSI-181');
+ await expect(page.getByText('PSI-181 · BỐI CẢNH',{exact:true})).toBeVisible();
+ await page.getByRole('button',{name:'Bắt đầu trình bày'}).click();await page.getByRole('button',{name:'Phần tiếp',exact:true}).click();
+ await expect(page.getByText('02 / 05 · Dữ liệu',{exact:true})).toBeVisible();
+ const download=page.waitForEvent('download');await page.getByRole('button',{name:'Tải dữ liệu trình bày ↓'}).click();expect((await download).suggestedFilename()).toBe('flameatlas-presentation-data.json');
+ expect(errors).toEqual([]);
+});
+test('presentation mobile layout and navigation',async({page})=>{
+ await page.setViewportSize({width:390,height:844});await page.goto('/present');
+ await expect(page.getByRole('heading',{name:'Bằng chứng trước. Suy luận sau.'})).toBeVisible();
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
+ await page.getByRole('link',{name:'Khám phá số liệu ↓'}).click();
+ await expect(page.getByLabel('Chiến dịch',{exact:true})).toBeInViewport();
+ await page.getByLabel('Chiến dịch',{exact:true}).selectOption('psi-98-saffire');
+ await expect(page.getByRole('group',{name:/burn duration Saffire-I; n=2/})).toBeVisible();
+});

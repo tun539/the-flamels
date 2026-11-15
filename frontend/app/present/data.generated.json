@@ -1,0 +1,1751 @@
+{
+  "schema_version": 1,
+  "data_version": "97c5ecc16912b97bd277b5ca3a4021244e558fc213c3f3250a57cda0db56a836",
+  "source_checked_at": "2026-11-15",
+  "mode": "curated_repository_snapshot",
+  "counts": {
+    "resources": 47,
+    "investigations": 10,
+    "runs": 18,
+    "observations": 17
+  },
+  "source_groups": [
+    {
+      "label": "NASA PSI",
+      "value": 26
+    },
+    {
+      "label": "Liên kết từ Sheet",
+      "value": 10
+    },
+    {
+      "label": "Tài liệu từ Sheet",
+      "value": 5
+    },
+    {
+      "label": "NASA mở rộng",
+      "value": 6
+    }
+  ],
+  "fields": [
+    "oxygen_fraction",
+    "pressure_kpa",
+    "airflow_m_s",
+    "material",
+    "gravity",
+    "geometry",
+    "measurement"
+  ],
+  "studies": [
+    {
+      "id": "bass",
+      "acronym": "BASS",
+      "title": "Burning and Suppression of Solids",
+      "objectives": "Examines burning and extinction of fuel samples in microgravity.",
+      "theme": "suppression",
+      "platform": null,
+      "material": null,
+      "gravity": "microgravity",
+      "hardware": null,
+      "verification": "metadata_verified",
+      "runs": [],
+      "limitations": "NASA overview metadata only. No measured runs, material-specific safety conclusions or quantitative predictions are included. Theme labels are editorial classification.",
+      "sources": [
+        {
+          "url": "https://www.nasa.gov/glenn/glenn-expertise-space-exploration/physical-sciences-program/combustion-science/",
+          "title": "NASA Combustion Science",
+          "locator": "Burning and Suppression of Solids",
+          "summary": "Examines burning and extinction of fuel samples in microgravity.",
+          "retrieved_at": "2026-11-14T01:57:47.452629+00:00",
+          "checksum": "3ede20592e5fef2dabe776f76a0c643ea3453b58994e7bdb2f2009964026a25f"
+        }
+      ]
+    },
+    {
+      "id": "daft",
+      "acronym": "DAFT",
+      "title": "Dust and Aerosol Measurement Feasibility Test",
+      "objectives": "Tests whether a modified particle measurement instrument performs in microgravity for smoke research.",
+      "theme": "detection",
+      "platform": null,
+      "material": null,
+      "gravity": "microgravity",
+      "hardware": null,
+      "verification": "metadata_verified",
+      "runs": [],
+      "limitations": "NASA overview metadata only. No measured runs, material-specific safety conclusions or quantitative predictions are included. Theme labels are editorial classification.",
+      "sources": [
+        {
+          "url": "https://www.nasa.gov/glenn/glenn-expertise-space-exploration/physical-sciences-program/combustion-science/",
+          "title": "NASA Combustion Science",
+          "locator": "Dust and Aerosol Measurement Feasibility Test",
+          "summary": "Tests whether a modified particle measurement instrument performs in microgravity for smoke research.",
+          "retrieved_at": "2026-11-14T01:57:47.452648+00:00",
+          "checksum": "3ede20592e5fef2dabe776f76a0c643ea3453b58994e7bdb2f2009964026a25f"
+        }
+      ]
+    },
+    {
+      "id": "flex",
+      "acronym": "FLEX",
+      "title": "Flame Extinguishment Experiment",
+      "objectives": "Studies inert-gas suppression and limiting oxygen conditions for combustion in microgravity.",
+      "theme": "suppression",
+      "platform": null,
+      "material": null,
+      "gravity": "microgravity",
+      "hardware": null,
+      "verification": "metadata_verified",
+      "runs": [],
+      "limitations": "NASA overview metadata only. No measured runs, material-specific safety conclusions or quantitative predictions are included. Theme labels are editorial classification.",
+      "sources": [
+        {
+          "url": "https://www.nasa.gov/glenn/glenn-expertise-space-exploration/physical-sciences-program/combustion-science/",
+          "title": "NASA Combustion Science",
+          "locator": "Flame Extinguishment Experiment",
+          "summary": "Studies inert-gas suppression and limiting oxygen conditions for combustion in microgravity.",
+          "retrieved_at": "2026-11-14T01:57:47.452652+00:00",
+          "checksum": "3ede20592e5fef2dabe776f76a0c643ea3453b58994e7bdb2f2009964026a25f"
+        }
+      ]
+    },
+    {
+      "id": "same",
+      "acronym": "SAME",
+      "title": "Smoke Aerosol Measurement Experiment",
+      "objectives": "Studies smoke aerosols relevant to spacecraft smoke detection.",
+      "theme": "detection",
+      "platform": null,
+      "material": null,
+      "gravity": null,
+      "hardware": null,
+      "verification": "metadata_verified",
+      "runs": [],
+      "limitations": "NASA overview metadata only. No measured runs, material-specific safety conclusions or quantitative predictions are included. Theme labels are editorial classification.",
+      "sources": [
+        {
+          "url": "https://www.nasa.gov/glenn/glenn-expertise-space-exploration/physical-sciences-program/combustion-science/",
+          "title": "NASA Combustion Science",
+          "locator": "Smoke Aerosol Measurement Experiment",
+          "summary": "Studies smoke aerosols relevant to spacecraft smoke detection.",
+          "retrieved_at": "2026-11-14T01:57:47.452655+00:00",
+          "checksum": "3ede20592e5fef2dabe776f76a0c643ea3453b58994e7bdb2f2009964026a25f"
+        }
+      ]
+    },
+    {
+      "id": "slice",
+      "acronym": "SLICE",
+      "title": "Structure & Liftoff in Combustion Experiment",
+      "objectives": "Studies coflow laminar diffusion flames.",
+      "theme": "fundamental",
+      "platform": null,
+      "material": null,
+      "gravity": null,
+      "hardware": null,
+      "verification": "metadata_verified",
+      "runs": [],
+      "limitations": "NASA overview metadata only. No measured runs, material-specific safety conclusions or quantitative predictions are included. Theme labels are editorial classification.",
+      "sources": [
+        {
+          "url": "https://www.nasa.gov/glenn/glenn-expertise-space-exploration/physical-sciences-program/combustion-science/",
+          "title": "NASA Combustion Science",
+          "locator": "Structure & Liftoff in Combustion Experiment",
+          "summary": "Studies coflow laminar diffusion flames.",
+          "retrieved_at": "2026-11-14T01:57:47.452661+00:00",
+          "checksum": "3ede20592e5fef2dabe776f76a0c643ea3453b58994e7bdb2f2009964026a25f"
+        }
+      ]
+    },
+    {
+      "id": "spice",
+      "acronym": "SPICE",
+      "title": "Smoke Point in Co-flow Experiment",
+      "objectives": "Studies stability and extinction of jet diffusion flames.",
+      "theme": "fundamental",
+      "platform": null,
+      "material": null,
+      "gravity": null,
+      "hardware": null,
+      "verification": "metadata_verified",
+      "runs": [],
+      "limitations": "NASA overview metadata only. No measured runs, material-specific safety conclusions or quantitative predictions are included. Theme labels are editorial classification.",
+      "sources": [
+        {
+          "url": "https://www.nasa.gov/glenn/glenn-expertise-space-exploration/physical-sciences-program/combustion-science/",
+          "title": "NASA Combustion Science",
+          "locator": "Smoke Point in Co-flow Experiment",
+          "summary": "Studies stability and extinction of jet diffusion flames.",
+          "retrieved_at": "2026-11-14T01:57:47.452677+00:00",
+          "checksum": "3ede20592e5fef2dabe776f76a0c643ea3453b58994e7bdb2f2009964026a25f"
+        }
+      ]
+    },
+    {
+      "id": "psi-159-cfi-g",
+      "acronym": "CFI-G",
+      "title": "ACME — Cool Flames Investigation with Gases (CFI-G)",
+      "objectives": "Nghiên cứu ngọn lửa khuếch tán hình cầu trên ISS; có bảng điều kiện và đầu ra của các test.",
+      "theme": "fundamental",
+      "platform": "ISS",
+      "gravity": "microgravity",
+      "material": "ethane",
+      "hardware": "ACME; CIR",
+      "verification": "metadata_verified",
+      "limitations": "Đã nhập 5 dòng đầu bảng đang chọn (180 dòng được giao diện báo); không phải toàn bộ các bảng hoặc kho 1.90 TB. Nồng độ oxy tùy cấu hình đầu đốt, không phải cabin. Peak burner temperature is not flame temperature; Tad is not imported as a measured outcome. Method and uncertainties are not reported in this summary.",
+      "sources": [
+        {
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159",
+          "title": "ACME — Cool Flames Investigation with Gases (CFI-G)",
+          "locator": "Version 1; default Experimental Table, rows 1–5, Test IDs preserved",
+          "summary": "Five rendered experimental summary rows transcribed and checked; partial dataset only.",
+          "retrieved_at": "2026-11-15",
+          "checksum": "d1bfc6ae23267eec3e75362e7cb2cc7393876804527b3e30832c9007e4602d82"
+        }
+      ],
+      "runs": [
+        {
+          "id": "test-21088A1",
+          "material": "ethane",
+          "gravity": "microgravity",
+          "geometry": "spherical porous burner; normal diffusion flame",
+          "oxygen_fraction": null,
+          "pressure_kpa": null,
+          "airflow_m_s": null,
+          "measurement": "burn duration; peak burner temperature",
+          "source_locator": "Version 1; default Experimental Table; Test 21088A1; row 1",
+          "original_values": {
+            "source_row": {
+              "Flame Type": "Normal",
+              "Day": "1",
+              "Fuel": "ethane",
+              "Test": "21088A1",
+              "Cool flame?": "",
+              "XO2 before test": "0.3939",
+              "XO2 after test": "0.389822946",
+              "approx p (bar)": "0.9443956",
+              "Xf": "1",
+              "mHC (mg/s)": "2",
+              "TFP": "No",
+              "Tad (K)": "2719.323211",
+              "Zst": "0.102651783",
+              "Hot ignition": "Yes",
+              "burn time (sec)": "50",
+              "Self-ext or flow term": "SE",
+              "Peak burner T (C )": "290.617198",
+              "Comments": ""
+            },
+            "chamber_pressure": {
+              "value": "0.9443956",
+              "unit": "bar",
+              "normalized_kpa": 94.43956,
+              "factor": 100
+            },
+            "oxygen_context": "XO2 before/after from burner experiment; deliberately not mapped to cabin atmosphere"
+          },
+          "measurements": [
+            {
+              "id": "duration",
+              "quantity": "burn duration",
+              "value": 50.0,
+              "unit": "s",
+              "method": "Experimental summary column; instrument/method not reported",
+              "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159",
+              "source_locator": "Version 1; default Experimental Table; Test 21088A1; row 1"
+            },
+            {
+              "id": "peak-burner-temperature",
+              "quantity": "peak burner temperature",
+              "value": 290.617198,
+              "unit": "degC",
+              "method": "Experimental summary column; sensor/calibration not reported",
+              "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159",
+              "source_locator": "Version 1; default Experimental Table; Test 21088A1; row 1"
+            }
+          ]
+        },
+        {
+          "id": "test-21088B1",
+          "material": "ethane",
+          "gravity": "microgravity",
+          "geometry": "spherical porous burner; normal diffusion flame",
+          "oxygen_fraction": null,
+          "pressure_kpa": null,
+          "airflow_m_s": null,
+          "measurement": "burn duration; peak burner temperature",
+          "source_locator": "Version 1; default Experimental Table; Test 21088 B1; row 2",
+          "original_values": {
+            "source_row": {
+              "Flame Type": "Normal",
+              "Day": "1",
+              "Fuel": "ethane",
+              "Test": "21088 B1",
+              "Cool flame?": "",
+              "XO2 before test": "0.389822946",
+              "XO2 after test": "0.386321188",
+              "approx p (bar)": "0.9443956",
+              "Xf": "1",
+              "mHC (mg/s)": "2",
+              "TFP": "Yes",
+              "Tad (K)": "2713.594987",
+              "Zst": "0.101747543",
+              "Hot ignition": "Yes",
+              "burn time (sec)": "43",
+              "Self-ext or flow term": "SE",
+              "Peak burner T (C )": "276.009368",
+              "Comments": ""
+            },
+            "chamber_pressure": {
+              "value": "0.9443956",
+              "unit": "bar",
+              "normalized_kpa": 94.43956,
+              "factor": 100
+            },
+            "oxygen_context": "XO2 before/after from burner experiment; deliberately not mapped to cabin atmosphere"
+          },
+          "measurements": [
+            {
+              "id": "duration",
+              "quantity": "burn duration",
+              "value": 43.0,
+              "unit": "s",
+              "method": "Experimental summary column; instrument/method not reported",
+              "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159",
+              "source_locator": "Version 1; default Experimental Table; Test 21088 B1; row 2"
+            },
+            {
+              "id": "peak-burner-temperature",
+              "quantity": "peak burner temperature",
+              "value": 276.009368,
+              "unit": "degC",
+              "method": "Experimental summary column; sensor/calibration not reported",
+              "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159",
+              "source_locator": "Version 1; default Experimental Table; Test 21088 B1; row 2"
+            }
+          ]
+        },
+        {
+          "id": "test-21088C1",
+          "material": "ethane",
+          "gravity": "microgravity",
+          "geometry": "spherical porous burner; normal diffusion flame",
+          "oxygen_fraction": null,
+          "pressure_kpa": null,
+          "airflow_m_s": null,
+          "measurement": "burn duration; peak burner temperature",
+          "source_locator": "Version 1; default Experimental Table; Test 21088 C1; row 3",
+          "original_values": {
+            "source_row": {
+              "Flame Type": "Normal",
+              "Day": "1",
+              "Fuel": "ethane",
+              "Test": "21088 C1",
+              "Cool flame?": "",
+              "XO2 before test": "0.386321188",
+              "XO2 after test": "0.382905163",
+              "approx p (bar)": "0.9443956",
+              "Xf": "1",
+              "mHC (mg/s)": "2",
+              "TFP": "Yes",
+              "Tad (K)": "2708.596221",
+              "Zst": "0.100968644",
+              "Hot ignition": "Yes",
+              "burn time (sec)": "42",
+              "Self-ext or flow term": "SE",
+              "Peak burner T (C )": "266.374008",
+              "Comments": "hit burner T limit"
+            },
+            "chamber_pressure": {
+              "value": "0.9443956",
+              "unit": "bar",
+              "normalized_kpa": 94.43956,
+              "factor": 100
+            },
+            "oxygen_context": "XO2 before/after from burner experiment; deliberately not mapped to cabin atmosphere"
+          },
+          "measurements": [
+            {
+              "id": "duration",
+              "quantity": "burn duration",
+              "value": 42.0,
+              "unit": "s",
+              "method": "Experimental summary column; instrument/method not reported",
+              "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159",
+              "source_locator": "Version 1; default Experimental Table; Test 21088 C1; row 3"
+            },
+            {
+              "id": "peak-burner-temperature",
+              "quantity": "peak burner temperature",
+              "value": 266.374008,
+              "unit": "degC",
+              "method": "Experimental summary column; sensor/calibration not reported",
+              "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159",
+              "source_locator": "Version 1; default Experimental Table; Test 21088 C1; row 3"
+            }
+          ]
+        },
+        {
+          "id": "test-21088D1",
+          "material": "ethane",
+          "gravity": "microgravity",
+          "geometry": "spherical porous burner; normal diffusion flame",
+          "oxygen_fraction": null,
+          "pressure_kpa": null,
+          "airflow_m_s": null,
+          "measurement": "burn duration; peak burner temperature",
+          "source_locator": "Version 1; default Experimental Table; Test 21088 D1; row 4",
+          "original_values": {
+            "source_row": {
+              "Flame Type": "Normal",
+              "Day": "1",
+              "Fuel": "ethane",
+              "Test": "21088 D1",
+              "Cool flame?": "",
+              "XO2 before test": "0.382905163",
+              "XO2 after test": "0.380426741",
+              "approx p (bar)": "0.9443956",
+              "Xf": "1",
+              "mHC (mg/s)": "1",
+              "TFP": "Yes",
+              "Tad (K)": "2703.647801",
+              "Zst": "0.100206801",
+              "Hot ignition": "Yes",
+              "burn time (sec)": "61",
+              "Self-ext or flow term": "FT",
+              "Peak burner T (C )": "459.195642",
+              "Comments": "FC=flow cut"
+            },
+            "chamber_pressure": {
+              "value": "0.9443956",
+              "unit": "bar",
+              "normalized_kpa": 94.43956,
+              "factor": 100
+            },
+            "oxygen_context": "XO2 before/after from burner experiment; deliberately not mapped to cabin atmosphere"
+          },
+          "measurements": [
+            {
+              "id": "duration",
+              "quantity": "burn duration",
+              "value": 61.0,
+              "unit": "s",
+              "method": "Experimental summary column; instrument/method not reported",
+              "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159",
+              "source_locator": "Version 1; default Experimental Table; Test 21088 D1; row 4"
+            },
+            {
+              "id": "peak-burner-temperature",
+              "quantity": "peak burner temperature",
+              "value": 459.195642,
+              "unit": "degC",
+              "method": "Experimental summary column; sensor/calibration not reported",
+              "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159",
+              "source_locator": "Version 1; default Experimental Table; Test 21088 D1; row 4"
+            }
+          ]
+        },
+        {
+          "id": "test-21088F1",
+          "material": "ethane",
+          "gravity": "microgravity",
+          "geometry": "spherical porous burner; normal diffusion flame",
+          "oxygen_fraction": null,
+          "pressure_kpa": null,
+          "airflow_m_s": null,
+          "measurement": "burn duration; peak burner temperature",
+          "source_locator": "Version 1; default Experimental Table; Test 21088 F1; row 5",
+          "original_values": {
+            "source_row": {
+              "Flame Type": "Normal",
+              "Day": "1",
+              "Fuel": "ethane",
+              "Test": "21088 F1",
+              "Cool flame?": "",
+              "XO2 before test": "0.380426741",
+              "XO2 after test": "0.379858042",
+              "approx p (bar)": "0.9443956",
+              "Xf": "1",
+              "mHC (mg/s)": "0.5",
+              "TFP": "Yes",
+              "Tad (K)": "2700.011998",
+              "Zst": "0.099652813",
+              "Hot ignition": "Yes",
+              "burn time (sec)": "28",
+              "Self-ext or flow term": "FT",
+              "Peak burner T (C )": "532.162657",
+              "Comments": "Lowest flow rate for ignition"
+            },
+            "chamber_pressure": {
+              "value": "0.9443956",
+              "unit": "bar",
+              "normalized_kpa": 94.43956,
+              "factor": 100
+            },
+            "oxygen_context": "XO2 before/after from burner experiment; deliberately not mapped to cabin atmosphere"
+          },
+          "measurements": [
+            {
+              "id": "duration",
+              "quantity": "burn duration",
+              "value": 28.0,
+              "unit": "s",
+              "method": "Experimental summary column; instrument/method not reported",
+              "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159",
+              "source_locator": "Version 1; default Experimental Table; Test 21088 F1; row 5"
+            },
+            {
+              "id": "peak-burner-temperature",
+              "quantity": "peak burner temperature",
+              "value": 532.162657,
+              "unit": "degC",
+              "method": "Experimental summary column; sensor/calibration not reported",
+              "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159",
+              "source_locator": "Version 1; default Experimental Table; Test 21088 F1; row 5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "psi-98-saffire",
+      "acronym": "Saffire-I",
+      "title": "Spacecraft Fire Safety Experiment-I (SAFFIRE-I)",
+      "objectives": "Saffire-I nghiên cứu cháy vật liệu SIBAL quy mô lớn trên Cygnus sau khi rời ISS.",
+      "theme": "prevention",
+      "platform": "Uncrewed Cygnus",
+      "gravity": "microgravity",
+      "material": null,
+      "hardware": "Saffire flow duct",
+      "verification": "metadata_verified",
+      "limitations": "Đã nhập hai mẫu S1/S2 từ bảng 5 dòng; các dòng flow visualization và trống không phải run. Metadata Project và Approach có khác biệt về nền tảng; dùng Cygnus theo Approach, giữ cảnh báo. Nhãn chiều dài/rộng trong bảng khác mô tả văn bản, không tự sửa.",
+      "sources": [
+        {
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-98",
+          "title": "Spacecraft Fire Safety Experiment-I (SAFFIRE-I)",
+          "locator": "Version 4; Experimental Table; named sample rows",
+          "summary": "Complete default summary table: 5 rows; only S1/S2 are samples. Dimension labels conflict with narrative; no correction applied.",
+          "retrieved_at": "2026-11-15",
+          "checksum": "ec7876a5a4411bfce0efcd9f958a9c8f7c8190ffd2f0529016a7c7d4974250b6"
+        }
+      ],
+      "runs": [
+        {
+          "id": "S1",
+          "material": "SIBAL Fabric",
+          "gravity": "microgravity",
+          "geometry": null,
+          "oxygen_fraction": null,
+          "pressure_kpa": null,
+          "airflow_m_s": 0.2,
+          "measurement": "burn duration",
+          "source_locator": "PSI-98 Version 4; Experimental Table; Sample S1",
+          "original_values": {
+            "source_row": {
+              "Sample Number": "S1",
+              "Material": "SIBAL Fabric",
+              "Sample Thickness (cm)": "0.37",
+              "Sample Length (cm)": "40.6",
+              "Sample Width (cm)": "94",
+              "Air Flow (cm/s)": "20",
+              "Percent O2": "21.5 - 21.7",
+              "Ignition Power (W)": "182",
+              "Ignition Time (s)": "8",
+              "Burn Time (s)": "420",
+              "Flow Direction": "Concurrent",
+              "Camera 1": "S1C1",
+              "Camera 2": "S1C2"
+            },
+            "airflow_m_s": {
+              "value": "20",
+              "unit": "cm/s",
+              "factor": 0.01
+            },
+            "quality_notes": "Đã nhập hai mẫu S1/S2 từ bảng 5 dòng; các dòng flow visualization và trống không phải run. Metadata Project và Approach có khác biệt về nền tảng; dùng Cygnus theo Approach, giữ cảnh báo. Nhãn chiều dài/rộng trong bảng khác mô tả văn bản, không tự sửa."
+          },
+          "measurements": [
+            {
+              "id": "burn-duration",
+              "quantity": "burn duration",
+              "value": 420.0,
+              "unit": "s",
+              "method": "NASA experimental summary; duration method and uncertainty not reported",
+              "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-98",
+              "source_locator": "PSI-98 Version 4; Experimental Table; Sample S1"
+            }
+          ]
+        },
+        {
+          "id": "S2",
+          "material": "SIBAL Fabric",
+          "gravity": "microgravity",
+          "geometry": null,
+          "oxygen_fraction": null,
+          "pressure_kpa": null,
+          "airflow_m_s": 0.2,
+          "measurement": "burn duration",
+          "source_locator": "PSI-98 Version 4; Experimental Table; Sample S2",
+          "original_values": {
+            "source_row": {
+              "Sample Number": "S2",
+              "Material": "SIBAL Fabric",
+              "Sample Thickness (cm)": "0.37",
+              "Sample Length (cm)": "40.6",
+              "Sample Width (cm)": "94",
+              "Air Flow (cm/s)": "20",
+              "Percent O2": "~ 21.5",
+              "Ignition Power (W)": "182",
+              "Ignition Time (s)": "8",
+              "Burn Time (s)": "70",
+              "Flow Direction": "Opposed",
+              "Camera 1": "S2C1",
+              "Camera 2": "S2C2"
+            },
+            "airflow_m_s": {
+              "value": "20",
+              "unit": "cm/s",
+              "factor": 0.01
+            },
+            "quality_notes": "Đã nhập hai mẫu S1/S2 từ bảng 5 dòng; các dòng flow visualization và trống không phải run. Metadata Project và Approach có khác biệt về nền tảng; dùng Cygnus theo Approach, giữ cảnh báo. Nhãn chiều dài/rộng trong bảng khác mô tả văn bản, không tự sửa."
+          },
+          "measurements": [
+            {
+              "id": "burn-duration",
+              "quantity": "burn duration",
+              "value": 70.0,
+              "unit": "s",
+              "method": "NASA experimental summary; duration method and uncertainty not reported",
+              "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-98",
+              "source_locator": "PSI-98 Version 4; Experimental Table; Sample S2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "psi-99-saffire",
+      "acronym": "Saffire-II",
+      "title": "Spacecraft Fire Experiment-II (SAFFIRE-II)",
+      "objectives": "Saffire-II khảo sát các mẫu silicone, SIBAL, PMMA và Nomex trên Cygnus.",
+      "theme": "prevention",
+      "platform": "Uncrewed Cygnus",
+      "gravity": "microgravity",
+      "material": null,
+      "hardware": "Saffire flow duct",
+      "verification": "metadata_verified",
+      "limitations": "Đã giữ đủ bảng tóm tắt 16 dòng và nhập 9 mẫu 2-1 đến 2-9. Oxy là xấp xỉ hoặc khoảng; vật liệu trống ở 2-6 và 2-9 giữ null. Insignificant không được đổi thành 0. Các nhãn ?-g và Samle Thickness được giữ nguyên.",
+      "sources": [
+        {
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-99",
+          "title": "Spacecraft Fire Experiment-II (SAFFIRE-II)",
+          "locator": "Version 5; Experimental Table; named sample rows",
+          "summary": "Complete default summary table: 16 rows, only 2-1 to 2-9 are samples. Table typos and ambiguous microgravity/ground comparison columns preserved.",
+          "retrieved_at": "2026-11-15",
+          "checksum": "ec7876a5a4411bfce0efcd9f958a9c8f7c8190ffd2f0529016a7c7d4974250b6"
+        }
+      ],
+      "runs": [
+        {
+          "id": "2-1",
+          "material": "Silicone",
+          "gravity": "microgravity",
+          "geometry": null,
+          "oxygen_fraction": null,
+          "pressure_kpa": null,
+          "airflow_m_s": 0.2,
+          "measurement": null,
+          "source_locator": "PSI-99 Version 5; Experimental Table; Sample 2-1",
+          "original_values": {
+            "source_row": {
+              "Sample Number": "2-1",
+              "Material": "Silicone",
+              "Samle Thickness": "0.27 mm",
+              "Sample Length": "29 cm",
+              "Sample Width (cm)": "5 cm",
+              "Air Flow (cm/s)": "20 cm/s",
+              "Percent O2 (Note 1)": "~ 21.5",
+              "Ignition Power (W)": "80 W",
+              "Ignition Time (s)": "9.2 s",
+              "Burn Time (s)": "Insignificant",
+              "Flow Direction": "Concurrent",
+              "?-g Burn Length": "~ 0",
+              "?-g Spread Length": "n/a",
+              "1-g Burn Length": "Complete",
+              "1-g Spread Rate": "Acceleratory",
+              "Camera 1": "S1C1",
+              "Camera 2": "S1C2"
+            },
+            "airflow_m_s": {
+              "value": "20 cm/s",
+              "unit": "cm/s",
+              "factor": 0.01
+            },
+            "quality_notes": "Đã giữ đủ bảng tóm tắt 16 dòng và nhập 9 mẫu 2-1 đến 2-9. Oxy là xấp xỉ hoặc khoảng; vật liệu trống ở 2-6 và 2-9 giữ null. Insignificant không được đổi thành 0. Các nhãn ?-g và Samle Thickness được giữ nguyên."
+          },
+          "measurements": []
+        },
+        {
+          "id": "2-2",
+          "material": "Silicone",
+          "gravity": "microgravity",
+          "geometry": null,
+          "oxygen_fraction": null,
+          "pressure_kpa": null,
+          "airflow_m_s": 0.2,
+          "measurement": null,
+          "source_locator": "PSI-99 Version 5; Experimental Table; Sample 2-2",
+          "original_values": {
+            "source_row": {
+              "Sample Number": "2-2",
+              "Material": "Silicone",
+              "Samle Thickness": "0.61 mm",
+              "Sample Length": "29 cm",
+              "Sample Width (cm)": "5 cm",
+              "Air Flow (cm/s)": "20 cm/s",
+              "Percent O2 (Note 1)": "~ 22.1",
+              "Ignition Power (W)": "80 W",
+              "Ignition Time (s)": "9.2 s",
+              "Burn Time (s)": "Insignificant",
+              "Flow Direction": "Concurrent",
+              "?-g Burn Length": "~ 0",
+              "?-g Spread Length": "n/a",
+              "1-g Burn Length": "7.6 cm",
+              "1-g Spread Rate": "1.2 mm/s",
+              "Camera 1": "n/a",
+              "Camera 2": "S2C2"
+            },
+            "airflow_m_s": {
+              "value": "20 cm/s",
+              "unit": "cm/s",
+              "factor": 0.01
+            },
+            "quality_notes": "Đã giữ đủ bảng tóm tắt 16 dòng và nhập 9 mẫu 2-1 đến 2-9. Oxy là xấp xỉ hoặc khoảng; vật liệu trống ở 2-6 và 2-9 giữ null. Insignificant không được đổi thành 0. Các nhãn ?-g và Samle Thickness được giữ nguyên."
+          },
+          "measurements": []
+        },
+        {
+          "id": "2-3",
+          "material": "Silicone",
+          "gravity": "microgravity",
+          "geometry": null,
+          "oxygen_fraction": null,
+          "pressure_kpa": null,
+          "airflow_m_s": 0.2,
+          "measurement": null,
+          "source_locator": "PSI-99 Version 5; Experimental Table; Sample 2-3",
+          "original_values": {
+            "source_row": {
+              "Sample Number": "2-3",
+              "Material": "Silicone",
+              "Samle Thickness": "1.03 mm",
+              "Sample Length": "29 cm",
+              "Sample Width (cm)": "5 cm",
+              "Air Flow (cm/s)": "20 cm/s",
+              "Percent O2 (Note 1)": "~ 22.1",
+              "Ignition Power (W)": "80 W",
+              "Ignition Time (s)": "9.2 s",
+              "Burn Time (s)": "Insignificant",
+              "Flow Direction": "Concurrent",
+              "?-g Burn Length": "~ 0",
+              "?-g Spread Length": "n/a",
+              "1-g Burn Length": "~ 0",
+              "1-g Spread Rate": "n/a",
+              "Camera 1": "",
+              "Camera 2": "S3C2"
+            },
+            "airflow_m_s": {
+              "value": "20 cm/s",
+              "unit": "cm/s",
+              "factor": 0.01
+            },
+            "quality_notes": "Đã giữ đủ bảng tóm tắt 16 dòng và nhập 9 mẫu 2-1 đến 2-9. Oxy là xấp xỉ hoặc khoảng; vật liệu trống ở 2-6 và 2-9 giữ null. Insignificant không được đổi thành 0. Các nhãn ?-g và Samle Thickness được giữ nguyên."
+          },
+          "measurements": []
+        },
+        {
+          "id": "2-4",
+          "material": "Silicone",
+          "gravity": "microgravity",
+          "geometry": null,
+          "oxygen_fraction": null,
+          "pressure_kpa": null,
+          "airflow_m_s": 0.2,
+          "measurement": null,
+          "source_locator": "PSI-99 Version 5; Experimental Table; Sample 2-4",
+          "original_values": {
+            "source_row": {
+              "Sample Number": "2-4",
+              "Material": "Silicone",
+              "Samle Thickness": "037 mm",
+              "Sample Length": "29 cm",
+              "Sample Width (cm)": "5 cm",
+              "Air Flow (cm/s)": "20 cm/s",
+              "Percent O2 (Note 1)": "~ 22.1",
+              "Ignition Power (W)": "80 W",
+              "Ignition Time (s)": "9.2 s",
+              "Burn Time (s)": "Insignificant",
+              "Flow Direction": "Opposed",
+              "?-g Burn Length": "~ 0",
+              "?-g Spread Length": "n/a",
+              "1-g Burn Length": "Complete",
+              "1-g Spread Rate": "0.6 mm/s",
+              "Camera 1": "S4C1",
+              "Camera 2": "S4C1"
+            },
+            "airflow_m_s": {
+              "value": "20 cm/s",
+              "unit": "cm/s",
+              "factor": 0.01
+            },
+            "quality_notes": "Đã giữ đủ bảng tóm tắt 16 dòng và nhập 9 mẫu 2-1 đến 2-9. Oxy là xấp xỉ hoặc khoảng; vật liệu trống ở 2-6 và 2-9 giữ null. Insignificant không được đổi thành 0. Các nhãn ?-g và Samle Thickness được giữ nguyên."
+          },
+          "measurements": []
+        },
+        {
+          "id": "2-5",
+          "material": "Cotton-Fiberglass (SIBAL)",
+          "gravity": "microgravity",
+          "geometry": null,
+          "oxygen_fraction": null,
+          "pressure_kpa": null,
+          "airflow_m_s": 0.2,
+          "measurement": "burn duration",
+          "source_locator": "PSI-99 Version 5; Experimental Table; Sample 2-5",
+          "original_values": {
+            "source_row": {
+              "Sample Number": "2-5",
+              "Material": "Cotton-Fiberglass (SIBAL)",
+              "Samle Thickness": "037 mm",
+              "Sample Length": "29 cm",
+              "Sample Width (cm)": "5 cm",
+              "Air Flow (cm/s)": "20 cm/s",
+              "Percent O2 (Note 1)": "~ 22.1",
+              "Ignition Power (W)": "80 W",
+              "Ignition Time (s)": "9.2 s",
+              "Burn Time (s)": "145 s",
+              "Flow Direction": "Concurrent",
+              "?-g Burn Length": "29 cm",
+              "?-g Spread Length": "2.1 mm/s",
+              "1-g Burn Length": "Complete",
+              "1-g Spread Rate": "Acceleratory",
+              "Camera 1": "S5C1",
+              "Camera 2": "S5C2"
+            },
+            "airflow_m_s": {
+              "value": "20 cm/s",
+              "unit": "cm/s",
+              "factor": 0.01
+            },
+            "quality_notes": "Đã giữ đủ bảng tóm tắt 16 dòng và nhập 9 mẫu 2-1 đến 2-9. Oxy là xấp xỉ hoặc khoảng; vật liệu trống ở 2-6 và 2-9 giữ null. Insignificant không được đổi thành 0. Các nhãn ?-g và Samle Thickness được giữ nguyên."
+          },
+          "measurements": [
+            {
+              "id": "burn-duration",
+              "quantity": "burn duration",
+              "value": 145.0,
+              "unit": "s",
+              "method": "NASA experimental summary; duration method and uncertainty not reported",
+              "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-99",
+              "source_locator": "PSI-99 Version 5; Experimental Table; Sample 2-5"
+            }
+          ]
+        },
+        {
+          "id": "2-6",
+          "material": null,
+          "gravity": "microgravity",
+          "geometry": null,
+          "oxygen_fraction": null,
+          "pressure_kpa": null,
+          "airflow_m_s": 0.2,
+          "measurement": "burn duration",
+          "source_locator": "PSI-99 Version 5; Experimental Table; Sample 2-6",
+          "original_values": {
+            "source_row": {
+              "Sample Number": "2-6",
+              "Material": "",
+              "Samle Thickness": "037 mm",
+              "Sample Length": "29 cm",
+              "Sample Width (cm)": "5 cm",
+              "Air Flow (cm/s)": "20 cm/s",
+              "Percent O2 (Note 1)": "~ 22.1",
+              "Ignition Power (W)": "80 W",
+              "Ignition Time (s)": "9.2 s",
+              "Burn Time (s)": "115 s",
+              "Flow Direction": "Concurrent",
+              "?-g Burn Length": "29 cm",
+              "?-g Spread Length": "2.6 mm/s",
+              "1-g Burn Length": "Complete",
+              "1-g Spread Rate": "Acceleratory",
+              "Camera 1": "S6C1",
+              "Camera 2": "S56C2"
+            },
+            "airflow_m_s": {
+              "value": "20 cm/s",
+              "unit": "cm/s",
+              "factor": 0.01
+            },
+            "quality_notes": "Đã giữ đủ bảng tóm tắt 16 dòng và nhập 9 mẫu 2-1 đến 2-9. Oxy là xấp xỉ hoặc khoảng; vật liệu trống ở 2-6 và 2-9 giữ null. Insignificant không được đổi thành 0. Các nhãn ?-g và Samle Thickness được giữ nguyên."
+          },
+          "measurements": [
+            {
+              "id": "burn-duration",
+              "quantity": "burn duration",
+              "value": 115.0,
+              "unit": "s",
+              "method": "NASA experimental summary; duration method and uncertainty not reported",
+              "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-99",
+              "source_locator": "PSI-99 Version 5; Experimental Table; Sample 2-6"
+            }
+          ]
+        },
+        {
+          "id": "2-7",
+          "material": "PMMA & Nomex",
+          "gravity": "microgravity",
+          "geometry": null,
+          "oxygen_fraction": null,
+          "pressure_kpa": null,
+          "airflow_m_s": 0.2,
+          "measurement": "burn duration",
+          "source_locator": "PSI-99 Version 5; Experimental Table; Sample 2-7",
+          "original_values": {
+            "source_row": {
+              "Sample Number": "2-7",
+              "Material": "PMMA & Nomex",
+              "Samle Thickness": "0.85 and 0.37 mm",
+              "Sample Length": "5 and 24 cm",
+              "Sample Width (cm)": "5 cm",
+              "Air Flow (cm/s)": "20 cm/s",
+              "Percent O2 (Note 1)": "~ 22.1",
+              "Ignition Power (W)": "80 W",
+              "Ignition Time (s)": "9.2 s",
+              "Burn Time (s)": "140 s",
+              "Flow Direction": "Concurrent",
+              "?-g Burn Length": "5 cm & 0 (note 2)",
+              "?-g Spread Length": "n/a (Nomex)",
+              "1-g Burn Length": "~ 0 (Nomex)",
+              "1-g Spread Rate": "n/a (Nomex)",
+              "Camera 1": "S7C1",
+              "Camera 2": "n/a"
+            },
+            "airflow_m_s": {
+              "value": "20 cm/s",
+              "unit": "cm/s",
+              "factor": 0.01
+            },
+            "quality_notes": "Đã giữ đủ bảng tóm tắt 16 dòng và nhập 9 mẫu 2-1 đến 2-9. Oxy là xấp xỉ hoặc khoảng; vật liệu trống ở 2-6 và 2-9 giữ null. Insignificant không được đổi thành 0. Các nhãn ?-g và Samle Thickness được giữ nguyên."
+          },
+          "measurements": [
+            {
+              "id": "burn-duration",
+              "quantity": "burn duration",
+              "value": 140.0,
+              "unit": "s",
+              "method": "NASA experimental summary; duration method and uncertainty not reported",
+              "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-99",
+              "source_locator": "PSI-99 Version 5; Experimental Table; Sample 2-7"
+            }
+          ]
+        },
+        {
+          "id": "2-8",
+          "material": "PMMA",
+          "gravity": "microgravity",
+          "geometry": null,
+          "oxygen_fraction": null,
+          "pressure_kpa": null,
+          "airflow_m_s": 0.2,
+          "measurement": "burn duration",
+          "source_locator": "PSI-99 Version 5; Experimental Table; Sample 2-8",
+          "original_values": {
+            "source_row": {
+              "Sample Number": "2-8",
+              "Material": "PMMA",
+              "Samle Thickness": "See Fig. 5",
+              "Sample Length": "29 cm",
+              "Sample Width (cm)": "5 cm",
+              "Air Flow (cm/s)": "20 cm/s",
+              "Percent O2 (Note 1)": "22.1 to 22.0",
+              "Ignition Power (W)": "97 W",
+              "Ignition Time (s)": "30 s",
+              "Burn Time (s)": "600 s",
+              "Flow Direction": "Concurrent",
+              "?-g Burn Length": "~ 10 cm (note 3)",
+              "?-g Spread Length": "Note 4",
+              "1-g Burn Length": "Complete",
+              "1-g Spread Rate": "Acceleratory",
+              "Camera 1": "S8C1",
+              "Camera 2": "n/a"
+            },
+            "airflow_m_s": {
+              "value": "20 cm/s",
+              "unit": "cm/s",
+              "factor": 0.01
+            },
+            "quality_notes": "Đã giữ đủ bảng tóm tắt 16 dòng và nhập 9 mẫu 2-1 đến 2-9. Oxy là xấp xỉ hoặc khoảng; vật liệu trống ở 2-6 và 2-9 giữ null. Insignificant không được đổi thành 0. Các nhãn ?-g và Samle Thickness được giữ nguyên."
+          },
+          "measurements": [
+            {
+              "id": "burn-duration",
+              "quantity": "burn duration",
+              "value": 600.0,
+              "unit": "s",
+              "method": "NASA experimental summary; duration method and uncertainty not reported",
+              "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-99",
+              "source_locator": "PSI-99 Version 5; Experimental Table; Sample 2-8"
+            }
+          ]
+        },
+        {
+          "id": "2-9",
+          "material": null,
+          "gravity": "microgravity",
+          "geometry": null,
+          "oxygen_fraction": null,
+          "pressure_kpa": null,
+          "airflow_m_s": 0.2,
+          "measurement": "burn duration",
+          "source_locator": "PSI-99 Version 5; Experimental Table; Sample 2-9",
+          "original_values": {
+            "source_row": {
+              "Sample Number": "2-9",
+              "Material": "",
+              "Samle Thickness": "1 cm",
+              "Sample Length": "29 cm",
+              "Sample Width (cm)": "5 cm",
+              "Air Flow (cm/s)": "20 cm/s",
+              "Percent O2 (Note 1)": "22.0 to 21.9",
+              "Ignition Power (W)": "97 W",
+              "Ignition Time (s)": "30 s",
+              "Burn Time (s)": "900 s",
+              "Flow Direction": "Concurrent",
+              "?-g Burn Length": "~ 10 cm (note 4)",
+              "?-g Spread Length": "Note 4",
+              "1-g Burn Length": "Complete",
+              "1-g Spread Rate": "Acceleratory",
+              "Camera 1": "S9C1",
+              "Camera 2": "n/a"
+            },
+            "airflow_m_s": {
+              "value": "20 cm/s",
+              "unit": "cm/s",
+              "factor": 0.01
+            },
+            "quality_notes": "Đã giữ đủ bảng tóm tắt 16 dòng và nhập 9 mẫu 2-1 đến 2-9. Oxy là xấp xỉ hoặc khoảng; vật liệu trống ở 2-6 và 2-9 giữ null. Insignificant không được đổi thành 0. Các nhãn ?-g và Samle Thickness được giữ nguyên."
+          },
+          "measurements": [
+            {
+              "id": "burn-duration",
+              "quantity": "burn duration",
+              "value": 900.0,
+              "unit": "s",
+              "method": "NASA experimental summary; duration method and uncertainty not reported",
+              "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-99",
+              "source_locator": "PSI-99 Version 5; Experimental Table; Sample 2-9"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "psi-100-saffire",
+      "acronym": "Saffire-III",
+      "title": "Spacecraft Fire Experiment-III (SAFFIRE-III)",
+      "objectives": "Saffire-III dùng mẫu SIBAL trên Cygnus với dòng concurrent và opposed.",
+      "theme": "prevention",
+      "platform": "Uncrewed Cygnus",
+      "gravity": "microgravity",
+      "material": null,
+      "hardware": "Saffire flow duct",
+      "verification": "metadata_verified",
+      "limitations": "Bảng có hai mẫu và một dòng trống; đã nhập điều kiện hai mẫu. Bảng không báo cáo burn time hoặc đầu ra khác, nên không tạo số đo.",
+      "sources": [
+        {
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-100",
+          "title": "Spacecraft Fire Experiment-III (SAFFIRE-III)",
+          "locator": "Version 4; Experimental Table; named sample rows",
+          "summary": "Complete default summary table: two sample rows and one blank row; no measured outcome columns.",
+          "retrieved_at": "2026-11-15",
+          "checksum": "ec7876a5a4411bfce0efcd9f958a9c8f7c8190ffd2f0529016a7c7d4974250b6"
+        }
+      ],
+      "runs": [
+        {
+          "id": "S1",
+          "material": "SIBAL Fabric",
+          "gravity": "microgravity",
+          "geometry": null,
+          "oxygen_fraction": null,
+          "pressure_kpa": null,
+          "airflow_m_s": 0.3,
+          "measurement": null,
+          "source_locator": "PSI-100 Version 4; Experimental Table; Sample S1",
+          "original_values": {
+            "source_row": {
+              "Sample Number": "S1",
+              "Material": "SIBAL Fabric",
+              "Sample Thickness": ".33 cm",
+              "Sample Length": "94 cm",
+              "Sample Width": "40.6 cm",
+              "Air Flow": "30 cm/s",
+              "Direction": "Concurrent",
+              "Camera 1": "S1C1",
+              "Camera 2": "S1C2"
+            },
+            "airflow_m_s": {
+              "value": "30 cm/s",
+              "unit": "cm/s",
+              "factor": 0.01
+            },
+            "quality_notes": "Bảng có hai mẫu và một dòng trống; đã nhập điều kiện hai mẫu. Bảng không báo cáo burn time hoặc đầu ra khác, nên không tạo số đo."
+          },
+          "measurements": []
+        },
+        {
+          "id": "S2",
+          "material": "SIBAL Fabric",
+          "gravity": "microgravity",
+          "geometry": null,
+          "oxygen_fraction": null,
+          "pressure_kpa": null,
+          "airflow_m_s": 0.3,
+          "measurement": null,
+          "source_locator": "PSI-100 Version 4; Experimental Table; Sample S2",
+          "original_values": {
+            "source_row": {
+              "Sample Number": "S2",
+              "Material": "SIBAL Fabric",
+              "Sample Thickness": ".33 cm",
+              "Sample Length": "94 cm",
+              "Sample Width": "40.6 cm",
+              "Air Flow": "30 cm/s",
+              "Direction": "Opposed",
+              "Camera 1": "S2C1",
+              "Camera 2": "S2C2"
+            },
+            "airflow_m_s": {
+              "value": "30 cm/s",
+              "unit": "cm/s",
+              "factor": 0.01
+            },
+            "quality_notes": "Bảng có hai mẫu và một dòng trống; đã nhập điều kiện hai mẫu. Bảng không báo cáo burn time hoặc đầu ra khác, nên không tạo số đo."
+          },
+          "measurements": []
+        }
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "id": "data-01",
+      "title": "NASA PSI combustion catalogue",
+      "url": "https://psi.nasa.gov/physci/repo/search?q=combustion",
+      "kind": "dataset_portal",
+      "doi": null,
+      "status": "external_only",
+      "scope": "source_context",
+      "summary": "Cổng tìm kiếm dữ liệu combustion của NASA PSI.",
+      "limitations": "Trang động; chưa tải được các tệp đo. Không coi trang tìm kiếm là dữ liệu thí nghiệm.",
+      "version": null,
+      "locator": "Article body"
+    },
+    {
+      "id": "data-02",
+      "title": "NASA Combustion Science",
+      "url": "https://www.nasa.gov/glenn/glenn-expertise-space-exploration/physical-sciences-program/combustion-science/",
+      "kind": "overview",
+      "doi": null,
+      "status": "reviewed",
+      "scope": "source_context",
+      "summary": "Tổng quan NASA về các nghiên cứu và cơ sở combustion, bao gồm BASS, FLEX, SAME, SLICE và SPICE.",
+      "limitations": "Mô tả chương trình; không phải bảng số đo theo từng lần chạy.",
+      "version": null,
+      "locator": "Article body"
+    },
+    {
+      "id": "data-03",
+      "title": "Video nguồn của The Flamels",
+      "url": "https://www.youtube.com/watch?v=W1oXykoz9zg",
+      "kind": "video",
+      "doi": null,
+      "status": "unavailable",
+      "scope": "source_context",
+      "summary": "Liên kết video được giữ nguyên từ bảng nguồn.",
+      "limitations": "Chưa truy xuất được video hoặc transcript; chưa xác minh nội dung.",
+      "version": null,
+      "locator": "Article body"
+    },
+    {
+      "id": "data-04",
+      "title": "A Researcher’s Guide to: Combustion Science",
+      "url": "https://www.nasa.gov/missions/station/a-researchers-guide-to-combustion-science/",
+      "kind": "guide",
+      "doi": null,
+      "status": "reviewed",
+      "scope": "source_context",
+      "summary": "Hướng dẫn NASA trình bày thí nghiệm combustion, cơ sở trên ISS, các bài học và cơ hội nghiên cứu.",
+      "limitations": "Tài liệu hướng dẫn xuất bản năm 2015; điều kiện thiết bị không đồng nghĩa điều kiện của mọi thí nghiệm.",
+      "version": null,
+      "locator": "October 2015 Edition"
+    },
+    {
+      "id": "data-05",
+      "title": "Apollo 1 — Accident and lessons learned",
+      "url": "https://sma.nasa.gov/sma-disciplines/accllp/apollo-1",
+      "kind": "incident",
+      "doi": null,
+      "status": "reviewed",
+      "scope": "source_context",
+      "summary": "Hồ sơ NASA về tai nạn Apollo 1 trong thử nghiệm mặt đất và các bài học an toàn.",
+      "limitations": "Sự kiện lịch sử trên mặt đất; không dùng làm điểm đo combustion trong vi trọng lực.",
+      "version": null,
+      "locator": "Article body"
+    },
+    {
+      "id": "data-06",
+      "title": "Apollo 13 — Accident and lessons learned",
+      "url": "https://sma.nasa.gov/sma-disciplines/accllp/apollo-13",
+      "kind": "incident",
+      "doi": null,
+      "status": "reviewed",
+      "scope": "source_context",
+      "summary": "Hồ sơ sự cố bình oxy và ứng phó trong nhiệm vụ Apollo 13.",
+      "limitations": "Sự cố hệ thống tàu; không phải thử nghiệm cháy cabin có kiểm soát.",
+      "version": null,
+      "locator": "Article body"
+    },
+    {
+      "id": "data-07",
+      "title": "25 Years Ago: Fire Aboard Space Station Mir",
+      "url": "https://www.nasa.gov/history/25-years-ago-fire-aboard-space-station-mir/",
+      "kind": "incident",
+      "doi": null,
+      "status": "reviewed",
+      "scope": "source_context",
+      "summary": "Tường thuật NASA về vụ cháy trên trạm Mir và hoạt động ứng phó của phi hành đoàn.",
+      "limitations": "Nguồn bối cảnh lịch sử; không suy ra xác suất cháy từ sự kiện riêng lẻ.",
+      "version": null,
+      "locator": "Article body"
+    },
+    {
+      "id": "data-08",
+      "title": "Fireman’s Air Tanks",
+      "url": "https://spinoff.nasa.gov/node/9582",
+      "kind": "technology_transfer",
+      "doi": null,
+      "status": "reviewed",
+      "scope": "source_context",
+      "summary": "NASA Spinoff mô tả bình khí nhẹ cho lính cứu hỏa phát triển cùng Johnson Space Center.",
+      "limitations": "Ứng dụng công nghệ trên Trái Đất; không phải dữ liệu cháy vi trọng lực.",
+      "version": null,
+      "locator": "1976 article"
+    },
+    {
+      "id": "data-09",
+      "title": "Fire Detector",
+      "url": "https://spinoff.nasa.gov/node/9407",
+      "kind": "technology_transfer",
+      "doi": null,
+      "status": "reviewed",
+      "scope": "source_context",
+      "summary": "Bài viết mô tả phát hiện hạt cháy và phân biệt chúng với bụi để hạn chế báo động giả.",
+      "limitations": "Mô tả công nghệ lịch sử, không cung cấp bộ thử nghiệm detector theo điều kiện cabin.",
+      "version": null,
+      "locator": "1978 article"
+    },
+    {
+      "id": "data-10",
+      "title": "New Technology for the Fire Attire",
+      "url": "https://spinoff.nasa.gov/node/9918",
+      "kind": "technology_transfer",
+      "doi": null,
+      "status": "reviewed",
+      "scope": "source_context",
+      "summary": "Project FIRES ứng dụng vật liệu và thiết kế từ chương trình không gian vào trang phục bảo hộ cứu hỏa.",
+      "limitations": "Ứng dụng bảo hộ trên Trái Đất; không dùng làm bằng chứng định lượng về cháy cabin.",
+      "version": null,
+      "locator": "1982 article"
+    },
+    {
+      "id": "paper-01",
+      "title": "NASA Researcher’s Guide — Combustion Science",
+      "url": "https://drive.google.com/file/d/1Pnv_RNjutYQtHrwgYVNXMOwBcsmtMUOc/view",
+      "kind": "paper",
+      "doi": null,
+      "status": "reviewed",
+      "scope": "source_context",
+      "summary": "Hướng dẫn nghiên cứu combustion trên ISS; mô tả FLEX, BASS, cơ sở thí nghiệm và giới hạn sử dụng kết quả.",
+      "limitations": "Tách thông số khả năng thiết bị khỏi điều kiện thực nghiệm.",
+      "version": null,
+      "locator": "pp. 12–13, 21, 30–35"
+    },
+    {
+      "id": "paper-02",
+      "title": "Material Flammability Test Methods for Achieving Simulated Low-Gravity Conditions",
+      "url": "https://drive.google.com/file/d/1OH_ChmAVsUeLQq3jiIC2KTEXvGE-hq7M/view",
+      "kind": "paper",
+      "doi": null,
+      "status": "reviewed",
+      "scope": "source_context",
+      "summary": "Nghiên cứu ELSA và Narrow Channel để tạo trường dòng chảy tương tự điều kiện trọng lực thấp trong thí nghiệm mặt đất.",
+      "limitations": "Mô phỏng ảnh hưởng dòng chảy không tái tạo toàn bộ môi trường vi trọng lực.",
+      "version": null,
+      "locator": "pp. 1–3, abstract and methods"
+    },
+    {
+      "id": "paper-03",
+      "title": "Evaluation of burning rate in microgravity based on the fuel regression, flame area, and spread rate",
+      "url": "https://drive.google.com/file/d/1lKbd4nuimNmoN8gnygFcPTbhLEpZ8sy2/view",
+      "kind": "paper",
+      "doi": "10.1016/j.combustflame.2021.111846",
+      "status": "reviewed",
+      "scope": "source_context",
+      "summary": "So sánh ba phương pháp suy ra tốc độ cháy từ ảnh và áp dụng cho dữ liệu PMMA BASS-II trên ISS.",
+      "limitations": "Các hệ số áp dụng cho cấu hình và môi trường trong bài; không phải hằng số dùng cho mọi vật liệu.",
+      "version": null,
+      "locator": "Abstract; section 4; Figs. 10–13"
+    },
+    {
+      "id": "paper-04",
+      "title": "Effect of External and Internal Heating on the Flame Spread and Phase Change of Thin Polyethylene Tubes",
+      "url": "https://drive.google.com/file/d/1SpSucHko7aHE3T8X8hHEZPzXG6sibTJA/view",
+      "kind": "paper",
+      "doi": "10.1016/j.ijthermalsci.2021.107054",
+      "status": "reviewed",
+      "scope": "source_context",
+      "summary": "Thử nghiệm ống PE dưới gia nhiệt bên trong, môi trường nóng và bức xạ ngoài để nghiên cứu cháy lan, nóng chảy và nhỏ giọt.",
+      "limitations": "Không chuyển kết quả nhỏ giọt trên mặt đất sang vi trọng lực khi thiếu kiểm chứng.",
+      "version": null,
+      "locator": "Abstract; section 2"
+    },
+    {
+      "id": "paper-05",
+      "title": "Transition from Opposed Flame Spread to Fuel Regression and Blow off: Effect of Flow, Atmosphere, and Microgravity",
+      "url": "https://drive.google.com/file/d/1DEF3PcGYpoFMiFdhhHdQrw5DVl6EP8j1/view",
+      "kind": "paper",
+      "doi": "10.1016/j.proci.2018.06.022",
+      "status": "reviewed",
+      "scope": "source_context",
+      "summary": "So sánh cháy lan ngược dòng và thoái lui bề mặt nhiên liệu trên thanh PMMA ở mặt đất và vi trọng lực.",
+      "limitations": "Phân biệt flame-spread và fuel-regression; không ghép các khoảng áp suất, dòng khí và oxy thành lần chạy giả.",
+      "version": null,
+      "locator": "Abstract; sections 2–3"
+    },
+    {
+      "id": "psi-117",
+      "title": "Effect of External Thermo-Convective Perturbation on Cool Flame Dynamics: A Multidimensional Multi-Physics CFD Analysis",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-117",
+      "kind": "dataset_portal",
+      "doi": "10.60555/gz0q-b577",
+      "status": "reviewed",
+      "scope": "combustion",
+      "summary": "Nghiên cứu CFD ba chiều bằng OpenFOAM về giọt nhiên liệu n-alkane và ngọn lửa lạnh, đối chiếu dữ liệu FLEX.",
+      "limitations": "Không có bảng Experimental/Modeling gắn trực tiếp. Có thư mục Analyzed Data và Reports; chưa nhập các tệp này.",
+      "version": "2",
+      "locator": "PSI-117 Version 2; Description, Experimental Table, Data files and documents"
+    },
+    {
+      "id": "nasa-bass-report",
+      "title": "Burning and Suppression of Solids–II (BASS-II) Summary Report",
+      "url": "https://ntrs.nasa.gov/citations/20210011385",
+      "kind": "report",
+      "doi": null,
+      "status": "reviewed",
+      "scope": "source_context",
+      "summary": "Báo cáo BASS-II mô tả thử nghiệm trong MSG trên ISS, thay đổi nồng độ oxy, dòng thông gió, loại nhiên liệu, độ dày và hình học.",
+      "limitations": "Chỉ đọc abstract và metadata NTRS; chưa trích bảng từng test từ PDF. Kết quả tổng hợp không tạo thành run hoặc giới hạn an toàn.",
+      "version": null,
+      "locator": "NTRS 20210011385, abstract; published 2021-10-01"
+    },
+    {
+      "id": "nasa-saffire-vi",
+      "title": "Preliminary Results from the Saffire VI Experiment",
+      "url": "https://ntrs.nasa.gov/citations/20240002981",
+      "kind": "report",
+      "doi": null,
+      "status": "reviewed",
+      "scope": "source_context",
+      "summary": "Bài hội nghị ICES-2024-365 trình bày kết quả sơ bộ Saffire VI trên Cygnus và so sánh với một số mẫu từ Saffire IV/V.",
+      "limitations": "Chỉ đọc abstract NTRS; đây là báo cáo sơ bộ, không phải tệp raw. Không ghép các khoảng hoặc hình học thành tổ hợp run.",
+      "version": null,
+      "locator": "NTRS 20240002981, abstract"
+    },
+    {
+      "id": "nasa-sofie",
+      "title": "Solid Fuel Ignition and Extinction (SoFIE)",
+      "url": "https://science.nasa.gov/biological-physical/investigations/sofie/",
+      "kind": "overview",
+      "doi": null,
+      "status": "reviewed",
+      "scope": "source_context",
+      "summary": "SoFIE nghiên cứu bắt cháy và tính cháy vật liệu rắn dùng trên tàu; insert đặt trong Combustion Integrated Rack cho phép thay đổi oxy và áp suất.",
+      "limitations": "Mô tả chương trình và mục tiêu, không có dữ liệu run trong trang đã đọc. Lịch ghi trên trang không được dùng để khẳng định trạng thái vận hành hiện tại.",
+      "version": null,
+      "locator": "Facility Description; Science Objectives"
+    },
+    {
+      "id": "nasa-sofie-gel",
+      "title": "SoFIE — Growth and Extinction Limit (GEL)",
+      "url": "https://science.nasa.gov/biological-physical/investigations/sofie-gel/",
+      "kind": "overview",
+      "doi": null,
+      "status": "reviewed",
+      "scope": "source_context",
+      "summary": "SoFIE-GEL khảo sát tăng trưởng và tắt ngọn lửa quanh cầu PMMA dày, xét vận tốc dòng, phần trăm oxy, áp suất và gia nhiệt bên trong.",
+      "limitations": "Đây là thiết kế/mục tiêu thí nghiệm; trang không cung cấp giá trị điều kiện từng run. Không suy ra hành vi ở trọng lực Mặt Trăng từ mô tả này.",
+      "version": null,
+      "locator": "Experiment Description"
+    },
+    {
+      "id": "nasa-flare",
+      "title": "Flammability Limits At Reduced-g Experiment (FLARE)",
+      "url": "https://www.nasa.gov/glenn/glenn-expertise-space-exploration/physical-sciences-program/combustion-science/flammability-limits-at-reduced-g-experiment-flare/",
+      "kind": "overview",
+      "doi": null,
+      "status": "reviewed",
+      "scope": "source_context",
+      "summary": "FLARE đặt mục tiêu liên hệ giới hạn cháy vật liệu giữa trọng lực thường và vi trọng lực, kết hợp thử nghiệm mặt đất, bay parabol và thử nghiệm ISS/KIBO.",
+      "limitations": "Trang mô tả kế hoạch có mốc thời gian cũ. Mục tiêu tương quan chưa phải mô hình đã được kiểm chứng có thể áp dụng trong dashboard.",
+      "version": null,
+      "locator": "Experimental Approach; Relevance/Impact"
+    },
+    {
+      "id": "nasa-fire-synthesis",
+      "title": "Studying Combustion and Fire Safety",
+      "url": "https://www.nasa.gov/missions/station/iss-research/studying-combustion-and-fire-safety/",
+      "kind": "overview",
+      "doi": null,
+      "status": "reviewed",
+      "scope": "source_context",
+      "summary": "NASA tổng hợp các nghiên cứu FLEX, BRE, BASS-II, SoFIE-GEL, Saffire và confined combustion, kèm liên kết tài liệu nghiên cứu.",
+      "limitations": "Bài tổng hợp dùng để tìm tài liệu gốc, không làm nguồn số đo run. Các kết quả phụ thuộc cấu hình và không thiết lập vật liệu an toàn nhất.",
+      "version": null,
+      "locator": "BASS-II, SoFIE-GEL and Saffire paragraphs"
+    },
+    {
+      "id": "psi-25",
+      "title": "Burning and Suppression of Solids-II (BASS-II)",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25",
+      "kind": "dataset_portal",
+      "doi": "10.60555/4qc4-de67",
+      "status": "reviewed",
+      "scope": "combustion",
+      "summary": "BASS-II khảo sát cháy và tắt của nhiên liệu rắn trong MSG trên ISS, thay đổi dòng cưỡng bức, oxy và hình học.",
+      "limitations": "Metadata đã đọc trực tiếp trong trình duyệt, thay thế trạng thái chỉ đọc được chỉ mục tìm kiếm. Chưa nhập run từ raw video hoặc bảng. Không tạo mọi tổ hợp từ các dải điều kiện.",
+      "version": "4",
+      "locator": "PSI-25 Version 4; Description, Experimental Table, Version History"
+    },
+    {
+      "id": "psi-159",
+      "title": "ACME — Cool Flames Investigation with Gases (CFI-G)",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159",
+      "kind": "dataset_portal",
+      "doi": "10.60555/cyt1-kh64",
+      "status": "reviewed",
+      "scope": "combustion",
+      "summary": "Nghiên cứu ngọn lửa khuếch tán hình cầu trên ISS; có bảng điều kiện và đầu ra của các test.",
+      "limitations": "Đã nhập 5 dòng đầu bảng đang chọn (180 dòng được giao diện báo); không phải toàn bộ các bảng hoặc kho 1.90 TB. Nồng độ oxy tùy cấu hình đầu đốt, không phải cabin.",
+      "version": "1",
+      "locator": "PSI-159 Version 1; Description, Experimental Table, Data files and documents"
+    },
+    {
+      "id": "psi-10",
+      "title": "ACME — Flame Design",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-10",
+      "kind": "dataset_portal",
+      "doi": "10.60555/w4zy-bt45",
+      "status": "reviewed",
+      "scope": "combustion",
+      "summary": "Nghiên cứu ngọn lửa khuếch tán normal/inverse hình cầu, soot inception và extinction; có bảng Experimental Table.",
+      "limitations": "Bảng đang chọn báo 121 dòng; chưa nhập. XO2, thành phần nhiên liệu và áp suất cần được hiểu theo cấu hình đầu đốt; Tad không tự động là nhiệt độ đo.",
+      "version": "1",
+      "locator": "PSI-10 Version 1; Description, Experimental Table, Data files and documents"
+    },
+    {
+      "id": "psi-62",
+      "title": "Concurrent Flame Spread Modeling using Flamelet Generated Manifolds in Microgravity with Comparison to BASS Experiments using Two-Color Tomography",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-62",
+      "kind": "dataset_portal",
+      "doi": "10.60555/e9xp-ex83",
+      "status": "reviewed",
+      "scope": "combustion",
+      "summary": "Phát triển UFGM và xử lý ảnh BASS/BASS-II để đối chiếu mô hình lan truyền ngọn lửa.",
+      "limitations": "Giao diện chỉ liệt kê gói metadata, không có bảng Experimental/Modeling gắn trực tiếp. Không phải tập run bay độc lập.",
+      "version": "1",
+      "locator": "PSI-62 Version 1; Description, Experimental Table, Data files and documents"
+    },
+    {
+      "id": "psi-60",
+      "title": "Computational and Experimental Analysis of SPICE Data Sets",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-60",
+      "kind": "dataset_portal",
+      "doi": "10.60555/mzjm-yv57",
+      "status": "reviewed",
+      "scope": "combustion",
+      "summary": "Phân tích ảnh SPICE bằng pyrometry và mô hình soot để nghiên cứu nhiệt độ và tỷ phần thể tích muội.",
+      "limitations": "Chỉ thấy thư mục metadata và không có bảng Experimental/Modeling. Mô tả mục tiêu không phải số đo hoặc bằng chứng mô hình đã được kiểm định độc lập.",
+      "version": "1",
+      "locator": "PSI-60 Version 1; Description, Experimental Table, Data files and documents"
+    },
+    {
+      "id": "psi-181",
+      "title": "Structure and Properties of Pb-Sn and Pb-free Sn-Ag-Cu Solders Produced in Terrestrial vs. Microgravity Environments under Extremes of Elevated and Cryo Temperatures",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-181",
+      "kind": "dataset_portal",
+      "doi": "10.60555/td9e-cz97",
+      "status": "reviewed",
+      "scope": "context_only",
+      "summary": "Nghiên cứu cấu trúc và cơ tính hợp kim hàn Pb-Sn và Sn-Ag-Cu; thuộc khoa học vật liệu.",
+      "limitations": "Nguồn bối cảnh, ngoài phạm vi bằng chứng cháy. Có kho raw data được liệt kê nhưng chưa tải; không có bảng Experimental gắn trực tiếp.",
+      "version": "1",
+      "locator": "PSI-181 Version 1; Description, Experimental Table, Data files and documents"
+    },
+    {
+      "id": "psi-142",
+      "title": "Quantitative Studies of Cool Flame Transitions at Radiation / Stretch Extinction Using Counterflow Flames",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-142",
+      "kind": "dataset_portal",
+      "doi": "10.60555/80qf-vj95",
+      "status": "reviewed",
+      "scope": "combustion",
+      "summary": "Mô phỏng và thí nghiệm đối lưu ngược trên mặt đất, sử dụng dữ liệu FLEX để nghiên cứu chuyển tiếp ngọn lửa lạnh/ấm/nóng.",
+      "limitations": "Giao diện không gắn bảng, nhưng lịch sử phiên bản liệt kê Data Summary Table.csv và workbook dữ liệu đã phân tích. Chưa tải các tệp này.",
+      "version": "2",
+      "locator": "PSI-142 Version 2; Description, Experimental Table, Data files and documents"
+    },
+    {
+      "id": "psi-108",
+      "title": "Surface Tension Driven Convection Experiment-1 (STDCE-1)",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-108",
+      "kind": "dataset_portal",
+      "doi": "10.60555/j1z3-bw42",
+      "status": "reviewed",
+      "scope": "context_only",
+      "summary": "Nghiên cứu dòng thermocapillary trong silicone oil trên Space Shuttle; thuộc vật lý chất lưu.",
+      "limitations": "Nguồn bối cảnh về truyền nhiệt và dòng chảy, không phải thí nghiệm cháy nhiên liệu rắn hoặc tập SSCE. Chưa nhập tệp từ kho.",
+      "version": "4",
+      "locator": "PSI-108 Version 4; Description, Experimental Table, Data files and documents"
+    },
+    {
+      "id": "psi-101",
+      "title": "Smoke Aerosol Measurement Experiment-Reflight (SAME-R)",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-101",
+      "kind": "dataset_portal",
+      "doi": "10.60555/2np7-jv14",
+      "status": "reviewed",
+      "scope": "combustion",
+      "summary": "SAME-R nghiên cứu kích thước hạt khói và quan hệ với tạo khói, truyền khói; thay đổi vật liệu và thiết bị so với SAME.",
+      "limitations": "Không biến tổng số test được mô tả thành các run đã nhập. Chưa tải báo cáo và bảng dữ liệu.",
+      "version": "4",
+      "locator": "PSI-101 Version 4; Description, Experimental Table, Version History"
+    },
+    {
+      "id": "psi-115",
+      "title": "Utilization of the Smoke Aerosol Measurement Experiment Data for Advanced Modeling and Simulation of Smoke Generation in Micro-Gravity",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-115",
+      "kind": "dataset_portal",
+      "doi": "10.60555/q0v5-1v28",
+      "status": "reviewed",
+      "scope": "combustion",
+      "summary": "Mô phỏng sự hình thành và phát triển hạt DBP ở trọng lực Trái Đất và vi trọng lực, sử dụng hình học liên quan SAME.",
+      "limitations": "Đây là nghiên cứu mô hình; lịch sử phiên bản có tệp .dat. Chưa đọc các tệp hoặc nhập chúng như số đo bay.",
+      "version": "3",
+      "locator": "PSI-115 Version 3; Description, Experimental Table, Version History"
+    },
+    {
+      "id": "psi-98",
+      "title": "Spacecraft Fire Safety Experiment-I (SAFFIRE-I)",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-98",
+      "kind": "dataset_portal",
+      "doi": "10.60555/0t15-1z43",
+      "status": "reviewed",
+      "scope": "combustion",
+      "summary": "Saffire-I nghiên cứu cháy vật liệu SIBAL quy mô lớn trên Cygnus sau khi rời ISS.",
+      "limitations": "Đã nhập hai mẫu S1/S2 từ bảng 5 dòng; các dòng flow visualization và trống không phải run. Metadata Project và Approach có khác biệt về nền tảng; dùng Cygnus theo Approach, giữ cảnh báo. Nhãn chiều dài/rộng trong bảng khác mô tả văn bản, không tự sửa.",
+      "version": "4",
+      "locator": "PSI-98 Version 4; Description, Experimental Table, Version History"
+    },
+    {
+      "id": "psi-39",
+      "title": "Cool Flames Investigation (CFI)",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-39",
+      "kind": "dataset_portal",
+      "doi": "10.60555/m6pj-a914",
+      "status": "reviewed",
+      "scope": "combustion",
+      "summary": "CFI nghiên cứu cháy giọt nhiên liệu, pha loãng helium và tắt ngọn lửa lạnh trong CIR/MDCA.",
+      "limitations": "Mô tả Objectives và Approach có dải áp suất khác nhau; không dùng các dải này để tạo run. Chưa nhập dữ liệu camera/raw.",
+      "version": "4",
+      "locator": "PSI-39 Version 4; Description, Experimental Table, Version History"
+    },
+    {
+      "id": "psi-102",
+      "title": "Smoke and Aerosol Measurement Experiment (SAME)",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-102",
+      "kind": "dataset_portal",
+      "doi": "10.60555/gd4k-8h62",
+      "status": "reviewed",
+      "scope": "combustion",
+      "summary": "SAME đo kích thước hạt khói, đáp ứng detector và so sánh môi trường trọng lực bằng thiết bị và phân tích sau chuyến bay.",
+      "limitations": "Chưa nhập bảng hoặc tệp đo. Metadata nghiên cứu không chứng minh hiệu quả một detector ở mọi loại cháy.",
+      "version": "4",
+      "locator": "PSI-102 Version 4; Description, Experimental Table, Version History"
+    },
+    {
+      "id": "psi-106",
+      "title": "Structure and Liftoff In Combustion Experiment (SLICE)",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-106",
+      "kind": "dataset_portal",
+      "doi": "10.60555/pm12-rg61",
+      "status": "reviewed",
+      "scope": "combustion",
+      "summary": "SLICE nghiên cứu cấu trúc và độ ổn định ngọn lửa khuếch tán bằng nhiên liệu khí và dòng coflow.",
+      "limitations": "Bảng 13 dòng là danh sách ngày thử và nhiên liệu, có cả hiệu chuẩn trong mô tả; không coi mỗi ngày là một run có điều kiện định lượng đầy đủ.",
+      "version": "3",
+      "locator": "PSI-106 Version 3; Description, Experimental Table, Version History"
+    },
+    {
+      "id": "psi-99",
+      "title": "Spacecraft Fire Experiment-II (SAFFIRE-II)",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-99",
+      "kind": "dataset_portal",
+      "doi": "10.60555/2chp-m469",
+      "status": "reviewed",
+      "scope": "combustion",
+      "summary": "Saffire-II khảo sát các mẫu silicone, SIBAL, PMMA và Nomex trên Cygnus.",
+      "limitations": "Đã giữ đủ bảng tóm tắt 16 dòng và nhập 9 mẫu 2-1 đến 2-9. Oxy là xấp xỉ hoặc khoảng; vật liệu trống ở 2-6 và 2-9 giữ null. Insignificant không được đổi thành 0. Các nhãn ?-g và Samle Thickness được giữ nguyên.",
+      "version": "5",
+      "locator": "PSI-99 Version 5; Description, Experimental Table, Version History"
+    },
+    {
+      "id": "psi-107",
+      "title": "Smoke Point In Co-flow Experiment (SPICE)",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-107",
+      "kind": "dataset_portal",
+      "doi": "10.60555/9kbh-e962",
+      "status": "reviewed",
+      "scope": "combustion",
+      "summary": "SPICE nghiên cứu smoke point, chiều dài ngọn lửa và xu hướng tạo muội của nhiên liệu khí trong coflow.",
+      "limitations": "Chưa nhập bảng hoặc ảnh. Số ngọn lửa trong phần Approach không phải số run đã nhập vào FlameAtlas.",
+      "version": "4",
+      "locator": "PSI-107 Version 4; Description, Experimental Table, Version History"
+    },
+    {
+      "id": "psi-100",
+      "title": "Spacecraft Fire Experiment-III (SAFFIRE-III)",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-100",
+      "kind": "dataset_portal",
+      "doi": "10.60555/040q-4h36",
+      "status": "reviewed",
+      "scope": "combustion",
+      "summary": "Saffire-III dùng mẫu SIBAL trên Cygnus với dòng concurrent và opposed.",
+      "limitations": "Bảng có hai mẫu và một dòng trống; đã nhập điều kiện hai mẫu. Bảng không báo cáo burn time hoặc đầu ra khác, nên không tạo số đo.",
+      "version": "4",
+      "locator": "PSI-100 Version 4; Description, Experimental Table, Version History"
+    },
+    {
+      "id": "psi-21",
+      "title": "ACME — Coflow Laminar Diffusion Flame (CLD Flame)",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-21",
+      "kind": "dataset_portal",
+      "doi": "10.60555/23e1-9950",
+      "status": "reviewed",
+      "scope": "combustion",
+      "summary": "ACME CLD Flame khảo sát ngọn lửa methane/ethylene pha loãng và có muội bằng chẩn đoán quang học.",
+      "limitations": "Lịch sử phiên bản liệt kê CLD Flame.csv; chưa nhập nội dung. Thành phần nhiên liệu không được dùng như oxy khí quyển cabin.",
+      "version": "4",
+      "locator": "PSI-21 Version 4; Description, Experimental Table, Version History"
+    },
+    {
+      "id": "psi-20",
+      "title": "ACME — Burning Rate Emulator (BRE)",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-20",
+      "kind": "dataset_portal",
+      "doi": "10.60555/vb93-3y72",
+      "status": "reviewed",
+      "scope": "combustion",
+      "summary": "BRE dùng nhiên liệu khí trên đầu đốt xốp để mô phỏng quá trình cháy liên quan tính chất vật liệu.",
+      "limitations": "Lịch sử phiên bản có ACME BRE.csv; chưa nhập nội dung. Các điều kiện trong Objectives là mục tiêu thử nghiệm, không phải tập run đã kiểm chứng.",
+      "version": "4",
+      "locator": "PSI-20 Version 4; Description, Experimental Table, Version History"
+    },
+    {
+      "id": "psi-68",
+      "title": "Flame Extinguishment Experiment-2 (FLEX-2)",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-68",
+      "kind": "dataset_portal",
+      "doi": "10.60555/byp8-h018",
+      "status": "reviewed",
+      "scope": "combustion",
+      "summary": "FLEX-2 nghiên cứu giọt nhiên liệu thuần và hỗn hợp, cơ chế tắt, muội và tương tác giữa giọt.",
+      "limitations": "Bảng tóm tắt 9 dòng chứa khoảng và danh sách nhiều giá trị. Không nhân chéo các biến để tạo run giả; chưa nhập run từ bảng này.",
+      "version": "6",
+      "locator": "PSI-68 Version 6; Description, Experimental Table, Version History"
+    },
+    {
+      "id": "psi-22",
+      "title": "ACME — Electric-Field Effects on Laminar Diffusion Flames (E-FIELD Flames)",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-22",
+      "kind": "dataset_portal",
+      "doi": "10.60555/se5a-8c73",
+      "status": "reviewed",
+      "scope": "combustion",
+      "summary": "E-FIELD Flames nghiên cứu tác động điện trường lên dòng ion, đáp ứng ngọn lửa, muội và trạng thái gần giới hạn.",
+      "limitations": "Chưa nhập bảng hoặc tệp raw. Điện áp mô tả thiết kế không phải điều kiện đã đồng thời thử với mọi nhiên liệu.",
+      "version": "7",
+      "locator": "PSI-22 Version 7; Description, Experimental Table, Version History"
+    },
+    {
+      "id": "psi-23",
+      "title": "ACME — Structure and Response of Spherical Diffusion Flames (s-Flame)",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-23",
+      "kind": "dataset_portal",
+      "doi": "10.60555/k57n-p030",
+      "status": "reviewed",
+      "scope": "combustion",
+      "summary": "s-Flame nghiên cứu cấu trúc, giới hạn tắt và dao động ngọn lửa khuếch tán hình cầu.",
+      "limitations": "Bảng 19 dòng là tóm tắt ngày thử và số ngọn lửa theo ngày, có oxy xấp xỉ và nhãn N3/N4. Không coi các dòng ngày là run riêng hoặc sửa nhãn hóa học khi chưa đối chiếu tệp gốc.",
+      "version": "4",
+      "locator": "PSI-23 Version 4; Description, Experimental Table, Version History"
+    },
+    {
+      "id": "psi-69",
+      "title": "Flame Extinguishment Experiment (FLEX)",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-69",
+      "kind": "dataset_portal",
+      "doi": "10.60555/mbq8-0451",
+      "status": "reviewed",
+      "scope": "combustion",
+      "summary": "FLEX nghiên cứu cháy giọt và tác động chất dập lửa lên giới hạn cháy trong vi trọng lực.",
+      "limitations": "Đã xem 5 dòng đầu của bảng báo 275 dòng; chưa nhập thêm các dòng này. Nhãn Burning rate; mm thiếu chiều thời gian, nên không tự suy ra đơn vị mm²/s.",
+      "version": "5",
+      "locator": "PSI-69 Version 5; Description, Experimental Table, Version History"
+    },
+    {
+      "id": "psi-26",
+      "title": "Burning and Suppression of Solids (BASS)",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26",
+      "kind": "dataset_portal",
+      "doi": "10.60555/58h4-dy80",
+      "status": "reviewed",
+      "scope": "combustion",
+      "summary": "BASS khảo sát cháy nhiên liệu rắn và dập lửa bằng khí trơ trong các hình học và hướng dòng khác nhau.",
+      "limitations": "Nguồn tương ứng bản ghi BASS hiện có; không tạo thêm investigation trùng. Chưa nhập số đo từ video hoặc tệp gốc.",
+      "version": "4",
+      "locator": "PSI-26 Version 4; Description, Experimental Table, Version History"
+    },
+    {
+      "id": "psi-47",
+      "title": "Dust and Aerosol Measurement Feasibility Test / DAFT-2",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-47",
+      "kind": "dataset_portal",
+      "doi": "10.60555/ztgj-d202",
+      "status": "reviewed",
+      "scope": "combustion",
+      "summary": "DAFT/DAFT-2 kiểm tra thiết bị P-Trak đã sửa đổi trong vi trọng lực để hỗ trợ nghiên cứu aerosol SAME.",
+      "limitations": "Nguồn về tính khả thi thiết bị, không phải thử nghiệm tốc độ cháy. Tương ứng bản ghi DAFT hiện có, chưa nhập dữ liệu số.",
+      "version": "5",
+      "locator": "PSI-47 Version 5; Description, Experimental Table, Version History"
+    }
+  ]
+}
