@@ -2,6 +2,12 @@
 
 Microgravity combustion evidence workspace. Ten investigation records, 47 source resources, 18 imported runs and 17 numerical observations from PSI-159 and Saffire I–III summary tables.
 
+## Live web app
+
+[Open FlameAtlas — interactive research app](https://flameatlas-evidence-studio.kh-ng-gian-l-5063.chatgpt.site)
+
+Explore the evidence, compare investigations, evaluate research scenarios and export cited results in the deployed app. The site uses a versioned repository snapshot.
+
 ## Run
 
 ### Open on GitHub without installing locally
