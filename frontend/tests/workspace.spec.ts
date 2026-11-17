@@ -4,17 +4,17 @@ test.beforeEach(async({page})=>{page.on('pageerror',error=>console.error('Browse
 test('research journey and document library',async({page})=>{
  await page.goto('/');await expect(page.getByRole('heading',{name:'BASS',exact:true})).toBeVisible();
  await page.getByRole('button',{name:'Library',exact:true}).click();
- await expect(page.getByRole('heading',{name:'Thư viện tài liệu'})).toBeVisible();
+ await expect(page.getByRole('heading',{name:'Source library'})).toBeVisible();
  await expect(page.locator('.source-table thead th')).toHaveCount(10);
- await expect(page.locator('.source-table tbody tr')).toHaveCount(47);
- await page.getByLabel('Tìm tài liệu').fill('SoFIE — Growth');
- await page.getByRole('button',{name:/Đọc SoFIE/}).click();
- await expect(page.getByRole('heading',{name:'Nguồn dẫn tới tài liệu'})).toBeVisible();
- await page.getByRole('button',{name:'← Trở lại thư viện'}).click();
- await page.getByLabel('Tìm tài liệu').fill('Evaluation of burning');
- await page.getByRole('button',{name:/Đọc Evaluation/}).click();
- await expect(page.getByRole('heading',{name:'Giới hạn áp dụng'})).toBeVisible();
- await expect(page.locator('blockquote')).toHaveCount(3);
+ await expect(page.locator('.source-table tbody tr')).toHaveCount(42);
+ await page.getByLabel('Search documents').fill('SoFIE — Growth');
+ await page.getByRole('button',{name:/Read SoFIE/}).click();
+ await expect(page.getByRole('heading',{name:'Source discovery trail'})).toBeVisible();
+ await page.getByRole('button',{name:'← Back to library'}).click();
+ await page.getByLabel('Search documents').fill('BASS-II) Summary Report');
+ await page.getByRole('button',{name:/Read Burning and Suppression/}).click();
+ await expect(page.getByRole('heading',{name:'Applicability and limitations'})).toBeVisible();
+ await expect(page.locator('blockquote')).toHaveCount(2);
  await page.getByRole('button',{name:'Explore',exact:true}).click();
  await page.getByRole('checkbox').nth(0).check();await page.getByRole('checkbox').nth(1).check();
  await page.getByRole('button',{name:'Compare (2)',exact:true}).click();await expect(page.getByRole('table')).toBeVisible();
@@ -42,7 +42,7 @@ test('mobile navigation and unknown evidence',async({page})=>{
  await page.getByRole('button',{name:'Library',exact:true}).click();await expect(page.locator('.source-table')).toBeVisible();
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
  await page.getByRole('button',{name:'Assistant',exact:true}).click();await page.getByLabel('Question',{exact:true}).fill('zzzzqwertyz');await page.getByRole('button',{name:'Find evidence'}).click();
- await expect(page.getByText('Chưa đủ bằng chứng trong bộ dữ liệu hiện tại.',{exact:true})).toBeVisible();
+ await expect(page.getByText('Insufficient evidence in the current dataset.',{exact:true})).toBeVisible();
  await page.screenshot({path:'test-results/mobile.png',fullPage:true});
 });
 test('import, measured observations, comparison and export round trip',async({page})=>{

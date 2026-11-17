@@ -12,6 +12,7 @@ jobs:
           python-version: '3.12'
       - run: pip install -r backend/requirements.txt
       - run: python scripts/build_presentation_data.py --check
+      - run: python scripts/audit_public_release.py
       - run: python -m unittest discover -s backend/tests
       - run: python -c "from backend.app.main import app; assert app.openapi()['info']['title'] == 'FlameAtlas'"
   frontend:

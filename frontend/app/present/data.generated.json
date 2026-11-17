@@ -1,10 +1,39 @@
 {
-  "schema_version": 1,
-  "data_version": "97c5ecc16912b97bd277b5ca3a4021244e558fc213c3f3250a57cda0db56a836",
+  "schema_version": 2,
+  "methodology": {
+    "version": "conservative-run-match-v1",
+    "weights": {
+      "theme": 0.3,
+      "atmosphere": 0.25,
+      "material": 0.2,
+      "gravity": 0.15,
+      "measurement": 0.1
+    },
+    "tolerances": {
+      "oxygen_fraction": 0.01,
+      "pressure_kpa": 5,
+      "airflow_m_s": 0.05
+    },
+    "interpretation": "Product relevance heuristic, not a validated fire-hazard model. Unknown fields contribute only to the upper bound. Rank by the lower bound using actual run combinations."
+  },
+  "publication_policy": {
+    "release_channel": "public_sources_only",
+    "excluded_legacy_document_ids": [
+      "paper-01",
+      "paper-02",
+      "paper-03",
+      "paper-04",
+      "paper-05"
+    ],
+    "excluded_private_reference_count": 5,
+    "description": "Private document links, extracted content and derived summaries are not included in the public distribution. Counts describe only included public resources."
+  },
+  "editorial_language": "en",
+  "data_version": "4057b7ee10e9d93f5570b9250b24ed5952df70bcd37809b937337658f20896ba",
   "source_checked_at": "2026-11-15",
   "mode": "curated_repository_snapshot",
   "counts": {
-    "resources": 47,
+    "resources": 42,
     "investigations": 10,
     "runs": 18,
     "observations": 17
@@ -15,15 +44,11 @@
       "value": 26
     },
     {
-      "label": "Liên kết từ Sheet",
+      "label": "Spreadsheet data links",
       "value": 10
     },
     {
-      "label": "Tài liệu từ Sheet",
-      "value": 5
-    },
-    {
-      "label": "NASA mở rộng",
+      "label": "Related NASA sources",
       "value": 6
     }
   ],
@@ -185,14 +210,14 @@
       "id": "psi-159-cfi-g",
       "acronym": "CFI-G",
       "title": "ACME — Cool Flames Investigation with Gases (CFI-G)",
-      "objectives": "Nghiên cứu ngọn lửa khuếch tán hình cầu trên ISS; có bảng điều kiện và đầu ra của các test.",
+      "objectives": "ISS investigation of spherical diffusion flames with tables of test conditions and outputs.",
       "theme": "fundamental",
       "platform": "ISS",
       "gravity": "microgravity",
       "material": "ethane",
       "hardware": "ACME; CIR",
       "verification": "metadata_verified",
-      "limitations": "Đã nhập 5 dòng đầu bảng đang chọn (180 dòng được giao diện báo); không phải toàn bộ các bảng hoặc kho 1.90 TB. Nồng độ oxy tùy cấu hình đầu đốt, không phải cabin. Peak burner temperature is not flame temperature; Tad is not imported as a measured outcome. Method and uncertainties are not reported in this summary.",
+      "limitations": "Only the first five rows of the selected table were imported; the interface reports 180 rows. This is not a complete import of all tables or the 1.90 TB archive. Oxygen concentrations depend on burner configuration and do not represent a cabin atmosphere. Peak burner temperature is not flame temperature; Tad is not imported as a measured outcome. Method and uncertainties are not reported in this summary.",
       "sources": [
         {
           "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159",
@@ -510,14 +535,14 @@
       "id": "psi-98-saffire",
       "acronym": "Saffire-I",
       "title": "Spacecraft Fire Safety Experiment-I (SAFFIRE-I)",
-      "objectives": "Saffire-I nghiên cứu cháy vật liệu SIBAL quy mô lớn trên Cygnus sau khi rời ISS.",
+      "objectives": "Saffire-I investigates large-scale SIBAL material combustion on Cygnus after departure from the ISS.",
       "theme": "prevention",
       "platform": "Uncrewed Cygnus",
       "gravity": "microgravity",
       "material": null,
       "hardware": "Saffire flow duct",
       "verification": "metadata_verified",
-      "limitations": "Đã nhập hai mẫu S1/S2 từ bảng 5 dòng; các dòng flow visualization và trống không phải run. Metadata Project và Approach có khác biệt về nền tảng; dùng Cygnus theo Approach, giữ cảnh báo. Nhãn chiều dài/rộng trong bảng khác mô tả văn bản, không tự sửa.",
+      "limitations": "Two samples, S1/S2, were imported from a five-row table; flow-visualization and blank rows are not runs. Project and Approach metadata disagree on platform; Cygnus follows the Approach section, with the discrepancy retained. Table length/width labels differ from the narrative and have not been silently corrected.",
       "sources": [
         {
           "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-98",
@@ -560,7 +585,7 @@
               "unit": "cm/s",
               "factor": 0.01
             },
-            "quality_notes": "Đã nhập hai mẫu S1/S2 từ bảng 5 dòng; các dòng flow visualization và trống không phải run. Metadata Project và Approach có khác biệt về nền tảng; dùng Cygnus theo Approach, giữ cảnh báo. Nhãn chiều dài/rộng trong bảng khác mô tả văn bản, không tự sửa."
+            "quality_notes": "Two samples, S1/S2, were imported from a five-row table; flow-visualization and blank rows are not runs. Project and Approach metadata disagree on platform; Cygnus follows the Approach section, with the discrepancy retained. Table length/width labels differ from the narrative and have not been silently corrected."
           },
           "measurements": [
             {
@@ -605,7 +630,7 @@
               "unit": "cm/s",
               "factor": 0.01
             },
-            "quality_notes": "Đã nhập hai mẫu S1/S2 từ bảng 5 dòng; các dòng flow visualization và trống không phải run. Metadata Project và Approach có khác biệt về nền tảng; dùng Cygnus theo Approach, giữ cảnh báo. Nhãn chiều dài/rộng trong bảng khác mô tả văn bản, không tự sửa."
+            "quality_notes": "Two samples, S1/S2, were imported from a five-row table; flow-visualization and blank rows are not runs. Project and Approach metadata disagree on platform; Cygnus follows the Approach section, with the discrepancy retained. Table length/width labels differ from the narrative and have not been silently corrected."
           },
           "measurements": [
             {
@@ -625,14 +650,14 @@
       "id": "psi-99-saffire",
       "acronym": "Saffire-II",
       "title": "Spacecraft Fire Experiment-II (SAFFIRE-II)",
-      "objectives": "Saffire-II khảo sát các mẫu silicone, SIBAL, PMMA và Nomex trên Cygnus.",
+      "objectives": "Saffire-II investigates silicone, SIBAL, PMMA and Nomex samples on Cygnus.",
       "theme": "prevention",
       "platform": "Uncrewed Cygnus",
       "gravity": "microgravity",
       "material": null,
       "hardware": "Saffire flow duct",
       "verification": "metadata_verified",
-      "limitations": "Đã giữ đủ bảng tóm tắt 16 dòng và nhập 9 mẫu 2-1 đến 2-9. Oxy là xấp xỉ hoặc khoảng; vật liệu trống ở 2-6 và 2-9 giữ null. Insignificant không được đổi thành 0. Các nhãn ?-g và Samle Thickness được giữ nguyên.",
+      "limitations": "The complete 16-row summary table is preserved, and nine samples, 2-1 through 2-9, are imported. Oxygen is approximate or a range; blank material values for 2-6 and 2-9 remain null. Insignificant is not converted to zero. Source labels ?-g and Samle Thickness are preserved.",
       "sources": [
         {
           "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-99",
@@ -679,7 +704,7 @@
               "unit": "cm/s",
               "factor": 0.01
             },
-            "quality_notes": "Đã giữ đủ bảng tóm tắt 16 dòng và nhập 9 mẫu 2-1 đến 2-9. Oxy là xấp xỉ hoặc khoảng; vật liệu trống ở 2-6 và 2-9 giữ null. Insignificant không được đổi thành 0. Các nhãn ?-g và Samle Thickness được giữ nguyên."
+            "quality_notes": "The complete 16-row summary table is preserved, and nine samples, 2-1 through 2-9, are imported. Oxygen is approximate or a range; blank material values for 2-6 and 2-9 remain null. Insignificant is not converted to zero. Source labels ?-g and Samle Thickness are preserved."
           },
           "measurements": []
         },
@@ -718,7 +743,7 @@
               "unit": "cm/s",
               "factor": 0.01
             },
-            "quality_notes": "Đã giữ đủ bảng tóm tắt 16 dòng và nhập 9 mẫu 2-1 đến 2-9. Oxy là xấp xỉ hoặc khoảng; vật liệu trống ở 2-6 và 2-9 giữ null. Insignificant không được đổi thành 0. Các nhãn ?-g và Samle Thickness được giữ nguyên."
+            "quality_notes": "The complete 16-row summary table is preserved, and nine samples, 2-1 through 2-9, are imported. Oxygen is approximate or a range; blank material values for 2-6 and 2-9 remain null. Insignificant is not converted to zero. Source labels ?-g and Samle Thickness are preserved."
           },
           "measurements": []
         },
@@ -757,7 +782,7 @@
               "unit": "cm/s",
               "factor": 0.01
             },
-            "quality_notes": "Đã giữ đủ bảng tóm tắt 16 dòng và nhập 9 mẫu 2-1 đến 2-9. Oxy là xấp xỉ hoặc khoảng; vật liệu trống ở 2-6 và 2-9 giữ null. Insignificant không được đổi thành 0. Các nhãn ?-g và Samle Thickness được giữ nguyên."
+            "quality_notes": "The complete 16-row summary table is preserved, and nine samples, 2-1 through 2-9, are imported. Oxygen is approximate or a range; blank material values for 2-6 and 2-9 remain null. Insignificant is not converted to zero. Source labels ?-g and Samle Thickness are preserved."
           },
           "measurements": []
         },
@@ -796,7 +821,7 @@
               "unit": "cm/s",
               "factor": 0.01
             },
-            "quality_notes": "Đã giữ đủ bảng tóm tắt 16 dòng và nhập 9 mẫu 2-1 đến 2-9. Oxy là xấp xỉ hoặc khoảng; vật liệu trống ở 2-6 và 2-9 giữ null. Insignificant không được đổi thành 0. Các nhãn ?-g và Samle Thickness được giữ nguyên."
+            "quality_notes": "The complete 16-row summary table is preserved, and nine samples, 2-1 through 2-9, are imported. Oxygen is approximate or a range; blank material values for 2-6 and 2-9 remain null. Insignificant is not converted to zero. Source labels ?-g and Samle Thickness are preserved."
           },
           "measurements": []
         },
@@ -835,7 +860,7 @@
               "unit": "cm/s",
               "factor": 0.01
             },
-            "quality_notes": "Đã giữ đủ bảng tóm tắt 16 dòng và nhập 9 mẫu 2-1 đến 2-9. Oxy là xấp xỉ hoặc khoảng; vật liệu trống ở 2-6 và 2-9 giữ null. Insignificant không được đổi thành 0. Các nhãn ?-g và Samle Thickness được giữ nguyên."
+            "quality_notes": "The complete 16-row summary table is preserved, and nine samples, 2-1 through 2-9, are imported. Oxygen is approximate or a range; blank material values for 2-6 and 2-9 remain null. Insignificant is not converted to zero. Source labels ?-g and Samle Thickness are preserved."
           },
           "measurements": [
             {
@@ -884,7 +909,7 @@
               "unit": "cm/s",
               "factor": 0.01
             },
-            "quality_notes": "Đã giữ đủ bảng tóm tắt 16 dòng và nhập 9 mẫu 2-1 đến 2-9. Oxy là xấp xỉ hoặc khoảng; vật liệu trống ở 2-6 và 2-9 giữ null. Insignificant không được đổi thành 0. Các nhãn ?-g và Samle Thickness được giữ nguyên."
+            "quality_notes": "The complete 16-row summary table is preserved, and nine samples, 2-1 through 2-9, are imported. Oxygen is approximate or a range; blank material values for 2-6 and 2-9 remain null. Insignificant is not converted to zero. Source labels ?-g and Samle Thickness are preserved."
           },
           "measurements": [
             {
@@ -933,7 +958,7 @@
               "unit": "cm/s",
               "factor": 0.01
             },
-            "quality_notes": "Đã giữ đủ bảng tóm tắt 16 dòng và nhập 9 mẫu 2-1 đến 2-9. Oxy là xấp xỉ hoặc khoảng; vật liệu trống ở 2-6 và 2-9 giữ null. Insignificant không được đổi thành 0. Các nhãn ?-g và Samle Thickness được giữ nguyên."
+            "quality_notes": "The complete 16-row summary table is preserved, and nine samples, 2-1 through 2-9, are imported. Oxygen is approximate or a range; blank material values for 2-6 and 2-9 remain null. Insignificant is not converted to zero. Source labels ?-g and Samle Thickness are preserved."
           },
           "measurements": [
             {
@@ -982,7 +1007,7 @@
               "unit": "cm/s",
               "factor": 0.01
             },
-            "quality_notes": "Đã giữ đủ bảng tóm tắt 16 dòng và nhập 9 mẫu 2-1 đến 2-9. Oxy là xấp xỉ hoặc khoảng; vật liệu trống ở 2-6 và 2-9 giữ null. Insignificant không được đổi thành 0. Các nhãn ?-g và Samle Thickness được giữ nguyên."
+            "quality_notes": "The complete 16-row summary table is preserved, and nine samples, 2-1 through 2-9, are imported. Oxygen is approximate or a range; blank material values for 2-6 and 2-9 remain null. Insignificant is not converted to zero. Source labels ?-g and Samle Thickness are preserved."
           },
           "measurements": [
             {
@@ -1031,7 +1056,7 @@
               "unit": "cm/s",
               "factor": 0.01
             },
-            "quality_notes": "Đã giữ đủ bảng tóm tắt 16 dòng và nhập 9 mẫu 2-1 đến 2-9. Oxy là xấp xỉ hoặc khoảng; vật liệu trống ở 2-6 và 2-9 giữ null. Insignificant không được đổi thành 0. Các nhãn ?-g và Samle Thickness được giữ nguyên."
+            "quality_notes": "The complete 16-row summary table is preserved, and nine samples, 2-1 through 2-9, are imported. Oxygen is approximate or a range; blank material values for 2-6 and 2-9 remain null. Insignificant is not converted to zero. Source labels ?-g and Samle Thickness are preserved."
           },
           "measurements": [
             {
@@ -1051,14 +1076,14 @@
       "id": "psi-100-saffire",
       "acronym": "Saffire-III",
       "title": "Spacecraft Fire Experiment-III (SAFFIRE-III)",
-      "objectives": "Saffire-III dùng mẫu SIBAL trên Cygnus với dòng concurrent và opposed.",
+      "objectives": "Saffire-III uses SIBAL samples on Cygnus in concurrent and opposed flow.",
       "theme": "prevention",
       "platform": "Uncrewed Cygnus",
       "gravity": "microgravity",
       "material": null,
       "hardware": "Saffire flow duct",
       "verification": "metadata_verified",
-      "limitations": "Bảng có hai mẫu và một dòng trống; đã nhập điều kiện hai mẫu. Bảng không báo cáo burn time hoặc đầu ra khác, nên không tạo số đo.",
+      "limitations": "The table contains two samples and one blank row; conditions for both samples are imported. No burn time or other output is reported, so no measurements are created.",
       "sources": [
         {
           "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-100",
@@ -1097,7 +1122,7 @@
               "unit": "cm/s",
               "factor": 0.01
             },
-            "quality_notes": "Bảng có hai mẫu và một dòng trống; đã nhập điều kiện hai mẫu. Bảng không báo cáo burn time hoặc đầu ra khác, nên không tạo số đo."
+            "quality_notes": "The table contains two samples and one blank row; conditions for both samples are imported. No burn time or other output is reported, so no measurements are created."
           },
           "measurements": []
         },
@@ -1128,7 +1153,7 @@
               "unit": "cm/s",
               "factor": 0.01
             },
-            "quality_notes": "Bảng có hai mẫu và một dòng trống; đã nhập điều kiện hai mẫu. Bảng không báo cáo burn time hoặc đầu ra khác, nên không tạo số đo."
+            "quality_notes": "The table contains two samples and one blank row; conditions for both samples are imported. No burn time or other output is reported, so no measurements are created."
           },
           "measurements": []
         }
@@ -1144,10 +1169,12 @@
       "doi": null,
       "status": "external_only",
       "scope": "source_context",
-      "summary": "Cổng tìm kiếm dữ liệu combustion của NASA PSI.",
-      "limitations": "Trang động; chưa tải được các tệp đo. Không coi trang tìm kiếm là dữ liệu thí nghiệm.",
+      "summary": "NASA PSI search portal for combustion research data.",
+      "limitations": "The portal is dynamic; measurement files have not been downloaded. A search page is not an experimental dataset.",
       "version": null,
-      "locator": "Article body"
+      "locator": "Article body",
+      "findings": [],
+      "publisher": "Not reported"
     },
     {
       "id": "data-02",
@@ -1157,23 +1184,27 @@
       "doi": null,
       "status": "reviewed",
       "scope": "source_context",
-      "summary": "Tổng quan NASA về các nghiên cứu và cơ sở combustion, bao gồm BASS, FLEX, SAME, SLICE và SPICE.",
-      "limitations": "Mô tả chương trình; không phải bảng số đo theo từng lần chạy.",
+      "summary": "NASA overview of combustion investigations and facilities, including BASS, FLEX, SAME, SLICE and SPICE.",
+      "limitations": "Program descriptions do not provide run-level measurement tables.",
       "version": null,
-      "locator": "Article body"
+      "locator": "Article body",
+      "findings": [],
+      "publisher": "Not reported"
     },
     {
       "id": "data-03",
-      "title": "Video nguồn của The Flamels",
+      "title": "The Flamels source video",
       "url": "https://www.youtube.com/watch?v=W1oXykoz9zg",
       "kind": "video",
       "doi": null,
       "status": "unavailable",
       "scope": "source_context",
-      "summary": "Liên kết video được giữ nguyên từ bảng nguồn.",
-      "limitations": "Chưa truy xuất được video hoặc transcript; chưa xác minh nội dung.",
+      "summary": "Video link retained from the source spreadsheet.",
+      "limitations": "The video and transcript have not been retrieved; their contents remain unverified.",
       "version": null,
-      "locator": "Article body"
+      "locator": "Article body",
+      "findings": [],
+      "publisher": "Not reported"
     },
     {
       "id": "data-04",
@@ -1183,10 +1214,12 @@
       "doi": null,
       "status": "reviewed",
       "scope": "source_context",
-      "summary": "Hướng dẫn NASA trình bày thí nghiệm combustion, cơ sở trên ISS, các bài học và cơ hội nghiên cứu.",
-      "limitations": "Tài liệu hướng dẫn xuất bản năm 2015; điều kiện thiết bị không đồng nghĩa điều kiện của mọi thí nghiệm.",
+      "summary": "NASA guide to combustion experiments, ISS facilities, research lessons and opportunities.",
+      "limitations": "Published in 2015. Facility capabilities must not be treated as the conditions of every experiment.",
       "version": null,
-      "locator": "October 2015 Edition"
+      "locator": "October 2015 Edition",
+      "findings": [],
+      "publisher": "Not reported"
     },
     {
       "id": "data-05",
@@ -1196,10 +1229,12 @@
       "doi": null,
       "status": "reviewed",
       "scope": "source_context",
-      "summary": "Hồ sơ NASA về tai nạn Apollo 1 trong thử nghiệm mặt đất và các bài học an toàn.",
-      "limitations": "Sự kiện lịch sử trên mặt đất; không dùng làm điểm đo combustion trong vi trọng lực.",
+      "summary": "NASA account of the Apollo 1 ground-test accident and subsequent safety lessons.",
+      "limitations": "Historical ground-test context; not a microgravity combustion measurement.",
       "version": null,
-      "locator": "Article body"
+      "locator": "Article body",
+      "findings": [],
+      "publisher": "Not reported"
     },
     {
       "id": "data-06",
@@ -1209,10 +1244,12 @@
       "doi": null,
       "status": "reviewed",
       "scope": "source_context",
-      "summary": "Hồ sơ sự cố bình oxy và ứng phó trong nhiệm vụ Apollo 13.",
-      "limitations": "Sự cố hệ thống tàu; không phải thử nghiệm cháy cabin có kiểm soát.",
+      "summary": "Account of the oxygen-tank failure and response during Apollo 13.",
+      "limitations": "A spacecraft systems incident, not a controlled cabin-fire experiment.",
       "version": null,
-      "locator": "Article body"
+      "locator": "Article body",
+      "findings": [],
+      "publisher": "Not reported"
     },
     {
       "id": "data-07",
@@ -1222,10 +1259,12 @@
       "doi": null,
       "status": "reviewed",
       "scope": "source_context",
-      "summary": "Tường thuật NASA về vụ cháy trên trạm Mir và hoạt động ứng phó của phi hành đoàn.",
-      "limitations": "Nguồn bối cảnh lịch sử; không suy ra xác suất cháy từ sự kiện riêng lẻ.",
+      "summary": "NASA account of the Mir station fire and the crew response.",
+      "limitations": "Historical context. A single incident does not establish a fire probability.",
       "version": null,
-      "locator": "Article body"
+      "locator": "Article body",
+      "findings": [],
+      "publisher": "Not reported"
     },
     {
       "id": "data-08",
@@ -1235,10 +1274,12 @@
       "doi": null,
       "status": "reviewed",
       "scope": "source_context",
-      "summary": "NASA Spinoff mô tả bình khí nhẹ cho lính cứu hỏa phát triển cùng Johnson Space Center.",
-      "limitations": "Ứng dụng công nghệ trên Trái Đất; không phải dữ liệu cháy vi trọng lực.",
+      "summary": "NASA Spinoff describes lightweight firefighter air tanks developed with Johnson Space Center.",
+      "limitations": "Terrestrial technology transfer, not microgravity combustion data.",
       "version": null,
-      "locator": "1976 article"
+      "locator": "1976 article",
+      "findings": [],
+      "publisher": "Not reported"
     },
     {
       "id": "data-09",
@@ -1248,10 +1289,12 @@
       "doi": null,
       "status": "reviewed",
       "scope": "source_context",
-      "summary": "Bài viết mô tả phát hiện hạt cháy và phân biệt chúng với bụi để hạn chế báo động giả.",
-      "limitations": "Mô tả công nghệ lịch sử, không cung cấp bộ thử nghiệm detector theo điều kiện cabin.",
+      "summary": "Description of combustion-particle detection and discrimination from dust to reduce false alarms.",
+      "limitations": "Historical technology description; no detector test dataset under specified cabin conditions is provided.",
       "version": null,
-      "locator": "1978 article"
+      "locator": "1978 article",
+      "findings": [],
+      "publisher": "Not reported"
     },
     {
       "id": "data-10",
@@ -1261,75 +1304,12 @@
       "doi": null,
       "status": "reviewed",
       "scope": "source_context",
-      "summary": "Project FIRES ứng dụng vật liệu và thiết kế từ chương trình không gian vào trang phục bảo hộ cứu hỏa.",
-      "limitations": "Ứng dụng bảo hộ trên Trái Đất; không dùng làm bằng chứng định lượng về cháy cabin.",
+      "summary": "Project FIRES applies space-program materials and design to firefighter protective clothing.",
+      "limitations": "Terrestrial protective equipment; not quantitative evidence of cabin-fire behavior.",
       "version": null,
-      "locator": "1982 article"
-    },
-    {
-      "id": "paper-01",
-      "title": "NASA Researcher’s Guide — Combustion Science",
-      "url": "https://drive.google.com/file/d/1Pnv_RNjutYQtHrwgYVNXMOwBcsmtMUOc/view",
-      "kind": "paper",
-      "doi": null,
-      "status": "reviewed",
-      "scope": "source_context",
-      "summary": "Hướng dẫn nghiên cứu combustion trên ISS; mô tả FLEX, BASS, cơ sở thí nghiệm và giới hạn sử dụng kết quả.",
-      "limitations": "Tách thông số khả năng thiết bị khỏi điều kiện thực nghiệm.",
-      "version": null,
-      "locator": "pp. 12–13, 21, 30–35"
-    },
-    {
-      "id": "paper-02",
-      "title": "Material Flammability Test Methods for Achieving Simulated Low-Gravity Conditions",
-      "url": "https://drive.google.com/file/d/1OH_ChmAVsUeLQq3jiIC2KTEXvGE-hq7M/view",
-      "kind": "paper",
-      "doi": null,
-      "status": "reviewed",
-      "scope": "source_context",
-      "summary": "Nghiên cứu ELSA và Narrow Channel để tạo trường dòng chảy tương tự điều kiện trọng lực thấp trong thí nghiệm mặt đất.",
-      "limitations": "Mô phỏng ảnh hưởng dòng chảy không tái tạo toàn bộ môi trường vi trọng lực.",
-      "version": null,
-      "locator": "pp. 1–3, abstract and methods"
-    },
-    {
-      "id": "paper-03",
-      "title": "Evaluation of burning rate in microgravity based on the fuel regression, flame area, and spread rate",
-      "url": "https://drive.google.com/file/d/1lKbd4nuimNmoN8gnygFcPTbhLEpZ8sy2/view",
-      "kind": "paper",
-      "doi": "10.1016/j.combustflame.2021.111846",
-      "status": "reviewed",
-      "scope": "source_context",
-      "summary": "So sánh ba phương pháp suy ra tốc độ cháy từ ảnh và áp dụng cho dữ liệu PMMA BASS-II trên ISS.",
-      "limitations": "Các hệ số áp dụng cho cấu hình và môi trường trong bài; không phải hằng số dùng cho mọi vật liệu.",
-      "version": null,
-      "locator": "Abstract; section 4; Figs. 10–13"
-    },
-    {
-      "id": "paper-04",
-      "title": "Effect of External and Internal Heating on the Flame Spread and Phase Change of Thin Polyethylene Tubes",
-      "url": "https://drive.google.com/file/d/1SpSucHko7aHE3T8X8hHEZPzXG6sibTJA/view",
-      "kind": "paper",
-      "doi": "10.1016/j.ijthermalsci.2021.107054",
-      "status": "reviewed",
-      "scope": "source_context",
-      "summary": "Thử nghiệm ống PE dưới gia nhiệt bên trong, môi trường nóng và bức xạ ngoài để nghiên cứu cháy lan, nóng chảy và nhỏ giọt.",
-      "limitations": "Không chuyển kết quả nhỏ giọt trên mặt đất sang vi trọng lực khi thiếu kiểm chứng.",
-      "version": null,
-      "locator": "Abstract; section 2"
-    },
-    {
-      "id": "paper-05",
-      "title": "Transition from Opposed Flame Spread to Fuel Regression and Blow off: Effect of Flow, Atmosphere, and Microgravity",
-      "url": "https://drive.google.com/file/d/1DEF3PcGYpoFMiFdhhHdQrw5DVl6EP8j1/view",
-      "kind": "paper",
-      "doi": "10.1016/j.proci.2018.06.022",
-      "status": "reviewed",
-      "scope": "source_context",
-      "summary": "So sánh cháy lan ngược dòng và thoái lui bề mặt nhiên liệu trên thanh PMMA ở mặt đất và vi trọng lực.",
-      "limitations": "Phân biệt flame-spread và fuel-regression; không ghép các khoảng áp suất, dòng khí và oxy thành lần chạy giả.",
-      "version": null,
-      "locator": "Abstract; sections 2–3"
+      "locator": "1982 article",
+      "findings": [],
+      "publisher": "Not reported"
     },
     {
       "id": "psi-117",
@@ -1339,10 +1319,12 @@
       "doi": "10.60555/gz0q-b577",
       "status": "reviewed",
       "scope": "combustion",
-      "summary": "Nghiên cứu CFD ba chiều bằng OpenFOAM về giọt nhiên liệu n-alkane và ngọn lửa lạnh, đối chiếu dữ liệu FLEX.",
-      "limitations": "Không có bảng Experimental/Modeling gắn trực tiếp. Có thư mục Analyzed Data và Reports; chưa nhập các tệp này.",
+      "summary": "Three-dimensional OpenFOAM CFD study of n-alkane droplets and cool flames, compared with FLEX data.",
+      "limitations": "No Experimental/Modeling table is directly attached. Analyzed Data and Reports directories are listed, but their files have not been imported.",
       "version": "2",
-      "locator": "PSI-117 Version 2; Description, Experimental Table, Data files and documents"
+      "locator": "PSI-117 Version 2; Description, Experimental Table, Data files and documents",
+      "findings": [],
+      "publisher": "NASA PSI"
     },
     {
       "id": "nasa-bass-report",
@@ -1352,10 +1334,25 @@
       "doi": null,
       "status": "reviewed",
       "scope": "source_context",
-      "summary": "Báo cáo BASS-II mô tả thử nghiệm trong MSG trên ISS, thay đổi nồng độ oxy, dòng thông gió, loại nhiên liệu, độ dày và hình học.",
-      "limitations": "Chỉ đọc abstract và metadata NTRS; chưa trích bảng từng test từ PDF. Kết quả tổng hợp không tạo thành run hoặc giới hạn an toàn.",
+      "summary": "BASS-II report describing ISS Microgravity Science Glovebox experiments varying oxygen concentration, ventilation, fuel, thickness and geometry.",
+      "limitations": "Only the NTRS abstract and metadata were inspected; individual test tables have not been extracted from the PDF. Aggregate findings do not establish runs or safety thresholds.",
       "version": null,
-      "locator": "NTRS 20210011385, abstract; published 2021-10-01"
+      "locator": "NTRS 20210011385, abstract; published 2021-10-01",
+      "findings": [
+        {
+          "id": "nasa-bass-report-f1",
+          "text": "The authors estimated heat-release rate from oxygen consumption and burn duration; most reported tests were substantially below 100 W.",
+          "locator": "Abstract, final sentences",
+          "type": "author_interpretation"
+        },
+        {
+          "id": "nasa-bass-report-f2",
+          "text": "CSA-CP measured O₂ and CO; a CO₂ monitor recorded conditions before and after each test. CO/CO₂ relationships varied with geometry and flow.",
+          "locator": "Abstract, instrumentation and gas analysis",
+          "type": "observed"
+        }
+      ],
+      "publisher": "NASA"
     },
     {
       "id": "nasa-saffire-vi",
@@ -1365,10 +1362,19 @@
       "doi": null,
       "status": "reviewed",
       "scope": "source_context",
-      "summary": "Bài hội nghị ICES-2024-365 trình bày kết quả sơ bộ Saffire VI trên Cygnus và so sánh với một số mẫu từ Saffire IV/V.",
-      "limitations": "Chỉ đọc abstract NTRS; đây là báo cáo sơ bộ, không phải tệp raw. Không ghép các khoảng hoặc hình học thành tổ hợp run.",
+      "summary": "ICES-2024-365 conference paper presenting preliminary Saffire VI results on Cygnus and comparisons with selected Saffire IV/V samples.",
+      "limitations": "Only the NTRS abstract was inspected. This is a preliminary report, not a raw dataset. Independent ranges and geometries must not be combined into run conditions.",
       "version": null,
-      "locator": "NTRS 20240002981, abstract"
+      "locator": "NTRS 20240002981, abstract",
+      "findings": [
+        {
+          "id": "nasa-saffire-vi-f1",
+          "text": "For the tests discussed in the abstract, the authors found spacecraft temperature and pressure increases less significant than increases in CO₂ and CO.",
+          "locator": "Abstract, final sentence",
+          "type": "author_interpretation"
+        }
+      ],
+      "publisher": "NASA"
     },
     {
       "id": "nasa-sofie",
@@ -1378,10 +1384,12 @@
       "doi": null,
       "status": "reviewed",
       "scope": "source_context",
-      "summary": "SoFIE nghiên cứu bắt cháy và tính cháy vật liệu rắn dùng trên tàu; insert đặt trong Combustion Integrated Rack cho phép thay đổi oxy và áp suất.",
-      "limitations": "Mô tả chương trình và mục tiêu, không có dữ liệu run trong trang đã đọc. Lịch ghi trên trang không được dùng để khẳng định trạng thái vận hành hiện tại.",
+      "summary": "SoFIE investigates ignition and flammability of spacecraft solid materials. Its Combustion Integrated Rack insert supports variation of oxygen, pressure and airflow.",
+      "limitations": "The inspected page describes program objectives and provides no run data. Its schedule is not evidence of current operational status.",
       "version": null,
-      "locator": "Facility Description; Science Objectives"
+      "locator": "Facility Description; Science Objectives",
+      "findings": [],
+      "publisher": "NASA"
     },
     {
       "id": "nasa-sofie-gel",
@@ -1391,10 +1399,12 @@
       "doi": null,
       "status": "reviewed",
       "scope": "source_context",
-      "summary": "SoFIE-GEL khảo sát tăng trưởng và tắt ngọn lửa quanh cầu PMMA dày, xét vận tốc dòng, phần trăm oxy, áp suất và gia nhiệt bên trong.",
-      "limitations": "Đây là thiết kế/mục tiêu thí nghiệm; trang không cung cấp giá trị điều kiện từng run. Không suy ra hành vi ở trọng lực Mặt Trăng từ mô tả này.",
+      "summary": "SoFIE-GEL investigates flame growth and extinction around thick PMMA spheres, considering airflow, oxygen concentration, pressure and internal heating.",
+      "limitations": "The page describes experiment design and objectives, not individual run conditions. Lunar-gravity behavior cannot be inferred from this description.",
       "version": null,
-      "locator": "Experiment Description"
+      "locator": "Experiment Description",
+      "findings": [],
+      "publisher": "NASA"
     },
     {
       "id": "nasa-flare",
@@ -1404,10 +1414,12 @@
       "doi": null,
       "status": "reviewed",
       "scope": "source_context",
-      "summary": "FLARE đặt mục tiêu liên hệ giới hạn cháy vật liệu giữa trọng lực thường và vi trọng lực, kết hợp thử nghiệm mặt đất, bay parabol và thử nghiệm ISS/KIBO.",
-      "limitations": "Trang mô tả kế hoạch có mốc thời gian cũ. Mục tiêu tương quan chưa phải mô hình đã được kiểm chứng có thể áp dụng trong dashboard.",
+      "summary": "FLARE aims to relate material flammability limits between normal gravity and microgravity using ground, parabolic-flight and ISS/KIBO experiments.",
+      "limitations": "The page contains an older planned schedule. The proposed correlation is not a validated prediction model for this dashboard.",
       "version": null,
-      "locator": "Experimental Approach; Relevance/Impact"
+      "locator": "Experimental Approach; Relevance/Impact",
+      "findings": [],
+      "publisher": "NASA"
     },
     {
       "id": "nasa-fire-synthesis",
@@ -1417,10 +1429,12 @@
       "doi": null,
       "status": "reviewed",
       "scope": "source_context",
-      "summary": "NASA tổng hợp các nghiên cứu FLEX, BRE, BASS-II, SoFIE-GEL, Saffire và confined combustion, kèm liên kết tài liệu nghiên cứu.",
-      "limitations": "Bài tổng hợp dùng để tìm tài liệu gốc, không làm nguồn số đo run. Các kết quả phụ thuộc cấu hình và không thiết lập vật liệu an toàn nhất.",
+      "summary": "NASA synthesis covering FLEX, BRE, BASS-II, SoFIE-GEL, Saffire and confined combustion, with links to research publications.",
+      "limitations": "Use this synthesis to locate primary literature, not as a source of run-level measurements. Configuration-dependent findings do not establish the safest material.",
       "version": null,
-      "locator": "BASS-II, SoFIE-GEL and Saffire paragraphs"
+      "locator": "BASS-II, SoFIE-GEL and Saffire paragraphs",
+      "findings": [],
+      "publisher": "NASA"
     },
     {
       "id": "psi-25",
@@ -1430,10 +1444,12 @@
       "doi": "10.60555/4qc4-de67",
       "status": "reviewed",
       "scope": "combustion",
-      "summary": "BASS-II khảo sát cháy và tắt của nhiên liệu rắn trong MSG trên ISS, thay đổi dòng cưỡng bức, oxy và hình học.",
-      "limitations": "Metadata đã đọc trực tiếp trong trình duyệt, thay thế trạng thái chỉ đọc được chỉ mục tìm kiếm. Chưa nhập run từ raw video hoặc bảng. Không tạo mọi tổ hợp từ các dải điều kiện.",
+      "summary": "BASS-II investigates burning and extinction of solid fuels in the ISS Microgravity Science Glovebox, varying forced flow, oxygen and geometry.",
+      "limitations": "Metadata was inspected directly in the browser, replacing the earlier search-index-only status. No runs were imported from raw video or tables. Independent condition ranges do not establish every possible combination.",
       "version": "4",
-      "locator": "PSI-25 Version 4; Description, Experimental Table, Version History"
+      "locator": "PSI-25 Version 4; Description, Experimental Table, Version History",
+      "findings": [],
+      "publisher": "NASA PSI"
     },
     {
       "id": "psi-159",
@@ -1443,10 +1459,12 @@
       "doi": "10.60555/cyt1-kh64",
       "status": "reviewed",
       "scope": "combustion",
-      "summary": "Nghiên cứu ngọn lửa khuếch tán hình cầu trên ISS; có bảng điều kiện và đầu ra của các test.",
-      "limitations": "Đã nhập 5 dòng đầu bảng đang chọn (180 dòng được giao diện báo); không phải toàn bộ các bảng hoặc kho 1.90 TB. Nồng độ oxy tùy cấu hình đầu đốt, không phải cabin.",
+      "summary": "ISS investigation of spherical diffusion flames with tables of test conditions and outputs.",
+      "limitations": "Only the first five rows of the selected table were imported; the interface reports 180 rows. This is not a complete import of all tables or the 1.90 TB archive. Oxygen concentrations depend on burner configuration and do not represent a cabin atmosphere.",
       "version": "1",
-      "locator": "PSI-159 Version 1; Description, Experimental Table, Data files and documents"
+      "locator": "PSI-159 Version 1; Description, Experimental Table, Data files and documents",
+      "findings": [],
+      "publisher": "NASA PSI"
     },
     {
       "id": "psi-10",
@@ -1456,10 +1474,12 @@
       "doi": "10.60555/w4zy-bt45",
       "status": "reviewed",
       "scope": "combustion",
-      "summary": "Nghiên cứu ngọn lửa khuếch tán normal/inverse hình cầu, soot inception và extinction; có bảng Experimental Table.",
-      "limitations": "Bảng đang chọn báo 121 dòng; chưa nhập. XO2, thành phần nhiên liệu và áp suất cần được hiểu theo cấu hình đầu đốt; Tad không tự động là nhiệt độ đo.",
+      "summary": "Investigation of normal and inverse spherical diffusion flames, soot inception and extinction, with an Experimental Table.",
+      "limitations": "The selected table reports 121 rows and has not been imported. XO2, fuel composition and pressure require burner-specific interpretation; Tad is not automatically a measured temperature.",
       "version": "1",
-      "locator": "PSI-10 Version 1; Description, Experimental Table, Data files and documents"
+      "locator": "PSI-10 Version 1; Description, Experimental Table, Data files and documents",
+      "findings": [],
+      "publisher": "NASA PSI"
     },
     {
       "id": "psi-62",
@@ -1469,10 +1489,12 @@
       "doi": "10.60555/e9xp-ex83",
       "status": "reviewed",
       "scope": "combustion",
-      "summary": "Phát triển UFGM và xử lý ảnh BASS/BASS-II để đối chiếu mô hình lan truyền ngọn lửa.",
-      "limitations": "Giao diện chỉ liệt kê gói metadata, không có bảng Experimental/Modeling gắn trực tiếp. Không phải tập run bay độc lập.",
+      "summary": "Development of UFGM and image processing for BASS/BASS-II flame-spread model comparisons.",
+      "limitations": "The interface lists a metadata package without a directly attached Experimental/Modeling table. This is not an independent set of flight runs.",
       "version": "1",
-      "locator": "PSI-62 Version 1; Description, Experimental Table, Data files and documents"
+      "locator": "PSI-62 Version 1; Description, Experimental Table, Data files and documents",
+      "findings": [],
+      "publisher": "NASA PSI"
     },
     {
       "id": "psi-60",
@@ -1482,10 +1504,12 @@
       "doi": "10.60555/mzjm-yv57",
       "status": "reviewed",
       "scope": "combustion",
-      "summary": "Phân tích ảnh SPICE bằng pyrometry và mô hình soot để nghiên cứu nhiệt độ và tỷ phần thể tích muội.",
-      "limitations": "Chỉ thấy thư mục metadata và không có bảng Experimental/Modeling. Mô tả mục tiêu không phải số đo hoặc bằng chứng mô hình đã được kiểm định độc lập.",
+      "summary": "SPICE image analysis using pyrometry and soot modeling to investigate temperature and soot volume fraction.",
+      "limitations": "Only metadata directories were visible; no Experimental/Modeling table was attached. Objectives are not measurements or evidence of independent model validation.",
       "version": "1",
-      "locator": "PSI-60 Version 1; Description, Experimental Table, Data files and documents"
+      "locator": "PSI-60 Version 1; Description, Experimental Table, Data files and documents",
+      "findings": [],
+      "publisher": "NASA PSI"
     },
     {
       "id": "psi-181",
@@ -1495,10 +1519,12 @@
       "doi": "10.60555/td9e-cz97",
       "status": "reviewed",
       "scope": "context_only",
-      "summary": "Nghiên cứu cấu trúc và cơ tính hợp kim hàn Pb-Sn và Sn-Ag-Cu; thuộc khoa học vật liệu.",
-      "limitations": "Nguồn bối cảnh, ngoài phạm vi bằng chứng cháy. Có kho raw data được liệt kê nhưng chưa tải; không có bảng Experimental gắn trực tiếp.",
+      "summary": "Study of the structure and mechanical properties of Pb-Sn and Sn-Ag-Cu solder alloys in materials science.",
+      "limitations": "Context only, outside the combustion evidence scope. A raw-data archive is listed but has not been downloaded; no Experimental table is directly attached.",
       "version": "1",
-      "locator": "PSI-181 Version 1; Description, Experimental Table, Data files and documents"
+      "locator": "PSI-181 Version 1; Description, Experimental Table, Data files and documents",
+      "findings": [],
+      "publisher": "NASA PSI"
     },
     {
       "id": "psi-142",
@@ -1508,10 +1534,12 @@
       "doi": "10.60555/80qf-vj95",
       "status": "reviewed",
       "scope": "combustion",
-      "summary": "Mô phỏng và thí nghiệm đối lưu ngược trên mặt đất, sử dụng dữ liệu FLEX để nghiên cứu chuyển tiếp ngọn lửa lạnh/ấm/nóng.",
-      "limitations": "Giao diện không gắn bảng, nhưng lịch sử phiên bản liệt kê Data Summary Table.csv và workbook dữ liệu đã phân tích. Chưa tải các tệp này.",
+      "summary": "Modeling and ground-based opposed-flow experiments using FLEX data to investigate cool, warm and hot flame transitions.",
+      "limitations": "No table is attached in the interface, but version history lists Data Summary Table.csv and an analyzed-data workbook. These files have not been downloaded.",
       "version": "2",
-      "locator": "PSI-142 Version 2; Description, Experimental Table, Data files and documents"
+      "locator": "PSI-142 Version 2; Description, Experimental Table, Data files and documents",
+      "findings": [],
+      "publisher": "NASA PSI"
     },
     {
       "id": "psi-108",
@@ -1521,10 +1549,12 @@
       "doi": "10.60555/j1z3-bw42",
       "status": "reviewed",
       "scope": "context_only",
-      "summary": "Nghiên cứu dòng thermocapillary trong silicone oil trên Space Shuttle; thuộc vật lý chất lưu.",
-      "limitations": "Nguồn bối cảnh về truyền nhiệt và dòng chảy, không phải thí nghiệm cháy nhiên liệu rắn hoặc tập SSCE. Chưa nhập tệp từ kho.",
+      "summary": "Space Shuttle investigation of thermocapillary flow in silicone oil, within fluid physics.",
+      "limitations": "Heat-transfer and flow context; not a solid-fuel combustion experiment or an SSCE dataset. Archive files have not been imported.",
       "version": "4",
-      "locator": "PSI-108 Version 4; Description, Experimental Table, Data files and documents"
+      "locator": "PSI-108 Version 4; Description, Experimental Table, Data files and documents",
+      "findings": [],
+      "publisher": "NASA PSI"
     },
     {
       "id": "psi-101",
@@ -1534,10 +1564,12 @@
       "doi": "10.60555/2np7-jv14",
       "status": "reviewed",
       "scope": "combustion",
-      "summary": "SAME-R nghiên cứu kích thước hạt khói và quan hệ với tạo khói, truyền khói; thay đổi vật liệu và thiết bị so với SAME.",
-      "limitations": "Không biến tổng số test được mô tả thành các run đã nhập. Chưa tải báo cáo và bảng dữ liệu.",
+      "summary": "SAME-R investigates smoke-particle size and its relationship to smoke formation and transport, with materials and instrumentation differing from SAME.",
+      "limitations": "Reported test totals are not imported runs. Reports and data tables have not been downloaded.",
       "version": "4",
-      "locator": "PSI-101 Version 4; Description, Experimental Table, Version History"
+      "locator": "PSI-101 Version 4; Description, Experimental Table, Version History",
+      "findings": [],
+      "publisher": "NASA PSI"
     },
     {
       "id": "psi-115",
@@ -1547,10 +1579,12 @@
       "doi": "10.60555/q0v5-1v28",
       "status": "reviewed",
       "scope": "combustion",
-      "summary": "Mô phỏng sự hình thành và phát triển hạt DBP ở trọng lực Trái Đất và vi trọng lực, sử dụng hình học liên quan SAME.",
-      "limitations": "Đây là nghiên cứu mô hình; lịch sử phiên bản có tệp .dat. Chưa đọc các tệp hoặc nhập chúng như số đo bay.",
+      "summary": "Modeling of DBP particle formation and growth under Earth gravity and microgravity using geometry related to SAME.",
+      "limitations": "A modeling study; version history includes .dat files. The files have not been inspected or imported as flight measurements.",
       "version": "3",
-      "locator": "PSI-115 Version 3; Description, Experimental Table, Version History"
+      "locator": "PSI-115 Version 3; Description, Experimental Table, Version History",
+      "findings": [],
+      "publisher": "NASA PSI"
     },
     {
       "id": "psi-98",
@@ -1560,10 +1594,12 @@
       "doi": "10.60555/0t15-1z43",
       "status": "reviewed",
       "scope": "combustion",
-      "summary": "Saffire-I nghiên cứu cháy vật liệu SIBAL quy mô lớn trên Cygnus sau khi rời ISS.",
-      "limitations": "Đã nhập hai mẫu S1/S2 từ bảng 5 dòng; các dòng flow visualization và trống không phải run. Metadata Project và Approach có khác biệt về nền tảng; dùng Cygnus theo Approach, giữ cảnh báo. Nhãn chiều dài/rộng trong bảng khác mô tả văn bản, không tự sửa.",
+      "summary": "Saffire-I investigates large-scale SIBAL material combustion on Cygnus after departure from the ISS.",
+      "limitations": "Two samples, S1/S2, were imported from a five-row table; flow-visualization and blank rows are not runs. Project and Approach metadata disagree on platform; Cygnus follows the Approach section, with the discrepancy retained. Table length/width labels differ from the narrative and have not been silently corrected.",
       "version": "4",
-      "locator": "PSI-98 Version 4; Description, Experimental Table, Version History"
+      "locator": "PSI-98 Version 4; Description, Experimental Table, Version History",
+      "findings": [],
+      "publisher": "NASA PSI"
     },
     {
       "id": "psi-39",
@@ -1573,10 +1609,12 @@
       "doi": "10.60555/m6pj-a914",
       "status": "reviewed",
       "scope": "combustion",
-      "summary": "CFI nghiên cứu cháy giọt nhiên liệu, pha loãng helium và tắt ngọn lửa lạnh trong CIR/MDCA.",
-      "limitations": "Mô tả Objectives và Approach có dải áp suất khác nhau; không dùng các dải này để tạo run. Chưa nhập dữ liệu camera/raw.",
+      "summary": "CFI investigates fuel-droplet combustion, helium dilution and cool-flame extinction in CIR/MDCA.",
+      "limitations": "Objectives and Approach sections give different pressure ranges; neither range is used to synthesize runs. Camera/raw data have not been imported.",
       "version": "4",
-      "locator": "PSI-39 Version 4; Description, Experimental Table, Version History"
+      "locator": "PSI-39 Version 4; Description, Experimental Table, Version History",
+      "findings": [],
+      "publisher": "NASA PSI"
     },
     {
       "id": "psi-102",
@@ -1586,10 +1624,12 @@
       "doi": "10.60555/gd4k-8h62",
       "status": "reviewed",
       "scope": "combustion",
-      "summary": "SAME đo kích thước hạt khói, đáp ứng detector và so sánh môi trường trọng lực bằng thiết bị và phân tích sau chuyến bay.",
-      "limitations": "Chưa nhập bảng hoặc tệp đo. Metadata nghiên cứu không chứng minh hiệu quả một detector ở mọi loại cháy.",
+      "summary": "SAME measures smoke-particle size and detector response and compares gravity environments using instrumentation and post-flight analysis.",
+      "limitations": "No measurement tables or files have been imported. Investigation metadata does not demonstrate detector effectiveness for every fire type.",
       "version": "4",
-      "locator": "PSI-102 Version 4; Description, Experimental Table, Version History"
+      "locator": "PSI-102 Version 4; Description, Experimental Table, Version History",
+      "findings": [],
+      "publisher": "NASA PSI"
     },
     {
       "id": "psi-106",
@@ -1599,10 +1639,12 @@
       "doi": "10.60555/pm12-rg61",
       "status": "reviewed",
       "scope": "combustion",
-      "summary": "SLICE nghiên cứu cấu trúc và độ ổn định ngọn lửa khuếch tán bằng nhiên liệu khí và dòng coflow.",
-      "limitations": "Bảng 13 dòng là danh sách ngày thử và nhiên liệu, có cả hiệu chuẩn trong mô tả; không coi mỗi ngày là một run có điều kiện định lượng đầy đủ.",
+      "summary": "SLICE investigates gaseous diffusion-flame structure and stability with coflow.",
+      "limitations": "The 13-row table lists test dates and fuels, with calibration included in the description. A date is not a run with fully specified quantitative conditions.",
       "version": "3",
-      "locator": "PSI-106 Version 3; Description, Experimental Table, Version History"
+      "locator": "PSI-106 Version 3; Description, Experimental Table, Version History",
+      "findings": [],
+      "publisher": "NASA PSI"
     },
     {
       "id": "psi-99",
@@ -1612,10 +1654,12 @@
       "doi": "10.60555/2chp-m469",
       "status": "reviewed",
       "scope": "combustion",
-      "summary": "Saffire-II khảo sát các mẫu silicone, SIBAL, PMMA và Nomex trên Cygnus.",
-      "limitations": "Đã giữ đủ bảng tóm tắt 16 dòng và nhập 9 mẫu 2-1 đến 2-9. Oxy là xấp xỉ hoặc khoảng; vật liệu trống ở 2-6 và 2-9 giữ null. Insignificant không được đổi thành 0. Các nhãn ?-g và Samle Thickness được giữ nguyên.",
+      "summary": "Saffire-II investigates silicone, SIBAL, PMMA and Nomex samples on Cygnus.",
+      "limitations": "The complete 16-row summary table is preserved, and nine samples, 2-1 through 2-9, are imported. Oxygen is approximate or a range; blank material values for 2-6 and 2-9 remain null. Insignificant is not converted to zero. Source labels ?-g and Samle Thickness are preserved.",
       "version": "5",
-      "locator": "PSI-99 Version 5; Description, Experimental Table, Version History"
+      "locator": "PSI-99 Version 5; Description, Experimental Table, Version History",
+      "findings": [],
+      "publisher": "NASA PSI"
     },
     {
       "id": "psi-107",
@@ -1625,10 +1669,12 @@
       "doi": "10.60555/9kbh-e962",
       "status": "reviewed",
       "scope": "combustion",
-      "summary": "SPICE nghiên cứu smoke point, chiều dài ngọn lửa và xu hướng tạo muội của nhiên liệu khí trong coflow.",
-      "limitations": "Chưa nhập bảng hoặc ảnh. Số ngọn lửa trong phần Approach không phải số run đã nhập vào FlameAtlas.",
+      "summary": "SPICE investigates smoke point, flame length and soot-formation propensity of gaseous fuels in coflow.",
+      "limitations": "No tables or images have been imported. Flame counts in the Approach section are not the number of runs imported into FlameAtlas.",
       "version": "4",
-      "locator": "PSI-107 Version 4; Description, Experimental Table, Version History"
+      "locator": "PSI-107 Version 4; Description, Experimental Table, Version History",
+      "findings": [],
+      "publisher": "NASA PSI"
     },
     {
       "id": "psi-100",
@@ -1638,10 +1684,12 @@
       "doi": "10.60555/040q-4h36",
       "status": "reviewed",
       "scope": "combustion",
-      "summary": "Saffire-III dùng mẫu SIBAL trên Cygnus với dòng concurrent và opposed.",
-      "limitations": "Bảng có hai mẫu và một dòng trống; đã nhập điều kiện hai mẫu. Bảng không báo cáo burn time hoặc đầu ra khác, nên không tạo số đo.",
+      "summary": "Saffire-III uses SIBAL samples on Cygnus in concurrent and opposed flow.",
+      "limitations": "The table contains two samples and one blank row; conditions for both samples are imported. No burn time or other output is reported, so no measurements are created.",
       "version": "4",
-      "locator": "PSI-100 Version 4; Description, Experimental Table, Version History"
+      "locator": "PSI-100 Version 4; Description, Experimental Table, Version History",
+      "findings": [],
+      "publisher": "NASA PSI"
     },
     {
       "id": "psi-21",
@@ -1651,10 +1699,12 @@
       "doi": "10.60555/23e1-9950",
       "status": "reviewed",
       "scope": "combustion",
-      "summary": "ACME CLD Flame khảo sát ngọn lửa methane/ethylene pha loãng và có muội bằng chẩn đoán quang học.",
-      "limitations": "Lịch sử phiên bản liệt kê CLD Flame.csv; chưa nhập nội dung. Thành phần nhiên liệu không được dùng như oxy khí quyển cabin.",
+      "summary": "ACME CLD Flame investigates diluted, sooting methane/ethylene flames using optical diagnostics.",
+      "limitations": "Version history lists CLD Flame.csv; its contents have not been imported. Fuel composition must not be interpreted as cabin-atmosphere oxygen.",
       "version": "4",
-      "locator": "PSI-21 Version 4; Description, Experimental Table, Version History"
+      "locator": "PSI-21 Version 4; Description, Experimental Table, Version History",
+      "findings": [],
+      "publisher": "NASA PSI"
     },
     {
       "id": "psi-20",
@@ -1664,10 +1714,12 @@
       "doi": "10.60555/vb93-3y72",
       "status": "reviewed",
       "scope": "combustion",
-      "summary": "BRE dùng nhiên liệu khí trên đầu đốt xốp để mô phỏng quá trình cháy liên quan tính chất vật liệu.",
-      "limitations": "Lịch sử phiên bản có ACME BRE.csv; chưa nhập nội dung. Các điều kiện trong Objectives là mục tiêu thử nghiệm, không phải tập run đã kiểm chứng.",
+      "summary": "BRE uses gaseous fuels on a porous burner to simulate combustion relevant to material properties.",
+      "limitations": "Version history includes ACME BRE.csv, which has not been imported. Conditions in Objectives describe test goals rather than a verified run dataset.",
       "version": "4",
-      "locator": "PSI-20 Version 4; Description, Experimental Table, Version History"
+      "locator": "PSI-20 Version 4; Description, Experimental Table, Version History",
+      "findings": [],
+      "publisher": "NASA PSI"
     },
     {
       "id": "psi-68",
@@ -1677,10 +1729,12 @@
       "doi": "10.60555/byp8-h018",
       "status": "reviewed",
       "scope": "combustion",
-      "summary": "FLEX-2 nghiên cứu giọt nhiên liệu thuần và hỗn hợp, cơ chế tắt, muội và tương tác giữa giọt.",
-      "limitations": "Bảng tóm tắt 9 dòng chứa khoảng và danh sách nhiều giá trị. Không nhân chéo các biến để tạo run giả; chưa nhập run từ bảng này.",
+      "summary": "FLEX-2 investigates pure and mixed fuel droplets, extinction mechanisms, soot and droplet interactions.",
+      "limitations": "The nine-row summary contains ranges and lists of values. Variables must not be cross-multiplied to invent runs; no runs have been imported from this table.",
       "version": "6",
-      "locator": "PSI-68 Version 6; Description, Experimental Table, Version History"
+      "locator": "PSI-68 Version 6; Description, Experimental Table, Version History",
+      "findings": [],
+      "publisher": "NASA PSI"
     },
     {
       "id": "psi-22",
@@ -1690,10 +1744,12 @@
       "doi": "10.60555/se5a-8c73",
       "status": "reviewed",
       "scope": "combustion",
-      "summary": "E-FIELD Flames nghiên cứu tác động điện trường lên dòng ion, đáp ứng ngọn lửa, muội và trạng thái gần giới hạn.",
-      "limitations": "Chưa nhập bảng hoặc tệp raw. Điện áp mô tả thiết kế không phải điều kiện đã đồng thời thử với mọi nhiên liệu.",
+      "summary": "E-FIELD Flames investigates electric-field effects on ion flow, flame response, soot and near-limit behavior.",
+      "limitations": "No tables or raw files have been imported. Design voltages do not establish conditions tested jointly with every fuel.",
       "version": "7",
-      "locator": "PSI-22 Version 7; Description, Experimental Table, Version History"
+      "locator": "PSI-22 Version 7; Description, Experimental Table, Version History",
+      "findings": [],
+      "publisher": "NASA PSI"
     },
     {
       "id": "psi-23",
@@ -1703,10 +1759,12 @@
       "doi": "10.60555/k57n-p030",
       "status": "reviewed",
       "scope": "combustion",
-      "summary": "s-Flame nghiên cứu cấu trúc, giới hạn tắt và dao động ngọn lửa khuếch tán hình cầu.",
-      "limitations": "Bảng 19 dòng là tóm tắt ngày thử và số ngọn lửa theo ngày, có oxy xấp xỉ và nhãn N3/N4. Không coi các dòng ngày là run riêng hoặc sửa nhãn hóa học khi chưa đối chiếu tệp gốc.",
+      "summary": "s-Flame investigates spherical diffusion-flame structure, extinction limits and oscillations.",
+      "limitations": "The 19-row table summarizes dates and daily flame counts, with approximate oxygen values and labels N3/N4. Date rows are not individual runs; chemical labels are not corrected without checking original files.",
       "version": "4",
-      "locator": "PSI-23 Version 4; Description, Experimental Table, Version History"
+      "locator": "PSI-23 Version 4; Description, Experimental Table, Version History",
+      "findings": [],
+      "publisher": "NASA PSI"
     },
     {
       "id": "psi-69",
@@ -1716,10 +1774,12 @@
       "doi": "10.60555/mbq8-0451",
       "status": "reviewed",
       "scope": "combustion",
-      "summary": "FLEX nghiên cứu cháy giọt và tác động chất dập lửa lên giới hạn cháy trong vi trọng lực.",
-      "limitations": "Đã xem 5 dòng đầu của bảng báo 275 dòng; chưa nhập thêm các dòng này. Nhãn Burning rate; mm thiếu chiều thời gian, nên không tự suy ra đơn vị mm²/s.",
+      "summary": "FLEX investigates droplet combustion and suppressant effects on flammability limits in microgravity.",
+      "limitations": "The first five rows of a table reporting 275 rows were inspected but not imported. The label Burning rate; mm lacks a time dimension; mm²/s is not inferred.",
       "version": "5",
-      "locator": "PSI-69 Version 5; Description, Experimental Table, Version History"
+      "locator": "PSI-69 Version 5; Description, Experimental Table, Version History",
+      "findings": [],
+      "publisher": "NASA PSI"
     },
     {
       "id": "psi-26",
@@ -1729,10 +1789,12 @@
       "doi": "10.60555/58h4-dy80",
       "status": "reviewed",
       "scope": "combustion",
-      "summary": "BASS khảo sát cháy nhiên liệu rắn và dập lửa bằng khí trơ trong các hình học và hướng dòng khác nhau.",
-      "limitations": "Nguồn tương ứng bản ghi BASS hiện có; không tạo thêm investigation trùng. Chưa nhập số đo từ video hoặc tệp gốc.",
+      "summary": "BASS investigates solid-fuel burning and inert-gas suppression across geometries and flow directions.",
+      "limitations": "This source corresponds to the existing BASS record; no duplicate investigation is created. Measurements have not been imported from video or original files.",
       "version": "4",
-      "locator": "PSI-26 Version 4; Description, Experimental Table, Version History"
+      "locator": "PSI-26 Version 4; Description, Experimental Table, Version History",
+      "findings": [],
+      "publisher": "NASA PSI"
     },
     {
       "id": "psi-47",
@@ -1742,10 +1804,12 @@
       "doi": "10.60555/ztgj-d202",
       "status": "reviewed",
       "scope": "combustion",
-      "summary": "DAFT/DAFT-2 kiểm tra thiết bị P-Trak đã sửa đổi trong vi trọng lực để hỗ trợ nghiên cứu aerosol SAME.",
-      "limitations": "Nguồn về tính khả thi thiết bị, không phải thử nghiệm tốc độ cháy. Tương ứng bản ghi DAFT hiện có, chưa nhập dữ liệu số.",
+      "summary": "DAFT/DAFT-2 evaluates modified P-Trak instrumentation in microgravity to support SAME aerosol research.",
+      "limitations": "Instrumentation feasibility, not a burning-rate experiment. This source corresponds to the existing DAFT record; numerical data have not been imported.",
       "version": "5",
-      "locator": "PSI-47 Version 5; Description, Experimental Table, Version History"
+      "locator": "PSI-47 Version 5; Description, Experimental Table, Version History",
+      "findings": [],
+      "publisher": "NASA PSI"
     }
   ]
 }

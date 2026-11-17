@@ -1,0 +1,6 @@
+{
+  "version": "conservative-run-match-v1",
+  "weights": {"theme": 0.30, "atmosphere": 0.25, "material": 0.20, "gravity": 0.15, "measurement": 0.10},
+  "tolerances": {"oxygen_fraction": 0.01, "pressure_kpa": 5, "airflow_m_s": 0.05},
+  "interpretation": "Product relevance heuristic, not a validated fire-hazard model. Unknown fields contribute only to the upper bound. Rank by the lower bound using actual run combinations."
+}

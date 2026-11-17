@@ -1,0 +1,45 @@
+{
+  "version": "english-curation-v1",
+  "accepted_previous_records": [
+    {
+      "id": "bass",
+      "previous_sha256": "e9da010375041eb788db53c89e4348ac65f8509490f178c955ec66ff05df60fa"
+    },
+    {
+      "id": "daft",
+      "previous_sha256": "72e452fb987a1ad72334a647bb29236119e59b5cef34555e2dda356255b4007a"
+    },
+    {
+      "id": "flex",
+      "previous_sha256": "3e618b3665b396337a56d2d77e818775ea7d744750085a9ebdde1d6d40fcaee0"
+    },
+    {
+      "id": "same",
+      "previous_sha256": "f15d1614bf7b19cff7de8dc89f23b640902e05015a4d86c6a8f5c3f8e901a0c0"
+    },
+    {
+      "id": "slice",
+      "previous_sha256": "b5f4b98de944e66981f3b6bebb799877eaeccf0bfa0ffd71b7cfdc9b1f9f3244"
+    },
+    {
+      "id": "spice",
+      "previous_sha256": "20e0d6b25559f72e69775288d14f5355b2fd6ddf3595f631a8ddf647a73bd1e5"
+    },
+    {
+      "id": "psi-159-cfi-g",
+      "previous_sha256": "d51321b229a22f9237e3b97c5a77d27c40ba3fa6b1e0b4f46821eab21fbb7270"
+    },
+    {
+      "id": "psi-98-saffire",
+      "previous_sha256": "71f9b83d609c19384dc14305ad93b7b64c3a5c4535f608e649112ff59edfc357"
+    },
+    {
+      "id": "psi-99-saffire",
+      "previous_sha256": "dddbf7edb531e6a5e84563547619222db9659fd6dd2d49fc5808179963206168"
+    },
+    {
+      "id": "psi-100-saffire",
+      "previous_sha256": "6871cff1f49c2020c296979199771a26728039fbe1abd12fce40d864f51156ac"
+    }
+  ]
+}

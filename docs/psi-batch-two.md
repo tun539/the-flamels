@@ -1,6 +1,6 @@
 # PSI batch two — 2026-11-15
 
-The user supplied 19 links representing 18 unique accessions. PSI-107 appeared twice and PSI-25 already existed. All 18 rendered detail pages were read directly in the NASA PSI browser interface; PSI-25 was updated in place and 17 new source records were added. Library count: 47 resources, including 26 unique PSI accessions. Each source has a verified title, DOI, version, reading scope and limitations.
+The user supplied 19 links representing 18 unique accessions. PSI-107 appeared twice and PSI-25 already existed. All 18 rendered detail pages were read directly in the NASA PSI browser interface; PSI-25 was updated in place and 17 new source records were added. Library count: 42 public resources, including 26 unique PSI accessions. Each source has a verified title, DOI, version, reading scope and limitations.
 
 | Accessions | Group | Integration |
 | --- | --- | --- |

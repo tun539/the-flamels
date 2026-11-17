@@ -1,0 +1,12 @@
+{
+  "release_channel": "public_sources_only",
+  "excluded_legacy_document_ids": [
+    "paper-01",
+    "paper-02",
+    "paper-03",
+    "paper-04",
+    "paper-05"
+  ],
+  "excluded_private_reference_count": 5,
+  "description": "Private document links, extracted content and derived summaries are not included in the public distribution. Counts describe only included public resources."
+}

@@ -1,6 +1,6 @@
 # FlameAtlas — The Flamels
 
-Microgravity combustion evidence workspace. Ten investigation records, 47 source resources, 18 imported runs and 17 numerical observations from PSI-159 and Saffire I–III summary tables.
+Microgravity combustion evidence workspace. Ten investigation records, 42 public source resources, 18 imported runs and 17 numerical observations from PSI-159 and Saffire I–III summary tables.
 
 ## Live web app
 
@@ -47,11 +47,13 @@ npm run dev
 
 ## Product presentation
 
-Open **Presentation ↗** in the workspace header or visit `/present` for the product showcase. It includes source composition, campaign-specific observation plots, a coverage matrix, source search, presentation controls and print/PDF styles. The showcase works without the API using a versioned repository snapshot. See [presentation guide](docs/presentation.md).
+Open **Presentation ↗** in the workspace header or visit `/present` for the product showcase. It includes source composition, campaign-specific observation plots, a coverage matrix, investigation comparison, scenario relevance intervals, cited evidence search, presentation controls and print/PDF styles. The English showcase works without the API using a versioned repository snapshot. See [presentation guide](docs/presentation.md).
+
+![FlameAtlas English product presentation](docs/assets/presentation-english.jpg)
 
 ## Source library and reading
 
-Open **Library** for the ten-column source table: 10 data links, 5 Sheet papers, 26 PSI accessions and related NASA resources (47 total). Select **Đọc** for summaries, cited findings and limitations. **Coverage** shows which experimental conditions are actually present. See [new sources and Codespace update](docs/source-expansion.md), [delivery status](docs/completion-status.md) and [testing](docs/testing.md).
+Open **Library** for the ten-column source table: 10 public data links, 26 PSI accessions and six related NASA resources (42 total). Select **Read** for summaries, cited findings and limitations. **Coverage** shows which experimental conditions are actually present. See [new sources and Codespace update](docs/source-expansion.md), [delivery status](docs/completion-status.md) and [testing](docs/testing.md).
 
 ## Features
 

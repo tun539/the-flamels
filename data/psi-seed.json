@@ -3,14 +3,14 @@
     "id": "psi-159-cfi-g",
     "acronym": "CFI-G",
     "title": "ACME — Cool Flames Investigation with Gases (CFI-G)",
-    "objectives": "Nghiên cứu ngọn lửa khuếch tán hình cầu trên ISS; có bảng điều kiện và đầu ra của các test.",
+    "objectives": "ISS investigation of spherical diffusion flames with tables of test conditions and outputs.",
     "theme": "fundamental",
     "platform": "ISS",
     "gravity": "microgravity",
     "material": "ethane",
     "hardware": "ACME; CIR",
     "verification": "metadata_verified",
-    "limitations": "Đã nhập 5 dòng đầu bảng đang chọn (180 dòng được giao diện báo); không phải toàn bộ các bảng hoặc kho 1.90 TB. Nồng độ oxy tùy cấu hình đầu đốt, không phải cabin. Peak burner temperature is not flame temperature; Tad is not imported as a measured outcome. Method and uncertainties are not reported in this summary.",
+    "limitations": "Only the first five rows of the selected table were imported; the interface reports 180 rows. This is not a complete import of all tables or the 1.90 TB archive. Oxygen concentrations depend on burner configuration and do not represent a cabin atmosphere. Peak burner temperature is not flame temperature; Tad is not imported as a measured outcome. Method and uncertainties are not reported in this summary.",
     "sources": [
       {
         "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159",
@@ -328,14 +328,14 @@
     "id": "psi-98-saffire",
     "acronym": "Saffire-I",
     "title": "Spacecraft Fire Safety Experiment-I (SAFFIRE-I)",
-    "objectives": "Saffire-I nghiên cứu cháy vật liệu SIBAL quy mô lớn trên Cygnus sau khi rời ISS.",
+    "objectives": "Saffire-I investigates large-scale SIBAL material combustion on Cygnus after departure from the ISS.",
     "theme": "prevention",
     "platform": "Uncrewed Cygnus",
     "gravity": "microgravity",
     "material": null,
     "hardware": "Saffire flow duct",
     "verification": "metadata_verified",
-    "limitations": "Đã nhập hai mẫu S1/S2 từ bảng 5 dòng; các dòng flow visualization và trống không phải run. Metadata Project và Approach có khác biệt về nền tảng; dùng Cygnus theo Approach, giữ cảnh báo. Nhãn chiều dài/rộng trong bảng khác mô tả văn bản, không tự sửa.",
+    "limitations": "Two samples, S1/S2, were imported from a five-row table; flow-visualization and blank rows are not runs. Project and Approach metadata disagree on platform; Cygnus follows the Approach section, with the discrepancy retained. Table length/width labels differ from the narrative and have not been silently corrected.",
     "sources": [
       {
         "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-98",
@@ -378,7 +378,7 @@
             "unit": "cm/s",
             "factor": 0.01
           },
-          "quality_notes": "Đã nhập hai mẫu S1/S2 từ bảng 5 dòng; các dòng flow visualization và trống không phải run. Metadata Project và Approach có khác biệt về nền tảng; dùng Cygnus theo Approach, giữ cảnh báo. Nhãn chiều dài/rộng trong bảng khác mô tả văn bản, không tự sửa."
+          "quality_notes": "Two samples, S1/S2, were imported from a five-row table; flow-visualization and blank rows are not runs. Project and Approach metadata disagree on platform; Cygnus follows the Approach section, with the discrepancy retained. Table length/width labels differ from the narrative and have not been silently corrected."
         },
         "measurements": [
           {
@@ -423,7 +423,7 @@
             "unit": "cm/s",
             "factor": 0.01
           },
-          "quality_notes": "Đã nhập hai mẫu S1/S2 từ bảng 5 dòng; các dòng flow visualization và trống không phải run. Metadata Project và Approach có khác biệt về nền tảng; dùng Cygnus theo Approach, giữ cảnh báo. Nhãn chiều dài/rộng trong bảng khác mô tả văn bản, không tự sửa."
+          "quality_notes": "Two samples, S1/S2, were imported from a five-row table; flow-visualization and blank rows are not runs. Project and Approach metadata disagree on platform; Cygnus follows the Approach section, with the discrepancy retained. Table length/width labels differ from the narrative and have not been silently corrected."
         },
         "measurements": [
           {
@@ -443,14 +443,14 @@
     "id": "psi-99-saffire",
     "acronym": "Saffire-II",
     "title": "Spacecraft Fire Experiment-II (SAFFIRE-II)",
-    "objectives": "Saffire-II khảo sát các mẫu silicone, SIBAL, PMMA và Nomex trên Cygnus.",
+    "objectives": "Saffire-II investigates silicone, SIBAL, PMMA and Nomex samples on Cygnus.",
     "theme": "prevention",
     "platform": "Uncrewed Cygnus",
     "gravity": "microgravity",
     "material": null,
     "hardware": "Saffire flow duct",
     "verification": "metadata_verified",
-    "limitations": "Đã giữ đủ bảng tóm tắt 16 dòng và nhập 9 mẫu 2-1 đến 2-9. Oxy là xấp xỉ hoặc khoảng; vật liệu trống ở 2-6 và 2-9 giữ null. Insignificant không được đổi thành 0. Các nhãn ?-g và Samle Thickness được giữ nguyên.",
+    "limitations": "The complete 16-row summary table is preserved, and nine samples, 2-1 through 2-9, are imported. Oxygen is approximate or a range; blank material values for 2-6 and 2-9 remain null. Insignificant is not converted to zero. Source labels ?-g and Samle Thickness are preserved.",
     "sources": [
       {
         "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-99",
@@ -497,7 +497,7 @@
             "unit": "cm/s",
             "factor": 0.01
           },
-          "quality_notes": "Đã giữ đủ bảng tóm tắt 16 dòng và nhập 9 mẫu 2-1 đến 2-9. Oxy là xấp xỉ hoặc khoảng; vật liệu trống ở 2-6 và 2-9 giữ null. Insignificant không được đổi thành 0. Các nhãn ?-g và Samle Thickness được giữ nguyên."
+          "quality_notes": "The complete 16-row summary table is preserved, and nine samples, 2-1 through 2-9, are imported. Oxygen is approximate or a range; blank material values for 2-6 and 2-9 remain null. Insignificant is not converted to zero. Source labels ?-g and Samle Thickness are preserved."
         },
         "measurements": []
       },
@@ -536,7 +536,7 @@
             "unit": "cm/s",
             "factor": 0.01
           },
-          "quality_notes": "Đã giữ đủ bảng tóm tắt 16 dòng và nhập 9 mẫu 2-1 đến 2-9. Oxy là xấp xỉ hoặc khoảng; vật liệu trống ở 2-6 và 2-9 giữ null. Insignificant không được đổi thành 0. Các nhãn ?-g và Samle Thickness được giữ nguyên."
+          "quality_notes": "The complete 16-row summary table is preserved, and nine samples, 2-1 through 2-9, are imported. Oxygen is approximate or a range; blank material values for 2-6 and 2-9 remain null. Insignificant is not converted to zero. Source labels ?-g and Samle Thickness are preserved."
         },
         "measurements": []
       },
@@ -575,7 +575,7 @@
             "unit": "cm/s",
             "factor": 0.01
           },
-          "quality_notes": "Đã giữ đủ bảng tóm tắt 16 dòng và nhập 9 mẫu 2-1 đến 2-9. Oxy là xấp xỉ hoặc khoảng; vật liệu trống ở 2-6 và 2-9 giữ null. Insignificant không được đổi thành 0. Các nhãn ?-g và Samle Thickness được giữ nguyên."
+          "quality_notes": "The complete 16-row summary table is preserved, and nine samples, 2-1 through 2-9, are imported. Oxygen is approximate or a range; blank material values for 2-6 and 2-9 remain null. Insignificant is not converted to zero. Source labels ?-g and Samle Thickness are preserved."
         },
         "measurements": []
       },
@@ -614,7 +614,7 @@
             "unit": "cm/s",
             "factor": 0.01
           },
-          "quality_notes": "Đã giữ đủ bảng tóm tắt 16 dòng và nhập 9 mẫu 2-1 đến 2-9. Oxy là xấp xỉ hoặc khoảng; vật liệu trống ở 2-6 và 2-9 giữ null. Insignificant không được đổi thành 0. Các nhãn ?-g và Samle Thickness được giữ nguyên."
+          "quality_notes": "The complete 16-row summary table is preserved, and nine samples, 2-1 through 2-9, are imported. Oxygen is approximate or a range; blank material values for 2-6 and 2-9 remain null. Insignificant is not converted to zero. Source labels ?-g and Samle Thickness are preserved."
         },
         "measurements": []
       },
@@ -653,7 +653,7 @@
             "unit": "cm/s",
             "factor": 0.01
           },
-          "quality_notes": "Đã giữ đủ bảng tóm tắt 16 dòng và nhập 9 mẫu 2-1 đến 2-9. Oxy là xấp xỉ hoặc khoảng; vật liệu trống ở 2-6 và 2-9 giữ null. Insignificant không được đổi thành 0. Các nhãn ?-g và Samle Thickness được giữ nguyên."
+          "quality_notes": "The complete 16-row summary table is preserved, and nine samples, 2-1 through 2-9, are imported. Oxygen is approximate or a range; blank material values for 2-6 and 2-9 remain null. Insignificant is not converted to zero. Source labels ?-g and Samle Thickness are preserved."
         },
         "measurements": [
           {
@@ -702,7 +702,7 @@
             "unit": "cm/s",
             "factor": 0.01
           },
-          "quality_notes": "Đã giữ đủ bảng tóm tắt 16 dòng và nhập 9 mẫu 2-1 đến 2-9. Oxy là xấp xỉ hoặc khoảng; vật liệu trống ở 2-6 và 2-9 giữ null. Insignificant không được đổi thành 0. Các nhãn ?-g và Samle Thickness được giữ nguyên."
+          "quality_notes": "The complete 16-row summary table is preserved, and nine samples, 2-1 through 2-9, are imported. Oxygen is approximate or a range; blank material values for 2-6 and 2-9 remain null. Insignificant is not converted to zero. Source labels ?-g and Samle Thickness are preserved."
         },
         "measurements": [
           {
@@ -751,7 +751,7 @@
             "unit": "cm/s",
             "factor": 0.01
           },
-          "quality_notes": "Đã giữ đủ bảng tóm tắt 16 dòng và nhập 9 mẫu 2-1 đến 2-9. Oxy là xấp xỉ hoặc khoảng; vật liệu trống ở 2-6 và 2-9 giữ null. Insignificant không được đổi thành 0. Các nhãn ?-g và Samle Thickness được giữ nguyên."
+          "quality_notes": "The complete 16-row summary table is preserved, and nine samples, 2-1 through 2-9, are imported. Oxygen is approximate or a range; blank material values for 2-6 and 2-9 remain null. Insignificant is not converted to zero. Source labels ?-g and Samle Thickness are preserved."
         },
         "measurements": [
           {
@@ -800,7 +800,7 @@
             "unit": "cm/s",
             "factor": 0.01
           },
-          "quality_notes": "Đã giữ đủ bảng tóm tắt 16 dòng và nhập 9 mẫu 2-1 đến 2-9. Oxy là xấp xỉ hoặc khoảng; vật liệu trống ở 2-6 và 2-9 giữ null. Insignificant không được đổi thành 0. Các nhãn ?-g và Samle Thickness được giữ nguyên."
+          "quality_notes": "The complete 16-row summary table is preserved, and nine samples, 2-1 through 2-9, are imported. Oxygen is approximate or a range; blank material values for 2-6 and 2-9 remain null. Insignificant is not converted to zero. Source labels ?-g and Samle Thickness are preserved."
         },
         "measurements": [
           {
@@ -849,7 +849,7 @@
             "unit": "cm/s",
             "factor": 0.01
           },
-          "quality_notes": "Đã giữ đủ bảng tóm tắt 16 dòng và nhập 9 mẫu 2-1 đến 2-9. Oxy là xấp xỉ hoặc khoảng; vật liệu trống ở 2-6 và 2-9 giữ null. Insignificant không được đổi thành 0. Các nhãn ?-g và Samle Thickness được giữ nguyên."
+          "quality_notes": "The complete 16-row summary table is preserved, and nine samples, 2-1 through 2-9, are imported. Oxygen is approximate or a range; blank material values for 2-6 and 2-9 remain null. Insignificant is not converted to zero. Source labels ?-g and Samle Thickness are preserved."
         },
         "measurements": [
           {
@@ -869,14 +869,14 @@
     "id": "psi-100-saffire",
     "acronym": "Saffire-III",
     "title": "Spacecraft Fire Experiment-III (SAFFIRE-III)",
-    "objectives": "Saffire-III dùng mẫu SIBAL trên Cygnus với dòng concurrent và opposed.",
+    "objectives": "Saffire-III uses SIBAL samples on Cygnus in concurrent and opposed flow.",
     "theme": "prevention",
     "platform": "Uncrewed Cygnus",
     "gravity": "microgravity",
     "material": null,
     "hardware": "Saffire flow duct",
     "verification": "metadata_verified",
-    "limitations": "Bảng có hai mẫu và một dòng trống; đã nhập điều kiện hai mẫu. Bảng không báo cáo burn time hoặc đầu ra khác, nên không tạo số đo.",
+    "limitations": "The table contains two samples and one blank row; conditions for both samples are imported. No burn time or other output is reported, so no measurements are created.",
     "sources": [
       {
         "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-100",
@@ -915,7 +915,7 @@
             "unit": "cm/s",
             "factor": 0.01
           },
-          "quality_notes": "Bảng có hai mẫu và một dòng trống; đã nhập điều kiện hai mẫu. Bảng không báo cáo burn time hoặc đầu ra khác, nên không tạo số đo."
+          "quality_notes": "The table contains two samples and one blank row; conditions for both samples are imported. No burn time or other output is reported, so no measurements are created."
         },
         "measurements": []
       },
@@ -946,7 +946,7 @@
             "unit": "cm/s",
             "factor": 0.01
           },
-          "quality_notes": "Bảng có hai mẫu và một dòng trống; đã nhập điều kiện hai mẫu. Bảng không báo cáo burn time hoặc đầu ra khác, nên không tạo số đo."
+          "quality_notes": "The table contains two samples and one blank row; conditions for both samples are imported. No burn time or other output is reported, so no measurements are created."
         },
         "measurements": []
       }

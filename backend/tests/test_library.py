@@ -15,16 +15,16 @@ class LibraryTests(unittest.TestCase):
   self.temp=tempfile.TemporaryDirectory();self.previous=catalogue.DB;catalogue.DB=Path(self.temp.name)/'test.db'
   self.client=TestClient(app);seed_library()
  def tearDown(self):catalogue.DB=self.previous;self.temp.cleanup()
- def test_ten_links_five_papers_psi(self):
-  items=resources();self.assertEqual(len(items),47)
+ def test_public_links_and_psi_catalogue(self):
+  items=resources();self.assertEqual(len(items),42)
   self.assertEqual(sum(r['id'].startswith('data-') for r in items),10)
-  self.assertEqual(sum(r['kind']=='paper' for r in items),5)
-  self.assertEqual(self.client.get('/api/library/paper-03').status_code,200)
+  self.assertEqual(sum(r['kind']=='paper' for r in items),0)
+  self.assertEqual(self.client.get('/api/library/nasa-bass-report').status_code,200)
   self.assertEqual(self.client.get('/api/library/missing').status_code,404)
  def test_idempotent_seed(self):
   seed_library()
   with catalogue.connect() as db:
-   self.assertEqual(db.execute('SELECT count(*) FROM source_documents').fetchone()[0],47)
+   self.assertEqual(db.execute('SELECT count(*) FROM source_documents').fetchone()[0],42)
    self.assertEqual(db.execute('SELECT count(*) FROM schema_migrations').fetchone()[0],1)
  def test_vietnamese_retrieval_and_unknown(self):
   self.assertTrue(search_evidence('thông lượng PMMA'))
@@ -92,7 +92,7 @@ class LibraryTests(unittest.TestCase):
 
  def test_expanded_source_provenance_and_findings(self):
   items=resources();by_id={r['id']:r for r in items}
-  self.assertEqual(sum(bool(r.get('parent_ids')) for r in items),7)
+  self.assertTrue(all(r.get('parent_ids') for r in items if r['id'].startswith('nasa-')))
   for item in items:
    for parent in item.get('parent_ids',[]):self.assertIn(parent,by_id)
   citations=search_evidence('Saffire VI')
@@ -135,3 +135,16 @@ class LibraryTests(unittest.TestCase):
   import hashlib
   expected=hashlib.sha256(Path('data/saffire-observed-tables.json').read_bytes()).hexdigest()
   for record in seeds[1:]:self.assertEqual(record['sources'][0]['checksum'],expected)
+
+ def test_excluded_legacy_sources_are_removed_from_existing_catalogues(self):
+  with catalogue.connect() as db:
+   db.execute('INSERT INTO source_documents VALUES (?,?)',('paper-01',json.dumps({'id':'paper-01','summary':'Private fixture, not a source finding'})))
+   db.execute('INSERT INTO evidence_chunks VALUES (?,?,?,?,?)',('legacy-fixture','paper-01','Private fixture','Test fixture','source_summary'))
+   db.execute('INSERT INTO evidence_search VALUES (?,?)',('legacy-fixture','privatefixtureterm'))
+  seed_library()
+  self.assertEqual(len(resources()),42)
+  self.assertFalse(search_evidence('privatefixtureterm'))
+  self.assertEqual(self.client.get('/api/library/paper-01').status_code,404)
+  with catalogue.connect() as db:
+   self.assertEqual(db.execute('SELECT count(*) FROM evidence_chunks WHERE document_id=?',('paper-01',)).fetchone()[0],0)
+  self.assertNotIn('drive.google.com',json.dumps(resources()))

@@ -7,7 +7,13 @@ ROOT=Path(__file__).resolve().parents[2]
 
 def seed_library():
     records=json.loads((ROOT/'data/resources.json').read_text())
+    policy=json.loads((ROOT/'data/publication-policy.json').read_text())
     with connect() as db:
+        for excluded in policy['excluded_legacy_document_ids']:
+            for old in db.execute('SELECT id FROM evidence_chunks WHERE document_id=?',(excluded,)).fetchall():
+                db.execute('DELETE FROM evidence_search WHERE id=?',(old['id'],))
+            db.execute('DELETE FROM evidence_chunks WHERE document_id=?',(excluded,))
+            db.execute('DELETE FROM source_documents WHERE id=?',(excluded,))
         for record in records:
             db.execute('INSERT INTO source_documents VALUES (?,?) ON CONFLICT(id) DO UPDATE SET payload=excluded.payload',(record['id'],json.dumps(record)))
             for old in db.execute('SELECT id FROM evidence_chunks WHERE document_id=?',(record['id'],)).fetchall():

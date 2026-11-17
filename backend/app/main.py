@@ -8,7 +8,7 @@ from fastapi.responses import Response
 from pydantic import BaseModel, Field, ValidationError
 from .catalogue import all_items, connect, put
 from .models import Investigation, Scenario
-from .ranking import rank, VERSION
+from .ranking import rank, VERSION, TOLERANCES
 from .science import oxygen_partial_pressure
 from .library import resources, search_evidence
 from .ai import select_evidence, semantic_rerank
@@ -59,7 +59,7 @@ def compare(selection: Selection):
 @app.post('/api/scenarios/evaluate')
 def evaluate(scenario: Scenario):
     results=sorted([rank(i,scenario) for i in all_items() if i['verification']!='synthetic'],key=lambda r:(-r['lower'],r['investigation']['id']))
-    return {'results':results,'methodology_version':VERSION,'oxygen_partial_pressure_kpa':oxygen_partial_pressure(scenario.oxygen_fraction,scenario.pressure_kpa),'tolerances':{'oxygen_fraction':.01,'pressure_kpa':5,'airflow_m_s':.05},'limitations':['Relevance is not fire hazard. Weights and tolerances are design assumptions, not validated safety thresholds.','Outside available evidence coverage means the complete requested combination has not been matched.']}
+    return {'results':results,'methodology_version':VERSION,'oxygen_partial_pressure_kpa':oxygen_partial_pressure(scenario.oxygen_fraction,scenario.pressure_kpa),'tolerances':TOLERANCES,'limitations':['Relevance is not fire hazard. Weights and tolerances are design assumptions, not validated safety thresholds.','Outside available evidence coverage means the complete requested combination has not been matched.']}
 
 @app.post('/api/assistant/query')
 def assistant(question: Question):
@@ -74,10 +74,10 @@ def assistant(question: Question):
     citations,mode,ai_warning=select_evidence(question.question,citations[:6])
     limitations=['Curated source summaries; not certified safety guidance.','Read source conditions and limitations before applying results.']
     limitations.extend(x for x in [warning,ai_warning] if x)
-    return {'mode':mode,'answer':'Các bằng chứng liên quan được trình bày kèm nguồn và phạm vi áp dụng.' if citations else 'Chưa đủ bằng chứng trong bộ dữ liệu hiện tại.',
+    return {'mode':mode,'answer':'Relevant evidence is listed below with source locators and applicability limits.' if citations else 'Insufficient evidence in the current dataset.',
             'claims':[{'text':c['summary'],'evidence_ids':[c['id']],'type':c.get('kind','source_summary')} for c in citations],
             'citations':citations,'limitations':limitations,'applicable_conditions':[c.get('limitations','See source') for c in citations],
-            'evidence_gaps':['PSI raw run files are not yet verified; paper findings are not complete experimental runs.'],
+            'evidence_gaps':['The imported PSI summary rows cover only part of the source archive. Paper-level findings are not complete experimental runs; unimported raw files remain outside this evidence set.'],
             'suggested_next_steps':['Open the source at the cited section.']}
 
 

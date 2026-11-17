@@ -1,9 +1,23 @@
-# Current scope and remaining dependencies
+# Scope and remaining dependencies
 
-The research MVP now includes the source reader/library, evidence retrieval with optional AI adapters, source-backed summaries, metadata coverage, measurement schema/plots, explicit import mapping and original-unit provenance.
+The research MVP and English presentation are implemented. See [delivery status](completion-status.md), [presentation guide](presentation.md) and [testing](testing.md).
 
-External dependencies: retrieve and independently validate actual PSI run files; supply a server-side API key/model to exercise the optional paid AI path. Unreadable resources are marked explicitly.
+## Delivered core workflow
 
-Post-MVP: video analysis, knowledge graph, independently validated prediction, recurring synchronization and multi-user authentication. These are not prerequisites for the local research workflow.
+Discover investigations → inspect observations and sources → compare actual configurations → evaluate scenario relevance → retrieve cited findings → export evidence.
 
-See completion-status.md and testing.md for delivered capabilities and verification results.
+The standalone presentation supports this read-only workflow from its versioned snapshot. The full workspace additionally supports validated import, persistence, API access and optional model-based evidence selection.
+
+## External data work
+
+Expand the inspected PSI subset by downloading accessible original files, validating their schema, units and configuration definitions, and independently reviewing imported measurements. A source archive listing is not evidence that its contents have been downloaded or ingested.
+
+## Optional extensions
+
+- Video extraction and analysis with validated measurement methods.
+- A knowledge graph distinguishing investigations, runs, sources and findings.
+- Independently evaluated predictive models with appropriate uncertainty.
+- Recurring source synchronization with review before ingestion.
+- Multi-user authentication and deployment hardening before public write access.
+
+These extensions require separate data, validation or infrastructure work. Relevance intervals are not a prediction model or a safety certification.

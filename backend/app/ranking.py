@@ -1,11 +1,15 @@
 from .models import Scenario
-VERSION = 'conservative-run-match-v1'
-WEIGHTS = {'theme': .30, 'atmosphere': .25, 'material': .20, 'gravity': .15, 'measurement': .10}
+import json
+from pathlib import Path
+METHODOLOGY = json.loads((Path(__file__).resolve().parents[2]/'data/ranking-methodology.json').read_text())
+VERSION = METHODOLOGY['version']
+WEIGHTS = METHODOLOGY['weights']
+TOLERANCES = METHODOLOGY['tolerances']
 
 def rank(item, scenario: Scenario):
     def evaluate(run):
         atmosphere = []
-        for key, tolerance in [('oxygen_fraction',.01),('pressure_kpa',5),('airflow_m_s',.05)]:
+        for key, tolerance in TOLERANCES.items():
             value=run.get(key)
             atmosphere.append(None if value is None else float(abs(value-getattr(scenario,key)) <= tolerance))
         scores = {'theme':float(item['theme']==scenario.theme), 'atmosphere':0.0 if 0.0 in atmosphere else (None if None in atmosphere else min(atmosphere))}

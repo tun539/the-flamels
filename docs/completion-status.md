@@ -1,29 +1,43 @@
-# Current data inventory
+# Delivery status — public-source release
 
-See [PSI batch two](psi-batch-two.md): 47 resources, 10 investigation records, 18 imported runs and 17 numerical observations. Source summary rows and full raw archives are distinguished. The older delivery section below is retained as historical scope.
+FlameAtlas is a working research MVP with an English presentation site and a full Next.js/FastAPI/SQLite workspace. Source checks in the curated snapshot were last performed on 2026-11-15; this release completes the English software workflow and restricts the public catalogue to distributable public sources.
 
-# Delivery status — 2026-11-15
+Five private document-derived references are excluded from public source files, generated snapshots and retrieval indexes. The public catalogue contains no private Drive document links or derived paper summaries.
 
-## Implemented
+## Evidence inventory
 
-- Library with exactly ten display columns, ten source-data links, five paper summaries, PSI-117 and seven related NASA resources (23 total).
-- Source reader with twelve curated findings, section/page locators, DOI links, verification/access state and applicability limits.
-- Private Drive PDFs are not redistributed. Original files open using the reader's existing Drive access.
-- SQLite migrations for source documents, evidence chunks, measurements and embedding cache.
-- Vietnamese/English keyword evidence search; optional OpenAI Responses evidence selection and cached embedding reranking. Only known evidence IDs can be returned; displayed claim text is taken from curated evidence, not generated scientific assertions.
-- Explicit field mapping and canonical unit conversion retaining original values; preview and commit use the same validation.
-- Run metadata coverage table and measurement plots grouped by run, quantity, unit and method; missing data has an explicit empty state.
-- Existing investigation search/detail, 2–4 study comparison, conservative ranking, scenario evaluation and CSV/JSON/HTML export remain available.
-- Comparison displays actual run combinations and warns about differing quantities, units or methods. Exported JSON bundles can be imported directly without converting canonical units again.
+- 42 catalogued public source resources, including 26 NASA PSI accessions.
+- 10 investigation records: six metadata overviews and four campaigns with imported summary rows.
+- 18 imported runs and 17 numerical observations: 12 reported durations and five peak burner temperatures.
+- Four qualitative Saffire-II outputs remain `Insignificant`, not numerical zero. Saffire-III has two imported condition rows and no measured output.
+- Raw table entries, source locators, original units, measurement precision and original-source checksums are preserved.
 
-Synthetic records are excluded from overview metrics, evidence coverage and scenario ranking. They remain visibly labeled when inspected or compared.
+## Presentation and standalone research tools
 
-## External data limits
+The published presentation includes source-composition charts, campaign-specific observation plots, an availability matrix, an investigation explorer, comparison of 2–4 records, source search, cited evidence retrieval, scenario relevance intervals, CSV/JSON exports and print styles. Seven presentation sections support previous/next controls, arrow keys, Page Up/Down and Escape. These tools use a versioned repository snapshot and do not need an active Codespace or model API key.
 
-PSI's search/detail pages did not provide readable run files during retrieval. The YouTube source could not be fetched. These resources stay marked external-only/unavailable. There are six verified investigation metadata records and zero raw experimental runs. Paper aggregate findings are never relabeled as complete runs. No raw data, DOI, measurement or time series was invented.
+Browser-local saved research sessions, shareable validated view links, unsaved-change indicators and stale scenario-result warnings are implemented. View links preserve settings while recomputing results against the current dataset.
 
-## Configuration and scope
+All interface copy, curated source summaries, published-finding paraphrases, status messages and assistant responses are in English. Original third-party source documents and user-imported content retain their own language.
 
-Copy .env.example to .env. With no keys, the complete local workflow runs in retrieval mode. Set OPENAI_API_KEY and OPENAI_MODEL to enable model-based evidence selection; optionally set OPENAI_EMBEDDING_MODEL for semantic reranking. Calls have timeouts and fall back to keyword retrieval. Enabling AI transmits the question and the displayed curated summaries to OpenAI. API keys remain in the backend. Real paid-provider calls require the user's configured key; tests use mocked provider responses.
+## Full research workspace
 
-This is a local research MVP. Services bind to loopback. FLAMEATLAS_WRITE_TOKEN optionally protects direct backend import commits; the frontend forwards it server-side. It is not a substitute for per-user authentication in a public deployment. Video analysis, predictive models and shared workspaces remain post-MVP extensions.
+- SQLite/FTS5 investigation and evidence search; investigation detail and individual observations.
+- Source library with ten display columns and a reader with findings, access states, DOI links, locators and limitations.
+- Comparison of 2–4 investigations with actual run-condition tables and method/unit mismatch warnings.
+- Scenario evaluation by the documented conservative lower-bound heuristic, separately from evidence quality or fire hazard.
+- Evidence retrieval without keys. Optional server-side model selection and cached embedding reranking use validated evidence IDs and fall back to keyword retrieval.
+- JSON/CSV import with preview, unit conversion, duplicate detection and explicit commit; JSON/CSV/printable HTML export.
+- Known pre-English seed revisions upgrade only when the stored record matches its accepted checksum. User-edited records are retained. Editorial upgrades cannot change stored measurements.
+
+## Verification and delivery boundaries
+
+CI runs backend tests, snapshot freshness checks, TypeScript compilation, production builds and browser journeys. Browser tests cover the research workflow, missing evidence, imports/exports, comparison, scenario evaluation and snapshot/backend ranking parity.
+
+The standalone site preserves its existing Site access settings. The full workspace runs locally, in Docker or in the existing private Codespace. Publishing the static presentation does not publish the FastAPI backend or add multi-user authentication.
+
+## External dependencies and future scope
+
+Only the inspected source-summary subset is imported. Complete raw archives, independently validated prediction models, video analysis, recurring synchronization and public multi-user deployment are not delivered by this MVP. Optional paid model calls require the user's server-side configuration. Private Drive PDF full text is not redistributed.
+
+Research support tool. Not a certified fire safety assessment.
