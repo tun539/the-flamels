@@ -1789,10 +1789,10 @@ index d1c2d60..c3ad8cb 100644
    test("a stream cut before the result is reported as an interrupted connection", async ({ page }) => {
 diff --git a/frontend/e2e/flamels.edition.spec.ts b/frontend/e2e/flamels.edition.spec.ts
 new file mode 100644
-index 0000000..c586122
+index 0000000..f37d21b
 --- /dev/null
 +++ b/frontend/e2e/flamels.edition.spec.ts
-@@ -0,0 +1,46 @@
+@@ -0,0 +1,47 @@
 +import { expect, test } from "@playwright/test";
 +
 +test("The Flamels identity, navigation and source attribution are visible", async ({ page }) => {
@@ -1825,10 +1825,11 @@ index 0000000..c586122
 +for (const route of ["flame-extinction", "flame-spread", "spacecraft-fire", "gaseous-flames", "smoke-detection"]) {
 +  test(`The ${route} conceptual 3D studio renders`, async ({ page }) => {
 +    await page.goto(`/phenomena/${route}#studio`);
-+    const studio = page.getByTestId("science-studio");
-+    await studio.scrollIntoViewIfNeeded();
-+    await expect(studio.locator("canvas")).toBeVisible({ timeout: 90_000 });
-+    await expect(page.getByTestId("mode-chip")).toContainText("Conceptual 3D");
++    const lite = route === "gaseous-flames" || route === "smoke-detection";
++    const host = page.getByTestId(lite ? "lite-canvas-host" : "lab-canvas-host");
++    await host.scrollIntoViewIfNeeded();
++    await expect(host.locator("canvas")).toBeVisible({ timeout: 90_000 });
++    await expect(page.getByTestId(lite ? "conceptual-notice" : "mode-chip")).toContainText("Conceptual 3D");
 +  });
 +}
 +
