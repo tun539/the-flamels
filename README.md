@@ -1,6 +1,23 @@
 # FlameAtlas — The Flamels
 
-Microgravity combustion evidence workspace. Ten investigation records, 42 public source resources, 18 imported runs and 17 numerical observations from PSI-159 and Saffire I–III summary tables.
+The Flamels research product includes a public evidence atlas and an extended scientific application. The public atlas contains ten investigation records, 42 public sources, 18 imported runs and 17 numerical observations. The extended edition retains the complete pinned SpaceFire reference application in a separate runtime and catalogue.
+
+## Extended research platform — The Flamels edition
+
+The complete SpaceFire-derived research platform now has its own FlameAtlas identity, five conceptual 3D studios, scientific analysis, collection browsing, condition similarity, guided demo and cited Research Copilot. The installer clones the complete pinned reference repository, verifies source hashes and applies the reviewed edition patch; the original MVP remains available.
+
+### Quick start (Windows)
+
+```bat
+git clone https://github.com/tun539/the-flamels.git C:\Flamels
+cd /d C:\Flamels
+setup.cmd
+launch.cmd
+```
+
+Open `http://127.0.0.1:3000`. No model API key is required for evidence retrieval. [Full platform setup, features, attribution and deployment](research-platform/README.md).
+
+The adaptation retains attribution to [COngtuthien/SpaceFire-AI](https://github.com/COngtuthien/SpaceFire-AI). Upstream supplies no license file; no new license is assigned to its materials. The original NASA files are preserved.
 
 ## Live web app
 

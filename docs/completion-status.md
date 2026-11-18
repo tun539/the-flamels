@@ -1,4 +1,6 @@
-# Delivery status — public-source release
+# Delivery status — The Flamels
+
+The extended SpaceFire-derived research platform is now available alongside the original MVP. See [edition delivery status](research-platform-delivery.md) and [full setup](../research-platform/README.md) for its separate catalogue, reproducible installation, software attribution and hosting boundaries.
 
 FlameAtlas is a working research MVP with an English presentation site and a full Next.js/FastAPI/SQLite workspace. Source checks in the curated snapshot were last performed on 2026-11-15; this release completes the English software workflow and restricts the public catalogue to distributable public sources.
 

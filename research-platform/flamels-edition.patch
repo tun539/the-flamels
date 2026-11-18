@@ -1,0 +1,2469 @@
+diff --git a/.env.example b/.env.example
+index bbe13fe..beba1cb 100644
+--- a/.env.example
++++ b/.env.example
+@@ -1,4 +1,4 @@
+-# SpaceFire AI configuration. Copy to `.env` (never commit `.env`).
++# FlameAtlas / The Flamels configuration. Copy to `.env` (never commit `.env`).
+ # Every variable is optional: without an LLM key the app runs in retrieval-only mode.
+ 
+ # --- AI synthesis (provider-agnostic; implemented: openai, gemini, anthropic) ---
+diff --git a/README.edition.md b/README.edition.md
+new file mode 100644
+index 0000000..1006f87
+--- /dev/null
++++ b/README.edition.md
+@@ -0,0 +1,36 @@
++# FlameAtlas Research Platform — The Flamels
++
++The dedicated The Flamels edition of SpaceFire-AI. The complete scientific application and NASA source files are retained, with FlameAtlas branding, an original flame mark, a navy/mint interface, isolated browser preferences, a provenance page and links to The Flamels evidence presentation and GitHub repository.
++
++Upstream implementation: [COngtuthien/SpaceFire-AI](https://github.com/COngtuthien/SpaceFire-AI), pinned to `9817452c3effdf03864dea65f23d1f767b33251b`. Read `UPSTREAM_README.md` for the original credits and methodology. No upstream license file was provided; no new license is asserted over that material.
++
++## Run this edition from The Flamels repository
++
++```bat
++git clone https://github.com/tun539/the-flamels.git
++cd the-flamels
++setup.cmd
++launch.cmd
++```
++
++The Flamels launcher clones the complete pinned source into its ignored runtime folder, verifies source-file hashes, applies the reviewed edition patch, installs dependencies, builds the database and builds the frontend. It leaves the existing FlameAtlas MVP source intact.
++
++For a materialized checkout of this edition on Linux, use `scripts/setup.sh` followed by `scripts/start.sh --prod`. On Windows use the included `setup.cmd` and `launch.cmd`.
++
++## Included application
++
++- Research-to-Safety Explorer and a guided presentation journey.
++- Combustion Explorer, investigation and record details, compatible comparison and condition similarity.
++- Five conceptual 3D studios: droplet flame extinction, solid flame spread, spacecraft fire, gaseous flames and smoke detection.
++- Scientific charts, source documents and NASA media with provenance.
++- Cited Research Copilot, literature discovery, knowledge graph and data reliability tools.
++- An exploratory FLEX estimator, kept separate from measured results and accompanied by its upstream validation limitations.
++- Light/dark/system themes and responsive navigation.
++
++The Copilot works in evidence-only mode without a provider key. Configure your own key only in the materialized checkout's gitignored `.env` to enable model-written answers. No model key is included or copied from upstream.
++
++The extended application has its own schema and catalogue. Its record counts are not added to the original FlameAtlas summary counts. Imported curated derivatives preserve their upstream source status; inclusion does not imply independent re-verification by The Flamels.
++
++Local execution and a private Codespace are supported. The existing public presentation remains available separately; publishing it does not host this application's FastAPI backend.
++
++Research support tool. Not a certified fire safety assessment. NASA does not endorse this project.
+diff --git a/SOURCE_ORIGIN.json b/SOURCE_ORIGIN.json
+new file mode 100644
+index 0000000..081b241
+--- /dev/null
++++ b/SOURCE_ORIGIN.json
+@@ -0,0 +1,8 @@
++{
++  "repository": "https://github.com/COngtuthien/SpaceFire-AI",
++  "commit": "9817452c3effdf03864dea65f23d1f767b33251b",
++  "edition": "FlameAtlas Research Platform by The Flamels",
++  "upstream_license": "No license file supplied by upstream; no new license is asserted for upstream materials.",
++  "raw_sources": "Immutable NASA source folders retained byte-for-byte.",
++  "github": "https://github.com/tun539/the-flamels"
++}
+diff --git a/UPSTREAM_README.md b/UPSTREAM_README.md
+new file mode 100644
+index 0000000..1c44563
+--- /dev/null
++++ b/UPSTREAM_README.md
+@@ -0,0 +1,529 @@
++<div align="center">
++
++# SpaceFire AI
++
++### From NASA Data to Fire Safety Insights
++
++**An AI-powered research platform for exploring NASA microgravity combustion investigations through scientific data
++analysis, interactive 3D visualization, and evidence-grounded AI assistance.**
++
++[Quick Start](#quick-start-windows) · [The Challenge](#the-challenge) · [Features](#key-features) ·
++[Research Copilot](#research-copilot--powered-by-openai-gpt-41-mini) · [Gallery](#platform-preview) ·
++[NASA Datasets](#nasa-datasets) · [Architecture](#system-architecture) · [Run it locally](#installation-and-local-demo) ·
++[Limitations](#scientific-accuracy-and-limitations)
++
++</div>
++
++<p align="center">
++  <img src="docs/assets/screenshots/home.webp" alt="SpaceFire AI home page with a real BASS-II flame photographed aboard the ISS" width="100%">
++</p>
++
++| | |
++|---|---|
++| **Full title** | SpaceFire AI: An AI-Powered Platform for Microgravity Combustion Research and Spacecraft Fire Safety |
++| **Event** | NASA Space Apps Challenge 2026: *Flame in Freefall: AI-Powered Fire Safety Insights from Microgravity Combustion Data* |
++| **Research area** | Microgravity combustion, spacecraft fire safety, scientific data exploration |
++| **Built with** | Next.js · React · TypeScript · three.js · FastAPI · Python · SQLite · OpenAI GPT-4.1 mini |
++| **Repository** | [github.com/COngtuthien/SpaceFire-AI](https://github.com/COngtuthien/SpaceFire-AI) |
++| **Data** | Public NASA Physical Sciences Informatics (PSI) investigations: ten in total, across five scientific domains |
++
++> SpaceFire AI is an independent hackathon project. It is not affiliated with or endorsed by NASA.
++
++## Quick Start (Windows)
++
++You need Windows 10 or 11, [Python 3.11–3.13](https://www.python.org/downloads/) (tick *Add python.exe to PATH*),
++[Node.js 20 LTS or newer](https://nodejs.org/) and [Git](https://git-scm.com/). No GPU, no dataset download and no API
++key are required. In a Command Prompt, clone into a short folder path (at most 80 characters, for example
++`C:\SpaceFire-AI`), because Windows limits file paths to 260 characters:
++
++```bat
++cd /d C:\
++git clone https://github.com/COngtuthien/SpaceFire-AI.git
++cd SpaceFire-AI
++setup.cmd
++launch.cmd
++```
++
++- **`setup.cmd`** runs once. It checks the tools and installs the Python and npm packages. It also checks the NASA
++  data committed to the repository, builds the scientific database and builds the website. In our fresh-clone test it
++  took about 4 minutes, with the packages already in this PC's download cache. A first install has to download the Python and npm
++  packages (about 1.3 GB once installed), so it can take longer on a slow connection.
++- **`launch.cmd`** starts the API and the website and checks that both respond. It then opens **http://localhost:3000**.
++  Keep its window open; press **Ctrl+C** there to stop everything. If port 3000 or 8000 is busy, it picks the next free
++  port and prints the address.
++
++Then try the **Guided Demo** (`/demo`), the **Research-to-Safety Explorer** (`/safety-explorer`), the **Combustion
++Explorer** (`/experiments`), the **3D studios** (`/phenomena/...`) and the **Research Copilot** (`/copilot`).
++
++> [!IMPORTANT]
++> **AI answers need an OpenAI key, and none is included in this public repository.** On a fresh clone the Research
++> Copilot runs in **evidence-only mode**: it still retrieves and cites the NASA passages, but writes no AI text. To turn
++> on AI answers by GPT-4.1 mini, run `setup.cmd -SetOpenAIKey`, paste a key (the input is hidden; it is stored only in
++> your local, gitignored `.env`), and start `launch.cmd` again. See [AI availability](#ai-availability).
++
++---
++
++## The Challenge
++
++**On Earth, fire depends on gravity.** Hot combustion gases rise, fresh air flows in underneath, and a flame takes its
++familiar teardrop shape. **In microgravity, buoyancy disappears.** Flames become slow, near-spherical and governed by
++diffusion and by the ventilation airflow of the cabin. Droplet flames can go out and continue as barely visible
++*cool flames*. Materials that self-extinguish on Earth can keep burning in a slow airflow.
++
++**Spacecraft are closed cabins with no escape.** Crew safety depends on understanding how fires ignite, spread and
++produce smoke in these conditions, and on detecting them early.
++
++**NASA has flown many combustion experiments, but the evidence is hard to use together.** It is scattered across
++investigations, CSV tables, final reports, figure data, flight logs and metadata, each with a different structure,
++units and level of completeness.
++
++**SpaceFire AI makes this evidence explorable.** It starts from a research question, finds the relevant NASA
++investigations, and shows exactly what was measured, where it came from, and what the data cannot tell you.
++
++## Our Solution
++
++```
++NASA investigations  →  curated scientific data  →  research exploration  →  scientific visualization  →  evidence-grounded AI
++ (PSI data, reports,     (SQLite, provenance,         (Research-to-Safety,      (charts, five 3D studios,     (Research Copilot with
++  figures, metadata)      knowledge graph)             Combustion Explorer)      NASA media)                   verified citations)
++```
++
++- **Curated, not pooled.** Each investigation is a different physical system. SpaceFire processes each one at the
++  evidence level its files actually support and never merges them into a single dataset or model.
++- **Traceable.** Every value carries its source: the CSV row, the report page or the external record.
++- **Honest about evidence.** The app labels each item as measured, report-derived, model output, test conditions or
++  a conceptual illustration.
++
++## Key Features
++
++| Feature | What you can do | Route |
++|---|---|---|
++| **Research-to-Safety Explorer** | Start from a spacecraft fire research question (flame spread over cabin materials, gaseous flames, early smoke detection, droplet flame extinction). SpaceFire then ranks the relevant NASA investigations with a transparent relevance score and shows supporting evidence, key charts, an interpretation and the limitations. | `/safety-explorer` |
++| **Combustion & Fire Science Explorer** | Browse records and research collections from all ten investigations across five scientific domains, with dataset-specific filters, provenance on every record, and side-by-side comparison only where records are compatible. | `/experiments` |
++| **Interactive 3D Studios** | Five studios (droplet flame, flame spread, spacecraft fire, gaseous flame, smoke detection). They explain each phenomenon with play/pause, guided timelines, Earth vs microgravity views, part labels and a fullscreen mode. Measured NASA values appear in a separate evidence panel. | `/phenomena/*#studio` |
++| **Scientific Analysis** | Investigate source-backed measurements: the FLEX extinction map, d²-law consistency check, BASS-II report tables, CFI-G outcomes and cool-flame events, SAME particle sizes, and PSI-117 experiment vs model series. | `/phenomena/*` |
++| **Research Copilot** | Ask a scientific question. It retrieves NASA document passages, curated records and knowledge-graph facts, and OpenAI GPT-4.1 mini writes an answer from that evidence. Its citations and numbers are verified in code. Without an API key, or when the model is unavailable, it shows the evidence only. It declines safety-certification and prediction requests. | `/copilot` |
++| **Find Similar Experiments** | Find tests with similar *starting conditions* (Gower distance) in FLEX, BASS-II or ACME CFI-G. This searches only the locally processed NASA records, **not Google or the internet**, and never uses outcomes to measure similarity. | `/intelligence/similar` |
++| **Scientific Media & Document Evidence** | Search NASA reports with page-level citations, look up external literature (NASA NTRS, OpenAlex, Crossref), and browse 15 verified NASA photos, clips and animations, each credited and labelled. | `/evidence`, `/evidence/media` |
++| **Guided Demo** | Follow a five-step presentation through the challenge, a research scenario, NASA evidence, a 3D studio and the Copilot. A six-step guide is also available inside the Combustion Explorer. | `/demo` |
++
++Also included: a **Data Reliability** browser that traces each quality flag to its file, row and column (`/reliability`),
++a **Methodology** page (`/methodology`), Light/Dark/System themes, and an **Exploratory FLEX Burn-Time Estimator**
++(`/modeling`), an advanced research tool with a visible validation summary that is not a physical simulation.
++
++## Research Copilot — Powered by OpenAI GPT-4.1 mini
++
++The Copilot answers scientific questions from NASA evidence. The language model writes the explanation, and the
++application decides what evidence it sees and which of its statements are shown. For each question the Copilot:
++
++1. **Retrieves relevant NASA research evidence**: it searches the NASA reports (SQLite FTS5 plus a local LSA semantic
++   index) and returns passages with PDF page numbers.
++2. **Uses the Scientific Knowledge Graph and the RAG pipeline**: whitelisted tools add knowledge-graph facts, curated
++   NASA records and computed analyses to a single evidence pack.
++3. **Generates a source-grounded explanation**: OpenAI GPT-4.1 mini (official `openai` SDK, structured JSON output)
++   receives only that evidence pack and must cite it.
++4. **Validates citation references in code**: every cited source must be one that was actually retrieved, and every
++   number must appear in the cited evidence. A failing statement gets one correction request; if it still fails, it is
++   removed and the answer is marked *partial*.
++5. **Handles unsupported questions**: it declines requests for safety certification, safe thresholds and fire
++   predictions without calling the model, and reports *insufficient evidence* when the NASA sources do not cover a
++   question.
++6. **Falls back to evidence only** when no API key is set or the model is unavailable (timeout, quota, outage). The
++   retrieved NASA sources are still shown, and nothing is presented as AI-written.
++
++<p align="center">
++  <img src="docs/assets/screenshots/research-copilot-openai.webp" alt="Research Copilot answer written by gpt-4.1-mini with one verified statement citing the CFI-G Final Report" width="100%">
++  <br><sub><b>Research Copilot with OpenAI GPT-4.1 mini</b>: a real answer (<code>gpt-4.1-mini-2025-04-14</code>) to "What
++  experimental conditions produced the reported cool flames in ACME CFI-G?", shown from the app's saved-answer cache
++  and re-verified on display. Verification kept the cool-flame radii (5.1–7.6 mm) and durations (about 3.4–14 s) from
++  Final Report Table 3. It removed a statement whose oxygen range did not match the cited table, so the answer is
++  marked <i>partial</i>.</sub>
++</p>
++
++Verification checks citations and numbers, not reasoning or attribution. A verified statement can still over-generalize,
++so the cited NASA passages are always shown beside the answer. **Google Gemini** (`gemini-3.8-flash`) and **Anthropic
++Claude** remain available as optional providers selected in `.env`. Neither is used as an automatic fallback. Adapter
++details and live test results are in [`docs/OPENAI_COPILOT_INTEGRATION.md`](docs/OPENAI_COPILOT_INTEGRATION.md).
++
++## Platform Preview
++
++<p align="center">
++  <img src="docs/assets/screenshots/research-to-safety.webp" alt="Research-to-Safety Explorer with four research scenarios" width="100%">
++  <br><sub><b>Research-to-Safety Explorer</b>: discover NASA investigations through spacecraft fire research questions.</sub>
++</p>
++
++### Interactive Scientific Exploration
++
++<table>
++  <tr>
++    <td width="50%"><img src="docs/assets/screenshots/combustion-explorer.webp" alt="Combustion and Fire Science Explorer showing ACME CFI-G test points"></td>
++    <td width="50%"><img src="docs/assets/screenshots/scientific-analysis.webp" alt="FLEX extinction map of initial oxygen vs droplet diameter"></td>
++  </tr>
++  <tr>
++    <td><sub><b>Combustion & Fire Science Explorer</b>: five domains, ten investigations, each labelled with its evidence level (here: ACME CFI-G, normal n-butane flames).</sub></td>
++    <td><sub><b>Scientific Analysis</b>: FLEX extinction map, with 262 of 274 tests plotted by initial O₂ and droplet size, plus outcome bars by O₂ band.</sub></td>
++  </tr>
++</table>
++
++### Interactive 3D Studios
++
++<table>
++  <tr>
++    <td width="50%"><img src="docs/assets/screenshots/gaseous-flame-studio.webp" alt="Gaseous Flame Studio with a spherical diffusion flame on a porous burner"></td>
++    <td width="50%"><img src="docs/assets/screenshots/smoke-detection-studio.webp" alt="Smoke Detection Studio following smoke from a heated sample to the detectors"></td>
++  </tr>
++  <tr>
++    <td><sub><b>Gaseous Flame Studio</b>: a spherical diffusion flame on a porous burner, paused on the "Established flame" stage of the guided timeline (conceptual 3D).</sub></td>
++    <td><sub><b>Smoke Detection Studio</b>: SAME smoke from heated sample to detectors, with measured Kapton particle sizes (Table 1, p.27) beside the conceptual scene.</sub></td>
++  </tr>
++  <tr>
++    <td width="50%"><img src="docs/assets/screenshots/flex-studio.webp" alt="FLEX studio comparing a droplet flame on Earth and in microgravity"></td>
++    <td width="50%"><img src="docs/assets/screenshots/science-media.webp" alt="Scientific media gallery with verified NASA photographs"></td>
++  </tr>
++  <tr>
++    <td><sub><b>Earth vs microgravity</b>: the FLEX droplet studio places a buoyant teardrop flame beside a near-spherical one, next to real NASA imagery.</sub></td>
++    <td><sub><b>Scientific Media</b>: verified NASA photographs, footage and animations, each labelled as experiment or related media.</sub></td>
++  </tr>
++</table>
++
++### Evidence & Research Tools
++
++<table>
++  <tr>
++    <td width="50%"><img src="docs/assets/screenshots/research-to-safety-scenario.webp" alt="Gaseous Flame Behavior scenario with observed CFI-G outcomes"></td>
++    <td width="50%"><img src="docs/assets/screenshots/find-similar.webp" alt="Find similar experiments results for FLEX test flex:145"></td>
++  </tr>
++  <tr>
++    <td><sub><b>Research scenario</b>: observed CFI-G outcomes for the matching tests, with links to charts, the 3D studio, evidence and the Copilot.</sub></td>
++    <td><sub><b>Find Similar Experiments</b>: nearest FLEX tests by starting conditions in the local NASA database, with the reason for each match.</sub></td>
++  </tr>
++</table>
++
++### AI & Guided Research
++
++<table>
++  <tr>
++    <td width="50%"><img src="docs/assets/screenshots/research-copilot.webp" alt="Research Copilot live answer about FLEX droplet combustion written by gpt-4.1-mini, all statements verified"></td>
++    <td width="50%"><img src="docs/assets/screenshots/guided-demo.webp" alt="Guided demo step 3 of 5 on the Gaseous Flame Behavior scenario"></td>
++  </tr>
++  <tr>
++    <td><sub><b>Research Copilot</b>: a live GPT-4.1 mini answer (<code>gpt-4.1-mini-2025-04-14</code>, written in 4.1 s) on a fresh clone of this repository with an OpenAI key added. The question is "How does microgravity affect droplet combustion in the FLEX experiments?". The answer is marked <i>Answered</i>: both statements passed citation and number checks against NASA sources. Attribution is not checked: the ~2 mm/s drift figure appears in the FLEX requirements document, which quotes it from earlier droplet experiments.</sub></td>
++    <td><sub><b>Guided Demo</b>: step 3 of 5, "Explore NASA evidence", with presenter notes, evidence and limits for the scenario.</sub></td>
++  </tr>
++</table>
++
++<sub>All images in this README are real screenshots of the running application (1440 × 900, dark theme). See
++<a href="docs/README_REFRESH_REPORT.md">docs/README_REFRESH_REPORT.md</a> for how each one was captured.</sub>
++
++## NASA Datasets
++
++SpaceFire tracks **ten NASA investigations across five scientific domains**. They do not all provide the same kind of
++data. Some contain measured per-test outcomes, others only test conditions, report tables, published figure data or
++metadata. SpaceFire uses each one **at its real evidence level** and labels it that way throughout the interface.
++
++| Investigation | Scientific domain | Available evidence in SpaceFire | Application usage |
++|---|---|---|---|
++| **FLEX** ([PSI-69](https://psi.nasa.gov/physci/repo/data/investigations/PSI-69)) | Liquid Droplet Combustion | **Measured test outcomes**: 274 experimental records (methanol, n-heptane droplets on the ISS) | Explorer, extinction and d²-law charts, droplet 3D studio, similarity, Copilot, exploratory estimator |
++| **FLEX-2** ([PSI-68](https://psi.nasa.gov/physci/repo/data/investigations/PSI-68)) | Liquid Droplet Combustion | **Test plan and documents**: 8 rows describing the planned test-matrix envelope; no downloaded per-test outcomes | Explorer (labelled "test plan"), Flame Extinction page, Copilot documents |
++| **PSI-117**: Cool Flame Dynamics ([PSI-117](https://psi.nasa.gov/physci/repo/data/investigations/PSI-117)) | Liquid Droplet Combustion | **Published figure data**: 61 series, experiment vs 1-D sphero-symmetric model. These are not tests, and not a 3D CFD dataset | Explorer, cool-flame charts on the Flame Extinction page |
++| **ACME CFI-G** ([PSI-159](https://psi.nasa.gov/physci/repo/data/investigations/PSI-159)) | Gaseous Flame Dynamics | **Test conditions with observed outcomes**: 333 test points (179 normal, 154 inverse flames, never pooled) plus 15 measured cool-flame events from Final Report Table 3 | Explorer, CFI-G charts, gaseous flame 3D studio, similarity, Research-to-Safety |
++| **ACME Flame Design** ([PSI-10](https://psi.nasa.gov/physci/repo/data/investigations/PSI-10)) | Gaseous Flame Dynamics | **Conditions only**: 327 test-condition records; outcomes appear only as author findings in the report | Explorer, Gaseous Flame page |
++| **ACME BRE** ([PSI-20](https://psi.nasa.gov/physci/repo/data/investigations/PSI-20)) | Gaseous Flame Dynamics | **Day-level summaries**: 18 test days and published report findings; no individual flame-test measurements | Explorer, Gaseous Flame page, Research-to-Safety context |
++| **BASS-II** ([PSI-25](https://psi.nasa.gov/physci/repo/data/investigations/PSI-25)) | Solid Flame Spread | **Measured runs**: 129 experimental records, plus Summary Report Tables 5.1, 7.1 and Appendix A | Explorer, flame-spread charts, flow-duct 3D studio, similarity, Copilot |
++| **PSI-62**: Flame Spread Modeling ([PSI-62](https://psi.nasa.gov/physci/repo/data/investigations/PSI-62)) | Solid Flame Spread | **Metadata only**: investigation profile; no data files | Explorer investigation profile, registry |
++| **SAME** ([PSI-102](https://psi.nasa.gov/physci/repo/data/investigations/PSI-102)) | Smoke & Fire Detection | **Documented smoke-particle results and flight log**: 8 particle-size results (Final Science Report Table 1) and a 47-test flight log; the raw 1 Hz telemetry is inventoried but not processed | Explorer, Smoke Detection page and 3D studio, Research-to-Safety |
++| **SAFFIRE-I** ([PSI-98](https://psi.nasa.gov/physci/repo/data/investigations/PSI-98)) | Spacecraft Fire Dynamics | **Spacecraft-scale experiment context**: 2 burn records, 2 image-set records and a 12-sheet image manifest from the 2016 uncrewed Cygnus burn | Spacecraft Fire page and 3D studio, Explorer, Copilot |
++
++The interface separates **measured evidence**, **model-based evidence**, **test conditions**, **report-based
++information** and **conceptual visualizations**, so a reader always knows what a number, chart or 3D scene represents.
++Methods and evidence rules are described in [`docs/SCIENTIFIC_METHODS.md`](docs/SCIENTIFIC_METHODS.md) and
++[`docs/PHASE16_COMBUSTION_EXPLORER.md`](docs/PHASE16_COMBUSTION_EXPLORER.md).
++
++## Technology Stack
++
++| Layer | Technologies |
++|---|---|
++| **Frontend** | Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS 4, Motion |
++| **3D visualization** | three.js, React Three Fiber, drei (WebGL) |
++| **Charts** | Plotly.js |
++| **Backend** | Python 3.11+ (tested on 3.13), FastAPI, Uvicorn, Pydantic |
++| **Scientific data** | pandas, NumPy, SciPy, scikit-learn; PyMuPDF, python-docx, python-pptx and openpyxl for source documents |
++| **Storage & retrieval** | SQLite with FTS5 (BM25) + local LSA semantic index; provenance-tracked knowledge graph in SQLite |
++| **AI** | OpenAI GPT-4.1 mini via the official `openai` SDK (the configuration in `.env.example`); Google Gemini (`google-genai`) and Anthropic Claude as optional providers; retrieval-augmented generation over NASA sources with in-code citation and number verification |
++| **External literature** | NASA NTRS, OpenAlex, Crossref (metadata only) |
++| **Testing** | pytest, respx, Playwright |
++
++## System Architecture
++
++```mermaid
++flowchart LR
++    A["NASA research data<br/>PSI CSV tables · reports · figures · metadata"] --> B["Data processing<br/>backend/app/ingest"]
++    B --> C[("Scientific database<br/>SQLite records · provenance · FTS5")]
++    B --> D["Knowledge graph<br/>& LSA index"]
++    C --> E["FastAPI<br/>/api/v1"]
++    D --> E
++    E --> F["Scientific services<br/>analytics · explorer · similarity"]
++    E --> R["RAG retrieval<br/>document search · graph tools · curated records"]
++    R --> M["OpenAI GPT-4.1 mini<br/>sees the evidence pack only"]
++    M --> V["Citation & number<br/>verification in code"]
++    V --> G["Research Copilot<br/>with NASA citations"]
++    R -.->|evidence-only fallback| G
++    F --> I["Next.js interface"]
++    G --> I
++    I --> J["Interactive 3D studios<br/>three.js"]
++```
++
++- **Data processing** (`backend/app/ingest/`) parses the NASA files deterministically and writes only to `processed/`.
++  Raw cells are preserved next to the parsed values, and the original NASA folders are never modified.
++- **The knowledge graph** links investigations, experiments, documents, materials and findings (1,588 nodes and 7,223
++  edges in the full local build). The Research-to-Safety Explorer and the Copilot both query it.
++- **The Copilot** runs whitelisted tools and hybrid document search, then passes only that evidence to OpenAI
++  GPT-4.1 mini (or the provider set in `.env`). Code checks that every cited id exists and that every number appears in
++  the cited evidence; statements that fail are removed. Without a key, or when the model fails, the retrieved evidence
++  is shown on its own.
++- **The frontend** calls the backend through a same-origin `/api/v1` proxy, so API keys never reach the browser.
++
++## Installation and Local Demo
++
++### Prerequisites
++
++- Windows 10 or 11 (Linux and macOS scripts are also provided)
++- Python 3.11–3.13 (tested on 3.13), Node.js 20 LTS or newer with npm, and Git
++- About 2 GB of free disk space for the Python and npm packages. No GPU, no model download and no dataset download.
++- An OpenAI API key is optional. It is only needed for AI-written Copilot answers.
++
++### One-step setup and launch (Windows)
++
++The [Quick Start](#quick-start-windows) commands are all you need. Both scripts are plain wrappers around
++`scripts\setup.ps1` and `scripts\start.ps1`, run with `-ExecutionPolicy Bypass` for that process only, and both accept
++options:
++
++| Command | What it does |
++|---|---|
++| `setup.cmd` | Checks Python, Node.js, npm and Git. Creates `backend\.venv` and installs the Python packages, then installs the npm packages (`npm ci`). Checks the committed NASA data and creates `.env` from `.env.example` (an existing `.env` is never overwritten). Builds the database and the production website. Safe to run again. |
++| `setup.cmd -SetOpenAIKey` | Also asks for an OpenAI key (hidden input) and saves it in the local `.env` with `LLM_PROVIDER=openai` and `LLM_MODEL=gpt-4.1-mini`. The key is never printed. |
++| `setup.cmd -RebuildData` | Rebuilds `processed\spacefire.db` (stop the app first). |
++| `launch.cmd` | Starts the API (port 8000) and the website (port 3000), using the next free port if one is busy. It rebuilds the website only when it is missing, the code changed or the API port changed. It checks both health endpoints, reports whether AI answers are on and opens the browser. Ctrl+C stops both servers. |
++| `launch.cmd -Dev` | Uses the Next.js development server instead of the production build. |
++| `launch.cmd -Stop` | Stops servers left by an earlier `launch.cmd` window. Running `launch.cmd` twice does not start a second copy; it reports the running address instead. |
++
++Server logs are written to `.spacefire\` (gitignored).
++
++### AI availability
++
++| Situation | What the Research Copilot does |
++|---|---|
++| **Fresh clone, no key (default)** | **Evidence only.** It retrieves NASA passages, knowledge-graph facts and curated records with page-level citations, and explains why no AI text was written. |
++| **OpenAI key in `.env`** (`setup.cmd -SetOpenAIKey`) | **AI answers** by GPT-4.1 mini, grounded in the retrieved NASA evidence, with citations and numbers verified in code. Each new question costs one or two requests to the key's OpenAI project. Questions asked before are answered from the local answer cache. |
++| **Key expired or revoked, quota or billing exhausted, OpenAI unreachable** | Evidence only, with a plain message that names the cause. Gemini is never used as an automatic substitute. |
++
++- **No key in the repository.** This public repository contains no API key. A hosted demo server is not provided
++  either. AI answers on a reviewer's computer therefore need an OpenAI key entered locally, either the reviewer's own or
++  one the SpaceFire team provides privately.
++- **The team's key expires.** The project team's key, used for our live demonstration and screenshots, expires on
++  **22 November 2026**. After that date, AI answers need a different key. Every other feature keeps working without one.
++- **Billing.** The key's OpenAI project must have billing enabled. Requests are billed to that project. A key with a
++  spending limit and access restricted to `gpt-4.1-mini` is enough.
++
++### Configuring the AI provider manually
++
++The backend reads `.env` from the repository root. `setup.cmd -SetOpenAIKey` writes these lines for you; to edit them
++by hand, run `notepad .env`:
++
++```dotenv
++LLM_PROVIDER=openai
++LLM_MODEL=gpt-4.1-mini
++OPENAI_API_KEY=your-openai-api-key
++LLM_TIMEOUT_S=45
++```
++
++**Switching providers.** For Gemini, set `LLM_PROVIDER=gemini`, `LLM_MODEL=gemini-3.8-flash` and `GEMINI_API_KEY`.
++Each provider reads its own key variable and falls back to `LLM_API_KEY`. A key is sent only to the provider named in
++`LLM_PROVIDER`, and there is no automatic fallback between providers. Restart `launch.cmd` after editing `.env`.
++`.env` is gitignored; never commit it or put a key in frontend code.
++
++### Using the application
++
++- **Website:** http://localhost:3000 (or the address `launch.cmd` prints). API documentation: http://127.0.0.1:8000/docs.
++- **Guided Demo:** http://localhost:3000/demo, or **Start guided demo** on the Home page. The demo bar walks through the
++  challenge, a research scenario, NASA evidence, a 3D studio and the Research Copilot, with presenter notes on each step.
++- **Research Copilot:** http://localhost:3000/copilot. With a key, the Copilot panel shows **AI synthesis on**, and each
++  answer names the model that wrote it ("Written by gpt-4.1-mini-…"). The active provider, model and mode are also
++  reported at http://127.0.0.1:8000/api/v1/health under `llm`. That response names the variable that supplied the key,
++  never the key itself.
++
++<details>
++<summary><b>Manual setup (Windows CMD), Linux/macOS scripts and alternate ports</b></summary>
++
++**Manual setup (Windows CMD)**, if you prefer not to use the scripts:
++
++```bat
++copy .env.example .env
++cd backend
++python -m venv .venv
++.venv\Scripts\python -m pip install -r requirements.txt
++.venv\Scripts\python -m app.ingest.run
++cd ..\frontend
++npm ci
++```
++
++`app.ingest.run` builds `processed/spacefire.db`, the search index and the knowledge graph from the files in the
++repository (about 15 s). Then start the two servers in two CMD windows from the repository root:
++
++```bat
++:: Window 1 - backend API
++cd backend
++.venv\Scripts\python -m uvicorn app.main:app --host 127.0.0.1 --port 8000
++```
++
++```bat
++:: Window 2 - website (development mode; for production use "npm run build" then "npx next start --port 3000")
++cd frontend
++npx next dev --port 3000
++```
++
++The website proxies `/api/v1` to `BACKEND_URL` (default `http://127.0.0.1:8000`). In a production build that address is
++fixed when the site is built.
++
++**Linux / macOS:**
++
++```bash
++bash scripts/setup.sh
++bash scripts/start.sh            # add --prod for a production build
++```
++
++**Running beside another local instance.** `launch.cmd -BackendPort 8010 -FrontendPort 3010` runs on other ports
++(it rebuilds the site for the new API port). The manual equivalent builds into a separate folder:
++
++```bat
++cd frontend
++set "NEXT_DIST_DIR=.next-verify"
++set "BACKEND_URL=http://127.0.0.1:8010"
++npx next build
++npx next start --port 3010
++```
++
++A custom `NEXT_DIST_DIR` build may rewrite `frontend/tsconfig.json`; revert that change before committing.
++
++</details>
++
++### Troubleshooting
++
++| Problem | Solution |
++|---|---|
++| `python` is not recognized, or typing it opens the Microsoft Store | Install Python 3.13 from python.org with *Add python.exe to PATH* ticked, open a new terminal and run `setup.cmd` again. |
++| `node` or `npm` is not recognized | Install Node.js LTS from nodejs.org, open a new terminal and run `setup.cmd` again. |
++| "running scripts is disabled on this system" | Use `setup.cmd` and `launch.cmd`. They bypass the execution policy for that one process only. |
++| "The repository folder path is too long", or pip fails with `No such file or directory` and a long-path hint | Windows limits paths to 260 characters. Clone into a short folder such as `C:\SpaceFire-AI` (at most 80 characters), delete the half-built `backend\.venv` and run `setup.cmd` again. Alternatively, [enable Windows long paths](https://pip.pypa.io/warnings/enable-long-paths). |
++| Package installation fails | Check the internet connection and run `setup.cmd` again (it resumes). On Python 3.14 or newer, install Python 3.13. |
++| Port 3000 or 8000 is already in use | `launch.cmd` picks the next free port and prints the address. To choose ports yourself, use `launch.cmd -FrontendPort 3100 -BackendPort 8100`. |
++| "SpaceFire AI is already running" | Use the printed address, or stop the other copy with Ctrl+C in its window or `launch.cmd -Stop`. |
++| The website build fails or the computer runs out of memory | Close other programs and run `launch.cmd -Rebuild`, or use `launch.cmd -Dev` (no build). |
++| The Copilot shows "Evidence only" | No key is set, or the key was rejected or is out of quota (the Copilot names the cause). Run `setup.cmd -SetOpenAIKey` and restart `launch.cmd`. Check `llm.mode` at http://127.0.0.1:8000/api/v1/health. |
++| API health is "degraded" or data is missing | Stop the app (`launch.cmd -Stop`) and run `setup.cmd -RebuildData`. |
++| Anything else | Look at `.spacefire\backend.log` and `.spacefire\frontend.log`. |
++
++### What a fresh clone includes
++
++| Included in Git | Local only (not committed) |
++|---|---|
++| FLEX, BASS-II and SAFFIRE-I source folders (data and documents) | Source folders of the seven other investigations (`ACME CFI-G/`, `ACME Flame Design/`, `ACME BRE/`, `SAME/`, `PSI-117/`, `FLEX-2/`, `PSI-62/`) |
++| Verified, curated derivatives of all seven in `processed/curated/phase13/` | Their 30 report and document files for full-text search |
++
++Every structured dataset, chart, Explorer collection and 3D studio works from a fresh clone, and `setup.cmd` checks
++that the committed data is present. Full-text document search and Copilot passages for the seven Phase 13
++investigations need their original NASA files. These can be downloaded from the PSI links in the dataset table into
++folders with the names above, followed by `setup.cmd -RebuildData`. Without them, Copilot answers cite the FLEX, BASS-II
++and SAFFIRE-I reports, the curated records and the knowledge graph. Rebuilding the curated tables from those folders uses
++`python -m app.ingest.phase13.run`.
++
++### Tests
++
++```bat
++cd backend
++.venv\Scripts\python -m pytest
++cd ..\frontend
++npx playwright test
++```
++
++Browser tests use the running servers (set `PW_BASE_URL` and `PW_API_PORT` to point at other ports). The model is never
++called unless you opt in with `E2E_LIVE_LLM=1`. The latest recorded results are in
++[`docs/PHASE16_TEST_RESULTS.md`](docs/PHASE16_TEST_RESULTS.md).
++
++## Scientific Accuracy and Limitations
++
++SpaceFire AI supports **scientific exploration and interpretation**. It is not a predictive or safety system.
++
++- **The 3D scenes are conceptual educational visualizations.** They explain the physics. Measured NASA values appear
++  separately and are labelled as such. Guided timelines are not the timeline of any specific test.
++- **Measurements, model results, conditions and report statements are kept apart** and labelled by evidence class.
++- **Not every investigation has numerical outcomes.** Flame Design is conditions only, BRE has day-level summaries,
++  FLEX-2 has a test plan, PSI-62 has metadata only, and PSI-117 contains published figure series, not tests.
++- **The Research-to-Safety ranking is research relevance, not fire risk.** Its weights are a documented design
++  choice ([`docs/PHASE14_RANKING_METHODOLOGY.md`](docs/PHASE14_RANKING_METHODOLOGY.md)).
++- **SpaceFire is not a safety-certification system.** The Copilot declines requests for safe thresholds, certifications or
++  fire predictions.
++- **The FLEX Burn-Time Estimator is exploratory.** It is a statistical estimate within FLEX conditions (median error
++  about 35 %), not a validated physical simulation ([`docs/PHASE16_PREDICTION_REVIEW.md`](docs/PHASE16_PREDICTION_REVIEW.md)).
++- **AI verification checks citations and numbers, not reasoning or attribution.** A generated statement is not
++  guaranteed to be correct, even when it passes verification. Provider quotas, billing limits or timeouts can block
++  AI-written answers; the Copilot then falls back to evidence only.
++- **AI answers depend on a locally configured key.** No key ships with the repository, and the team's key expires on
++  22 November 2026 ([AI availability](#ai-availability)).
++
++## Project Structure
++
++```
++SpaceFire-AI/
++├── backend/
++│   ├── app/
++│   │   ├── api/v1/          # FastAPI routes
++│   │   ├── ingest/          # deterministic parsing, curation, knowledge graph build
++│   │   ├── services/        # analytics, explorer, combustion, similarity, retrieval, assistant, ml
++│   │   ├── providers/       # LLM (OpenAI, Gemini, Anthropic) and scholarly search clients
++│   │   ├── curation/        # reviewed evidence links
++│   │   └── eval/            # retrieval and AI evaluation harnesses
++│   └── tests/               # pytest suite
++├── frontend/
++│   ├── app/                 # Next.js routes (/, /safety-explorer, /experiments, /phenomena/*, /copilot, /demo, ...)
++│   ├── components/          # views, 3D scenes, studios, demo bar, UI system
++│   ├── lib/                 # API client, timelines, demo journeys, media registry
++│   ├── e2e/                 # Playwright tests
++│   └── public/media/        # verified NASA media (WebP)
++├── processed/curated/       # committed, verified derivatives of the NASA sources
++├── research/                # data inventory and scientific analysis notes
++├── docs/                    # methods, design notes, phase reports, screenshots
++├── scripts/                 # setup / start / smoke-test scripts
++├── FLEX/  BASS-II/  SAFFIRE-1/   # NASA PSI source data (read-only)
++├── setup.cmd  launch.cmd    # one-step Windows setup and start (wrappers for scripts/*.ps1)
++└── .env.example
++```
++
++## Credits and Data Sources
++
++- **Scientific data:** NASA Physical Sciences Informatics (PSI) system, investigations PSI-69, PSI-68, PSI-117,
++  PSI-159, PSI-10, PSI-20, PSI-25, PSI-62, PSI-102 and PSI-98 (links in the [dataset table](#nasa-datasets)). All
++  credit for the experiments, measurements and reports goes to the NASA principal investigators and research teams of
++  these investigations.
++- **Media:** NASA photographs, footage and animations, each credited and linked to its NASA record in the app.
++  Sources and usage notes are in [`docs/SCIENTIFIC_MEDIA_SOURCES.md`](docs/SCIENTIFIC_MEDIA_SOURCES.md).
++- **Literature metadata:** NASA NTRS, OpenAlex and Crossref, attributed and linked. Abstracts are stored only when the
++  provider API returns them; external full texts are never downloaded.
++- **Data rights:** NASA PSI public data. The original dataset folders are never modified, and tests verify their
++  SHA-256 hashes.
++
++SpaceFire AI was created for the NASA Space Apps Challenge 2026. NASA does not endorse this project. This repository
++does not include a license file.
++
++## Further Documentation
++
++| Topic | Document |
++|---|---|
++| Scientific methods and assumptions | [`docs/SCIENTIFIC_METHODS.md`](docs/SCIENTIFIC_METHODS.md) |
++| Combustion Explorer and evidence levels | [`docs/PHASE16_COMBUSTION_EXPLORER.md`](docs/PHASE16_COMBUSTION_EXPLORER.md) |
++| Research Copilot with OpenAI | [`docs/OPENAI_COPILOT_INTEGRATION.md`](docs/OPENAI_COPILOT_INTEGRATION.md) |
++| Knowledge graph | [`docs/PHASE14_KNOWLEDGE_GRAPH.md`](docs/PHASE14_KNOWLEDGE_GRAPH.md) |
++| Ranking methodology | [`docs/PHASE14_RANKING_METHODOLOGY.md`](docs/PHASE14_RANKING_METHODOLOGY.md) |
++| Interactive 3D science | [`docs/INTERACTIVE_SCIENTIFIC_ANALYSIS_V2.md`](docs/INTERACTIVE_SCIENTIFIC_ANALYSIS_V2.md) |
++| Demo walkthrough | [`docs/PHASE15_DEMO_GUIDE.md`](docs/PHASE15_DEMO_GUIDE.md) |
++| Implementation status and history | [`docs/IMPLEMENTATION_STATUS.md`](docs/IMPLEMENTATION_STATUS.md) |
+diff --git a/backend/app/api/v1/routes.py b/backend/app/api/v1/routes.py
+index a1c6fee..08d52a3 100644
+--- a/backend/app/api/v1/routes.py
++++ b/backend/app/api/v1/routes.py
+@@ -2,6 +2,7 @@
+ from __future__ import annotations
+ 
+ import io
++from html import escape
+ import json
+ import logging
+ import mimetypes
+@@ -13,7 +14,7 @@ from pathlib import Path
+ from typing import Iterator
+ 
+ from fastapi import APIRouter, Depends, Query, Request
+-from fastapi.responses import FileResponse, PlainTextResponse, Response, StreamingResponse
++from fastapi.responses import FileResponse, HTMLResponse, PlainTextResponse, Response, StreamingResponse
+ from pydantic import BaseModel, Field
+ 
+ from ...core.config import get_settings
+@@ -170,6 +171,20 @@ def document_file(document_id: str, conn=Depends(get_conn)):
+     """Serve the original source file. Path comes from the DB (never from the request) and must stay in the repo."""
+     row = conn.execute("SELECT relative_path FROM documents WHERE document_id=?", (document_id,)).fetchone()
+     if not row:
++        from ...ingest.documents import slugify
++        from ...ingest.phase13.load import CATALOG
++        declared = next((meta for path, meta in CATALOG.items() if slugify(path) == document_id), None)
++        if declared:
++            title, inv = escape(declared["title"]), escape(declared["inv"])
++            return HTMLResponse(
++                f'<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width">'
++                f'<title>Source document unavailable | FlameAtlas</title><main style="max-width:48rem;margin:10vh auto;padding:2rem;font:18px/1.7 system-ui">'
++                f'<p>The Flamels / Source availability</p><h1>Document not included in this checkout</h1><h2>{title}</h2>'
++                f'<p>The public reference repository includes curated records for this investigation, but not this report file. '
++                f'The report has not been indexed or read by this running instance.</p>'
++                f'<a href="https://psi.nasa.gov/physci/repo/data/investigations/{inv}">Open the NASA {inv} investigation</a>'
++                f'<p>Use the reported table and page locator to inspect the original source. Curated values remain attributed to the reference dataset.</p></main></html>',
++                status_code=424)
+         raise not_found("Document", document_id)
+     root = get_settings().repo_root.resolve()
+     rel = row["relative_path"]
+diff --git a/backend/app/core/config.py b/backend/app/core/config.py
+index 2a44715..a81c406 100644
+--- a/backend/app/core/config.py
++++ b/backend/app/core/config.py
+@@ -30,8 +30,8 @@ class Settings(BaseSettings):
+     database_path: Path | None = Field(default=None, alias="DATABASE_PATH")
+ 
+     # LLM (provider-agnostic). Empty key => retrieval-only assistant.
+-    llm_provider: str = Field(default="anthropic", alias="LLM_PROVIDER")
+-    llm_model: str = Field(default="claude-opus-5-5", alias="LLM_MODEL")
++    llm_provider: str = Field(default="openai", alias="LLM_PROVIDER")
++    llm_model: str = Field(default="gpt-4.1-mini", alias="LLM_MODEL")
+     llm_api_key: str = Field(default="", alias="LLM_API_KEY", repr=False)
+     # Provider-specific keys. Each is used only when LLM_PROVIDER names that provider (a Gemini key is never sent to
+     # OpenAI); when it is empty, the generic LLM_API_KEY is used. See `llm_key`.
+diff --git a/backend/app/ingest/kg.py b/backend/app/ingest/kg.py
+index 7d0d07e..380a82f 100644
+--- a/backend/app/ingest/kg.py
++++ b/backend/app/ingest/kg.py
+@@ -318,6 +318,12 @@ def build(conn: sqlite3.Connection) -> dict:
+             return table_node(did, r["source_table"], r["page_pdf"], r["investigation_id"])
+         return None
+ 
++    def record_source(r) -> str:
++        # A curated record may refer to a report not shipped in the public checkout.
++        # Keep the available curated row as the source; never manufacture a local document ID.
++        did = doc_by_path.get(r["source_file"])
++        return f"{did}#page={r['page_pdf']}" if did and r["page_pdf"] else f"p13_records:{r['record_id']}"
++
+     cfig_cfg = {}
+     for r, v in recs("cfig_tests"):
+         ref = f"p13_records:{r['record_id']}"
+@@ -342,7 +348,7 @@ def build(conn: sqlite3.Connection) -> dict:
+             outcome(x, "PSI-159", v["outcome"], v["outcome"].replace("_", " "), ref, burn_time_s=v.get("burn_time_s"),
+                     censored=bool(v.get("burn_time_censored")))
+     for r, v in recs("cfig_cool_flames"):
+-        ref = f"{doc_by_path.get(r['source_file'])}#page={r['page_pdf']}"
++        ref = record_source(r)
+         tid = rec_table(r)
+         x = f"exp:{v.get('csv_record_id')}" if v.get("csv_record_id") and f"exp:{v.get('csv_record_id')}" in g.nodes else None
+         m = g.node(f"meas:{r['record_id']}", "measurement", f"Cool-flame event {r['test_id']}"
+@@ -370,7 +376,7 @@ def build(conn: sqlite3.Connection) -> dict:
+         g.cond(x, "pressure_atm", v.get("p_ref_atm"), "atm", v.get("p_ref_atm"), "atm", ref)
+         g.cond(x, "fuel_mass_flow_mg_s", v.get("m_fuel_mg_s"), "mg/s", v.get("m_fuel_mg_s"), "mg/s", ref)
+     for r, v in recs("bre_test_days"):
+-        ref = f"{doc_by_path.get(r['source_file'])}#page={r['page_pdf']}"
++        ref = record_source(r)
+         tid = rec_table(r)
+         x = g.node(f"exp:{r['record_id']}", "test_day", f"BRE test day {r['test_id']}", "PSI-20", test_id=r["test_id"],
+                    evidence="operational_log", flames_ignited=v.get("flames_ignited"), fuel=v.get("fuel"),
+@@ -385,9 +391,9 @@ def build(conn: sqlite3.Connection) -> dict:
+         if tid:
+             m = g.node(f"lit:{r['record_id']}", "literature_value", f"BRE literature row ({r['record_id']})", "PSI-20",
+                        evidence="literature", values=v)
+-            g.edge(m, "REPORTED_IN", tid, "report_table", f"{doc_by_path.get(r['source_file'])}#page={r['page_pdf']}")
++            g.edge(m, "REPORTED_IN", tid, "report_table", record_source(r))
+     for r, v in recs("same_particle_sizes"):
+-        ref = f"{doc_by_path.get(r['source_file'])}#page={r['page_pdf']}"
++        ref = record_source(r)
+         tid = rec_table(r)
+         mid = material(v["material_label"], "PSI-102", ref)
+         m = g.node(f"meas:{r['record_id']}", "measurement", f"{v['material_label']}, {'aged ' + str(v['aging_s']) + ' s' if v['aged'] else 'fresh'} smoke",
+@@ -403,7 +409,7 @@ def build(conn: sqlite3.Connection) -> dict:
+     for r, v in recs("same_flight_log"):
+         if v.get("kind") != "test" or not v.get("sample"):
+             continue
+-        ref = f"{doc_by_path.get(r['source_file'])}#page={r['page_pdf']}"
++        ref = record_source(r)
+         label = same_labels.get(v["sample"]) or v.get("sample_printed") or v["sample"]
+         x = g.node(f"exp:{r['record_id']}", "experiment", f"SAME test {r['test_id']}", "PSI-102", test_id=r["test_id"],
+                    evidence="operational_log", sample=v["sample"], reheat=v.get("reheat"), carousel=v.get("carousel"))
+diff --git a/backend/app/ingest/phase13/cfig.py b/backend/app/ingest/phase13/cfig.py
+index fd27a41..e15a142 100644
+--- a/backend/app/ingest/phase13/cfig.py
++++ b/backend/app/ingest/phase13/cfig.py
+@@ -91,7 +91,7 @@ FIELD_SPECS = [
+          unit_raw="mg/s", unit="mg/s"),
+     spec("hc_burnrate_mg_s", "'HC burnrate' (inverse flames): equals O2 flow / stoichiometric O2-to-fuel mass ratio",
+          "derived_experimental", raw_column="HC burnrate (mg/s)", unit_raw="mg/s", unit="mg/s",
+-         note="Checked by SpaceFire: ratio O2 flow / HC burnrate matches the stoichiometric mass ratio for every row. "
++         note="Checked by FlameAtlas: ratio O2 flow / HC burnrate matches the stoichiometric mass ratio for every row. "
+               "It is a stoichiometric-equivalent rate, not a measured fuel consumption."),
+     spec("p_bar", "Chamber pressure (approximate, as labelled)", "test_condition", raw_column="approx p (bar)",
+          unit_raw="bar", unit="bar", note="Header says 'approx'."),
+diff --git a/backend/app/ingest/phase13/common.py b/backend/app/ingest/phase13/common.py
+index 3f6d184..9f3b3a1 100644
+--- a/backend/app/ingest/phase13/common.py
++++ b/backend/app/ingest/phase13/common.py
+@@ -18,7 +18,7 @@ PROCESSOR_VERSION = "phase13-1"
+ # Evidence classes (Phase 13 schema). "measured" is never applied wholesale: each field declares its class.
+ EVIDENCE_CLASSES = {
+     "direct_measurement": "Value measured by an instrument or observed by the experiment team for this test",
+-    "derived_experimental": "Value calculated from experimental quantities (by NASA/PI or by SpaceFire, stated per field)",
++    "derived_experimental": "Value calculated from experimental quantities (by NASA/PI or by FlameAtlas, stated per field)",
+     "digitized_figure": "Published figure data supplied as a table (digitized points; precision limited)",
+     "model_prediction": "Output of a numerical or analytical model, not a measurement",
+     "literature_value": "Value quoted from the literature in a NASA report",
+diff --git a/backend/app/ingest/phase13/psi117.py b/backend/app/ingest/phase13/psi117.py
+index 6b92fb1..57e9a83 100644
+--- a/backend/app/ingest/phase13/psi117.py
++++ b/backend/app/ingest/phase13/psi117.py
+@@ -4,7 +4,7 @@ The nine 'Analyzed data' CSVs hold side-by-side figure series. Each series is de
+ role, variable, units and how each unit is known) because block position alone does not reliably identify the role.
+ Experimental series are published figure data (digitized points); model series are outputs of the authors'
+ 1-D sphero-symmetric droplet model (not 3-D CFD; no OpenFOAM output is in the download). Nothing is joined to
+-SpaceFire's FLEX rows: PSI-117 cites FLEX test numbers (e.g. FLEX 1268) that have no key in the FLEX table.
++FlameAtlas's FLEX rows: PSI-117 cites FLEX test numbers (e.g. FLEX 1268) that have no key in the FLEX table.
+ """
+ from __future__ import annotations
+ 
+@@ -273,7 +273,7 @@ def build(repo: Path) -> list[Dataset]:
+     ds.flags.append(Flag("PSI117-REF-NOT-IN-ISA", "info", "info", f"ReadMe cites {', '.join(missing)}, which are not in "
+                          "the PSI-117 ISA-Tab publication list.", status="reported"))
+     ds.flags.append(Flag("PSI117-NO-FLEX-JOIN", "info", "info", "PSI-117 refers to FLEX tests by numbers such as 1268, "
+-                         "1256 and 563; SpaceFire's FLEX table (PSI-69) uses FLEX Test # 1-274 and identifiers such as "
++                         "1256 and 563; FlameAtlas's FLEX table (PSI-69) uses FLEX Test # 1-274 and identifiers such as "
+                          "N01H101. No crosswalk exists, so no PSI-117 series is joined to a FLEX row.", status="confirmed",
+                          evidence_ref=f"{SLIDES_3S} PDF p15-22"))
+     ds.flags.append(Flag("PSI117-NOT-3D-CFD", "info", "info", "Model series come from a 1-D sphero-symmetric droplet model "
+diff --git a/backend/app/ingest/phase13/registry.py b/backend/app/ingest/phase13/registry.py
+index 582455d..5b9a5ff 100644
+--- a/backend/app/ingest/phase13/registry.py
++++ b/backend/app/ingest/phase13/registry.py
+@@ -1,7 +1,7 @@
+ """Investigation registry for all ten investigations (3 existing + 7 Phase 13), machine-readable for Phase 14.
+ 
+ Identity fields (title, DOI, PI, dates, platform) are read from each investigation's ISA-Tab metadata; scope,
+-evidence level, routes and limitations are SpaceFire's documented assessment (docs/NEW_NASA_DATASET_AUDIT.md,
++evidence level, routes and limitations are FlameAtlas's documented assessment (docs/NEW_NASA_DATASET_AUDIT.md,
+ docs/ACME_DATASET_AUDIT.md), stated as such.
+ """
+ from __future__ import annotations
+@@ -55,7 +55,7 @@ ENTRIES = [
+          conditions=["fuel", "pressure_atm", "d0_mm"],
+          limitations=[("FIGURE-DATA", "Experimental points are published figure data (digitized)."),
+                       ("MODEL-1D", "Model is 1-D sphero-symmetric; no 3-D CFD output is available."),
+-                      ("NO-FLEX-JOIN", "FLEX test numbers cited by PSI-117 have no key in SpaceFire's FLEX table."),
++                      ("NO-FLEX-JOIN", "FLEX test numbers cited by PSI-117 have no key in FlameAtlas's FLEX table."),
+                       ("UNITS", "Several units are inferred or unknown (flagged per series).")],
+          related=[("PSI-69", "uses FLEX flight data"), ("PSI-159", "cool flames in a gaseous configuration")]),
+     dict(investigation_id="PSI-102", key="same", short_name="SAME", folder="SAME",
+@@ -111,9 +111,9 @@ PSI_URL = "https://psi.nasa.gov/physci/repo/data/investigations/{}"
+ 
+ 
+ def build(repo: Path) -> tuple[Dataset, Dataset | None]:
+-    ds = Dataset("investigation_registry", "ALL", "SpaceFire investigation registry", "report_statement",
+-                 "Identity from ISA-Tab metadata; scope, readiness, routes and limitations are SpaceFire's documented "
+-                 "assessment.", field_specs=[spec("readiness", "Quantitative readiness (SpaceFire assessment)",
++    ds = Dataset("investigation_registry", "ALL", "FlameAtlas investigation registry", "report_statement",
++                 "Identity from ISA-Tab metadata; scope, readiness, routes and limitations are FlameAtlas's documented "
++                 "assessment.", field_specs=[spec("readiness", "Quantitative readiness (FlameAtlas assessment)",
+                                                   "report_statement", unit_status="n/a")])
+     for i, e in enumerate(ENTRIES, start=1):
+         meta = {}
+diff --git a/backend/app/ingest/run.py b/backend/app/ingest/run.py
+index f699664..631748d 100644
+--- a/backend/app/ingest/run.py
++++ b/backend/app/ingest/run.py
+@@ -420,7 +420,7 @@ def run(dry_run: bool = False) -> dict:
+ 
+ def main() -> None:
+     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
+-    ap = argparse.ArgumentParser(description="Build the SpaceFire AI database from the original NASA files.")
++    ap = argparse.ArgumentParser(description="Build the FlameAtlas database from the original NASA files.")
+     ap.add_argument("--dry-run", action="store_true", help="parse and validate only; write nothing")
+     args = ap.parse_args()
+     rep = run(dry_run=args.dry_run)
+diff --git a/backend/app/main.py b/backend/app/main.py
+index 5f6122c..231aacf 100644
+--- a/backend/app/main.py
++++ b/backend/app/main.py
+@@ -1,4 +1,4 @@
+-"""SpaceFire AI API. Run: uvicorn app.main:app --port 8000 (from backend/)."""
++"""FlameAtlas API. Run: uvicorn app.main:app --port 8000 (from backend/)."""
+ from __future__ import annotations
+ 
+ import logging
+@@ -15,7 +15,7 @@ def create_app() -> FastAPI:
+     s = get_settings()
+     logging.basicConfig(level=s.log_level, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
+     app = FastAPI(
+-        title="SpaceFire AI API",
++        title="FlameAtlas API",
+         version="1.0.0",
+         description="Evidence-grounded microgravity combustion intelligence over NASA PSI datasets "
+                     "FLEX (PSI-69), BASS-II (PSI-25) and SAFFIRE-I (PSI-98).",
+diff --git a/backend/app/providers/scholarly.py b/backend/app/providers/scholarly.py
+index de03805..5b30bb9 100644
+--- a/backend/app/providers/scholarly.py
++++ b/backend/app/providers/scholarly.py
+@@ -16,7 +16,7 @@ from urllib.parse import quote
+ import httpx
+ 
+ log = logging.getLogger("spacefire.providers")
+-USER_AGENT = "SpaceFireAI/0.1 (NASA Space Apps research prototype)"
++USER_AGENT = "FlameAtlasAI/0.1 (NASA Space Apps research prototype)"
+ DOI_RE = re.compile(r"10\.\d{4,9}/[^\s\"<>]+", re.I)
+ 
+ 
+@@ -54,7 +54,7 @@ class PaperDTO:
+     def to_dict(self) -> dict:
+         d = asdict(self)
+         d["access_type"] = self.access_type
+-        d["fulltext_read"] = False  # SpaceFire never analyzes external full text
++        d["fulltext_read"] = False  # FlameAtlas never analyzes external full text
+         return d
+ 
+ 
+diff --git a/backend/app/services/assistant.py b/backend/app/services/assistant.py
+index 2963671..71dd64d 100644
+--- a/backend/app/services/assistant.py
++++ b/backend/app/services/assistant.py
+@@ -99,10 +99,12 @@ ANSWER_SCHEMA = {
+     "additionalProperties": False,
+ }
+ 
+-SYSTEM_PROMPT = """You are SpaceFire AI, a scientific research assistant for NASA microgravity combustion data \
++SYSTEM_PROMPT = """You are FlameAtlas, a scientific research assistant for NASA microgravity combustion data \
+ (FLEX liquid droplets PSI-69, BASS-II solid samples PSI-25, SAFFIRE-I large-scale fabric fire PSI-98; and, from documents and curated report tables: ACME CFI-G gaseous cool flames PSI-159, ACME Flame Design PSI-10, ACME Burning Rate Emulator PSI-20, SAME smoke particles PSI-102, PSI-117 cool-flame droplet modelling, FLEX-2 PSI-68, PSI-62).
+ 
+ You answer ONLY from the evidence pack in the user message. Rules:
++- Evidence labelled curated comes from an upstream structured record. Preserve its locator but do not claim that this instance read the original report. Use COMPUTED for a curated record, not DOC.\
++
+ - Every claim must cite one or more citation_ids that exist in the evidence pack. Never invent ids, pages, DOIs, \
+ experiment ids, numbers or paper results.
+ - Any number you state must appear verbatim in the cited evidence (tool outputs or excerpts). Do not do new arithmetic; \
+diff --git a/backend/app/services/combustion.py b/backend/app/services/combustion.py
+index c6896c6..9de3ec2 100644
+--- a/backend/app/services/combustion.py
++++ b/backend/app/services/combustion.py
+@@ -331,7 +331,9 @@ def record(conn: sqlite3.Connection, record_id: str) -> dict:
+         "raw": jloads(row["raw_json"], {}),
+         "provenance": {"source_file": row["source_file"], "source_table": row["source_table"], "page_pdf": row["page_pdf"],
+                        "source_row": row["source_row"], "verification": row["verification"],
+-                       "document_id": doc[0] if doc else None},
++                       "document_id": doc[0] if doc else None,
++                       "document_available": bool(doc),
++                       "source_url": f"https://psi.nasa.gov/physci/repo/data/investigations/{spec['inv']}"},
+         "flags": [{"rule_id": f, "severity": flags.get(f, {}).get("severity"), "description": flags.get(f, {}).get("description")}
+                   for f in jloads(row["flags_json"], [])],
+         "graph": {"node_id": node[0], "sources": ev["sources"][:8]} if ev else None,
+diff --git a/backend/app/services/insight.py b/backend/app/services/insight.py
+index 797ae6a..555bf19 100644
+--- a/backend/app/services/insight.py
++++ b/backend/app/services/insight.py
+@@ -23,34 +23,34 @@ QUESTION_TYPES = {
+     "unsupported": "Unsupported or unanswerable",
+ }
+ 
+-# Requests SpaceFire must decline: certification, prediction for untested materials/conditions, arbitrary-condition
++# Requests FlameAtlas must decline: certification, prediction for untested materials/conditions, arbitrary-condition
+ # calculations, and safety validation. Each rule has the reason shown to the user.
+ UNSUPPORTED_RULES: list[tuple[re.Pattern, str]] = [
+     (re.compile(r"\b(certif\w*|guarantee\w*|approve\w*)\b.*\b(safe|safety|flammab\w*|spacecraft|cabin|crew)\b|"
+                 r"\b(safe|safety)\b.*\b(certif\w*|guarantee\w*)\b", re.I),
+-     "SpaceFire cannot certify or guarantee material or operational safety. NASA material acceptance relies on "
++     "FlameAtlas cannot certify or guarantee material or operational safety. NASA material acceptance relies on "
+      "standardized flammability testing and engineering review, not on these research datasets."),
+     (re.compile(r"\b(predict|forecast|tell me|determine)\b.*\b(whether|if)\b.*\b(untested|new|arbitrary|unknown|any)\b.*"
+                 r"\b(ignite|burn|catch fire|be safe|extinguish)\b|\buntested\b.*\b(ignite|burn|catch fire|safe)\b", re.I),
+-     "There is no measured evidence for an untested material or condition, and SpaceFire does not extrapolate the NASA "
++     "There is no measured evidence for an untested material or condition, and FlameAtlas does not extrapolate the NASA "
+      "data to predict ignition or burning."),
+     (re.compile(r"\b(exact|precise)\b.*\b(flame )?temperature\b|\btemperature\b.*\b(not measured|unmeasured|untested)\b", re.I),
+-     "Flame temperatures were not measured for arbitrary conditions in these datasets; SpaceFire does not invent values."),
++     "Flame temperatures were not measured for arbitrary conditions in these datasets; FlameAtlas does not invent values."),
+     (re.compile(r"\b(calculate|compute|estimate|give)\b.*\b(radius|radii|spread rate|burn(ing)? time|temperature)\b.*"
+                 r"\b(any|arbitrary|every|all)\b.*\b(oxygen|o2|pressure|condition)", re.I),
+-     "Values exist only at the tested conditions; SpaceFire does not interpolate or extrapolate them to arbitrary "
++     "Values exist only at the tested conditions; FlameAtlas does not interpolate or extrapolate them to arbitrary "
+      "conditions."),
+     (re.compile(r"\b(bre|burning rate emulator)\b.*\b(validat\w*|prove\w*|show\w*|confirm\w*)\b.*\b(safe|safety)\b", re.I),
+      "The Burning Rate Emulator emulates condensed-fuel burning on a gas burner; it does not validate the safety of any "
+      "material."),
+     (re.compile(r"\b(probability|likelihood|chance|risk)\b.*\b(of )?(a )?(spacecraft )?fire\b|\bfire[- ]risk score\b", re.I),
+-     "SpaceFire does not compute fire probabilities or risk scores; the NASA data describe experiments, not mission risk."),
++     "FlameAtlas does not compute fire probabilities or risk scores; the NASA data describe experiments, not mission risk."),
+     (re.compile(r"\b(safe|safety|allowable|permissible)\b.*\b(threshold|limit|level|value)\b.*\b(spacecraft|crew|occupied|"
+                 r"habitat|human|cabin)\b", re.I),
+      None),   # reason filled in below with THRESHOLD_TEXT (the wording the Copilot has always used)
+ ]
+ THRESHOLD_TEXT = ("The question asks for an operational safety threshold or certification value. The local NASA "
+-                  "experiments do not establish such a value, and SpaceFire does not infer one.")
++                  "experiments do not establish such a value, and FlameAtlas does not infer one.")
+ UNSUPPORTED_RULES[-1] = (UNSUPPORTED_RULES[-1][0], THRESHOLD_TEXT)
+ COMPARISON_RE = re.compile(r"\b(compare\w*|comparison|versus|vs\.?|differ\w*|difference|similarit\w*|contrast)\b", re.I)
+ AVAILABILITY_RE = re.compile(r"\b(is there|are there|do (we|you) have|availab\w*|what data|which data|downloaded|missing|"
+@@ -92,6 +92,19 @@ def phenomena_in(question: str) -> list[str]:
+     return list(dict.fromkeys(p for rx, p in PHENOMENON_WORDS if rx.search(question)))
+ 
+ 
++def _mark_source_access(conn, items):
++    """Curated report rows are available even when their original PDF is not local."""
++    for item in items:
++        meta = item.get("meta", {})
++        did = meta.get("document_id")
++        if did and not conn.execute("SELECT 1 FROM documents WHERE document_id=?", (did,)).fetchone():
++            meta["access_level"] = "curated"
++            content = item.get("content")
++            if isinstance(content, dict):
++                content["source_availability"] = "Upstream curated record; original report not included or read in this checkout."
++    return items
++
++
+ def _profile_item(conn, inv: str) -> dict | None:
+     try:
+         p = kg.investigation_profile(conn, inv)
+@@ -246,7 +259,7 @@ def graph_evidence(conn: sqlite3.Connection, question: str, invs: list[str], qty
+         it = _comparison_item(conn, targets)
+         if it:
+             items.append(it)
+-    return items, targets
++    return _mark_source_access(conn, items), targets
+ 
+ 
+ # --- Explorer handoff --------------------------------------------------------------------------------------------
+@@ -305,13 +318,19 @@ def explorer_context(conn: sqlite3.Connection, ctx: dict | None) -> tuple[list[d
+         props = {k: v for k, v in n["props"].items() if k not in ("x", "y")}
+         ev = kg.evidence_for(conn, n["node_id"])
+         page = next((int(s.split("#page=")[1]) for s in ev["sources"] if "#page=" in s), None)
++        curated = conn.execute("SELECT page_pdf, source_file, source_table FROM p13_records WHERE record_id=?", (props.get("record_id"),)).fetchone()
++        if curated:
++            page = curated["page_pdf"] if page is None else page
++            props["source_file"] = curated["source_file"]
++            props["source_table"] = curated["source_table"]
++            props["source_availability"] = "Upstream curated record; original report not included in this checkout." if not ev["documents"] else "Local indexed report."
+         items.append({"source_type": "curated_record", "title": f"Selected evidence: {n['label']}",
+                       "content": {"record": props, "investigation": n["investigation_id"], "sources": ev["sources"][:5]},
+-                      "meta": {"access_level": "fulltext" if page else "computed",
++                      "meta": {"access_level": "fulltext" if ev["documents"] else "curated" if curated else "computed",
+                                "document_id": ev["documents"][0] if ev["documents"] else None, "page_pdf": page}})
+     summary = {"scenario": sid, "title": sc["title"], "investigation": inv, "test": test,
+                "evidence": [n["node_id"] for n in ev_nodes], "limitations": limitations}
+-    return items, list(dict.fromkeys(uids)), summary
++    return _mark_source_access(conn, items), list(dict.fromkeys(uids)), summary
+ 
+ 
+ def abstention(reason: str, invs: list[str]) -> str:
+diff --git a/backend/app/services/literature.py b/backend/app/services/literature.py
+index 5e53967..a693d36 100644
+--- a/backend/app/services/literature.py
++++ b/backend/app/services/literature.py
+@@ -223,7 +223,7 @@ class Literature:
+                 "note": None if oa_id else "No OpenAlex record for this paper; related works unavailable."}
+ 
+ 
+-FULLTEXT_POLICY = ("SpaceFire stores metadata and API-provided abstracts only. External full texts are linked, "
++FULLTEXT_POLICY = ("FlameAtlas stores metadata and API-provided abstracts only. External full texts are linked, "
+                    "never downloaded or analyzed; 'abstract' means only the abstract was available.")
+ 
+ 
+diff --git a/backend/app/services/overview.py b/backend/app/services/overview.py
+index 6d09c7d..7162eef 100644
+--- a/backend/app/services/overview.py
++++ b/backend/app/services/overview.py
+@@ -103,7 +103,7 @@ def insights(conn: sqlite3.Connection) -> list[dict]:
+         "id": "flex-disruption", "investigation_id": "PSI-69", "kind": "DOC",
+         "title": "'Disruption' is not defined in the local documents",
+         "text": f"{n_disr} FLEX rows end in 'Disruption'. A full-text search of all indexed FLEX documents finds no definition, so "
+-                "SpaceFire treats it as unresolved and possibly censored — never as extinction.",
++                "FlameAtlas treats it as unresolved and possibly censored — never as extinction.",
+         "n": None, "filters": {},
+         "caveat": "A formal definition may exist in NASA/TP-2015-216046, which is not in the repository.",
+         "link": "/quality?rule_id=FLEX-DISRUPTION",
+diff --git a/backend/requirements.txt b/backend/requirements.txt
+index dbf8779..5ef814e 100644
+--- a/backend/requirements.txt
++++ b/backend/requirements.txt
+@@ -12,7 +12,7 @@ python-docx==1.2.0
+ python-pptx==1.0.2
+ openpyxl==3.1.5
+ defusedxml==0.7.1
+-httpx==0.28.1
++httpx[socks]==0.28.1
+ anthropic==2.7.0
+ google-genai==3.1.0
+ openai==3.51.0
+diff --git a/backend/tests/test_flamels_release.py b/backend/tests/test_flamels_release.py
+new file mode 100644
+index 0000000..736aabb
+--- /dev/null
++++ b/backend/tests/test_flamels_release.py
+@@ -0,0 +1,26 @@
++from app.ingest.documents import slugify
++from app.ingest.phase13.load import CATALOG
++
++
++def test_graph_never_exposes_an_unresolved_document_id(conn):
++    refs = [row[0] for row in conn.execute("SELECT DISTINCT source_ref FROM kg_edges")]
++    assert refs
++    assert not any(ref.startswith("None") for ref in refs)
++    for ref in refs:
++        if "#page=" in ref:
++            document_id = ref.split("#", 1)[0]
++            local = conn.execute("SELECT 1 FROM documents WHERE document_id=?", (document_id,)).fetchone()
++            assert local or any(slugify(path) == document_id for path in CATALOG)
++
++
++def test_missing_declared_report_has_a_useful_source_availability_page(client, conn):
++    missing = [(path, meta) for path, meta in CATALOG.items()
++               if path.endswith(".pdf") and not conn.execute(
++                   "SELECT 1 FROM documents WHERE document_id=?", (slugify(path),)).fetchone()]
++    for path, meta in missing:
++        response = client.get(f"/api/v1/documents/{slugify(path)}/file")
++        assert response.status_code == 424
++        assert "Document not included in this checkout" in response.text
++        assert f"https://psi.nasa.gov/physci/repo/data/investigations/{meta['inv']}" in response.text
++        assert "not been indexed or read" in response.text
++    assert client.get("/api/v1/documents/unknown-untrusted-id/file").status_code == 404
+diff --git a/backend/tests/test_phase14.py b/backend/tests/test_phase14.py
+index 21c11b5..99b4ebf 100644
+--- a/backend/tests/test_phase14.py
++++ b/backend/tests/test_phase14.py
+@@ -180,9 +180,12 @@ def test_missing_condition_is_not_an_outside_range_result(conn):
+         kg.outcomes_under(conn, "PSI-69", {"temperature": (1, 2)})
+ 
+ 
+-def test_graph_query_evidence_and_related(client):
++def test_graph_query_evidence_and_related(client, conn):
+     j = client.get("/api/v1/graph/evidence/meas:cfig:coolflame:21174C3").json()
+-    assert "psi-159-reports-finalrpt-acme-cfi-g#page=46" in j["sources"]
++    doc = conn.execute("SELECT document_id FROM documents WHERE document_id='psi-159-reports-finalrpt-acme-cfi-g'").fetchone()
++    expected = "psi-159-reports-finalrpt-acme-cfi-g#page=46" if doc else "p13_records:cfig:coolflame:21174C3"
++    assert expected in j["sources"]
++    assert all(not ref.startswith("None") for ref in j["sources"])
+     j = client.get("/api/v1/graph/related/PSI-62").json()
+     assert any(r["investigation_id"] == "PSI-25" and "BASS" in r["relation"] for r in j["documented"])
+     assert client.get("/api/v1/graph/node/exp:does-not-exist").status_code == 404
+@@ -215,15 +218,17 @@ def test_ranking_is_deterministic(client):
+     assert [e["id"] for e in a["evidence"]] == [e["id"] for e in b["evidence"]]
+ 
+ 
+-def test_metadata_only_and_documentation_only_sources_get_low_evidence_and_context_labels(client):
++def test_metadata_only_and_documentation_only_sources_get_low_evidence_and_context_labels(client, conn):
+     w = client.get("/api/v1/explorer/scenarios/flame-spread").json()
+     p62 = next(r for r in w["ranked"] if r["investigation_id"] == "PSI-62")
+     assert p62["components"]["evidence"]["value"] == 10 and p62["explanation"].startswith("Supporting context only")
+     assert p62["score"] < w["ranked"][0]["score"]
+     w = client.get("/api/v1/explorer/scenarios/droplet-extinction").json()
+     f2 = next(r for r in w["ranked"] if r["investigation_id"] == "PSI-68")
+-    assert f2["components"]["evidence"]["class"] == "documentation_only"
+-    assert "no measurements" in f2["explanation"]
++    documents = conn.execute("SELECT count(*) FROM documents WHERE investigation_id='PSI-68'").fetchone()[0]
++    assert f2["components"]["evidence"]["class"] == ("documentation_only" if documents > 1 else "metadata_only")
++    assert f2["components"]["evidence"]["value"] <= 20
++    assert f2["explanation"].startswith("Supporting context only")
+ 
+ 
+ def test_unrecorded_conditions_are_not_penalized(client):
+@@ -309,7 +314,7 @@ def test_gaseous_deep_link_preserves_filters_and_evidence_has_sources(client):
+     ("What conditions produced the reported CFI-G cool flames?", "fact"),
+     ("How does gaseous cool-flame research differ from FLEX droplet cool-flame research?", "comparison"),
+     ("Why does SAME particle-size information matter for spacecraft smoke detection?", "interpretation"),
+-    ("Can SpaceFire AI certify that an untested polymer is safe in a spacecraft cabin?", "unsupported"),
++    ("Can FlameAtlas certify that an untested polymer is safe in a spacecraft cabin?", "unsupported"),
+     ("Are FLEX-2 outcome measurements available?", "availability"),
+     ("How many FLEX tests ended in extinction?", "fact"),
+ ])
+@@ -338,7 +343,7 @@ def test_unsupported_questions_abstain_without_calling_the_model(client):
+     from app.providers.llm import set_llm
+     fake = FakeLLM([{"answer": "It is safe.", "status": "answered", "claims": [], "limitations": [], "suggested_followups": []}])
+     set_llm(fake)
+-    for q in ["Can SpaceFire AI certify that an untested polymer is safe in a spacecraft cabin?",
++    for q in ["Can FlameAtlas certify that an untested polymer is safe in a spacecraft cabin?",
+               "Predict whether an untested spacecraft material will ignite.",
+               "Calculate flame radius for any arbitrary oxygen pressure.",
+               "Does the BRE validate that a particular material is safe?"]:
+diff --git a/backend/tests/test_phase16.py b/backend/tests/test_phase16.py
+index 646b7c4..daf2a35 100644
+--- a/backend/tests/test_phase16.py
++++ b/backend/tests/test_phase16.py
+@@ -66,16 +66,23 @@ def test_same_log_and_size_table_stay_separate(client, conn):
+     assert sorted(i["values"]["d10_nm"] for i in kap["items"]) == [105, 186]
+ 
+ 
+-def test_record_detail_has_provenance_flags_and_links(client):
++def test_record_detail_has_provenance_flags_and_links(client, conn):
+     r = client.get("/api/v1/combustion/record/cfig:normal:21174C3").json()
+     assert r["test_id"] == "21174C3" and r["provenance"]["source_row"] and r["provenance"]["source_file"].endswith("Normal Flames.csv")
+-    assert "psi-159-reports-finalrpt-acme-cfi-g#page=46" in r["graph"]["sources"]
++    doc = conn.execute("SELECT document_id FROM documents WHERE document_id='psi-159-reports-finalrpt-acme-cfi-g'").fetchone()
++    expected = "psi-159-reports-finalrpt-acme-cfi-g#page=46" if doc else "p13_records:cfig:coolflame:21174C3"
++    assert expected in r["graph"]["sources"]
++    assert all(not ref.startswith("None") for ref in r["graph"]["sources"])
+     assert any(l["href"] == "/phenomena/gaseous-flames?tab=cfig&test=21174C3#cfig-lookup" for l in r["links"])
+     s = client.get("/api/v1/combustion/record/same:size:kapton:aged").json()
+-    assert s["provenance"]["page_pdf"] == 27 and s["provenance"]["document_id"]
++    assert s["provenance"]["page_pdf"] == 27
++    assert s["provenance"]["document_available"] == bool(s["provenance"]["document_id"])
++    assert s["provenance"]["source_url"].endswith("/PSI-102")
+     assert client.get("/api/v1/combustion/record/nope:1").status_code == 404
+     p = client.get("/api/v1/combustion/investigation/PSI-62").json()
+-    assert p["readiness"] == "metadata_only" and p["publications"] and any(r["investigation_id"] == "PSI-25" for r in p["related"])
++    assert p["readiness"] == "metadata_only" and p["publication_count"] == 4
++    assert len(p["publications"]) <= p["publication_count"]
++    assert any(r["investigation_id"] == "PSI-25" for r in p["related"])
+ 
+ 
+ def test_comparison_rules(client):
+diff --git a/frontend/app/about/page.tsx b/frontend/app/about/page.tsx
+new file mode 100644
+index 0000000..dc72a80
+--- /dev/null
++++ b/frontend/app/about/page.tsx
+@@ -0,0 +1,37 @@
++import type { Metadata } from "next";
++import Link from "next/link";
++import { BRAND } from "@/lib/brand";
++
++export const metadata: Metadata = { title: "About The Flamels" };
++
++export default function AboutPage() {
++  return (
++    <article className="mx-auto max-w-4xl px-5 py-14 md:px-8">
++      <p className="text-xs uppercase tracking-[.22em] text-data">The Flamels / Research platform</p>
++      <h1 className="display mt-4 text-4xl md:text-6xl">Evidence before interpretation.</h1>
++      <p className="mt-6 max-w-3xl text-lg leading-relaxed text-text-2">FlameAtlas brings microgravity combustion research into a dedicated workspace for The Flamels. Explore each investigation at the level its source files support, inspect provenance, and keep conceptual demonstrations separate from experimental observations.</p>
++      <div className="mt-8 flex flex-wrap gap-3">
++        <Link href="/demo" className="rounded-lg bg-flame px-5 py-3 font-medium text-flame-ink">Start guided demo</Link>
++        <a href={BRAND.repository} className="rounded-lg border border-line-strong px-5 py-3">View The Flamels on GitHub ↗</a>
++        <a href={BRAND.presentation} className="rounded-lg border border-line-strong px-5 py-3">Open evidence presentation ↗</a>
++      </div>
++      <section className="mt-12 rounded-xl border border-line bg-panel p-6">
++        <h2 className="text-xl font-semibold">Source and software provenance</h2>
++        <p className="mt-4 leading-relaxed text-text-2">This edition adapts <a className="underline" href={BRAND.upstream}>SpaceFire-AI by COngtuthien</a>. The original implementation, scientific processing methods and source credits remain attributed to that project. The Flamels edition adds its own identity, navigation, installation workflow and integration with the existing FlameAtlas evidence workspace.</p>
++        <p className="mt-4 break-all font-mono text-xs text-text-3">Reference source commit: {BRAND.upstreamCommit}</p>
++        <p className="mt-4 text-sm leading-relaxed text-text-3">The upstream repository supplies no license file. This edition does not assign a new license to upstream materials. NASA measurements, documents and media retain their individual source attribution and usage notes.</p>
++      </section>
++      <section className="mt-8">
++        <h2 className="text-xl font-semibold">Read the evidence correctly</h2>
++        <ul className="mt-4 list-disc space-y-3 pl-5 leading-relaxed text-text-2">
++          <li>Counts describe imported records and collections, not interchangeable experiments or scientific confidence.</li>
++          <li>Three-dimensional studios are conceptual educational illustrations. Their animation time is not an observed experimental timeline.</li>
++          <li>Research relevance and condition similarity are distinct from fire hazard.</li>
++          <li>Model-written answers require your own server-side provider key. With no key, the Copilot retrieves evidence without inventing an AI answer.</li>
++          <li>The exploratory estimator and its reported validation limits remain separate from measured NASA outcomes.</li>
++        </ul>
++        <p className="mt-8 text-sm text-text-3">Independent research support tool. Not affiliated with NASA and not a certified fire safety assessment.</p>
++      </section>
++    </article>
++  );
++}
+diff --git a/frontend/app/globals.css b/frontend/app/globals.css
+index 924194a..522048e 100644
+--- a/frontend/app/globals.css
++++ b/frontend/app/globals.css
+@@ -1,6 +1,6 @@
+ @import "tailwindcss";
+ 
+-/* SpaceFire AI design tokens (Phase 12: light and dark themes; docs/THEME_DESIGN_SYSTEM_V1.md).
++/* FlameAtlas design tokens (Phase 12: light and dark themes; docs/THEME_DESIGN_SYSTEM_V1.md).
+    Tokens are named by role and keep their Phase 3 names so every component switches theme without changes:
+      void → ink → panel → raised   recessed → page → surface → raised/hover surface
+      line / line-strong            hairlines / control borders (line-strong ≥ 3:1 against page and surface)
+@@ -15,18 +15,18 @@
+ :root,
+ :root[data-theme="dark"],
+ .theme-dark {
+-  --void: #0c1626;
+-  --ink: #111d30;
+-  --panel: #182840;
+-  --raised: #21344f;
++  --void: #081820;
++  --ink: #0d222c;
++  --panel: #142e39;
++  --raised: #1d3b47;
+   --line: #2b3f5c;
+   --line-strong: #5a7499;
+   --text: #f0f5fc;
+   --text-2: #c2d0e2;
+   --text-3: #9fb2ca;
+-  --flame: #fa9555;
++  --flame: #7cdbcb;
+   --ember: #ffbe73;
+-  --flame-ink: #1f0e03;
++  --flame-ink: #08251f;
+   --data: #5ccbdf;
+   --electric: #7aa0ff;
+   --link: #c0afff;
+@@ -49,7 +49,7 @@
+   --sky-warm: rgba(250, 149, 85, 0.06);
+   --side-from: rgba(24, 40, 64, 0.95);
+   --side-to: rgba(13, 23, 39, 0.98);
+-  --nav-active: linear-gradient(90deg, rgba(250, 149, 85, 0.18), rgba(33, 52, 79, 0.95) 55%);
++  --nav-active: linear-gradient(90deg, rgba(124, 219, 203, 0.18), rgba(33, 52, 79, 0.95) 55%);
+   --tint-cool: rgba(122, 160, 255, 0.15);
+   --tint-warm: rgba(250, 149, 85, 0.08);
+   --shadow: rgba(2, 6, 14, 0.75);
+@@ -69,7 +69,7 @@
+   --text: #16243a;
+   --text-2: #3f5169;
+   --text-3: #566980;
+-  --flame: #b04e1a;
++  --flame: #126b5e;
+   --ember: #9a5410;
+   --flame-ink: #ffffff;
+   --data: #0b6f84;
+diff --git a/frontend/app/icon.svg b/frontend/app/icon.svg
+new file mode 100644
+index 0000000..54bfe33
+--- /dev/null
++++ b/frontend/app/icon.svg
+@@ -0,0 +1 @@
++<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="15" fill="#081c25"/><path d="M33 6c6 14-7 17-3 29 4-3 8-7 10-14 17 19 12 35-8 37C10 56 9 37 20 23c-1 11 1 15 5 17C17 22 35 21 33 6Z" fill="#7cdbcb"/><path d="M33 37c9 11 9 16-1 18-9-2-8-9 1-18Z" fill="#f2b777"/></svg>
+diff --git a/frontend/app/layout.tsx b/frontend/app/layout.tsx
+index d5d8544..6ded8b7 100644
+--- a/frontend/app/layout.tsx
++++ b/frontend/app/layout.tsx
+@@ -10,8 +10,8 @@ const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains",
+ 
+ 
+ export const metadata: Metadata = {
+-  title: { default: "SpaceFire AI", template: "%s · SpaceFire AI" },
+-  description: "Evidence-grounded microgravity combustion research over NASA FLEX, BASS-II and SAFFIRE-I data.",
++  title: { default: "FlameAtlas | The Flamels", template: "%s · FlameAtlas" },
++  description: "The Flamels research platform: explore NASA microgravity combustion evidence, scientific charts, conceptual 3D studios and cited research assistance.",
+ };
+ 
+ export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+diff --git a/frontend/components/Shell.tsx b/frontend/components/Shell.tsx
+index 7d7f2e1..42f077d 100644
+--- a/frontend/components/Shell.tsx
++++ b/frontend/components/Shell.tsx
+@@ -10,6 +10,7 @@ import { AnimatePresence, motion, MotionProvider, DUR, EASE } from "@/components
+ import { aiStatus, useHealth } from "@/lib/api";
+ import { ROUTES } from "@/lib/routes";
+ import { navPref } from "@/lib/ui-prefs";
++import { BRAND } from "@/lib/brand";
+ 
+ type NavItem = { href: string; label: string; icon: string; source?: string; match?: string[] };
+ export const NAV: { group: string; items: NavItem[] }[] = [
+@@ -34,6 +35,7 @@ export const NAV: { group: string; items: NavItem[] }[] = [
+   { group: "Trust & methods", items: [
+     { href: ROUTES.reliability, label: "Data Reliability", icon: "quality" },
+     { href: ROUTES.methodology, label: "Methodology", icon: "method" },
++    { href: "/about", label: "About The Flamels", icon: "overview" },
+   ] },
+ ];
+ const ALL = NAV.flatMap((g) => g.items.map((i) => ({ ...i, group: g.group })));
+@@ -45,23 +47,14 @@ function isActive(it: NavItem, path: string) {
+ }
+ 
+ function Logo({ rail = false }: { rail?: boolean }) {
+-  const gid = `lg${useId().replace(/[^a-zA-Z0-9_-]/g, "")}`;
++  
+   return (
+-    <Link href="/" className="group flex items-center gap-2.5 text-text no-underline hover:no-underline" aria-label="SpaceFire AI home">
+-      <svg width="30" height="30" viewBox="0 0 28 28" aria-hidden className="transition-transform duration-500 ease-out group-hover:rotate-[30deg]">
+-        <defs>
+-          <radialGradient id={gid} cx="50%" cy="50%" r="50%">
+-            <stop offset="35%" stopColor="#0A1424" />
+-            <stop offset="62%" stopColor="#4FD1E8" stopOpacity="0.9" />
+-            <stop offset="80%" stopColor="#5B8CFF" stopOpacity="0.55" />
+-            <stop offset="100%" stopColor="#0A1424" stopOpacity="0" />
+-          </radialGradient>
+-        </defs>
+-        <circle cx="14" cy="14" r="13" fill={`url(#${gid})`} />
+-        <ellipse cx="14" cy="14" rx="12.5" ry="4.2" fill="none" stroke="#5B8CFF" strokeOpacity="0.5" strokeWidth="0.8" transform="rotate(-24 14 14)" />
+-        <circle cx="14" cy="14" r="3.2" fill="#FF8A3D" />
++    <Link href="/" className="group flex items-center gap-2.5 text-text no-underline hover:no-underline" aria-label="FlameAtlas home">
++      <svg width="30" height="34" viewBox="0 0 64 64" aria-hidden>
++        <path d="M33 6c6 14-7 17-3 29 4-3 8-7 10-14 17 19 12 35-8 37C10 56 9 37 20 23c-1 11 1 15 5 17C17 22 35 21 33 6Z" fill="var(--data)"/>
++        <path d="M33 37c9 11 9 16-1 18-9-2-8-9 1-18Z" fill="var(--ember)"/>
+       </svg>
+-      <span className={`display text-[19px] leading-none ${rail ? "nav-label" : ""}`}>SpaceFire <span className="text-flame">AI</span></span>
++      <span className={`${rail ? "nav-label" : ""}`}><span className="display block text-[20px] leading-none">Flame<span className="text-data">Atlas</span></span><span className="mt-1 block text-[8px] uppercase tracking-[.25em] text-text-3">By The Flamels</span></span>
+     </Link>
+   );
+ }
+@@ -192,7 +185,9 @@ function SiteFooter() {
+           <p className="mt-3 text-[13.5px] leading-relaxed text-text-3">
+             An independent research tool built on public NASA Physical Sciences Informatics data: FLEX (PSI-69), BASS-II (PSI-25) and SAFFIRE-I (PSI-98).
+             NASA imagery is credited where it appears. Not an official NASA website.
++            Adapted from SpaceFire-AI by COngtuthien; source history and scientific credits are retained.
+           </p>
++          <div className="mt-4 flex flex-wrap gap-4 text-sm"><Link href="/about">About & credits</Link><a href={BRAND.repository}>The Flamels on GitHub ↗</a><a href={BRAND.presentation}>Evidence presentation ↗</a></div>
+         </div>
+         {groups.map((g) => (
+           <nav key={g.title} aria-label={`${g.title} links`}>
+diff --git a/frontend/components/demo/DemoBar.tsx b/frontend/components/demo/DemoBar.tsx
+index a72a85a..c5f343d 100644
+--- a/frontend/components/demo/DemoBar.tsx
++++ b/frontend/components/demo/DemoBar.tsx
+@@ -8,12 +8,12 @@ import { Icon } from "@/components/icons";
+ import { EXPLORE, JOURNEYS, SCENARIO_ORDER, setDemo, stepHref, stepsFor, useDemo, type DemoScenario } from "@/lib/demo";
+ 
+ const STEP_NOTES: Record<number, (s: DemoScenario) => string[]> = {
+-  1: () => ["Why fire behaves differently in microgravity, what SpaceFire integrates, and what it cannot conclude."],
++  1: () => ["Why fire behaves differently in microgravity, what FlameAtlas integrates, and what it cannot conclude."],
+   2: (s) => [`Four research scenarios. This demo follows ${JOURNEYS[s].letter}: ${JOURNEYS[s].label}. Pick another below if you like.`],
+   3: (s) => JOURNEYS[s].notes[3],
+   4: (s) => JOURNEYS[s].notes[4],
+   5: () => [`The question is only pre-filled: pressing Ask sends it (the configured AI model if one is set, otherwise evidence only).`,
+-    `Try an unsupported one too, e.g. “Can SpaceFire certify that an untested polymer is safe?”: it abstains without calling the model.`],
++    `Try an unsupported one too, e.g. “Can FlameAtlas certify that an untested polymer is safe?”: it abstains without calling the model.`],
+ };
+ 
+ const EXPLORE_NOTES: Record<number, (s: DemoScenario) => string[]> = {
+diff --git a/frontend/components/evidence-tag.tsx b/frontend/components/evidence-tag.tsx
+index 1106204..8f3cf7c 100644
+--- a/frontend/components/evidence-tag.tsx
++++ b/frontend/components/evidence-tag.tsx
+@@ -1,7 +1,7 @@
+ // Evidence classes for Phase 13 values and 3D elements (shown on every new chart, table row and scene element).
+ export const EVIDENCE = {
+   measured: { label: "Measured (NASA)", cls: "border-data/70 text-data", note: "Value measured or observed in the experiment, shown with its source." },
+-  derived: { label: "Source-backed derived", cls: "border-link/70 text-link", note: "Calculated by NASA or SpaceFire from measured values; method stated." },
++  derived: { label: "Source-backed derived", cls: "border-link/70 text-link", note: "Calculated by NASA or FlameAtlas from measured values; method stated." },
+   digitized: { label: "Published figure data", cls: "border-link/70 text-link", note: "Points supplied as figure data (digitized); precision limited." },
+   model: { label: "Model prediction", cls: "border-warn/70 text-warn", note: "Output of a numerical model, not a measurement." },
+   condition: { label: "Test condition", cls: "border-text-2/60 text-text-2", note: "Experimental setting (an input), not an outcome." },
+diff --git a/frontend/components/glossary.tsx b/frontend/components/glossary.tsx
+index 632f928..c6675e9 100644
+--- a/frontend/components/glossary.tsx
++++ b/frontend/components/glossary.tsx
+@@ -64,7 +64,7 @@ export function Term({ id, children }: { id: string; children?: ReactNode }) {
+ export function GlossaryList() {
+   return (
+     <Disclosure id="glossary" anchors={GLOSSARY.map((g) => `glossary-${g.id}`)} title="Glossary" action="Show the glossary"
+-      summary={`${GLOSSARY.length} terms used across SpaceFire, in plain language, with their caveats.`}>
++      summary={`${GLOSSARY.length} terms used across FlameAtlas, in plain language, with their caveats.`}>
+       <dl className="grid gap-4 md:grid-cols-2">
+         {GLOSSARY.map((g) => (
+           <div key={g.id} id={`glossary-${g.id}`} className="scroll-mt-36">
+diff --git a/frontend/components/journey.tsx b/frontend/components/journey.tsx
+index 0431b73..e1b4d4c 100644
+--- a/frontend/components/journey.tsx
++++ b/frontend/components/journey.tsx
+@@ -1,6 +1,6 @@
+ "use client";
+ 
+-// "Discover SpaceFire" journey card (Phase 9). An inline, non-modal card that appears only while the URL carries a
++// "Discover FlameAtlas" journey card (Phase 9). An inline, non-modal card that appears only while the URL carries a
+ // `journey` step; it never covers the 3D scene. Back / Next / End are links or URL updates, so browser history,
+ // reloads and deep links all work. Keyboard: focus moves to the step heading when the step changes.
+ import Link from "next/link";
+@@ -57,7 +57,7 @@ export function JourneyProgress({ step }: { step: JourneyStep }) {
+   const n = stepNumber(step);
+   return (
+     <div className="flex items-center gap-3">
+-      <p className="text-[12px] font-medium text-electric">Discover SpaceFire · step {n} of {JOURNEY_STEPS.length}</p>
++      <p className="text-[12px] font-medium text-electric">Discover FlameAtlas · step {n} of {JOURNEY_STEPS.length}</p>
+       <div role="progressbar" aria-label="Journey progress" aria-valuemin={1} aria-valuemax={JOURNEY_STEPS.length} aria-valuenow={n}
+         aria-valuetext={`Step ${n} of ${JOURNEY_STEPS.length}`} className="flex flex-1 gap-1" data-testid="journey-progress">
+         {JOURNEY_STEPS.map((s, i) => <span key={s} className={`h-1 flex-1 rounded-full ${i < n ? "bg-electric" : "bg-line-strong/70"}`} />)}
+diff --git a/frontend/components/media.tsx b/frontend/components/media.tsx
+index 743492d..89dd1d5 100644
+--- a/frontend/components/media.tsx
++++ b/frontend/components/media.tsx
+@@ -246,7 +246,7 @@ export function MediaLightbox({ m, open, onClose }: { m: ScientificMedia; open:
+                 {m.reference && <Link href={m.reference.href} onClick={onClose}>{m.reference.label}</Link>}
+               </div>
+             )}
+-            <p className="text-xs text-text-3">Images give context only; SpaceFire&apos;s numbers come from the NASA data files and documents.</p>
++            <p className="text-xs text-text-3">Images give context only; FlameAtlas&apos;s numbers come from the NASA data files and documents.</p>
+           </div>
+         </motion.div>
+       )}
+diff --git a/frontend/components/motion.tsx b/frontend/components/motion.tsx
+index 2110a55..8a8053a 100644
+--- a/frontend/components/motion.tsx
++++ b/frontend/components/motion.tsx
+@@ -1,6 +1,6 @@
+ "use client";
+ 
+-// SpaceFire motion system. One easing family, three durations, all transform/opacity.
++// FlameAtlas motion system. One easing family, three durations, all transform/opacity.
+ // MotionConfig reducedMotion="user" strips transform animation for people who ask for less motion;
+ // components below also short-circuit to their final state so nothing waits on an animation.
+ import {
+diff --git a/frontend/components/scientific-notice.tsx b/frontend/components/scientific-notice.tsx
+index d7df381..1c78cfe 100644
+--- a/frontend/components/scientific-notice.tsx
++++ b/frontend/components/scientific-notice.tsx
+@@ -40,7 +40,7 @@ export function ScientificNotice({ notice, className = "" }: { notice: Scientifi
+           <div id={bodyId} hidden={!open} className="mt-2 flex flex-col gap-3 border-t border-line/50 pt-3 text-[13.5px] text-text-2">
+             <div className="overflow-x-auto">
+               <table className="data text-[13px]">
+-                <caption className="sr-only">Original source values and how SpaceFire interprets them</caption>
++                <caption className="sr-only">Original source values and how FlameAtlas interprets them</caption>
+                 <thead><tr><th scope="col">Item</th><th scope="col">In the source</th><th scope="col">Shown as</th><th scope="col">Where</th></tr></thead>
+                 <tbody>{notice.rows.map((r) => (
+                   <tr key={r.label}><th scope="row" className="font-normal text-text">{r.label}</th><td><span className="raw">{r.original}</span></td><td>{r.interpreted}</td><td className="text-text-3">{r.source}</td></tr>
+diff --git a/frontend/components/studio/EvidencePanel.tsx b/frontend/components/studio/EvidencePanel.tsx
+index dd5c43a..3c70c40 100644
+--- a/frontend/components/studio/EvidencePanel.tsx
++++ b/frontend/components/studio/EvidencePanel.tsx
+@@ -1,6 +1,6 @@
+ "use client";
+ 
+-// NASA evidence beside the 3D scenes. Every value here is read from the SpaceFire API exactly as stored from the
++// NASA evidence beside the 3D scenes. Every value here is read from the FlameAtlas API exactly as stored from the
+ // NASA files (or a verified report table), with its unit, raw header where it matters, and its quality flags.
+ // Nothing in this panel is computed from the conceptual controls.
+ import Link from "next/link";
+diff --git a/frontend/components/studio/FuelCompare.tsx b/frontend/components/studio/FuelCompare.tsx
+index 065a859..b9eebed 100644
+--- a/frontend/components/studio/FuelCompare.tsx
++++ b/frontend/components/studio/FuelCompare.tsx
+@@ -2,7 +2,7 @@
+ 
+ // Compare Fuels: pick a FLEX test for each fuel and see their recorded conditions side by side. Candidates for the
+ // second fuel are ranked by how closely their recorded conditions match the first test. Display tolerances below
+-// are SpaceFire's choice for flagging differences, not a statistical criterion. No conclusion about which fuel
++// are FlameAtlas's choice for flagging differences, not a statistical criterion. No conclusion about which fuel
+ // burns faster is drawn from two tests.
+ import Link from "next/link";
+ import { useMemo } from "react";
+diff --git a/frontend/components/studio/ScienceStudio.tsx b/frontend/components/studio/ScienceStudio.tsx
+index 5f898f9..fed848b 100644
+--- a/frontend/components/studio/ScienceStudio.tsx
++++ b/frontend/components/studio/ScienceStudio.tsx
+@@ -474,7 +474,7 @@ export default function ScienceStudio({ sceneId }: { sceneId: SceneId }) {
+   })();
+   const nasaView = view === "nasa";
+ 
+-  // --- Discover SpaceFire journey (only while the URL carries a studio step) --------------------------------------
++  // --- Discover FlameAtlas journey (only while the URL carries a studio step) --------------------------------------
+   const journey = useJourney();
+   const jStep = journey.step === "model" || journey.step === "interact" || journey.step === "evidence" ? journey.step : null;
+   const jCopy = jStep ? STEP_COPY[TOPIC[sceneId]][jStep] : null;
+diff --git a/frontend/components/studio/ScienceSummary.tsx b/frontend/components/studio/ScienceSummary.tsx
+index 260cf7a..39e7724 100644
+--- a/frontend/components/studio/ScienceSummary.tsx
++++ b/frontend/components/studio/ScienceSummary.tsx
+@@ -65,7 +65,7 @@ export function LiteraturePanel({ inv, source, query, question }: { inv: string;
+                   ))}
+                 </ul>
+               ) : <p className="text-sm text-text-2">NASA PSI lists no publications for this investigation in the local metadata.</p>}
+-              <p className="mt-3 flex items-center gap-2 text-[12.5px] text-text-3"><Prov kind="publication_list" /> Titles from NASA PSI metadata; SpaceFire has not read the papers.</p>
++              <p className="mt-3 flex items-center gap-2 text-[12.5px] text-text-3"><Prov kind="publication_list" /> Titles from NASA PSI metadata; FlameAtlas has not read the papers.</p>
+             </div>
+             <div className="flex flex-col gap-2 text-[14px]">
+               <Link href={`${ROUTES.literature}?q=${encodeURIComponent(query)}`} className="inline-flex items-center gap-1.5"><Icon name="research" />Search external literature</Link>
+diff --git a/frontend/components/ui.tsx b/frontend/components/ui.tsx
+index 95d00a9..40d4b23 100644
+--- a/frontend/components/ui.tsx
++++ b/frontend/components/ui.tsx
+@@ -155,8 +155,8 @@ const PROV: Record<string, { label: string; cls: string; tip: string }> = {
+   DOC: { label: "Document", cls: "border-link/60 text-link", tip: "Stated in a NASA source document (page cited)" },
+   local_document: { label: "Document", cls: "border-link/60 text-link", tip: "Stated in a NASA source document (page cited)" },
+   report_table: { label: "Report table", cls: "border-link/60 text-link", tip: "Curated NASA report table row, verified against the CSV (page cited)" },
+-  COMPUTED: { label: "Computed", cls: "border-flame/60 text-flame", tip: "Deterministic calculation by SpaceFire code" },
+-  analysis: { label: "Computed", cls: "border-flame/60 text-flame", tip: "Deterministic calculation by SpaceFire code" },
++  COMPUTED: { label: "Computed", cls: "border-flame/60 text-flame", tip: "Deterministic calculation by FlameAtlas code" },
++  analysis: { label: "Computed", cls: "border-flame/60 text-flame", tip: "Deterministic calculation by FlameAtlas code" },
+   quality_flag: { label: "Quality rule", cls: "border-warn/60 text-warn", tip: "Automated data-quality rule" },
+   EXTERNAL: { label: "External", cls: "border-text-2/60 text-text-2", tip: "External publication metadata or abstract" },
+   external_paper: { label: "External", cls: "border-text-2/60 text-text-2", tip: "External publication metadata or abstract" },
+@@ -250,7 +250,7 @@ export function ErrorState({ error, onRetry }: { error: ApiError | Error; onRetr
+     <div role="alert" className="flex gap-3 rounded-md border border-crit/40 bg-crit/10 p-4">
+       <Icon name="alert" size={20} className="mt-0.5 shrink-0 text-crit" />
+       <div>
+-      <p className="font-semibold text-crit">{offline ? "The SpaceFire API is not reachable" : "Request failed"}</p>
++      <p className="font-semibold text-crit">{offline ? "The FlameAtlas API is not reachable" : "Request failed"}</p>
+       <p className="mt-1 text-sm text-text-2">{error.message}</p>
+       {offline && <p className="mt-1 text-sm text-text-3">Start the backend with scripts/start.ps1 (or start.sh), then retry.</p>}
+       {error instanceof ApiError && error.requestId && (
+diff --git a/frontend/components/views/AssistantView.tsx b/frontend/components/views/AssistantView.tsx
+index 26bf6f5..5a7e995 100644
+--- a/frontend/components/views/AssistantView.tsx
++++ b/frontend/components/views/AssistantView.tsx
+@@ -54,8 +54,8 @@ const RETRYABLE = new Set(["unavailable", "timeout", "bad_output"]);
+ /** Plain-language messages for errors that stopped the whole request (no evidence came back). */
+ function friendly(e: ApiError): ApiError {
+   const msg = e.code === "internal_error"
+-    ? "Something went wrong on the SpaceFire server while answering (an internal error, not the AI service). Try again; if it keeps happening, the backend console shows the details."
+-    : e.code === "stream_ended" ? "The connection to the SpaceFire server was interrupted before the answer was complete. Try again."
++    ? "Something went wrong on the FlameAtlas server while answering (an internal error, not the AI service). Try again; if it keeps happening, the backend console shows the details."
++    : e.code === "stream_ended" ? "The connection to the FlameAtlas server was interrupted before the answer was complete. Try again."
+       : e.message;
+   return msg === e.message ? e : new ApiError(e.status, e.code, msg, e.requestId);
+ }
+@@ -109,6 +109,7 @@ function CitationCard({ c, highlight }: { c: Citation; highlight: boolean }) {
+         {link ? <a href={link} target={external ? "_blank" : undefined} rel="noreferrer" className="font-semibold">{c.title}</a>
+           : <span className="font-semibold">{c.title}</span>}
+         {c.page_pdf && <span className="text-xs text-text-3">PDF p.{c.page_pdf}</span>}
++        {c.access_level === "curated" && <span className="text-xs text-warn">Upstream curated record · original report not included locally</span>}
+         {c.source_type === "external_paper" && (
+           <span className="text-xs text-text-3">{c.access_level === "abstract" ? "abstract only, full text not read" : "metadata only"}</span>)}
+       </div>
+@@ -211,7 +212,7 @@ function AnswerBlock({ a, onRetry }: { a: Answer; onRetry?: () => void }) {
+         <span className="text-sm text-text-3">{st.note}</span>
+         {a.explorer_context && (
+           <span className="basis-full text-[12.5px] text-text-3" data-testid="answer-explorer-context">
+-            Explorer context used: {a.explorer_context.title}{a.explorer_context.investigation ? ` · ${a.explorer_context.investigation}` : ""}{a.explorer_context.test ? ` · test ${a.explorer_context.test}` : ""} (resolved from the SpaceFire database).
++            Explorer context used: {a.explorer_context.title}{a.explorer_context.investigation ? ` · ${a.explorer_context.investigation}` : ""}{a.explorer_context.test ? ` · test ${a.explorer_context.test}` : ""} (resolved from the FlameAtlas database).
+           </span>
+         )}
+       </div>
+@@ -439,7 +440,7 @@ export default function AssistantView() {
+       const err = (e as Error).name === "AbortError"
+         ? new ApiError(0, "timeout", stop.cap
+           ? "No answer arrived within 5 minutes. Try again, or ask a narrower question."
+-          : "The SpaceFire server stopped responding while answering. Check that the backend is still running, then try again.")
++          : "The FlameAtlas server stopped responding while answering. Check that the backend is still running, then try again.")
+         : e instanceof ApiError ? friendly(e) : new ApiError(0, "unknown", String(e));
+       patch((x) => ({ ...x, err }));
+     } finally {
+@@ -514,7 +515,7 @@ export default function AssistantView() {
+                   <p className="mt-0.5">Draft question only: nothing has been sent. With it goes the scenario <b className="text-text">{explorerCtx.scenario.replace(/-/g, " ")}</b>
+                     {explorerCtx.investigation ? <>, investigation <b className="text-text">{explorerCtx.investigation}</b></> : null}
+                     {explorerCtx.test ? <>, test <b className="text-text">{explorerCtx.test}</b></> : null}
+-                    {explorerCtx.evidence.length ? <> and {explorerCtx.evidence.length} selected evidence item(s)</> : null}. SpaceFire looks these up in its own database; their limitations are added to the evidence.</p>
++                    {explorerCtx.evidence.length ? <> and {explorerCtx.evidence.length} selected evidence item(s)</> : null}. FlameAtlas looks these up in its own database; their limitations are added to the evidence.</p>
+                   <label className="mt-1.5 inline-flex items-center gap-1.5"><input type="checkbox" checked={useCtx} onChange={(e) => setUseCtx(e.target.checked)} data-testid="explorer-context-toggle" />Send this Explorer context</label>
+                 </div>
+               )}
+diff --git a/frontend/components/views/BassReportSection.tsx b/frontend/components/views/BassReportSection.tsx
+index 0a3dbe8..1873d10 100644
+--- a/frontend/components/views/BassReportSection.tsx
++++ b/frontend/components/views/BassReportSection.tsx
+@@ -48,7 +48,7 @@ function ReportTrust({ c }: { c: Consistency }) {
+   const v = (x: VelocityCheck) => `${x.test_id}: report ${x.report_velocity_cm_s.join(", ")} cm/s, display “${x.air_display}”`;
+   return (
+     <Panel id="report-trust" title="How far the report-only values can be trusted" aside="cross-checks within the report and against the CSV text">
+-      <p className="max-w-[80ch] text-sm text-text-2">Thickness, width, flow velocity and flow direction in Tables 5.1 and 7.1 are not numeric CSV columns, so the CSV cannot verify them directly. Where the report prints a value twice, or the CSV&apos;s material text repeats it, SpaceFire compares the copies. Nothing is corrected; disagreements become flags.</p>
++      <p className="max-w-[80ch] text-sm text-text-2">Thickness, width, flow velocity and flow direction in Tables 5.1 and 7.1 are not numeric CSV columns, so the CSV cannot verify them directly. Where the report prints a value twice, or the CSV&apos;s material text repeats it, FlameAtlas compares the copies. Nothing is corrected; disagreements become flags.</p>
+       <ul className="mt-3 grid gap-3 lg:grid-cols-3">
+         <Agreement label="Sample thickness" n={s.thickness_checked} ok={s.thickness_agree} note="Table 5.1 vs the Appendix A log vs the CSV material text." />
+         <Agreement label="Sample width" n={s.width_checked} ok={s.width_agree} note="Tables print actual widths (2.2 / 1.2 cm); the log and CSV give nominal 2 / 1 cm.">
+diff --git a/frontend/components/views/DemoView.tsx b/frontend/components/views/DemoView.tsx
+index 38af552..f70ee68 100644
+--- a/frontend/components/views/DemoView.tsx
++++ b/frontend/components/views/DemoView.tsx
+@@ -31,7 +31,7 @@ export default function DemoView() {
+         </div>
+         <MediaFigure id="bass2-flame-gmt203" compact eager aspect="4 / 3" caption="A real BASS-II flame aboard the ISS." />
+       </header>
+-      <section className="grid gap-4 md:grid-cols-3" aria-label="What SpaceFire brings together">
++      <section className="grid gap-4 md:grid-cols-3" aria-label="What FlameAtlas brings together">
+         <div className="rounded-2xl border border-line/60 bg-panel/50 p-4">
+           <p className="text-[28px] font-semibold text-data" data-testid="demo-count-investigations">{reg.data ? reg.data.items.length : "…"}</p>
+           <p className="text-[14px] text-text-2">NASA Physical Sciences investigations{withData !== undefined ? `, ${withData} with downloaded test data or verified report tables` : ""}.</p>
+@@ -47,7 +47,7 @@ export default function DemoView() {
+       </section>
+       <section className="grid gap-4 md:grid-cols-2">
+         <div className="rounded-2xl border border-ok/40 bg-ok/[0.04] p-4">
+-          <h2 className="subhead text-[16px]">What SpaceFire can do</h2>
++          <h2 className="subhead text-[16px]">What FlameAtlas can do</h2>
+           <ul className="mt-2 list-disc pl-5 text-[14px] text-text-2">
+             <li>Find the NASA investigations behind a research question and rank them by relevance.</li>
+             <li>Show what was actually measured, with the CSV row or report page.</li>
+diff --git a/frontend/components/views/MediaGalleryView.tsx b/frontend/components/views/MediaGalleryView.tsx
+index 8a1adef..5b0b1fa 100644
+--- a/frontend/components/views/MediaGalleryView.tsx
++++ b/frontend/components/views/MediaGalleryView.tsx
+@@ -54,7 +54,7 @@ function Card({ m, onOpen }: { m: ScientificMedia; onOpen: () => void }) {
+ }
+ 
+ /** Phase 16: media coverage of the ten registered investigations. A count of 0 means no verified NASA image or video
+- *  is in SpaceFire for it; none is substituted. "BASS" and "SoFIE" items are related context, not registered here. */
++ *  is in FlameAtlas for it; none is substituted. "BASS" and "SoFIE" items are related context, not registered here. */
+ const COVERAGE: { inv: string; name: string; label: string | null; analysis: string }[] = [
+   { inv: "PSI-69", name: "FLEX", label: "FLEX", analysis: "/phenomena/flame-extinction" },
+   { inv: "PSI-117", name: "PSI-117", label: null, analysis: "/phenomena/flame-extinction#psi117-explore" },
+@@ -128,7 +128,7 @@ export default function MediaGalleryView() {
+                 <span><b className="text-text">{c.name}</b> <span className="text-text-3">{c.inv}</span></span>
+                 <span className="flex items-center gap-3">
+                   {n > 0 ? <button type="button" className="text-link hover:underline" onClick={() => set("investigation", c.label!)}>{n} item{n > 1 ? "s" : ""}</button>
+-                    : <span className="text-text-3">No verified NASA media in SpaceFire</span>}
++                    : <span className="text-text-3">No verified NASA media in FlameAtlas</span>}
+                   <a href={c.analysis}>Analysis</a>
+                 </span>
+               </li>
+diff --git a/frontend/components/views/MethodologyView.tsx b/frontend/components/views/MethodologyView.tsx
+index 9c31aee..f620cc8 100644
+--- a/frontend/components/views/MethodologyView.tsx
++++ b/frontend/components/views/MethodologyView.tsx
+@@ -70,7 +70,7 @@ function Pipeline({ h, m }: { h: Health | null; m: Method | null }) {
+ const LABELS: [string, string][] = [
+   ["ORIGINAL_EXPERIMENT", "An exact cell from a NASA CSV/XLSX, shown with its file, row, column and SHA-256."],
+   ["DOC", "Text from a NASA document, cited with the PDF page (and printed page when the offset is known)."],
+-  ["COMPUTED", "A deterministic calculation by SpaceFire code; formula, n, filters and exclusions are shown."],
++  ["COMPUTED", "A deterministic calculation by FlameAtlas code; formula, n, filters and exclusions are shown."],
+   ["EXTERNAL", "Metadata or an abstract from NASA NTRS, OpenAlex or Crossref. Full texts are never read or summarized."],
+   ["HYPOTHESIS", "An interpretation the sources do not confirm. Never allowed to carry an unsupported number."],
+   ["UNSUPPORTED", "The question cannot be answered from the available evidence; no value is produced."],
+@@ -193,7 +193,7 @@ const SAFEGUARDS: { inv: string; rules: string[] }[] = [
+ ];
+ 
+ const GLANCE = [
+-  { title: "How SpaceFire uses NASA data", href: "#pipeline", link: "See the pipeline",
++  { title: "How FlameAtlas uses NASA data", href: "#pipeline", link: "See the pipeline",
+     body: "It reads NASA's FLEX, BASS-II and SAFFIRE-I files as published, keeps every original cell, and adds labels and checks on top. It never edits a measured value." },
+   { title: "How evidence is verified", href: "#labels", link: "See the provenance labels",
+     body: "Every value says where it came from: a data row, a document page, a report table or a calculation. Links between documents and tests carry a confidence level." },
+@@ -218,7 +218,7 @@ export default function MethodologyView() {
+   return (
+     <>
+       <PageHeader kicker="Trust & methods" title="Methodology" sections={SECTIONS}
+-        lead="How SpaceFire turns NASA files into evidence you can check, how AI answers are verified, and what the system cannot do." />
++        lead="How FlameAtlas turns NASA files into evidence you can check, how AI answers are verified, and what the system cannot do." />
+ 
+       <section aria-labelledby="glance" className="mb-8">
+         <h2 id="glance" className="sr-only">Methodology at a glance</h2>
+diff --git a/frontend/components/views/OverviewView.tsx b/frontend/components/views/OverviewView.tsx
+index 8ae9e22..20c99fc 100644
+--- a/frontend/components/views/OverviewView.tsx
++++ b/frontend/components/views/OverviewView.tsx
+@@ -76,10 +76,11 @@ function Hero() {
+       <HeroMedia scale={rich ? flameScale : undefined} />
+       <Container className="grid items-center pb-14 pt-6 md:py-16 lg:min-h-[min(82vh,780px)] lg:py-20">
+         <motion.div style={rich ? { y: contentY } : undefined} className="relative z-10 lg:max-w-[min(56%,640px)]">
+-          <WordReveal text="Understanding Fire Beyond Earth" className="display text-[clamp(34px,9.4vw,56px)] leading-[1] xl:text-[68px]" />
++          <p className="mb-5 text-xs font-semibold uppercase tracking-[.24em] text-data">The Flamels / Microgravity combustion intelligence</p>
++          <WordReveal text="Evidence for Fire Beyond Earth" className="display text-[clamp(34px,9.4vw,56px)] leading-[1] xl:text-[68px]" />
+           <motion.p className="mt-6 max-w-[46ch] text-[18px] leading-relaxed text-text-2" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
+             transition={{ duration: DUR.slow, ease: EASE, delay: 0.5 }}>
+-            Why does fire behave differently in space? Explore real NASA experiments, interactive 3D models and an AI research assistant that cites its sources.
++            A dedicated research platform by The Flamels. Follow NASA evidence from experimental conditions to scientific charts, conceptual 3D studios and source-grounded research assistance.
+           </motion.p>
+           <motion.div className="mt-8 flex flex-wrap gap-3" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
+             transition={{ duration: DUR.slow, ease: EASE, delay: 0.65 }}>
+diff --git a/frontend/components/views/Psi117Section.tsx b/frontend/components/views/Psi117Section.tsx
+index 443e93d..d717eba 100644
+--- a/frontend/components/views/Psi117Section.tsx
++++ b/frontend/components/views/Psi117Section.tsx
+@@ -92,7 +92,7 @@ export default function Psi117Section() {
+         <p><b className="text-text">What a cool flame is.</b> Large n-alkane droplets can keep burning after the visible (hot) flame goes out from radiative heat loss: a low-temperature reaction zone
+           sits much closer to the droplet and burns slowly and nearly invisibly. At higher pressure a droplet can pass through three stages, hot, then warm, then cool (<DocLink id={SLIDES_3S} page={15}>three-stage slides p.15–22</DocLink>; <DocLink id={SEM} page={7}>PSI seminar p.7</DocLink>).</p>
+         <p className="mt-2 flex flex-wrap items-center gap-2"><EvidenceTag kind="digitized" /> experimental points <EvidenceTag kind="model" /> 1-D sphero-symmetric model (lines; dashed = model-only quantity such as peak temperature)</p>
+-        <p className="mt-2">PSI-117 refers to FLEX tests by numbers (e.g. 1268) that have no key in SpaceFire&apos;s FLEX table, so its points are never merged with FLEX rows. The model is 1-D; no 3-D or OpenFOAM output is in the NASA download.</p>
++        <p className="mt-2">PSI-117 refers to FLEX tests by numbers (e.g. 1268) that have no key in FlameAtlas&apos;s FLEX table, so its points are never merged with FLEX rows. The model is 1-D; no 3-D or OpenFOAM output is in the NASA download.</p>
+       </div>
+       <div className="rounded-xl border border-line/60 bg-panel/40 p-3">
+         <div className="flex flex-wrap items-end gap-3">
+@@ -136,7 +136,7 @@ export function Flex2Context() {
+     <section id="flex2" className="scroll-mt-36 rounded-2xl border border-line/60 bg-panel/40 p-4 md:p-5" data-testid="flex2-context">
+       <h2 className="subhead flex flex-wrap items-center gap-2 text-[18px]">What came next: FLEX-2 (PSI-68) <EvidenceTag kind="report" /></h2>
+       <p className="mt-1 max-w-[72ch] text-[14.5px] leading-relaxed text-text-2">Mixed and surrogate fuels in the same apparatus (<DocLink id="flex-2-srd-final" page={33}>Science Requirements p.33</DocLink>).
+-        Only documents were downloaded: <b className="text-text">no FLEX-2 measurements in SpaceFire</b>.</p>
++        Only documents were downloaded: <b className="text-text">no FLEX-2 measurements in FlameAtlas</b>.</p>
+     </section>
+   );
+ }
+diff --git a/frontend/components/views/ResearchView.tsx b/frontend/components/views/ResearchView.tsx
+index 4fb70a4..3359db0 100644
+--- a/frontend/components/views/ResearchView.tsx
++++ b/frontend/components/views/ResearchView.tsx
+@@ -83,7 +83,7 @@ export default function ResearchView() {
+   return (
+     <>
+       <PageHeader kicker="Evidence & Literature" title="External scientific literature"
+-        lead="Search published research in NASA's Technical Reports Server and OpenAlex. SpaceFire shows abstracts where available and never claims a paper's full-text findings." />
++        lead="Search published research in NASA's Technical Reports Server and OpenAlex. FlameAtlas shows abstracts where available and never claims a paper's full-text findings." />
+       <div className="grid gap-5 lg:grid-cols-[300px_1fr]">
+         <div className="flex flex-col gap-5">
+           <Panel title="Search">
+diff --git a/frontend/components/views/SimilarView.tsx b/frontend/components/views/SimilarView.tsx
+index 0c8aa37..8d62b89 100644
+--- a/frontend/components/views/SimilarView.tsx
++++ b/frontend/components/views/SimilarView.tsx
+@@ -79,9 +79,9 @@ export default function SimilarView() {
+   return (
+     <>
+       <PageHeader kicker="Advanced research tool" title="Find similar experiments"
+-        lead="Find NASA tests with similar starting conditions in the SpaceFire AI database. Outcomes are never used to measure similarity." />
++        lead="Find NASA tests with similar starting conditions in the FlameAtlas database. Outcomes are never used to measure similarity." />
+       <details className="mb-5 rounded-xl border border-line/60 bg-panel/40 px-4 py-3 text-[14px] text-text-2" data-testid="similar-scope">
+-        <summary className="cursor-pointer font-medium text-text">What this searches: the local NASA records processed by SpaceFire (not the internet)</summary>
++        <summary className="cursor-pointer font-medium text-text">What this searches: the local NASA records processed by FlameAtlas (not the internet)</summary>
+         <ul className="mt-2 list-disc pl-5">{SEARCHED.map(([a, b]) => <li key={a}><b className="text-text">{a}</b>: {b}.</li>)}</ul>
+         <p className="mt-2">Not searched, and why:</p>
+         <ul className="list-disc pl-5">{NOT_SEARCHED.map(([a, b]) => <li key={a}><b className="text-text">{a}</b>: {b}.</li>)}</ul>
+diff --git a/frontend/components/views/SmokeView.tsx b/frontend/components/views/SmokeView.tsx
+index 3821316..27fa122 100644
+--- a/frontend/components/views/SmokeView.tsx
++++ b/frontend/components/views/SmokeView.tsx
+@@ -200,7 +200,7 @@ export default function SmokeView() {
+               <p>Each instrument responds to a different <b className="text-text">moment</b> of the size distribution: the P-Trak counts particles (zeroth moment), an ionization sensor responds to the first moment, and DustTraks weigh mass (third moment).
+                 Assuming a log-normal distribution, ratios of these moments give the geometric mean diameter and spread (<DocLink id={DOC} page={15}>Final Science Report pp.15–19</DocLink>).</p>
+               <p>Why it matters: the <b className="text-text">Space Shuttle</b> detector (ionization) is most sensitive to small particles, the <b className="text-text">ISS</b> detector (light scattering) to larger ones. The authors report reduced ISS-detector performance for the small Kapton and Teflon smoke (<DocLink id="same-ices-2013-07-15-final-as-presented">ICES 2013, slide 28</DocLink>),
+-                while for silicone rubber and lamp wick almost half the particle mass was above 1 µm (<DocLink id={DOC} page={28}>Final Science Report p.28</DocLink>). SpaceFire shows these as reported findings; it does not rank detector sensitivity or predict detection.</p>
++                while for silicone rubber and lamp wick almost half the particle mass was above 1 µm (<DocLink id={DOC} page={28}>Final Science Report p.28</DocLink>). FlameAtlas shows these as reported findings; it does not rank detector sensitivity or predict detection.</p>
+             </div>
+           </section>
+           <section id="limits" className="scroll-mt-36 flex flex-col gap-3">
+diff --git a/frontend/components/views/combustion/DomainPicker.tsx b/frontend/components/views/combustion/DomainPicker.tsx
+index 2dacc49..f66516a 100644
+--- a/frontend/components/views/combustion/DomainPicker.tsx
++++ b/frontend/components/views/combustion/DomainPicker.tsx
+@@ -13,7 +13,7 @@ export type Collection = { kind: "dataset" | "profile"; key: string; investigati
+ export type Domain = { id: string; title: string; scenario: string; summary: string; collections: Collection[]; investigations: string[] };
+ export type DomainsResp = { domains: Domain[]; investigations: number };
+ 
+-// Verified NASA media per domain (credit shown on the card); smoke has no NASA image in SpaceFire, so it gets an
++// Verified NASA media per domain (credit shown on the card); smoke has no NASA image in FlameAtlas, so it gets an
+ // original schematic that says so.
+ const IMAGE: Record<string, { id: string; note: string } | null> = {
+   droplet: { id: "flex-heptane-soot-composite", note: "NASA image: heptane droplet with soot (FLEX)" },
+diff --git a/frontend/components/views/combustion/InvestigationProfile.tsx b/frontend/components/views/combustion/InvestigationProfile.tsx
+index d25ff4c..3a0a8cd 100644
+--- a/frontend/components/views/combustion/InvestigationProfile.tsx
++++ b/frontend/components/views/combustion/InvestigationProfile.tsx
+@@ -41,7 +41,7 @@ export default function InvestigationProfile({ inv, compact = false }: { inv: st
+               </p>
+             </div>
+             <div>
+-              <p className="font-medium text-text">Documents in SpaceFire ({x.documents.length})</p>
++              <p className="font-medium text-text">Documents in FlameAtlas ({x.documents.length})</p>
+               <ul className="mt-1 flex flex-col gap-0.5">{x.documents.slice(0, 6).map((d) => (
+                 <li key={d.document_id}>{d.doc_type === "metadata" ? d.title : <a href={docHref(d.document_id)} target="_blank" rel="noreferrer">{d.title}</a>}</li>))}</ul>
+               <p className="mt-2 font-medium text-text">NASA publication list ({x.publication_count ?? x.publications.length})</p>
+diff --git a/frontend/components/views/combustion/RecordView.tsx b/frontend/components/views/combustion/RecordView.tsx
+index 8744da8..2e629c8 100644
+--- a/frontend/components/views/combustion/RecordView.tsx
++++ b/frontend/components/views/combustion/RecordView.tsx
+@@ -14,7 +14,7 @@ type Rec = {
+   record_id: string; dataset: string; dataset_title: string; investigation_id: string; level: string; level_label: string; badge: string;
+   note: string; test_id: string; fields: { field: string; label: string; unit: string | null; role: string; value: unknown }[];
+   raw: Record<string, unknown>; provenance: { source_file: string; source_table: string | null; page_pdf: number | null; source_row: number | null;
+-    verification: string; document_id: string | null };
++    verification: string; document_id: string | null; document_available: boolean; source_url: string };
+   flags: { rule_id: string; severity: string | null; description: string | null }[]; graph: { node_id: string; sources: string[] } | null;
+   links: { label: string; href: string }[];
+ };
+@@ -48,6 +48,7 @@ export default function RecordView() {
+                   ? <a href={docHref(x.provenance.document_id, x.provenance.page_pdf)} target="_blank" rel="noreferrer">p.{x.provenance.page_pdf}</a> : `p.${x.provenance.page_pdf}`}</dd></>}
+                 <dt className="text-text-3">Verification</dt><dd>{x.provenance.verification.replace(/_/g, " ")}</dd>
+               </dl>
++              {x.provenance.page_pdf !== null && !x.provenance.document_available && <p className="mt-3 text-sm text-warn" role="note">The report is not included in this checkout. Values retain their upstream curated table and page locator. <a className="underline" href={x.provenance.source_url} target="_blank" rel="noreferrer">Open the NASA investigation ↗</a></p>}
+             </Panel>
+             <Panel title={`Data-quality flags (${x.flags.length})`}>
+               {x.flags.length ? <ul className="flex flex-col gap-1 text-[13px]" data-testid="record-flags">{x.flags.map((f) => <li key={f.rule_id}><b className="text-warn">{f.rule_id}</b> {f.description}</li>)}</ul>
+diff --git a/frontend/e2e/copilot-errors.spec.ts b/frontend/e2e/copilot-errors.spec.ts
+index d1c2d60..c3ad8cb 100644
+--- a/frontend/e2e/copilot-errors.spec.ts
++++ b/frontend/e2e/copilot-errors.spec.ts
+@@ -101,14 +101,14 @@ test.describe("Copilot errors and fallback", () => {
+       { event: "error", error: { code: "internal_error", message: "Unexpected server error." } }]);
+     await ask(page);
+     const alert = page.locator("main [role=alert]");
+-    await expect(alert).toContainText("Something went wrong on the SpaceFire server while answering (an internal error, not the AI service)");
++    await expect(alert).toContainText("Something went wrong on the FlameAtlas server while answering (an internal error, not the AI service)");
+     await expect(alert.getByRole("button", { name: "Retry" })).toBeVisible();
+   });
+ 
+   test("backend down: says the API is not reachable", async ({ page }) => {
+     await page.route("**/api/v1/assistant/ask/stream", (r) => r.fulfill({ status: 500, contentType: "text/plain", body: "Internal Server Error" }));
+     await ask(page);
+-    await expect(page.locator("main [role=alert]")).toContainText("The SpaceFire API is not reachable");
++    await expect(page.locator("main [role=alert]")).toContainText("The FlameAtlas API is not reachable");
+   });
+ 
+   test("a stream cut before the result is reported as an interrupted connection", async ({ page }) => {
+diff --git a/frontend/e2e/flamels.edition.spec.ts b/frontend/e2e/flamels.edition.spec.ts
+new file mode 100644
+index 0000000..c586122
+--- /dev/null
++++ b/frontend/e2e/flamels.edition.spec.ts
+@@ -0,0 +1,46 @@
++import { expect, test } from "@playwright/test";
++
++test("The Flamels identity, navigation and source attribution are visible", async ({ page }) => {
++  await page.goto("/");
++  await expect(page).toHaveTitle(/FlameAtlas/);
++  await expect(page.getByRole("link", { name: "FlameAtlas home" }).first()).toBeVisible();
++  await expect(page.getByText("The Flamels / Microgravity combustion intelligence")).toBeVisible();
++  await page.goto("/about");
++  await expect(page.getByRole("heading", { name: "Evidence before interpretation." })).toBeVisible();
++  await expect(page.locator("main").getByRole("link", { name: "SpaceFire-AI by COngtuthien" })).toHaveAttribute("href", "https://github.com/COngtuthien/SpaceFire-AI");
++  await expect(page.locator("main").getByRole("link", { name: /View The Flamels on GitHub/ })).toHaveAttribute("href", "https://github.com/tun539/the-flamels");
++});
++
++test("The full collection explorer applies the CFI-G configuration filter", async ({ page }) => {
++  await page.goto("/experiments?dataset=cfig");
++  await expect(page.getByTestId("collection-count")).toHaveText("333 records");
++  await page.getByTestId("cfilter-configuration").selectOption("inverse");
++  await expect(page.getByTestId("collection-count")).toHaveText("154 records");
++});
++
++test("The Copilot returns cited evidence without a model key", async ({ page }) => {
++  await page.goto("/copilot");
++  await page.getByLabel("Your scientific question").fill("Does Disruption definitively mean extinction in FLEX?");
++  await page.getByRole("button", { name: "Ask", exact: true }).click();
++  await expect(page.getByText("Evidence only", { exact: true })).toBeVisible({ timeout: 60_000 });
++  await expect(page.getByText("Quality rule FLEX-DISRUPTION")).toBeVisible();
++  await expect(page.getByRole("heading", { name: /Sources \(\d+\)/ })).toBeVisible();
++});
++
++for (const route of ["flame-extinction", "flame-spread", "spacecraft-fire", "gaseous-flames", "smoke-detection"]) {
++  test(`The ${route} conceptual 3D studio renders`, async ({ page }) => {
++    await page.goto(`/phenomena/${route}#studio`);
++    const studio = page.getByTestId("science-studio");
++    await studio.scrollIntoViewIfNeeded();
++    await expect(studio.locator("canvas")).toBeVisible({ timeout: 90_000 });
++    await expect(page.getByTestId("mode-chip")).toContainText("Conceptual 3D");
++  });
++}
++
++test("Mobile home remains readable and exposes navigation", async ({ page }) => {
++  await page.setViewportSize({ width: 390, height: 844 });
++  await page.goto("/");
++  await expect(page.getByRole("link", { name: "FlameAtlas home" }).first()).toBeVisible();
++  const overflow = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1);
++  expect(overflow).toBe(false);
++});
+diff --git a/frontend/e2e/journeys.spec.ts b/frontend/e2e/journeys.spec.ts
+index 87d0c7b..1ce4c87 100644
+--- a/frontend/e2e/journeys.spec.ts
++++ b/frontend/e2e/journeys.spec.ts
+@@ -1,7 +1,7 @@
+ import { openSection } from "./helpers";
+ import { expect, test } from "@playwright/test";
+ 
+-test.describe("SpaceFire AI user journeys", () => {
++test.describe("FlameAtlas user journeys", () => {
+   test.beforeEach(async ({ page }) => {
+     page.on("pageerror", (e) => {
+       throw new Error(`Uncaught page error: ${e.message}`);
+diff --git a/frontend/e2e/phase11.spec.ts b/frontend/e2e/phase11.spec.ts
+index a74fe14..d31cdd1 100644
+--- a/frontend/e2e/phase11.spec.ts
++++ b/frontend/e2e/phase11.spec.ts
+@@ -76,7 +76,7 @@ test.describe("Phase 11: normal page layout", () => {
+     await expect(page.getByTestId("stage-chip")).toContainText("Stage 2 of 5");
+ 
+     // remembered for the session
+-    expect(await page.evaluate(() => sessionStorage.getItem("spacefire:studio-controls"))).toBe("hidden");
++    expect(await page.evaluate(() => sessionStorage.getItem("flamels:studio-controls"))).toBe("hidden");
+ 
+     await toggle.click();
+     await expect(page.getByTestId("studio-panel")).toBeVisible();
+@@ -172,7 +172,7 @@ test.describe("Phase 11: normal page layout", () => {
+     await expect.poll(async () => (await page.getByTestId("site-nav").boundingBox())?.width ?? 999, { timeout: 30_000 }).toBeLessThan(80);
+     await page.getByTestId("nav-toggle").click();
+     await expect.poll(async () => (await page.getByTestId("site-nav").boundingBox())?.width ?? 0).toBeGreaterThan(250);
+-    expect(await page.evaluate(() => localStorage.getItem("spacefire:nav"))).toBe("expanded");
++    expect(await page.evaluate(() => localStorage.getItem("flamels:nav"))).toBe("expanded");
+   });
+ });
+ 
+diff --git a/frontend/e2e/phase12-mobile.spec.ts b/frontend/e2e/phase12-mobile.spec.ts
+index f3234cc..c913328 100644
+--- a/frontend/e2e/phase12-mobile.spec.ts
++++ b/frontend/e2e/phase12-mobile.spec.ts
+@@ -23,7 +23,7 @@ test("phone and tablet: theme switcher in the header, both themes, no overflow",
+         const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+         expect(overflow, `${t} ${size.width}px ${path}`).toBeLessThanOrEqual(1);
+         // the header keeps the menu, the logo on one line and the switcher
+-        const logo = (await page.getByRole("link", { name: "SpaceFire AI home" }).first().boundingBox())!;
++        const logo = (await page.getByRole("link", { name: "FlameAtlas home" }).first().boundingBox())!;
+         expect(logo.height).toBeLessThan(40);
+       }
+       await page.goto("/");
+diff --git a/frontend/e2e/phase12.spec.ts b/frontend/e2e/phase12.spec.ts
+index 933f040..d73bff6 100644
+--- a/frontend/e2e/phase12.spec.ts
++++ b/frontend/e2e/phase12.spec.ts
+@@ -96,7 +96,7 @@ test.describe("Phase 12: theme system", () => {
+     await page.goto("/methodology");
+     await choose(page, "dark");
+     await expect.poll(() => theme(page)).toBe("dark");
+-    expect(await page.evaluate(() => localStorage.getItem("spacefire:theme"))).toBe("dark");
++    expect(await page.evaluate(() => localStorage.getItem("flamels:theme"))).toBe("dark");
+     await page.emulateMedia({ colorScheme: "light" });
+     await page.reload();
+     expect(await theme(page)).toBe("dark");                                   // explicit choice beats the OS
+@@ -111,7 +111,7 @@ test.describe("Phase 12: theme system", () => {
+   test("no flash and no hydration error: the theme is on <html> before first paint, every page renders clean", async ({ page }) => {
+     const errs = consoleErrors(page);
+     await page.addInitScript(() => {
+-      try { localStorage.setItem("spacefire:theme", "light"); } catch { /* ignore */ }
++      try { localStorage.setItem("flamels:theme", "light"); } catch { /* ignore */ }
+       // record the theme the moment the body starts parsing (after the head's pre-paint script, before any paint)
+       new MutationObserver((_, mo) => {
+         if (document.body) {
+@@ -122,7 +122,7 @@ test.describe("Phase 12: theme system", () => {
+     });
+     const html = await (await page.request.get("/")).text();
+     const head = html.slice(0, html.indexOf("</head>"));
+-    expect(head).toContain('localStorage.getItem("spacefire:theme")');      // render-blocking pre-paint script in <head>
++    expect(head).toContain('localStorage.getItem("flamels:theme")');      // render-blocking pre-paint script in <head>
+     for (const path of ["/", "/copilot", "/experiments", "/experiments/flex/flex%3A180", PAGE.flex, PAGE.bass, PAGE.saffire,
+       "/intelligence/similar", "/evidence", "/evidence/media", "/modeling", "/reliability", "/methodology"]) {
+       await page.goto(path);
+diff --git a/frontend/e2e/phase13.spec.ts b/frontend/e2e/phase13.spec.ts
+index 45bdb32..37d60c2 100644
+--- a/frontend/e2e/phase13.spec.ts
++++ b/frontend/e2e/phase13.spec.ts
+@@ -140,7 +140,7 @@ test("FLEX page: PSI-117 model vs experiment charts with distinct labels; existi
+   await expect(page.getByTestId("psi117-chart")).toHaveAttribute("data-figure", "3s-d2");
+   await chartReady(page, "psi117-chart");
+   await expect(page.getByTestId("psi117-chart")).toContainText("published figure data");
+-  await expect(page.getByTestId("flex2-context")).toContainText("no FLEX-2 measurements in SpaceFire");
++  await expect(page.getByTestId("flex2-context")).toContainText("no FLEX-2 measurements in FlameAtlas");
+   await openSection(page, "map");
+   await expect(page.locator("section#map")).toContainText("plotted of");
+   expect(errs).toEqual([]);
+@@ -206,7 +206,7 @@ test("Smoke Detection Studio: six stages, labels and scene switching without lea
+ });
+ 
+ test("light theme keeps the new pages usable", async ({ page }) => {
+-  await page.addInitScript(() => { try { localStorage.setItem("spacefire:theme", "light"); } catch { /* ignore */ } });
++  await page.addInitScript(() => { try { localStorage.setItem("flamels:theme", "light"); } catch { /* ignore */ } });
+   const errs = consoleErrors(page);
+   for (const path of [GAS, SMOKE]) {
+     await page.goto(path);
+diff --git a/frontend/e2e/phase14.spec.ts b/frontend/e2e/phase14.spec.ts
+index 621b6d8..f67f224 100644
+--- a/frontend/e2e/phase14.spec.ts
++++ b/frontend/e2e/phase14.spec.ts
+@@ -170,7 +170,7 @@ test("Copilot handoff: Explorer context is shown, sent as ids, and resolved by t
+ 
+ test("Copilot abstains on an unsupported certification question (no model call)", async ({ request }) => {
+   const a = await (await request.post("/api/v1/assistant/ask", { data: {
+-    question: "Can SpaceFire AI certify that an untested polymer is safe in a spacecraft cabin?", source_scope: "internal" } })).json();
++    question: "Can FlameAtlas certify that an untested polymer is safe in a spacecraft cabin?", source_scope: "internal" } })).json();
+   expect(a.question_type.type).toBe("unsupported");
+   expect(a.status).toBe("insufficient_evidence");
+   expect(a.answer).toMatch(/^I can't answer this from the NASA evidence/);
+@@ -180,7 +180,7 @@ test("Copilot abstains on an unsupported certification question (no model call)"
+ test("invalid filter values show an error, and the light theme renders the Explorer", async ({ page }) => {
+   await page.goto("/safety-explorer/gaseous-flames?fuel=fuel%3Aunobtainium");
+   await expect(page.getByText(/Unknown fuel/)).toBeVisible({ timeout: 30_000 });
+-  await page.addInitScript(() => { try { localStorage.setItem("spacefire:theme", "light"); } catch { /* ignore */ } });
++  await page.addInitScript(() => { try { localStorage.setItem("flamels:theme", "light"); } catch { /* ignore */ } });
+   const errs = consoleErrors(page);
+   for (const path of ["/safety-explorer", "/safety-explorer/flame-spread"]) {
+     await page.goto(path);
+diff --git a/frontend/e2e/phase16.spec.ts b/frontend/e2e/phase16.spec.ts
+index 458d913..96f4398 100644
+--- a/frontend/e2e/phase16.spec.ts
++++ b/frontend/e2e/phase16.spec.ts
+@@ -229,7 +229,7 @@ test("Find similar: local database only, CFI-G scoped to one configuration", asy
+ test("media coverage states missing investigations; the estimator is labelled exploratory and FLEX-only", async ({ page }) => {
+   await page.goto("/evidence/media");
+   await page.getByTestId("media-coverage").locator("summary").click();
+-  await expect(page.getByTestId("coverage-PSI-102")).toContainText("No verified NASA media in SpaceFire");
++  await expect(page.getByTestId("coverage-PSI-102")).toContainText("No verified NASA media in FlameAtlas");
+   await expect(page.getByTestId("coverage-PSI-159")).toHaveAttribute("data-count", "1");
+   await page.getByTestId("coverage-PSI-159").getByRole("button").click();
+   await expect(page).toHaveURL(/investigation=CFI-G/);
+diff --git a/frontend/lib/api.ts b/frontend/lib/api.ts
+index 9048f03..8a2ca86 100644
+--- a/frontend/lib/api.ts
++++ b/frontend/lib/api.ts
+@@ -27,7 +27,7 @@ export async function apiFetch<T>(path: string, init?: RequestInit): Promise<T>
+     });
+   } catch (e) {
+     if ((e as Error).name === "AbortError") throw e;
+-    throw new ApiError(0, "offline", "The SpaceFire API is not reachable. Start the backend (scripts/start).");
++    throw new ApiError(0, "offline", "The FlameAtlas API is not reachable. Start the backend (scripts/start).");
+   }
+   if (!res.ok) {
+     let body: ApiErrorBody = {};
+@@ -37,7 +37,7 @@ export async function apiFetch<T>(path: string, init?: RequestInit): Promise<T>
+       /* non-JSON error (e.g. proxy 502/500 when backend is down) */
+     }
+     if (!body.error && (res.status === 502 || res.status === 500 || res.status === 504)) {
+-      throw new ApiError(0, "offline", "The SpaceFire API is not reachable. Start the backend (scripts/start).");
++      throw new ApiError(0, "offline", "The FlameAtlas API is not reachable. Start the backend (scripts/start).");
+     }
+     throw new ApiError(res.status, body.error?.code ?? "http_error", body.error?.message ?? `HTTP ${res.status}`,
+       body.error?.request_id);
+@@ -57,13 +57,13 @@ export async function apiStream<T>(path: string, body: unknown, onEvent: (ev: Re
+       headers: { "Content-Type": "application/json", Accept: "application/x-ndjson" } });
+   } catch (e) {
+     if ((e as Error).name === "AbortError") throw e;
+-    throw new ApiError(0, "offline", "The SpaceFire API is not reachable. Start the backend (scripts/start).");
++    throw new ApiError(0, "offline", "The FlameAtlas API is not reachable. Start the backend (scripts/start).");
+   }
+   if (!res.ok || !res.body) {
+     let b: ApiErrorBody = {};
+     try { b = await res.json(); } catch { /* proxy error page */ }
+     if (!b.error && (res.status === 502 || res.status === 500 || res.status === 504))
+-      throw new ApiError(0, "offline", "The SpaceFire API is not reachable. Start the backend (scripts/start).");
++      throw new ApiError(0, "offline", "The FlameAtlas API is not reachable. Start the backend (scripts/start).");
+     throw new ApiError(res.status, b.error?.code ?? "http_error", b.error?.message ?? `HTTP ${res.status}`, b.error?.request_id);
+   }
+   const reader = res.body.getReader();
+diff --git a/frontend/lib/brand.ts b/frontend/lib/brand.ts
+new file mode 100644
+index 0000000..5d461f5
+--- /dev/null
++++ b/frontend/lib/brand.ts
+@@ -0,0 +1,9 @@
++/** Public identity for The Flamels edition. Never place credentials here. */
++export const BRAND = {
++  product: "FlameAtlas",
++  team: "The Flamels",
++  repository: "https://github.com/tun539/the-flamels",
++  presentation: "https://flameatlas-evidence-studio.kh-ng-gian-l-5063.chatgpt.site/",
++  upstream: "https://github.com/COngtuthien/SpaceFire-AI",
++  upstreamCommit: "9817452c3effdf03864dea65f23d1f767b33251b",
++} as const;
+diff --git a/frontend/lib/demo.ts b/frontend/lib/demo.ts
+index 39067fb..4499a7f 100644
+--- a/frontend/lib/demo.ts
++++ b/frontend/lib/demo.ts
+@@ -25,7 +25,7 @@ export const EXPLORE_STEPS = [
+   { n: 6, title: "Continue to Research Copilot" },
+ ] as const;
+ 
+-/** Combustion Explorer guide per scenario: real collections, a real filter, a real record (all exist in SpaceFire). */
++/** Combustion Explorer guide per scenario: real collections, a real filter, a real record (all exist in FlameAtlas). */
+ export const EXPLORE: Record<DemoScenario, { domain: string; dataset: string; filtered: string; record: string; viz: { label: string; href: string };
+   test?: string; notes: Record<number, string> }> = {
+   "gaseous-flames": { domain: "Gaseous Flame Dynamics", dataset: "cfig", filtered: "/experiments?dataset=cfig&f_configuration=normal&f_fuel_species=n-butane",
+@@ -127,7 +127,7 @@ export const JOURNEYS: Record<DemoScenario, Journey> = {
+ };
+ 
+ export const SCENARIO_ORDER: DemoScenario[] = ["gaseous-flames", "smoke-detection", "droplet-extinction", "flame-spread"];
+-const KEY = "spacefire:demo";
++const KEY = "flamels:demo";
+ const OFF: DemoState = { active: false, step: 1, scenario: "gaseous-flames" };
+ const listeners = new Set<() => void>();
+ let cache: { raw: string | null; state: DemoState } = { raw: null, state: OFF };
+diff --git a/frontend/lib/flex-fuels.ts b/frontend/lib/flex-fuels.ts
+index 542e093..3edcd4c 100644
+--- a/frontend/lib/flex-fuels.ts
++++ b/frontend/lib/flex-fuels.ts
+@@ -43,7 +43,7 @@ export const FUELS: Record<FuelId, FuelInfo> = {
+     ],
+     visual: "No soot shell is drawn (non-sooting fuel). Flame colours are illustrative.",
+     mediaId: null,
+-    mediaNote: "SpaceFire's verified media registry has no NASA image that names a methanol FLEX droplet. The Earth vs microgravity comparison image does not state its fuel.",
++    mediaNote: "FlameAtlas's verified media registry has no NASA image that names a methanol FLEX droplet. The Earth vs microgravity comparison image does not state its fuel.",
+     limits: "Flame visibility, colour and temperature differences are not quantified here.",
+   },
+ };
+diff --git a/frontend/lib/glossary.ts b/frontend/lib/glossary.ts
+index a08591c..282b992 100644
+--- a/frontend/lib/glossary.ts
++++ b/frontend/lib/glossary.ts
+@@ -1,5 +1,5 @@
+-// Scientific glossary (Phase 9): short plain-language definitions for terms that recur across SpaceFire. Caveats
+-// that matter for interpretation are kept with the definition. Sources are local NASA documents or SpaceFire pages.
++// Scientific glossary (Phase 9): short plain-language definitions for terms that recur across FlameAtlas. Caveats
++// that matter for interpretation are kept with the definition. Sources are local NASA documents or FlameAtlas pages.
+ 
+ export type GlossaryEntry = { id: string; term: string; short: string; caveat?: string; source?: { label: string; href: string; external?: boolean } };
+ 
+@@ -27,11 +27,11 @@ export const GLOSSARY: GlossaryEntry[] = [
+     caveat: "SAFFIRE-I burn S1 spread with the airflow (concurrent), S2 against it (opposed)." },
+   { id: "burning-rate-constant", term: "Burning-rate constant (K)",
+     short: "How fast a droplet's surface area shrinks while it burns: the slope of diameter squared over time, in mm²/s.",
+-    caveat: "The FLEX CSV header says ‘mm’; SpaceFire reads the values as mm²/s (flag FLEX-UNIT-K) and keeps the raw header.",
++    caveat: "The FLEX CSV header says ‘mm’; FlameAtlas reads the values as mm²/s (flag FLEX-UNIT-K) and keeps the raw header.",
+     source: doc("2g11-070he-0310", 2, "Liu et al. 2013, PDF p.2") },
+   { id: "d2-law", term: "d²-law",
+     short: "The classical result that a burning droplet's diameter squared falls linearly with time: D² = D₀² − K·t.",
+-    caveat: "SpaceFire uses it only as a consistency check against reported burn times, not as a validated prediction.",
++    caveat: "FlameAtlas uses it only as a consistency check against reported burn times, not as a validated prediction.",
+     source: doc("2g11-070he-0310", 2, "Liu et al. 2013, PDF p.2") },
+   { id: "soot", term: "Soot",
+     short: "Tiny carbon particles formed in fuel-rich parts of a flame. They glow yellow-orange and radiate heat away.",
+diff --git a/frontend/lib/journey.ts b/frontend/lib/journey.ts
+index 8dc4d83..b0e00a0 100644
+--- a/frontend/lib/journey.ts
++++ b/frontend/lib/journey.ts
+@@ -1,4 +1,4 @@
+-// "Discover SpaceFire" (Phase 9): an optional guided journey through the existing pages. Its whole state is two URL
++// "Discover FlameAtlas" (Phase 9): an optional guided journey through the existing pages. Its whole state is two URL
+ // parameters, `journey` (the step) and `topic` (the chosen phenomenon), so it survives navigation and reloads, works
+ // without accounts or storage, and disappears when the parameters are removed. No step sends a model request: the
+ // Copilot step only opens a drafted question.
+diff --git a/frontend/lib/lab-models.ts b/frontend/lib/lab-models.ts
+index bf81413..3fad947 100644
+--- a/frontend/lib/lab-models.ts
++++ b/frontend/lib/lab-models.ts
+@@ -149,7 +149,7 @@ export const SCENES: LabScene[] = [
+         sources: [SOURCES.saffireIsa, SOURCES.saffireDod], askAbout: "the Saffire-I cameras and image downlink" },
+       { id: "sensors", label: "Diagnostics", basis: "confirmed",
+         summary: "Thermocouples (flow, flame and plume temperatures), two radiometers, solid-state pressure, CO₂ and O₂ sensors, and two anemometers.",
+-        provenance: "Sensor list from the ISA-Tab. Their positions here are illustrative. None of these sensor time series are in SpaceFire's local data.",
++        provenance: "Sensor list from the ISA-Tab. Their positions here are illustrative. None of these sensor time series are in FlameAtlas's local data.",
+         sources: [SOURCES.saffireIsa], askAbout: "the Saffire-I diagnostics and which data are available" },
+       { id: "airflow", label: "Airflow (20 cm/s)", basis: "confirmed",
+         summary: "Air enters through the flow straighteners at the bottom and is drawn upward past the sample by the fans at the top, at 20 cm/s.",
+diff --git a/frontend/lib/lab-scientific-metadata.ts b/frontend/lib/lab-scientific-metadata.ts
+index 93f3407..27d2da4 100644
+--- a/frontend/lib/lab-scientific-metadata.ts
++++ b/frontend/lib/lab-scientific-metadata.ts
+@@ -59,11 +59,11 @@ export type Mode = keyof typeof MODES;
+ 
+ /** Why there is no "Validated model" mode (shown in the explanation panel and the docs). */
+ export const NO_VALIDATED_MODEL =
+-  "No validated model mode is offered. SpaceFire's d²-law calculation is a consistency check against reported burn times (median ratio and spread are on the Flame Extinction page), not a model validated to predict a burn; nothing here predicts extinction, temperature, burn time or spread rate.";
++  "No validated model mode is offered. FlameAtlas's d²-law calculation is a consistency check against reported burn times (median ratio and spread are on the Flame Extinction page), not a model validated to predict a burn; nothing here predicts extinction, temperature, burn time or spread rate.";
+ 
+ /** FLEX burning-rate unit convention (shared with the backend verifier's UNIT_RULES). */
+ export const FLEX_K_UNIT = {
+   unit: "mm²/s",
+   rawHeader: "Burning rate; mm",
+-  note: "The CSV header says 'mm', which is dimensionally inconsistent with a d²-law burning-rate constant; SpaceFire interprets the value as mm²/s (dataset flag FLEX-UNIT-K). The raw header is kept.",
++  note: "The CSV header says 'mm', which is dimensionally inconsistent with a d²-law burning-rate constant; FlameAtlas interprets the value as mm²/s (dataset flag FLEX-UNIT-K). The raw header is kept.",
+ };
+diff --git a/frontend/lib/prepaint.ts b/frontend/lib/prepaint.ts
+index 3864a30..143fd96 100644
+--- a/frontend/lib/prepaint.ts
++++ b/frontend/lib/prepaint.ts
+@@ -1,8 +1,8 @@
+ // Inline, render-blocking script for <head> (app/layout.tsx): applies the theme and the navigation state before first
+ // paint, so neither flashes. Static string, no user input. Keys match lib/theme.ts and lib/ui-prefs.ts.
+-export const THEME_KEY = "spacefire:theme";
++export const THEME_KEY = "flamels:theme";
+ export const LIGHT_QUERY = "(prefers-color-scheme: light)";
+ export const PREPAINT_SCRIPT =
+   `try{var d=document.documentElement,t=localStorage.getItem("${THEME_KEY}");` +
+   `if(t!=="light"&&t!=="dark")t=window.matchMedia("${LIGHT_QUERY}").matches?"light":"dark";d.dataset.theme=t;` +
+-  `if(localStorage.getItem("spacefire:nav")==="collapsed")d.dataset.nav="collapsed"}catch(e){}`;
++  `if(localStorage.getItem("flamels:nav")==="collapsed")d.dataset.nav="collapsed"}catch(e){}`;
+diff --git a/frontend/lib/scientific-media.ts b/frontend/lib/scientific-media.ts
+index 173fce9..6f58a7c 100644
+--- a/frontend/lib/scientific-media.ts
++++ b/frontend/lib/scientific-media.ts
+@@ -1,5 +1,5 @@
+ /**
+- * Scientific media registry: every photograph, video and animation shown in SpaceFire AI, with its provenance.
++ * Scientific media registry: every photograph, video and animation shown in FlameAtlas, with its provenance.
+  *
+  * Rules (see docs/SCIENTIFIC_MEDIA_SOURCES.md):
+  * - Metadata is copied from the original NASA record (NASA Image and Video Library API, nasa.gov / science.nasa.gov
+@@ -28,7 +28,7 @@ export type ScientificMedia = {
+   /** What a viewer can actually see, written for the caption. */
+   visible: string;
+   investigation: "FLEX" | "FLEX-2" | "BASS-II" | "BASS" | "SAFFIRE-I" | "CFI-G" | "SoFIE";
+-  /** PSI investigation of the SpaceFire dataset this item gives context to. */
++  /** PSI investigation of the FlameAtlas dataset this item gives context to. */
+   datasetInv: "PSI-69" | "PSI-25" | "PSI-98";
+   phenomenon: Phenomenon;
+   type: MediaType;
+@@ -116,7 +116,7 @@ export const MEDIA: ScientificMedia[] = [
+     description: "Image taken during a BASS-II flame test session (card 2) conducted on GMT 203: a 4 mm thick, 1 cm wide acrylic (PMMA) slab burned at multiple flow velocities. At high flows the flame was long and sooty; when the flow was reduced, the flame stabilized.",
+     visible: "A flame wrapped around the end of a flat sample in the BASS-II flow duct: blue leading edge, orange-pink sooty core.",
+     investigation: "BASS-II", datasetInv: "PSI-25", phenomenon: "spread", type: "image", relation: "experimental",
+-    relationNote: "NASA identifies it as a BASS-II flame test session. No test number is given. Possible match, not verified: the BASS-II CSV's only 4 mm × 1 cm slab is test M10, dated 23 Jul 2014 (day 204), which is also this photo's date, but NASA's caption says GMT 203. SpaceFire therefore does not attach the photo to M10.",
++    relationNote: "NASA identifies it as a BASS-II flame test session. No test number is given. Possible match, not verified: the BASS-II CSV's only 4 mm × 1 cm slab is test M10, dated 23 Jul 2014 (day 204), which is also this photo's date, but NASA's caption says GMT 203. FlameAtlas therefore does not attach the photo to M10.",
+     sourceUrl: lib("iss040e072900"), sourceLabel: "NASA Image and Video Library, iss040e072900",
+     credit: "NASA / Reid Wiseman", date: "2014-07-23", nasaId: "iss040e072900", license: NASA_PD,
+     alt: "A rounded blue-edged flame with an orange-pink interior enveloping the tip of a dark rectangular fuel sample on a black background.",
+@@ -196,14 +196,14 @@ export const MEDIA: ScientificMedia[] = [
+     description: "The Saffire-I sample burning aboard the Cygnus spacecraft on June 14, 2016, after the vehicle left the space station. NASA describes the sample as a cotton-fiberglass blend, 0.4 m wide by 1 m long, inside an enclosure about 0.5 m wide, 1 m deep and 1.3 m long, ignited by a hot wire. (The SAFFIRE-I CSV records SIBAL fabric, 94 cm × 40.6 cm.)",
+     visible: "Animated camera frames published by NASA: a glowing flame front along the fabric sample; part-way through, a green-tinted view of the whole sample.",
+     investigation: "SAFFIRE-I", datasetInv: "PSI-98", phenomenon: "spacecraft", type: "animation", relation: "experimental",
+-    relationNote: "NASA Glenn's caption: 'the Saffire-1 sample burning aboard the Cygnus spacecraft on June 14, 2016.' These are frames NASA published; SpaceFire has no other SAFFIRE-I imagery, and the local workbook is a manifest, not images.",
++    relationNote: "NASA Glenn's caption: 'the Saffire-1 sample burning aboard the Cygnus spacecraft on June 14, 2016.' These are frames NASA published; FlameAtlas has no other SAFFIRE-I imagery, and the local workbook is a manifest, not images.",
+     sourceUrl: "https://www.nasa.gov/centers-and-facilities/glenn/nasa-ignites-fire-experiment-aboard-space-cargo-ship/",
+     sourceLabel: "NASA Glenn, NASA Ignites Fire Experiment Aboard Space Cargo Ship", credit: "NASA", date: "2016-06-14", license: NASA_PD,
+     alt: "Low-resolution camera view of a long fabric sample with a glowing orange flame front along its edge on a dark background.",
+     variants: [{ src: "/media/saffire1-burn-animation/poster.webp", width: 320, height: 230 }],
+     poster: { src: "/media/saffire1-burn-animation/poster.webp", width: 320, height: 230 },
+     animation: "/media/saffire1-burn-animation/animation.webp",
+-    reference: { label: "SAFFIRE-I image-set manifest in SpaceFire (timing only, no pixels)", href: "/phenomena/spacecraft-fire" },
++    reference: { label: "SAFFIRE-I image-set manifest in FlameAtlas (timing only, no pixels)", href: "/phenomena/spacecraft-fire" },
+     caveat: "NASA's animation is a sped-up sequence of selected frames; its playback rate is not the real burn rate.",
+   },
+   {
+@@ -250,7 +250,7 @@ export const RELATION_LABEL: Record<Relation, { label: string; short: string; no
+   related: { label: "Related NASA media", short: "Related media",
+     note: "Authentic NASA media from a related investigation, campaign or apparatus; context, not this dataset's evidence." },
+   illustration: { label: "Schematic / illustration", short: "Illustration",
+-    note: "Explanatory drawing made for SpaceFire; not experimental evidence." },
++    note: "Explanatory drawing made for FlameAtlas; not experimental evidence." },
+ };
+ 
+ export const INVESTIGATION_OF: Record<string, string> = { "PSI-69": "FLEX", "PSI-25": "BASS-II", "PSI-98": "SAFFIRE-I" };
+diff --git a/frontend/lib/stages.ts b/frontend/lib/stages.ts
+index cacb7f9..ad6aa42 100644
+--- a/frontend/lib/stages.ts
++++ b/frontend/lib/stages.ts
+@@ -164,7 +164,7 @@ export const FLEX_GRAVITY: Record<string, GravityStage> = {
+     earth: "Buoyant flow carries heat and fuel vapour upward, changing how heat and mass reach the droplet.",
+     micro: "Without buoyant flow, transport is mainly diffusive, though radiation, residual motion or imposed flow can still matter.",
+     differ: "The droplet shrinks in both environments; what changes is how heat and vapour are carried, so the rate cannot be read off the flame shape.",
+-    detail: "Regression depends on the fuel, the atmosphere, the flow and the experimental configuration. SpaceFire has no paired Earth measurements, so it makes no faster-or-slower claim.",
++    detail: "Regression depends on the fuel, the atmosphere, the flow and the experimental configuration. FlameAtlas has no paired Earth measurements, so it makes no faster-or-slower claim.",
+     focus: ["droplet", "oxygen"], sources: [SOURCES.flexEird64],
+   },
+   end: {
+@@ -302,7 +302,7 @@ export function saffireWalk(burn: "S1" | "S2"): WalkStep[] {
+       a11y: `A band on the sample marks the direction burn ${burn} spread, ${dir}.` },
+     { id: "diagnostics", title: "Diagnostics and observation", preset: "diagnostics",
+       summary: "Two cameras recorded the burn, alongside radiometers, thermocouples and gas, pressure and flow sensors.",
+-      insight: "The sensors existed, but their time series are not in SpaceFire's local data.",
++      insight: "The sensors existed, but their time series are not in FlameAtlas's local data.",
+       why: "NASA's metadata lists two cameras, thermocouples, two radiometers, O₂, CO₂ and pressure sensors and two anemometers. Only the image manifest (file names, times and receipt status) is available locally.",
+       focus: ["cameras", "sensors"], inspect: { id: "cameras", label: "Inspect the cameras" },
+       basis: [{ kind: "DOC", text: "Instrument list (SAFFIRE-I ISA-Tab)." }, { kind: "HYPOTHESIS", text: "Sensor positions in 3D are illustrative." }],
+diff --git a/frontend/lib/tours.ts b/frontend/lib/tours.ts
+index e1f8c82..f591666 100644
+--- a/frontend/lib/tours.ts
++++ b/frontend/lib/tours.ts
+@@ -92,7 +92,7 @@ export const TOURS: Record<SceneId, TourStep[]> = {
+       body: "Fans at the top of the duct draw air upward through flow straighteners at the bottom, past the sample, at 20 cm/s.",
+       sources: [SOURCES.saffireIsa, SOURCES.saffireDod] },
+     { id: "ignition", title: "Ignition", select: "flame", preset: "sample",
+-      body: "NASA describes ignition by a hot wire. The ignition location is not in SpaceFire's local data, so it is not drawn. The CSV records S1 as concurrent and S2 as opposed spread.",
++      body: "NASA describes ignition by a hot wire. The ignition location is not in FlameAtlas's local data, so it is not drawn. The CSV records S1 as concurrent and S2 as opposed spread.",
+       sources: [glenn, SOURCES.psi98] },
+     { id: "diagnostics", title: "Diagnostics", select: "sensors", preset: "diagnostics",
+       body: "Two cameras recorded the burn, alongside thermocouples, two radiometers, O₂, CO₂ and pressure sensors and two anemometers. The positions shown are illustrative, and none of these sensor time series are in the local data.",
+diff --git a/frontend/lib/ui-prefs.ts b/frontend/lib/ui-prefs.ts
+index 50c86bd..a40288b 100644
+--- a/frontend/lib/ui-prefs.ts
++++ b/frontend/lib/ui-prefs.ts
+@@ -36,13 +36,13 @@ export function createPref<T extends string>(kind: Kind, key: string, fallback:
+ }
+ 
+ /** Studio setup panel shown/hidden, remembered for this browsing session. */
+-export const studioControlsPref = createPref("session", "spacefire:studio-controls", "shown", ["shown", "hidden"] as const);
++export const studioControlsPref = createPref("session", "flamels:studio-controls", "shown", ["shown", "hidden"] as const);
+ 
+ /**
+  * Global navigation expanded/collapsed (desktop), remembered across visits. The layout reads it before first paint
+  * (an inline script sets html[data-nav]), so the collapsed rail never flashes open.
+  */
+-export const NAV_KEY = "spacefire:nav";
++export const NAV_KEY = "flamels:nav";
+ export const navPref = createPref("local", NAV_KEY, "expanded", ["expanded", "collapsed"] as const, (v) => {
+   if (v === "collapsed") document.documentElement.dataset.nav = "collapsed";
+   else delete document.documentElement.dataset.nav;
+diff --git a/frontend/package-lock.json b/frontend/package-lock.json
+index dfefa32..d6dac5a 100644
+--- a/frontend/package-lock.json
++++ b/frontend/package-lock.json
+@@ -1,11 +1,11 @@
+ {
+-  "name": "frontend",
++  "name": "flamels-research-platform",
+   "version": "0.1.0",
+   "lockfileVersion": 3,
+   "requires": true,
+   "packages": {
+     "": {
+-      "name": "frontend",
++      "name": "flamels-research-platform",
+       "version": "0.1.0",
+       "dependencies": {
+         "@react-three/drei": "10.7.9",
+diff --git a/frontend/package.json b/frontend/package.json
+index 9ed848c..2b9d98d 100644
+--- a/frontend/package.json
++++ b/frontend/package.json
+@@ -1,12 +1,13 @@
+ {
+-  "name": "frontend",
++  "name": "flamels-research-platform",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+     "dev": "next dev",
+     "build": "next build",
+     "start": "next start",
+-    "lint": "eslint"
++    "lint": "eslint",
++    "typecheck": "tsc --noEmit"
+   },
+   "dependencies": {
+     "@react-three/drei": "10.7.9",
+diff --git a/frontend/playwright.flamels.config.ts b/frontend/playwright.flamels.config.ts
+new file mode 100644
+index 0000000..1116f33
+--- /dev/null
++++ b/frontend/playwright.flamels.config.ts
+@@ -0,0 +1,20 @@
++import { defineConfig, devices } from "@playwright/test";
++
++export default defineConfig({
++  testDir: "./e2e",
++  testMatch: "flamels.edition.spec.ts",
++  timeout: 120_000,
++  expect: { timeout: 30_000 },
++  workers: 1,
++  retries: 0,
++  use: {
++    ...devices["Desktop Chrome"],
++    baseURL: "http://127.0.0.1:3000",
++    launchOptions: { args: ["--use-gl=angle", "--use-angle=swiftshader", "--enable-unsafe-swiftshader"] },
++    trace: "retain-on-failure",
++  },
++  webServer: [
++    { command: "../backend/.venv/bin/python -m uvicorn app.main:app --app-dir ../backend --port 8000", url: "http://127.0.0.1:8000/api/v1/health", reuseExistingServer: true },
++    { command: "npm run start", url: "http://127.0.0.1:3000", reuseExistingServer: true },
++  ],
++});
+diff --git a/scripts/setup.ps1 b/scripts/setup.ps1
+index 9e10380..b5f48f3 100644
+--- a/scripts/setup.ps1
++++ b/scripts/setup.ps1
+@@ -1,4 +1,4 @@
+-# SpaceFire AI - one-step Windows setup for a fresh clone.
++# FlameAtlas - one-step Windows setup for a fresh clone.
+ #
+ # Usage, from the repository root:
+ #   setup.cmd                                   (same as: powershell -ExecutionPolicy Bypass -File scripts\setup.ps1)
+@@ -36,7 +36,7 @@ function Probe([string]$exe, [string[]]$argv) {
+   } catch { return $null }
+ }
+ 
+-Write-Host "SpaceFire AI setup  ($root)" -ForegroundColor White
++Write-Host "FlameAtlas setup  ($root)" -ForegroundColor White
+ 
+ # --- 1. Tools ------------------------------------------------------------------------------------------------------
+ Step "Checking Python, Node.js, npm and Git"
+@@ -49,7 +49,7 @@ foreach ($c in @(@("python"), @("py", "-3"), @("python3"))) {
+ if (-not $pyCmd) { Fail "Python was not found." "Install Python 3.11-3.13 from https://www.python.org/downloads/ (tick 'Add python.exe to PATH'), open a new terminal and run setup.cmd again." }
+ if ($pyVer -lt [version]"3.11") { Fail "Python $pyVer is too old (3.11 or newer is required)." "Install Python 3.13 from https://www.python.org/downloads/." }
+ Ok "Python $pyVer ($((@($pyCmd) + $pyArgs) -join ' '))"
+-if ($pyVer -ge [version]"3.14") { Note "SpaceFire is tested on Python 3.13; if package installation fails, install Python 3.13." }
++if ($pyVer -ge [version]"3.14") { Note "FlameAtlas is tested on Python 3.13; if package installation fails, install Python 3.13." }
+ 
+ $nodeV = Probe "node" @("--version")
+ if (-not $nodeV) { Fail "Node.js was not found." "Install Node.js 20 LTS or newer from https://nodejs.org/, open a new terminal and run setup.cmd again." }
+@@ -66,7 +66,7 @@ if ($gitV) { Ok $gitV } else { Note "Git was not found. It is only needed to clo
+ $longPaths = $false
+ try { $longPaths = ((Get-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name LongPathsEnabled -ErrorAction Stop).LongPathsEnabled -eq 1) } catch { $longPaths = $false }
+ if (-not $longPaths -and $root.Length -gt 80) {
+-  Fail "The repository folder path is too long ($($root.Length) characters; at most 80 work while Windows long paths are disabled)." "Clone into a shorter folder, for example:  cd /d C:\  then  git clone https://github.com/COngtuthien/SpaceFire-AI.git  and run setup.cmd in C:\SpaceFire-AI. (Alternatively enable long paths: https://pip.pypa.io/warnings/enable-long-paths)"
++  Fail "The repository folder path is too long ($($root.Length) characters; at most 80 work while Windows long paths are disabled)." "Clone into a shorter folder, for example:  cd /d C:\  then  git clone https://github.com/COngtuthien/FlameAtlas-AI.git  and run setup.cmd in C:\FlameAtlas-AI. (Alternatively enable long paths: https://pip.pypa.io/warnings/enable-long-paths)"
+ }
+ Ok "folder path length $($root.Length) characters$(if ($longPaths) { ' (Windows long paths enabled)' })"
+ 
+@@ -104,7 +104,7 @@ foreach ($p in @("FLEX", "BASS-II", "SAFFIRE-1", "processed\curated\bass2_table_
+                  "processed\curated\phase13\investigation_registry.json", "processed\curated\phase13\cfig_tests.json")) {
+   if (-not (Test-Path (Join-Path $root $p))) { $missing += $p }
+ }
+-if ($missing.Count) { Fail "Committed NASA data is missing: $($missing -join ', ')." "Clone the full repository again (git clone https://github.com/COngtuthien/SpaceFire-AI.git); do not use a partial download." }
++if ($missing.Count) { Fail "Committed NASA data is missing: $($missing -join ', ')." "Clone the full repository again (git clone https://github.com/COngtuthien/FlameAtlas-AI.git); do not use a partial download." }
+ $curated = @(Get-ChildItem (Join-Path $root "processed\curated") -Recurse -Filter *.json).Count
+ Ok "FLEX, BASS-II and SAFFIRE-I source folders and $curated curated NASA tables found"
+ $optional = @("ACME CFI-G", "ACME Flame Design", "ACME BRE", "SAME", "PSI-117", "FLEX-2", "PSI-62") | Where-Object { Test-Path (Join-Path $root $_) }
+@@ -150,7 +150,7 @@ $db = Join-Path $root "processed\spacefire.db"
+ if ($RebuildData -or -not (Test-Path $db)) {
+   Push-Location backend
+   try { $env:PYTHONIOENCODING = "utf-8"; & $venvPy -m app.ingest.run; $code = $LASTEXITCODE } finally { Pop-Location }
+-  if ($code -ne 0) { Fail "Building the database failed (see the output above)." "If the SpaceFire backend is running, stop it (launch.cmd -Stop) and run setup.cmd -RebuildData." }
++  if ($code -ne 0) { Fail "Building the database failed (see the output above)." "If the FlameAtlas backend is running, stop it (launch.cmd -Stop) and run setup.cmd -RebuildData." }
+   Ok "database, search index and knowledge graph built"
+ } else { Ok "database already built (run setup.cmd -RebuildData to rebuild it)" }
+ 
+@@ -165,5 +165,5 @@ if ($SkipBuild) {
+ 
+ Write-Host ""
+ Write-Host "Setup complete." -ForegroundColor Green
+-Write-Host "Start SpaceFire AI with:  launch.cmd     (or: powershell -ExecutionPolicy Bypass -File scripts\start.ps1)"
++Write-Host "Start FlameAtlas with:  launch.cmd     (or: powershell -ExecutionPolicy Bypass -File scripts\start.ps1)"
+ exit 0
+diff --git a/scripts/setup.sh b/scripts/setup.sh
+index 300f335..717c1d6 100644
+--- a/scripts/setup.sh
++++ b/scripts/setup.sh
+@@ -1,5 +1,5 @@
+ #!/usr/bin/env bash
+-# SpaceFire AI - Linux/macOS setup: backend venv + deps, frontend deps, .env, data ingestion.
++# FlameAtlas - Linux/macOS setup: backend venv + deps, frontend deps, .env, data ingestion.
+ set -euo pipefail
+ cd "$(dirname "$0")/.."
+ 
+diff --git a/scripts/smoke_test.py b/scripts/smoke_test.py
+index 85c4386..6f7d126 100644
+--- a/scripts/smoke_test.py
++++ b/scripts/smoke_test.py
+@@ -1,4 +1,4 @@
+-"""SpaceFire AI smoke test against a running backend (default http://127.0.0.1:8000).
++"""FlameAtlas smoke test against a running backend (default http://127.0.0.1:8000).
+ 
+ Usage: backend/.venv/Scripts/python scripts/smoke_test.py [base_url]
+ Checks connectivity, record counts, retrieval, analytics and assistant fallback. Exit code 1 on failure.
+diff --git a/scripts/start.ps1 b/scripts/start.ps1
+index 2545390..93e286d 100644
+--- a/scripts/start.ps1
++++ b/scripts/start.ps1
+@@ -1,4 +1,4 @@
+-# SpaceFire AI - start the backend API (FastAPI) and the website (Next.js) on Windows.
++# FlameAtlas - start the backend API (FastAPI) and the website (Next.js) on Windows.
+ #
+ # Usage, from the repository root:
+ #   launch.cmd                                  (same as: powershell -ExecutionPolicy Bypass -File scripts\start.ps1)
+@@ -61,15 +61,15 @@ function Show-LogTail([string]$path) {
+ # --- Stop, or reuse a running instance (no duplicate processes) ---------------------------------------------------
+ $prev = Read-RunState
+ if ($Stop) {
+-  if ($prev) { Stop-Tree $prev.frontend_pid; Stop-Tree $prev.backend_pid; Remove-Item $runFile -Force; Ok "SpaceFire AI servers stopped" }
+-  else { Ok "No running SpaceFire AI servers were recorded" }
++  if ($prev) { Stop-Tree $prev.frontend_pid; Stop-Tree $prev.backend_pid; Remove-Item $runFile -Force; Ok "FlameAtlas servers stopped" }
++  else { Ok "No running FlameAtlas servers were recorded" }
+   exit 0
+ }
+ if ($prev -and -not $BuildOnly) {
+   $alive = (Get-Process -Id $prev.backend_pid -ErrorAction SilentlyContinue) -and (Get-Process -Id $prev.frontend_pid -ErrorAction SilentlyContinue)
+   if ($alive -and (Get-Json "http://127.0.0.1:$($prev.frontend_port)/api/v1/health")) {
+     $url = "http://localhost:$($prev.frontend_port)"
+-    Write-Host "SpaceFire AI is already running at $url (started by another launch.cmd window)." -ForegroundColor Green
++    Write-Host "FlameAtlas is already running at $url (started by another launch.cmd window)." -ForegroundColor Green
+     Write-Host "Stop it with Ctrl+C in that window, or run: launch.cmd -Stop"
+     if (-not $NoBrowser) { Start-Process $url }
+     exit 0
+@@ -124,7 +124,7 @@ if (-not $Dev) {
+ if ($BuildOnly) { exit 0 }
+ 
+ # --- Start the backend ---------------------------------------------------------------------------------------------
+-Write-Host "== Starting SpaceFire AI" -ForegroundColor Cyan
++Write-Host "== Starting FlameAtlas" -ForegroundColor Cyan
+ $beLog = Join-Path $stateDir "backend.log"
+ $feLog = Join-Path $stateDir "frontend.log"
+ $be = Start-Process -PassThru -NoNewWindow -WorkingDirectory (Join-Path $root "backend") -FilePath $venvPy `
+@@ -167,7 +167,7 @@ try {
+ 
+   $url = "http://localhost:$fp"
+   Write-Host ""
+-  Write-Host "SpaceFire AI is running" -ForegroundColor Green
++  Write-Host "FlameAtlas is running" -ForegroundColor Green
+   Write-Host "  Website           $url"
+   Write-Host "  Research Copilot  $url/copilot"
+   Write-Host "  Guided demo       $url/demo"
+@@ -184,5 +184,5 @@ try {
+   if ($fe) { Stop-Tree $fe.Id }
+   Stop-Tree $be.Id
+   Remove-Item $runFile -Force -ErrorAction SilentlyContinue
+-  Write-Host "SpaceFire AI stopped."
++  Write-Host "FlameAtlas stopped."
+ }
+diff --git a/scripts/start.sh b/scripts/start.sh
+index f1d6871..152a709 100644
+--- a/scripts/start.sh
++++ b/scripts/start.sh
+@@ -1,5 +1,5 @@
+ #!/usr/bin/env bash
+-# SpaceFire AI - start backend (8000) and frontend (3000). Usage: scripts/start.sh [--prod]
++# FlameAtlas - start backend (8000) and frontend (3000). Usage: scripts/start.sh [--prod]
+ set -euo pipefail
+ cd "$(dirname "$0")/.."
+ [ -f processed/spacefire.db ] || { echo "Database missing. Run scripts/setup.sh first."; exit 1; }

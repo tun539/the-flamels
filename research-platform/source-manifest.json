@@ -1,0 +1,242 @@
+[
+  {
+    "path": "BASS-II/BASS-2 Engineering Requirements.pptx",
+    "sha256": "08ab1b85ba606db728aafbb731d4a626cd3a655c59f020487c94eb1689ced4f4",
+    "size_bytes": 1123356
+  },
+  {
+    "path": "BASS-II/BASS-II Procedure.docx",
+    "sha256": "76fb21a7c94b6f64dd8419a1993980b694ea8e8403e75268e8890a866e1c8d4a",
+    "size_bytes": 1111856
+  },
+  {
+    "path": "BASS-II/BASS-II Summary Report.pdf",
+    "sha256": "5ffa911fd9b6356f204646003fb9342e341810dcdfdf5cb15756e7f01ec5f770",
+    "size_bytes": 48972416
+  },
+  {
+    "path": "BASS-II/BASS-II Test Matrix by PI Final.xlsx",
+    "sha256": "1a3b283dd0adec861793bbc4a454aab64d398cd32d6f37d7a1ad0f642879e686",
+    "size_bytes": 28956
+  },
+  {
+    "path": "BASS-II/BASS-II data FAQ.docx",
+    "sha256": "69f32647792f54ab2a561e3cdafc6c87d854564fe487aed2b09265286bd84e1d",
+    "size_bytes": 21538
+  },
+  {
+    "path": "BASS-II/Fan calibration data.xlsx",
+    "sha256": "bc0dca3efdef44a7774d8dd37aebc0cedae8d67d7bae8c9cbde9590014a3c983",
+    "size_bytes": 23973
+  },
+  {
+    "path": "BASS-II/PSI-25_Experimental table_BASS-II.csv",
+    "sha256": "872a5c3b8dd9137c1c066441d0b360bdbee3268fad36b38d98b53d9eb74d6090",
+    "size_bytes": 16460
+  },
+  {
+    "path": "BASS-II/PSI-25_metadata_PSI_metadata_PSI-101_BASS-II.zip",
+    "sha256": "629faf104a8ff0e8d335f2527c019e740380163ea7f74b8ad754ae71f7da2559",
+    "size_bytes": 13439
+  },
+  {
+    "path": "BASS-II/SRD_BASS-II.pdf",
+    "sha256": "d00a763d60719bc14004264e216452b44c3c1bf4b0c629e9d307c8abf9568e75",
+    "size_bytes": 1108340
+  },
+  {
+    "path": "FLEX/1G17-070HE-0166.pdf",
+    "sha256": "bb9458a288d65ee4e835e0569286ddcdd44d0f2bee173ca2932384c91d73211f",
+    "size_bytes": 516392
+  },
+  {
+    "path": "FLEX/20130010979.pdf",
+    "sha256": "56e69491fe8af3a31e2f2e1732b0133d769b4de356815419d41c85651d0479d1",
+    "size_bytes": 1116919
+  },
+  {
+    "path": "FLEX/2G11-070HE-0310.pdf",
+    "sha256": "6f1f971138effa8800466e33f0a694d54329263bd5a41bae0e1a3f1856de0f0e",
+    "size_bytes": 915193
+  },
+  {
+    "path": "FLEX/Cool Flames in Space, a Hot Prospect on Earth!.pdf",
+    "sha256": "50e9a5f9b5d6139990c6e59a3571d6c944ed64a6cb6de92426f7b453a5cf258a",
+    "size_bytes": 4524480
+  },
+  {
+    "path": "FLEX/FLEX DoD.docx",
+    "sha256": "1120819bb8f57f418cc5185700bbbd8304f1a019d9a99ca67baee130898fac98",
+    "size_bytes": 18758
+  },
+  {
+    "path": "FLEX/FLEX Engineering Requirements Document.pdf",
+    "sha256": "a96a47878d2d9e4451f3d889f742571aa2d89c48ba9e9d84b6c698a4cb39486c",
+    "size_bytes": 237373
+  },
+  {
+    "path": "FLEX/FLEX Overall Ext File-2.pdf",
+    "sha256": "32b780edb446f5f9134a7138658faa6ea72c529a62ac6c3fd726f7ca049d0999",
+    "size_bytes": 2267043
+  },
+  {
+    "path": "FLEX/FLEX_EIRD_v4.pdf",
+    "sha256": "be236c283ffd597bb79a4715fd4b24d296b2b93de1144c676c119b52a3a3ebe9",
+    "size_bytes": 3240704
+  },
+  {
+    "path": "FLEX/FLEX_Test_Plan.pdf",
+    "sha256": "0af43477a04b05e3c44558b22c16a69cfda837a6a17fa94178ce1f9fce361dc5",
+    "size_bytes": 185799
+  },
+  {
+    "path": "FLEX/PSI-69_Experimental table_FLEX.csv",
+    "sha256": "74addb771d6ec6765d285721bd35ec1ce3936d104e265f363aeba18c6c25743b",
+    "size_bytes": 24501
+  },
+  {
+    "path": "FLEX/PSI-69_metadata_PSI-133_FLEX.zip",
+    "sha256": "3ff0e8a61bc58e79756b4a860cdf0616889f95f03fe48536b62e600ced2c0337",
+    "size_bytes": 24780
+  },
+  {
+    "path": "FLEX/PSI-69_metadata_PSI-133_FLEX/i_Investigation.txt",
+    "sha256": "367abe226a5e0cdbb5a445cee6016b8f057c75e85039a75354a8f563a20216fd",
+    "size_bytes": 24365
+  },
+  {
+    "path": "FLEX/PSI-69_metadata_PSI-133_FLEX/s_PSI-69.txt",
+    "sha256": "cb9374159b9b01a83bfe53a0b8ba1a602793df86f298e0ad222615c55d200135",
+    "size_bytes": 56
+  },
+  {
+    "path": "PSI-98_metadata_PSI-166_SAFFIRE-I.zip",
+    "sha256": "ac398e9688f2b003fdbcdcc754d0d7703a006b6fb8b7a6afa598447bb5d72d0e",
+    "size_bytes": 10031
+  },
+  {
+    "path": "SAFFIRE-1/PSI-98_Experimental table_SAFFIRE-1.csv",
+    "sha256": "c36bedc263eefcb359badfda959c78e550cccb580d22046975e426705316fd2e",
+    "size_bytes": 464
+  },
+  {
+    "path": "SAFFIRE-1/PSI-98_metadata_PSI-166_SAFFIRE-I (1).zip",
+    "sha256": "ac398e9688f2b003fdbcdcc754d0d7703a006b6fb8b7a6afa598447bb5d72d0e",
+    "size_bytes": 10031
+  },
+  {
+    "path": "SAFFIRE-1/SAFFIRE-1_MergeResult-jpeg_Update_Final_v2.xlsx",
+    "sha256": "9bfeb80f921d966932e9f903b713148a5f5ec5b13e79564e527f268cc0709536",
+    "size_bytes": 12325177
+  },
+  {
+    "path": "SAFFIRE-1/SAFFIRE-I Image Directory Nomenclature.pdf",
+    "sha256": "c775153b5c68f5aa8bbdcdb455ef9f737f5291da752ce6befe1f5558cf3fd6ce",
+    "size_bytes": 262860
+  },
+  {
+    "path": "SAFFIRE-1/SAFFIRE-I Operations.pdf",
+    "sha256": "01f812143679acbd31d7013404e3a8b8752ad554cf93b40a96845ebf37ffe882",
+    "size_bytes": 13957
+  },
+  {
+    "path": "SAFFIRE-1/SAFFIRE-I and SAFFIRE-III DoD.docx",
+    "sha256": "49c939337fa00a0473f7efa10367288f510afcbf69dd7f5405054a2617d3a66d",
+    "size_bytes": 65426
+  },
+  {
+    "path": "download.zip",
+    "sha256": "8e843b7b5277b2264e07a5dd72a9e58969d1eec1c02cab9a9d2abae60d40cdcb",
+    "size_bytes": 13073645
+  },
+  {
+    "path": "processed/curated/bass2_appendix_a.json",
+    "sha256": "8e003144b1705cbd1918894bc4bd2a9c4bca7aa30dc739ea314082dfb34000fa",
+    "size_bytes": 254883
+  },
+  {
+    "path": "processed/curated/bass2_table_5_1.json",
+    "sha256": "2d938340af364d27f9125a7e40a89e6888c914a21b099cc437ae8d39050f23c5",
+    "size_bytes": 26451
+  },
+  {
+    "path": "processed/curated/bass2_table_7_1.json",
+    "sha256": "c94f9aace9b1cafb17ffa302751543d3eca3bb21656e89a24b49f3c5243f2724",
+    "size_bytes": 26905
+  },
+  {
+    "path": "processed/curated/phase13/bre_literature.json",
+    "sha256": "e45f0155b6b50f1e354aed7fe892be4b259a368f11f4568858e7a022a6603ec4",
+    "size_bytes": 3550
+  },
+  {
+    "path": "processed/curated/phase13/bre_test_days.json",
+    "sha256": "5a83d1d35dfdb5b2dd44839379d3008e65105bbf9fd861bb84d300135f35d4d4",
+    "size_bytes": 19323
+  },
+  {
+    "path": "processed/curated/phase13/cfig_cool_flames.json",
+    "sha256": "dd53df3fa8be58d6ebb07a0719ae5ed2e4dd86b57c9df2d26c6bf66d49e0358e",
+    "size_bytes": 16730
+  },
+  {
+    "path": "processed/curated/phase13/cfig_test_days.json",
+    "sha256": "be383b1ceff9f2af82df2c3a0e88e39836f1eca3eb05a94179f9a0661d70dcfd",
+    "size_bytes": 18566
+  },
+  {
+    "path": "processed/curated/phase13/cfig_tests.json",
+    "sha256": "c26802c28170ea0c8351b63b9a40fc9c544378becd791208a247ce1b174f2d79",
+    "size_bytes": 572996
+  },
+  {
+    "path": "processed/curated/phase13/fd_conditions.json",
+    "sha256": "887c6581f6d0f68a2c85707899e5ffb6e29443fdd01baf660c26c85f753ab37f",
+    "size_bytes": 469686
+  },
+  {
+    "path": "processed/curated/phase13/fd_test_days.json",
+    "sha256": "4023112600572a64e9fbde24172b0f7dad20c9f898abe3756cac4b13f67e0308",
+    "size_bytes": 17155
+  },
+  {
+    "path": "processed/curated/phase13/flex2_envelope.json",
+    "sha256": "bf3d80c5a32dc42d6e581e3acb7f26943ebedff79633956a07f1e12330f87f08",
+    "size_bytes": 6313
+  },
+  {
+    "path": "processed/curated/phase13/investigation_registry.json",
+    "sha256": "eb91fc19cfb01776e0c6668dc62903e861654cf460e1d4286ddcb5ad5cb53f89",
+    "size_bytes": 30417
+  },
+  {
+    "path": "processed/curated/phase13/processing_report.json",
+    "sha256": "421be92a25b5559164e436b510ca725ae26fc92feb22066ab9517d144eecb3d3",
+    "size_bytes": 6515
+  },
+  {
+    "path": "processed/curated/phase13/psi117_series.json",
+    "sha256": "209628b36c7e21532c7dac26df52aa6676aa91df37ce957b1525b22b4d1dc8a0",
+    "size_bytes": 495949
+  },
+  {
+    "path": "processed/curated/phase13/same_flight_log.json",
+    "sha256": "0337244011842d4fc8b1f1371bed1e592dc9bf644778d82a55b97e460e40ba67",
+    "size_bytes": 37220
+  },
+  {
+    "path": "processed/curated/phase13/same_particle_sizes.json",
+    "sha256": "6fe7ab24e089b0b7869e088a1a4e617b1cae42f6a0b0368e57c2fbe3a4764127",
+    "size_bytes": 7894
+  },
+  {
+    "path": "processed/curated/phase13/same_particle_sizes_other_sources.json",
+    "sha256": "f83559f39294e921b282b43b4d53029da216ba1d92b32b499746f74cd585ba11",
+    "size_bytes": 19229
+  },
+  {
+    "path": "processed/curated/phase13/same_telemetry_inventory.json",
+    "sha256": "7a0a1ca8520d176466167108495d615bdd87fcda4fe3555a8f39e4d4b90307ee",
+    "size_bytes": 25606
+  }
+]

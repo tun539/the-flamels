@@ -46,3 +46,23 @@ jobs:
         working-directory: frontend
       - run: npm run test:e2e
         working-directory: frontend
+
+  research-platform:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: python scripts/test_research_platform.py
+      - run: python scripts/research_platform.py setup
+      - run: .venv/bin/python -m pytest -q -ra
+        working-directory: .runtime/research-platform/backend
+      - run: npx playwright install --with-deps chromium
+        working-directory: .runtime/research-platform/frontend
+      - run: npx playwright test --config playwright.flamels.config.ts
+        working-directory: .runtime/research-platform/frontend

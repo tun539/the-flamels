@@ -1,0 +1,17 @@
+services:
+  platform:
+    build:
+      context: ..
+      dockerfile: research-platform/Dockerfile
+    ports:
+      - "127.0.0.1:3000:3000"
+    environment:
+      LLM_PROVIDER: ${LLM_PROVIDER:-openai}
+      LLM_MODEL: ${LLM_MODEL:-gpt-4.1-mini}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      EXTERNAL_SEARCH_ENABLED: ${EXTERNAL_SEARCH_ENABLED:-true}
+    volumes:
+      - platform-data:/app/.runtime/research-platform/processed
+    restart: unless-stopped
+volumes:
+  platform-data:

@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "repository": "https://github.com/COngtuthien/SpaceFire-AI.git",
+  "commit": "9817452c3effdf03864dea65f23d1f767b33251b",
+  "edition": "FlameAtlas Research Platform by The Flamels",
+  "patch_sha256": "e0314697155274e7133e60c8e9e36acaea7ad1d530a661c7472a4c1025506321",
+  "manifest_sha256": "855e7576feaf9952936c405091dbb1b39009f93d217d92c9d75ecf9a2616bcb0",
+  "source_file_count": 48,
+  "upstream_license": "No license file supplied. Preserve upstream authorship and applicable data/media attribution."
+}
