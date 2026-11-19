@@ -4,9 +4,10 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 from backend.app.coverage import METHOD, coverage_runs
+from backend.app.seed_data import SEED_PATHS, read_seed_studies
 paths=['data/seed.json','data/psi-seed.json','data/resources.json','data/ranking-methodology.json','data/publication-policy.json']
-version=hashlib.sha256(b''.join((ROOT/p).read_bytes() for p in paths)).hexdigest()
-studies=[*json.loads((ROOT/paths[0]).read_text()),*json.loads((ROOT/paths[1]).read_text())]
+version=hashlib.sha256(b''.join((ROOT/p).read_bytes() for p in [*paths, SEED_PATHS[-1]])).hexdigest()
+studies, _ = read_seed_studies()
 studies=[s for s in studies if s['verification']!='synthetic']
 resources=json.loads((ROOT/paths[2]).read_text())
 fields=['oxygen_fraction','pressure_kpa','airflow_m_s','material','gravity','geometry','measurement']

@@ -1,6 +1,6 @@
 # FlameAtlas — The Flamels
 
-The Flamels research product includes a public evidence atlas and an extended scientific application. The public atlas contains ten investigation records, 42 public sources, 18 imported runs and 17 numerical observations. The extended edition retains the complete pinned SpaceFire reference application in a separate runtime and catalogue.
+The Flamels research product includes a public evidence atlas and an extended scientific application. The public atlas contains ten investigation records, 42 public sources, 292 imported runs and 17 numerical observations. The extended edition retains the complete pinned SpaceFire reference application in a separate runtime and catalogue.
 
 ## Extended research platform — The Flamels edition
 
@@ -21,7 +21,7 @@ The adaptation retains attribution to [COngtuthien/SpaceFire-AI](https://github.
 
 ## Live web app
 
-[Open FlameAtlas — interactive research app](https://flameatlas-evidence-studio.kh-ng-gian-l-5063.chatgpt.site)
+[Open FlameAtlas Research Studio](https://flameatlas-evidence-studio.kh-ng-gian-l-5063.chatgpt.site/studio/)
 
 Explore the evidence, compare investigations, evaluate research scenarios and export cited results in the deployed app. The site uses a versioned repository snapshot.
 
@@ -87,7 +87,7 @@ Open **Library** for the ten-column source table: 10 public data links, 26 PSI a
 
 ## Data and scientific scope
 
-Six overview seed records verify metadata from NASA's Combustion Science overview. CFI-G adds five partial PSI-159 rows and ten observations. Saffire I–III add thirteen sample runs and seven numerical burn durations. The complete preserved Saffire summary tables also contain notes, pre-test rows and blank rows that are excluded from run counts. Editorial theme labels are not experimental findings. Imported records are unverified until independently reviewed.
+Six overview seed records verify metadata from NASA's Combustion Science overview. CFI-G adds five partial PSI-159 rows and ten observations. Saffire I–III add thirteen sample runs and seven numerical burn durations. The complete preserved Saffire summary tables also contain notes, pre-test rows and blank rows that are excluded from run counts. The NASA PSI-69 table adds 274 FLEX condition rows, including 273 jointly reported ambient oxygen–pressure pairs. See [source provenance](docs/sources.md). Editorial theme labels are not experimental findings. Imported records are unverified until independently reviewed.
 
 Relevance is not fire hazard. Unknown metadata contributes an interval, not a positive match. No quantitative combustion predictions, certified safety recommendations, or partial-gravity extrapolation are provided.
 
@@ -108,7 +108,7 @@ Research support tool. Not a certified fire safety assessment.
 
 ## Research Studio
 
-Open `/studio` for a scenario brief, fuel-scoped studies and comparison, the evidence gap map, cited search, model review and the 3D lab launcher. The core studio uses the offline snapshot and works without a model key.
+Open `/studio` for a scenario brief, fuel-scoped studies and comparison, a browser for original run records, the evidence gap map, cited search, model review and the 3D lab launcher. The core studio uses the offline snapshot and works without a model key.
 
 The example `/studio?env=airliner&fuel=solid#studies` opens the solid-material collection with an illustrative normal-gravity airliner scenario (21% oxygen and 78 kPa). This example describes the selected research inputs. Use **Share research view** to send a link that retains the evaluated scenario, filters and active tool.
 

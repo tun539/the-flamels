@@ -3,6 +3,7 @@ import {illustrativeScenario} from './scenario';
 export const studioTabs = [
   {id: 'brief', label: 'Scenario brief', hint: 'Set the research conditions'},
   {id: 'explore', label: 'Studies', hint: 'Inspect and compare investigations'},
+  {id: 'runs', label: 'Experiment runs', hint: 'Inspect original source values'},
   {id: 'gaps', label: 'Coverage', hint: 'Map available evidence'},
   {id: 'evidence', label: 'Ask evidence', hint: 'Retrieve cited findings'},
   {id: 'model', label: 'Model review', hint: 'Check model applicability'},
@@ -32,7 +33,7 @@ const environmentAliases = {
 
 const studioAnchors: Record<string, StudioTool> = {
   brief: 'brief', studies: 'explore', atlas: 'explore', gaps: 'gaps', gap: 'gaps',
-  ask: 'evidence', model: 'model', landscape: 'model', hardware: 'hardware', explorer: 'hardware',
+  runs: 'runs', experiments: 'runs', ask: 'evidence', model: 'model', landscape: 'model', hardware: 'hardware', explorer: 'hardware',
 };
 
 export function isFuelFilter(value: unknown): value is FuelFilter {

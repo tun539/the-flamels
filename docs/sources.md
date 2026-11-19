@@ -47,13 +47,19 @@ The public release contains 42 source resources. Five private document-derived r
 | psi-26 | Burning and Suppression of Solids (BASS) | https://psi.nasa.gov/physci/repo/data/investigations/PSI-26 |
 | psi-47 | Dust and Aerosol Measurement Feasibility Test / DAFT-2 | https://psi.nasa.gov/physci/repo/data/investigations/PSI-47 |
 
+## FLEX atmosphere conditions
+
+The original NASA PSI-69 experimental CSV is preserved in `data/sources/psi69-flex-experimental-table.csv`. The first-party [NASA PSI-69 investigation, version 5](https://psi.nasa.gov/physci/repo/data/investigations/PSI-69) identifies the FLEX investigation. The checked source copy came from `FLEX/PSI-69_Experimental table_FLEX.csv` at commit `9817452c3effdf03864dea65f23d1f767b33251b`, with SHA-256 `74addb771d6ec6765d285721bd35ec1ce3936d104e265f363aeba18c6c25743b`. This matches the independent file check in the pinned research-platform manifest. NASA documents PSI as an [open-data initiative](https://registry.opendata.aws/nasa-psi/) and requests attribution to records through the [PSI repository](https://psi.nasa.gov/physci/repo).
+
+The seed and presentation share the same checked parser. It reads the initial ambient oxygen mole fraction and ambient pressure from each of the 274 experimental table rows. Pressure uses the conventional equivalence of 760 mmHg to 101.325 kPa. Test 114 retains its source value and is excluded from paired coverage. The remaining 273 rows provide plotted pairs. Numerical outcomes and gases in the diluent mixture are outside this atlas import.
+
 ## Implementation references
 
 | Reference | Inspected and used |
 | --- | --- |
-| [SpaceFire-AI](https://github.com/COngtuthien/SpaceFire-AI#quick-start-windows) | Pinned README, FLEX table and parser, Windows setup, cited Copilot and conceptual 3D studios. The extended runtime remains independently materialized. |
+| [SpaceFire-AI](https://github.com/COngtuthien/SpaceFire-AI#quick-start-windows) | Pinned README, FLEX table and parser, Windows setup, cited Copilot and conceptual 3D studios. Reused the attributed NASA dataset. The extended runtime remains independently materialized. |
 | [EMBER source](https://github.com/JaynaShirlie/ember/tree/568f93fb06a2fcab6f5d79b7889309ab4a93d7ec) | Reviewed `web/src/App.jsx`, `web/src/lib/score.js`, `web/src/components/GapMap.jsx` and `pipeline/build.py`. Independently implemented provenance filters and the documented exploratory window. No license file was present at the inspected revision. |
-| [EMBER live URL](https://ember-ashy-five.vercel.app/?env=airliner&fuel=solid#studies) | The linked deployment returned its application shell. The Studio implements `env=airliner&fuel=solid#studies` as a documented FlameAtlas shortcut. |
+| [EMBER live URL](https://ember-ashy-five.vercel.app/?env=airliner&fuel=solid#studies) | Live route returned a timeout. The inspected source recognizes the `atlas` view and dedicated explorer query settings. The requested legacy query and hash semantics remain unverified. |
 | The Flamels source sheet | Reviewed `Trang tính1` and matched the five source PDFs from cells A6–A10 by their Drive file IDs. Prepared a separate article preview for these records. |
 
 ### Research Studio comparison

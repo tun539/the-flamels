@@ -35,7 +35,7 @@ test('presentation mobile layout and navigation',async({page})=>{
 test('snapshot research tools compare real runs and retrieve English cited findings',async({page})=>{
  await page.goto('/present');
  await page.getByLabel('Data availability',{exact:true}).selectOption('runs');
- await expect(page.getByText('4 matching records · 0 / 4 selected',{exact:true})).toBeVisible();
+ await expect(page.getByText('5 matching records · 0 / 4 selected',{exact:true})).toBeVisible();
  await page.getByRole('checkbox',{name:'Compare CFI-G',exact:true}).check();
  await page.getByRole('checkbox',{name:'Compare Saffire-II',exact:true}).check();
  await page.getByRole('button',{name:'Compare selected',exact:true}).click();

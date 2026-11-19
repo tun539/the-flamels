@@ -28,3 +28,5 @@ Source archive: data/sources/nasa-combustion.html.gz; checksum refers to decompr
 | `oxygen_context` | `ambient`, `oxidizer_stream`, or `unknown` |
 | `atmosphere_basis` | `measured`, `source_reported`, `test_matrix`, `assumed`, `derived`, `model_output`, or `unknown` |
 | `material_phase` | `solid`, `liquid`, `gas`, `aerosol`, or null |
+
+FLEX is attached to the existing `flex` investigation. Stable run IDs use the unique PSI test number. The import preserves source header text, raw values and units under `original_values`. A pressure of zero for test 114 is preserved in the source field and stored as null in `pressure_kpa`. The source-reported atmosphere basis does not imply independent confirmation by a measuring instrument.

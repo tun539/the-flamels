@@ -4,11 +4,13 @@ import data from './data.generated.json';
 import ScenarioExplorer from './ScenarioExplorer';
 import {retrieveEvidence, type EvidenceResult} from './evidence';
 import {downloadFile} from './exports';
+import RunExplorer from '../studio/RunExplorer';
 import Dictation from '../studio/Dictation';
 import EvidenceCoverage from '../components/EvidenceCoverage';
 import {StudioHardware, StudioModel, StudioReadout} from '../studio/StudioPanels';
 import {studioCollection, studyFuel} from '../studio/collection';
 import {fuelLabels, isFuelFilter, studioTabs} from './studio-context';
+import {platformLink} from '../studio/platform-links';
 import studioStyles from '../studio/studio.module.css';
 import styles from './presentation.module.css';
 
@@ -115,6 +117,7 @@ export default function ResearchTools({studio=false,platformUrl}:{studio?:boolea
       onChange={gapFilters=>update({scenario:{...view.scenario,gapFilters}})} onAsk={askFromStudio}/>
       :<div><h2>Evidence Gap Map</h2><p>Evaluate a scenario to define the target atmosphere and matching window.</p>
         <button onClick={()=>update({tool:'brief'})}>Open Scenario brief</button></div>
+    :tool==='runs'?<RunExplorer input={collection.coverage} scenario={view.scenario} platformUrl={platformUrl}/>
     :tool==='model'?<StudioModel scenario={view.scenario} fuel={fuel} coverage={collection.coverage} platformUrl={platformUrl}/>
     :tool==='hardware'?<StudioHardware platformUrl={platformUrl} onAsk={askFromStudio}/>
     :<div>
@@ -123,7 +126,8 @@ export default function ResearchTools({studio=false,platformUrl}:{studio?:boolea
         <label>Research question<input aria-label="Research question" required minLength={2} maxLength={2000} value={question} onChange={e=>update({question:e.target.value})} placeholder="PMMA burning rate, smoke detection, PSI-99…"/></label>
         <button className={styles.primaryButton}>Retrieve evidence</button>
       </form>
-      {studio&&<Dictation onTranscript={question=>update({question})}/>}
+      {studio&&<><Dictation onTranscript={question=>update({question})}/>
+        <a href={platformLink(platformUrl,'/copilot')}>{platformUrl?'Open extended Research Copilot ↗':'Set up the extended Research Copilot ↗'}</a></>}
       <div className={styles.questionExamples}>{['heat-release rate','smoke detection','PSI-99'].map(q=><button key={q} className={styles.textButton} onClick={()=>search(q)}>{q} ↗</button>)}</div>
       {submitted&&question!==submitted&&<p role="status" className={styles.sessionMessage}>The research question has changed. Retrieve evidence again to update the cited results.</p>}
       {submitted&&<div aria-live="polite"><div className={styles.evidenceResultHead}><p>{evidence.length} cited passages · Evidence retrieval mode<br/><strong>Query: {submitted}</strong></p><button className={styles.textButton} onClick={()=>downloadFile('flameatlas-evidence-search.json',JSON.stringify({question:submitted,mode:'Evidence retrieval mode',data_version:data.data_version,citations:evidence,limitations:['Lexical retrieval from curated sources; not an exhaustive literature review or a generated scientific conclusion.']},null,2))}>Export cited results ↓</button></div>

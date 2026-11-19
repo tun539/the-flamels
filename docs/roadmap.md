@@ -35,4 +35,4 @@ Use the core workspace or snapshot as follows. The application applies changes o
 | Export the evidence | **Export coverage JSON** for the exact filtered view; `POST /api/export` for selected investigations |
 | Open a conceptual 3D scene | Use the existing routes in the [extended edition](../research-platform/README.md) |
 
-The core atlas model workbench remains unavailable. The core snapshot has no matched FLEX input–outcome training dataset. The extended edition provides its own modeling scope and validation details. The Studio offers browser dictation for evidence queries.
+The core atlas model workbench remains unavailable. The FLEX core import contains atmosphere conditions, and its input–outcome pairs and grouped model validation are pending. Voice remains pending a verified microphone workflow, interruption controls and a provider privacy review.

@@ -35,8 +35,8 @@ test('coverage counts and run locators agree across API, snapshot and JSON expor
   const snapshot=evaluateCoverage(data.coverage,scenario);
   expect(live.checks).toEqual(snapshot.checks);
   expect(live.runs).toEqual(snapshot.runs);
-  expect(snapshot.points).toHaveLength(0);
-  expect(live.runs).toHaveLength(18);
+  expect(snapshot.points).toHaveLength(273);
+  expect(live.runs).toHaveLength(292);
   const exported=await request.post('/api/export',{data:{scenario,format:'json'}});
   expect((await exported.json()).evidence_coverage).toEqual(live);
  }
@@ -71,7 +71,7 @@ test('mobile scenario can inspect sources, share gap filters and export a campai
  await page.getByRole('button',{name:'Load illustrative preset'}).click();
  await expect(page.getByLabel('Scenario gravity')).toHaveValue('lunar');
  await page.getByRole('button',{name:'Evaluate scenario'}).click();
- await expect(page.getByText('0 plotted runs / 18 filtered runs', {exact:false})).toBeVisible();
+ await expect(page.getByText('273 plotted runs / 292 filtered runs', {exact:false})).toBeVisible();
  await page.getByRole('combobox',{name:'Investigation',exact:true}).selectOption('psi-159-cfi-g');
  await expect(page.getByText('0 plotted runs / 5 filtered runs', {exact:false})).toBeVisible();
  const table = page.getByRole('region',{name:'Run evidence table'});

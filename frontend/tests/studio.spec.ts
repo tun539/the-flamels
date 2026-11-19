@@ -69,3 +69,23 @@ test('the configured platform origin links to the expected modeling route', () =
   expect(platformLink('javascript:alert(1)', '/modeling')).toBe('/platform#install');
   expect(platformLink('https://user:secret@example.org', '/modeling')).toBe('/platform#install');
 });
+
+test('FLEX run browser exposes original units, rejects an invalid pressure and exports selected records', async ({page}) => {
+  await page.goto('/studio?env=iss&fuel=liquid#runs');
+  await expect(page.getByRole('heading', {name:'Experiment runs'})).toBeVisible();
+  await expect(page.getByRole('status').filter({hasText:'274 matching runs'})).toBeVisible();
+  await page.getByRole('textbox',{name:'Find runs'}).fill('psi69-test-114');
+  const table=page.getByRole('region',{name:'Experiment run results'});
+  await expect(table.getByRole('cell',{name:'Not available',exact:true})).toHaveCount(1);
+  await table.getByRole('button',{name:'FLEX · psi69-test-114'}).click();
+  await expect(page.getByText('0 mmHg',{exact:true})).toBeVisible();
+  const [download]=await Promise.all([page.waitForEvent('download'),page.getByRole('button',{name:'Export selected runs'}).click()]);
+  const stream=await download.createReadStream();
+  const bytes=await stream.toArray();
+  const report=JSON.parse(Buffer.concat(bytes).toString());
+  expect(report.records[0].row.pressure_kpa).toBeNull();
+  expect(report.records[0].record.original_values.pressure_kpa.value).toBe('0');
+  await page.getByRole('textbox',{name:'Find runs'}).clear();
+  await page.getByRole('checkbox',{name:'Within the scenario window'}).check();
+  await expect(page.getByRole('status').filter({hasText:/matching runs/})).not.toContainText('274 matching runs');
+});
