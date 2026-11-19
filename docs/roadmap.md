@@ -21,3 +21,18 @@ Expand the inspected PSI subset by downloading accessible original files, valida
 - Multi-user authentication and deployment hardening before public write access.
 
 These extensions require separate data, validation or infrastructure work. Relevance intervals are not a prediction model or a safety certification.
+
+## Flamels research actions
+
+Use the core workspace or snapshot as follows. The application applies changes only through its dedicated controls and API operations.
+
+| Action | Workspace or API |
+| --- | --- |
+| Select and evaluate a scenario | **Scenario** in `/` or **Scenario explorer** in `/present#research`; `POST /api/scenarios/evaluate` |
+| Review readiness and gaps | Brief and Gap Map after evaluation; `POST /api/scenarios/coverage` |
+| Find and compare investigations | **Explore** and **Compare**; `GET /api/investigations` and `POST /api/compare` with 2–4 investigation IDs |
+| Investigate a research question | **Evidence search**, **Ask the evidence** or a planner question’s search button; `POST /api/assistant/query` with `question` |
+| Export the evidence | **Export coverage JSON** for the exact filtered view; `POST /api/export` for selected investigations |
+| Open a conceptual 3D scene | Use the existing routes in the [extended edition](../research-platform/README.md) |
+
+The core atlas model workbench remains unavailable. The core snapshot has no matched FLEX input–outcome training dataset. The extended edition provides its own modeling scope and validation details. The Studio offers browser dictation for evidence queries.

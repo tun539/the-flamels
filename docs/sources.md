@@ -46,3 +46,18 @@ The public release contains 42 source resources. Five private document-derived r
 | psi-69 | Flame Extinguishment Experiment (FLEX) | https://psi.nasa.gov/physci/repo/data/investigations/PSI-69 |
 | psi-26 | Burning and Suppression of Solids (BASS) | https://psi.nasa.gov/physci/repo/data/investigations/PSI-26 |
 | psi-47 | Dust and Aerosol Measurement Feasibility Test / DAFT-2 | https://psi.nasa.gov/physci/repo/data/investigations/PSI-47 |
+
+## Implementation references
+
+| Reference | Inspected and used |
+| --- | --- |
+| [SpaceFire-AI](https://github.com/COngtuthien/SpaceFire-AI#quick-start-windows) | Pinned README, FLEX table and parser, Windows setup, cited Copilot and conceptual 3D studios. The extended runtime remains independently materialized. |
+| [EMBER source](https://github.com/JaynaShirlie/ember/tree/568f93fb06a2fcab6f5d79b7889309ab4a93d7ec) | Reviewed `web/src/App.jsx`, `web/src/lib/score.js`, `web/src/components/GapMap.jsx` and `pipeline/build.py`. Independently implemented provenance filters and the documented exploratory window. No license file was present at the inspected revision. |
+| [EMBER live URL](https://ember-ashy-five.vercel.app/?env=airliner&fuel=solid#studies) | The linked deployment returned its application shell. The Studio implements `env=airliner&fuel=solid#studies` as a documented FlameAtlas shortcut. |
+| The Flamels source sheet | Reviewed `Trang tính1` and matched the five source PDFs from cells A6–A10 by their Drive file IDs. Prepared a separate article preview for these records. |
+
+### Research Studio comparison
+
+The live EMBER page and its public source informed the workflow across scenario, comparative evidence, gap mapping, model review, hardware and evidence retrieval. The source repository describes its own models, derived counts and assumptions. The FlameAtlas studio computes results from its own curated catalogue. No EMBER software, artwork, model weights, or experimental results have been added to the studio.
+
+The fuel selector is an editorial classification of the investigation subject. It marks BASS and the three Saffire records as solid-material studies, FLEX as a liquid-droplet study, and the selected CFI-G record as a gaseous-fuel study. Other records remain unclassified. Run-level atmosphere checks continue to require the original paired fields and provenance.

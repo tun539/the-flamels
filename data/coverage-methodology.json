@@ -1,0 +1,11 @@
+{
+  "version": "ambient-run-coverage-v1",
+  "window": {"oxygen_percentage_points": 4, "pressure_kpa": 13.789514586336},
+  "minimum_runs": 3,
+  "limitations": [
+    "The matching window is an exploratory tolerance. Counts describe the imported catalogue.",
+    "An eligible pair needs an explicit ambient oxygen context, reported provenance and both conditions in the same run.",
+    "Matched pressure and oxygen do not account for different diluents, fuel phase, hardware or scale.",
+    "The gravity check uses reported run labels. A gravity match alone provides no atmosphere match."
+  ]
+}
