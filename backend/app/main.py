@@ -3,6 +3,7 @@ import hashlib
 import html
 import io
 import json
+from typing import Literal
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import Response
 from pydantic import BaseModel, Field, ValidationError
@@ -10,6 +11,7 @@ from .catalogue import all_items, connect, put
 from .models import Investigation, Scenario
 from .ranking import rank, VERSION, TOLERANCES
 from .science import oxygen_partial_pressure
+from .coverage import METHOD as COVERAGE_METHOD, coverage_report
 from .library import resources, search_evidence
 from .ai import select_evidence, semantic_rerank
 from .ingestion import normalize
@@ -20,6 +22,16 @@ app.add_middleware(RequestLimits)
 
 class Selection(BaseModel):
     ids: list[str] = Field(min_length=2,max_length=4)
+class CoverageFilters(BaseModel):
+    investigation: str = Field(default='', max_length=80)
+    material: str = Field(default='', max_length=500)
+    basis: Literal['', 'measured', 'source_reported', 'test_matrix', 'assumed', 'derived', 'model_output', 'unknown'] = ''
+    oxygen_percentage_points: float = Field(default=COVERAGE_METHOD['window']['oxygen_percentage_points'], ge=0, le=100)
+    pressure_kpa: float = Field(default=COVERAGE_METHOD['window']['pressure_kpa'], ge=0, le=1000)
+
+class CoverageRequest(Scenario):
+    filters: CoverageFilters = Field(default_factory=CoverageFilters)
+
 class Question(BaseModel):
     question: str = Field(min_length=2,max_length=2000)
 class ImportPayload(BaseModel):
@@ -58,8 +70,13 @@ def compare(selection: Selection):
 
 @app.post('/api/scenarios/evaluate')
 def evaluate(scenario: Scenario):
-    results=sorted([rank(i,scenario) for i in all_items() if i['verification']!='synthetic'],key=lambda r:(-r['lower'],r['investigation']['id']))
-    return {'results':results,'methodology_version':VERSION,'oxygen_partial_pressure_kpa':oxygen_partial_pressure(scenario.oxygen_fraction,scenario.pressure_kpa),'tolerances':TOLERANCES,'limitations':['Relevance is not fire hazard. Weights and tolerances are design assumptions, not validated safety thresholds.','Outside available evidence coverage means the complete requested combination has not been matched.']}
+    items = all_items()
+    results=sorted([rank(i,scenario) for i in items if i['verification']!='synthetic'],key=lambda r:(-r['lower'],r['investigation']['id']))
+    return {'results':results,'evidence_coverage':coverage_report(items, scenario),'methodology_version':VERSION,'oxygen_partial_pressure_kpa':oxygen_partial_pressure(scenario.oxygen_fraction,scenario.pressure_kpa),'tolerances':TOLERANCES,'limitations':['Relevance is not fire hazard. Weights and tolerances are design assumptions, not validated safety thresholds.','Outside available evidence coverage means the complete requested combination has not been matched.']}
+
+@app.post('/api/scenarios/coverage')
+def scenario_coverage(scenario: CoverageRequest):
+    return coverage_report(all_items(), scenario, scenario.filters.model_dump())
 
 @app.post('/api/assistant/query')
 def assistant(question: Question):
@@ -117,6 +134,8 @@ def commit(payload: ImportPayload):
 def export(payload: ExportPayload):
     items=[i for i in all_items() if payload.ids is None or i['id'] in payload.ids]
     bundle={'investigations':items,'scenario':payload.scenario.model_dump() if payload.scenario else None,'methodology_version':VERSION,'ranking':[rank(i,payload.scenario) for i in items if i['verification']!='synthetic'] if payload.scenario else [],'limitations':['Research support tool. Not a certified fire safety assessment.']}
+    if payload.scenario and payload.format in {'json', 'html'}:
+        bundle['evidence_coverage'] = coverage_report(items, payload.scenario)
     if payload.format=='json': content=json.dumps(bundle,ensure_ascii=False,indent=2);mime='application/json';suffix='json'
     elif payload.format=='csv':
         stream=io.StringIO(); writer=csv.DictWriter(stream,fieldnames=['id','acronym','title','objectives','theme','platform','material','gravity','hardware','verification','sources','runs','limitations']);writer.writeheader()

@@ -6,7 +6,7 @@ Open `/present` in the running MVP. The workspace header links to this route. It
 
 ## Demo sequence
 
-1. Start with the source composition and four inventory counts: 42 public resources, 10 investigation records, 18 imported runs, 17 numerical observations. They describe different entities and must not be added together.
+1. Start with the source composition and four inventory counts: 42 public resources, 10 investigation records, 292 imported runs, 17 numerical observations. They describe different entities and must not be added together.
 2. Choose Saffire-II to inspect five numeric burn durations among nine samples. Select sample 2-9 to inspect its source locator. Its material remains unreported. The other four samples retain the qualitative value `Insignificant` in the table.
 3. Choose CFI-G and switch to peak burner temperature. The five observations are in degrees Celsius; these are burner temperatures, not flame temperatures. Each run retains its configuration and provenance. Selecting a point reveals the original source-row conditions, including mass flow, termination type and comments where reported.
 4. Choose Saffire-III to demonstrate the explicit missing-output state. No zero or interpolated observation replaces a missing value.

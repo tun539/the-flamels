@@ -9,14 +9,15 @@ Five private document-derived references are excluded from public source files, 
 ## Evidence inventory
 
 - 42 catalogued public source resources, including 26 NASA PSI accessions.
-- 10 investigation records: six metadata overviews and four campaigns with imported summary rows.
-- 18 imported runs and 17 numerical observations: 12 reported durations and five peak burner temperatures.
+- 10 investigation records: five metadata-only overviews and five investigations with imported runs.
+- 292 imported runs and 17 numerical observations: 12 reported durations and five peak burner temperatures.
+- FLEX contributes 274 source-reported condition rows, with 273 eligible atmosphere pairs. Test 114 retains its raw pressure of zero and an unknown canonical pressure.
 - Four qualitative Saffire-II outputs remain `Insignificant`, not numerical zero. Saffire-III has two imported condition rows and no measured output.
 - Raw table entries, source locators, original units, measurement precision and original-source checksums are preserved.
 
 ## Presentation and standalone research tools
 
-The published presentation includes source-composition charts, campaign-specific observation plots, an availability matrix, an investigation explorer, comparison of 2–4 records, source search, cited evidence retrieval, scenario relevance intervals, CSV/JSON exports and print styles. Seven presentation sections support previous/next controls, arrow keys, Page Up/Down and Escape. These tools use a versioned repository snapshot and do not need an active Codespace or model API key.
+The published presentation includes source-composition charts, campaign-specific observation plots, an availability matrix, an investigation explorer, comparison of 2–4 records, source search, cited evidence retrieval, scenario relevance intervals, readiness and gap reports, campaign planning, CSV/JSON exports and print styles. Seven presentation sections support previous/next controls, arrow keys, Page Up/Down and Escape. These tools use a versioned repository snapshot and do not need an active Codespace or model API key.
 
 Browser-local saved research sessions, shareable validated view links, unsaved-change indicators and stale scenario-result warnings are implemented. View links preserve settings while recomputing results against the current dataset.
 

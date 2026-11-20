@@ -6,6 +6,7 @@ from pathlib import Path
 from backend.app import catalogue
 from backend.app.curation import record_hash, sync_seed_record
 from backend.app.models import Investigation
+from backend.app.seed_data import read_seed_studies
 
 
 class CurationTests(unittest.TestCase):
@@ -42,3 +43,21 @@ class CurationTests(unittest.TestCase):
             catalogue.put(db, self.record)
             with self.assertRaisesRegex(ValueError, 'cannot change measured observations'):
                 sync_seed_record(db, revised, record_hash(self.record))
+
+
+    def test_flex_conditions_upgrade_preserves_id_and_raw_invalid_pressure(self):
+        revision, hashes = read_seed_studies()
+        old = next(s for s in json.loads(Path('data/seed.json').read_text()) if s['id'] == 'flex')
+        original = Investigation.model_validate(old).model_dump(mode='json')
+        item = Investigation.model_validate(next(s for s in revision if s['id'] == 'flex')).model_dump(mode='json')
+        with catalogue.connect() as db:
+            catalogue.put(db, original)
+            self.assertEqual(sync_seed_record(db, item, hashes['flex'], append_conditions=True), 'updated')
+            self.assertEqual(sync_seed_record(db, item, hashes['flex'], append_conditions=True), 'unchanged')
+            db.execute('UPDATE investigations SET payload=?', (json.dumps(dict(original, objectives='Reviewed locally')),))
+            self.assertEqual(sync_seed_record(db, item, hashes['flex'], append_conditions=True), 'preserved')
+        self.assertEqual(len(item['runs']), 274)
+        invalid = next(run for run in item['runs'] if run['id'] == 'psi69-test-114')
+        self.assertIsNone(invalid['pressure_kpa'])
+        self.assertEqual(invalid['original_values']['pressure_kpa']['value'], '0')
+        self.assertEqual(item['runs'][0]['original_values']['pressure_kpa']['unit'], 'mmHg')

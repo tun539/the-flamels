@@ -4,6 +4,19 @@ type Run={id?:string;oxygen_fraction?:number|null;pressure_kpa?:number|null;airf
 type Investigation={id:string;theme:string;gravity?:string|null;verification:string;runs:Run[]};
 type Component=keyof typeof data.methodology.weights;
 export const defaultScenario:Scenario={environment:'spacecraft',theme:'prevention',oxygen_fraction:.21,pressure_kpa:101.325,airflow_m_s:.1,gravity:'microgravity',material:'',geometry:'',measurement:''};
+export const environmentOptions = [
+  'spacecraft', 'station', 'Gateway / transit', 'lunar habitat', 'Mars habitat', 'pressurized rover', 'suit', 'airliner cabin',
+] as const;
+
+/** Illustrative inputs. Only the explicit preset action resets the scenario. */
+export function illustrativeScenario(environment: Scenario['environment']): Scenario {
+  if (environment === 'airliner cabin') {
+    return {...defaultScenario, environment, gravity: 'normal', pressure_kpa: 78};
+  }
+  const gravity = environment === 'lunar habitat' ? 'lunar' : environment === 'Mars habitat' ? 'martian' : 'microgravity';
+  return {...defaultScenario, environment, gravity};
+}
+
 const equal=(a:string,b:string)=>Number(a.toLowerCase()===b.toLowerCase());
 /** Matches the backend policy on jointly observed runs; no synthetic combinations. */
 export function rankSnapshot<T extends Investigation>(item:T,scenario:Scenario) {
@@ -32,7 +45,7 @@ export function rankSnapshot<T extends Investigation>(item:T,scenario:Scenario) 
   const result=candidates.reduce((best,candidate)=>candidate.lower>best.lower?candidate:best);
   return {investigation:item,...result,outside_coverage:result.coverage<100||result.mismatches.length>0};
 }
-export function evaluateSnapshot(scenario:Scenario) {
-  return data.studies.filter(s=>s.verification!=='synthetic').map(s=>rankSnapshot(s,scenario))
+export function evaluateSnapshot(scenario:Scenario, studies = data.studies) {
+  return studies.filter(s=>s.verification!=='synthetic').map(s=>rankSnapshot(s,scenario))
     .sort((a,b)=>b.lower-a.lower||(a.investigation.id<b.investigation.id?-1:a.investigation.id>b.investigation.id?1:0));
 }
