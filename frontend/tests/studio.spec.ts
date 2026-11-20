@@ -44,7 +44,8 @@ test('the 3D lab routes into cited evidence and voice transcription requires exp
   });
   await page.goto('/studio#hardware');
   await expect(page.getByRole('heading', {name: 'Experimental hardware'})).toBeVisible();
-  await expect(page.getByRole('link', {name: 'Open setup guide'})).toHaveCount(5);
+  await page.getByLabel('3D scene').selectOption('SAME');
+  await expect(page.getByTitle('SAME interactive 3D model')).toHaveAttribute('src', /scene=smoke$/);
   await page.getByRole('article').filter({has: page.getByRole('heading', {name: 'Droplet extinction'})})
     .getByRole('button', {name: 'Find related evidence'}).click();
   const question = page.getByRole('textbox', {name: 'Research question'});

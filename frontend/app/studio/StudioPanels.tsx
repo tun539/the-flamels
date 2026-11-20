@@ -1,3 +1,4 @@
+import {useState} from 'react';
 import {evaluateCoverage, type CoverageInput} from '../components/coverage';
 import type {ScenarioSession} from '../present/workspace-state';
 import {fuelLabels, type FuelFilter} from '../present/studio-context';
@@ -32,15 +33,21 @@ export function StudioReadout({scenario, fuel, studies, coverage}: {
 }
 
 export function StudioHardware({platformUrl, onAsk}: {platformUrl?: string; onAsk: (study: string) => void}) {
+  const [active, setActive] = useState('FLEX');
+  const ids: Record<string, string> = {FLEX:'flex', 'BASS-II':'bass', Saffire:'saffire', ACME:'gas', SAME:'smoke'};
+  const viewer = '/lab-viewer/index.html';
   return <div>
     <h2>Experimental hardware</h2>
-    <p>Five conceptual 3D scenes are available in the extended FlameAtlas platform. Each scene has a related evidence collection.</p>
-    {!platformUrl && <p className={styles.notice}>Run the extended platform to open the interactive scenes.</p>}
+    <label>3D scene <select value={active} onChange={event=>setActive(event.target.value)}>
+      {scenes.map(scene=><option key={scene.study} value={scene.study}>{scene.study} · {scene.name}</option>)}
+    </select></label>
+    <iframe title={active+' interactive 3D model'} src={viewer+'?scene='+ids[active]} style={{width:'100%',height:'clamp(420px,65vh,680px)',border:'1px solid #365764',borderRadius:12,marginTop:12}}/>
+    <p>Explore conceptual hardware models from SpaceFire-AI. Select a collection below to review the experimental evidence.</p>
     <div className={styles.cards}>
       {scenes.map(scene => <article key={scene.route}>
         <span>{scene.study}</span><h3>{scene.name}</h3><p>{scene.detail}</p>
         <div className={styles.actions}>
-          <a href={platformLink(platformUrl, scene.route)}>{platformUrl ? 'Open 3D scene ↗' : 'Open setup guide ↗'}</a>
+          {platformUrl && <a href={platformLink(platformUrl, scene.route)}>Open extended studio ↗</a>}
           <button onClick={() => onAsk(scene.study)}>Find related evidence</button>
         </div>
       </article>)}
