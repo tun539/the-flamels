@@ -2,6 +2,10 @@
 
 The Flamels research product includes a public evidence atlas and an extended scientific application. The public atlas contains ten investigation records, 42 public sources, 292 imported runs and 17 numerical observations. The extended edition retains the complete pinned SpaceFire reference application in a separate runtime and catalogue.
 
+[Open the interactive 3D lab](https://flameatlas-evidence-studio.kh-ng-gian-l-5063.chatgpt.site/studio/#hardware)
+
+Choose FLEX, BASS-II, Saffire, ACME or SAME in **3D scene**. Drag to orbit, scroll to zoom and select **Labels** to identify components. The viewer runs in a WebGL 2 browser. **Find related evidence** opens a search for the selected investigation.
+
 ## Extended research platform — The Flamels edition
 
 The complete SpaceFire-derived research platform now has its own FlameAtlas identity, five conceptual 3D studios, scientific analysis, collection browsing, condition similarity, guided demo and cited Research Copilot. The installer clones the complete pinned reference repository, verifies source hashes and applies the reviewed edition patch; the original MVP remains available.
@@ -108,8 +112,8 @@ Research support tool. Not a certified fire safety assessment.
 
 ## Research Studio
 
-Open `/studio` for a scenario brief, fuel-scoped studies and comparison, a browser for original run records, the evidence gap map, cited search, model review and the 3D lab launcher. The core studio uses the offline snapshot and works without a model key.
+Open `/studio` for a scenario brief, fuel-scoped studies and comparison, a browser for original run records, the evidence gap map, cited search, model review and the interactive 3D lab. The core studio uses the offline snapshot and works without a model key.
 
 The example `/studio?env=airliner&fuel=solid#studies` opens the solid-material collection with an illustrative normal-gravity airliner scenario (21% oxygen and 78 kPa). This example describes the selected research inputs. Use **Share research view** to send a link that retains the evaluated scenario, filters and active tool.
 
-The extended platform runs separately. To open its interactive scenes and model workbench directly from the studio, set `NEXT_PUBLIC_FLAMEATLAS_PLATFORM_URL` in the core frontend environment before building. For example, launch the extended edition at `http://127.0.0.1:3200` using `python scripts/research_platform.py start --frontend-port 3200 --api-port 8200` and set the variable to that origin. Without an origin, the studio provides setup links. Ask evidence also supports optional English dictation on browsers with speech recognition. Edit the transcript before submitting.
+The extended platform runs separately. To open the extended analysis pages and model workbench from the studio, set `NEXT_PUBLIC_FLAMEATLAS_PLATFORM_URL` in the core frontend environment before building. For example, launch the extended edition at `http://127.0.0.1:3200` using `python scripts/research_platform.py start --frontend-port 3200 --api-port 8200` and set the variable to that origin. Without an origin, the studio provides setup links. Ask evidence also supports optional English dictation on browsers with speech recognition. Edit the transcript before submitting.
