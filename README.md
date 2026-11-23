@@ -1,10 +1,20 @@
-# FlameAtlas — The Flamels
+# FlameAtlas · The Flamels
 
-The Flamels research product includes a public evidence atlas and an extended scientific application. The public atlas contains ten investigation records, 42 public sources, 292 imported runs and 17 numerical observations. The extended edition retains the complete pinned SpaceFire reference application in a separate runtime and catalogue.
+**Explore NASA microgravity combustion research.** Start with a scenario, compare investigations and follow a finding back to its source.
 
-[Open the interactive 3D lab](https://flameatlas-evidence-studio.kh-ng-gian-l-5063.chatgpt.site/studio/#hardware)
+[![FlameAtlas presentation showing the composition of its 42-source evidence library](docs/assets/flamels-demo.webp)](https://flameatlas-evidence-studio.kh-ng-gian-l-5063.chatgpt.site/studio/?env=airliner&fuel=solid#studies)
 
-Choose FLEX, BASS-II, Saffire, ACME or SAME in **3D scene**. Drag to orbit, scroll to zoom and select **Labels** to identify components. The viewer runs in a WebGL 2 browser. **Find related evidence** opens a search for the selected investigation.
+**[Launch the airliner demo ↗](https://flameatlas-evidence-studio.kh-ng-gian-l-5063.chatgpt.site/studio/?env=airliner&fuel=solid#studies)**　·　[Explore the 3D lab](https://flameatlas-evidence-studio.kh-ng-gian-l-5063.chatgpt.site/studio/#hardware)　·　[Open presentation mode](https://flameatlas-evidence-studio.kh-ng-gian-l-5063.chatgpt.site/present/)
+
+## Try the demo
+
+| Open a view | What to try |
+| --- | --- |
+| [Airliner cabin · Solid materials](https://flameatlas-evidence-studio.kh-ng-gian-l-5063.chatgpt.site/studio/?env=airliner&fuel=solid#studies) | Start with the **Studies** tab. Select two investigations and choose **Compare selected** to inspect their reported conditions side by side. The cabin settings are illustrative research inputs. |
+| [ISS · Liquid droplets](https://flameatlas-evidence-studio.kh-ng-gian-l-5063.chatgpt.site/studio/?env=iss&fuel=liquid#runs) | Open a FLEX run, inspect its original values and units, then select a second run for comparison. |
+| [3D laboratory · Station hardware](https://flameatlas-evidence-studio.kh-ng-gian-l-5063.chatgpt.site/studio/#hardware) | Choose **CIR** or **MSG** under **ISS facilities**. Rotate the model, select a component and use **Play assembly** to see how the parts fit together. Five additional scenes illustrate the experiments. |
+
+The public atlas contains **10 investigations**, **42 sources**, **292 imported runs** and **17 numerical observations**. The browser demo uses a versioned data snapshot and opens without an API key.
 
 ## Extended research platform — The Flamels edition
 
@@ -23,11 +33,6 @@ Open `http://127.0.0.1:3000`. No model API key is required for evidence retrieva
 
 The adaptation retains attribution to [COngtuthien/SpaceFire-AI](https://github.com/COngtuthien/SpaceFire-AI). Upstream supplies no license file; no new license is assigned to its materials. The original NASA files are preserved.
 
-## Live web app
-
-[Open FlameAtlas Research Studio](https://flameatlas-evidence-studio.kh-ng-gian-l-5063.chatgpt.site/studio/)
-
-Explore the evidence, compare investigations, evaluate research scenarios and export cited results in the deployed app. The site uses a versioned repository snapshot.
 
 ## Run
 
@@ -70,7 +75,7 @@ npm run dev
 
 Open **Presentation ↗** in the workspace header or visit `/present` for the product showcase. It includes source composition, campaign-specific observation plots, a coverage matrix, investigation comparison, scenario relevance intervals, cited evidence search, presentation controls and print/PDF styles. The English showcase works without the API using a versioned repository snapshot. See [presentation guide](docs/presentation.md).
 
-![FlameAtlas English product presentation](docs/assets/presentation-english.jpg)
+[Open the presentation](https://flameatlas-evidence-studio.kh-ng-gian-l-5063.chatgpt.site/present/)
 
 ## Source library and reading
 
