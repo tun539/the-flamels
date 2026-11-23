@@ -35,14 +35,16 @@ export function StudioReadout({scenario, fuel, studies, coverage}: {
 export function StudioHardware({platformUrl, onAsk}: {platformUrl?: string; onAsk: (study: string) => void}) {
   const [active, setActive] = useState('FLEX');
   const ids: Record<string, string> = {FLEX:'flex', 'BASS-II':'bass', Saffire:'saffire', ACME:'gas', SAME:'smoke'};
-  const viewer = '/lab-viewer/index.html';
+  const facility = active === 'CIR' || active === 'MSG';
+  const viewer = facility ? '/lab-viewer/station.html' : '/lab-viewer/index.html';
   return <div>
     <h2>Experimental hardware</h2>
     <label>3D scene <select value={active} onChange={event=>setActive(event.target.value)}>
       {scenes.map(scene=><option key={scene.study} value={scene.study}>{scene.study} · {scene.name}</option>)}
+      <optgroup label="ISS facilities"><option value="CIR">CIR · Combustion Integrated Rack</option><option value="MSG">MSG · Microgravity Science Glovebox</option></optgroup>
     </select></label>
-    <iframe title={active+' interactive 3D model'} src={viewer+'?scene='+ids[active]} style={{width:'100%',height:'clamp(420px,65vh,680px)',border:'1px solid #365764',borderRadius:12,marginTop:12}}/>
-    <p>Explore conceptual hardware models from SpaceFire-AI. Select a collection below to review the experimental evidence.</p>
+    <iframe title={active+' interactive 3D model'} src={viewer+'?scene='+(facility ? active.toLowerCase() : ids[active])} style={{width:'100%',height:'clamp(420px,65vh,680px)',border:'1px solid #365764',borderRadius:22,marginTop:12}}/>
+    <p>Explore five experiment scenes from SpaceFire-AI and two ISS facility cutaways. Select a collection below to review the experimental evidence.</p>
     <div className={styles.cards}>
       {scenes.map(scene => <article key={scene.route}>
         <span>{scene.study}</span><h3>{scene.name}</h3><p>{scene.detail}</p>

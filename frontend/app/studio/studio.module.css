@@ -64,3 +64,7 @@
 .labDetails { border-top: 1px solid var(--line); margin: 18px 0; padding-block: 12px; }
 .rawFields > div { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px; font-size: .86rem; }
 .rawFields :is(dd,dt) { overflow-wrap: anywhere; }
+
+.readout > div, .metrics > div, .cards article, .navigation { border-radius: 18px; }
+.workspaceContent article, .workspaceContent fieldset, .workspaceContent details { border-radius: 16px; }
+.navigation button, .actions button, .workspaceContent select { border-radius: 12px; }
