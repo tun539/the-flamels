@@ -12,7 +12,7 @@
 | --- | --- |
 | [Airliner cabin · Solid materials](https://flameatlas-evidence-studio.kh-ng-gian-l-5063.chatgpt.site/studio/?env=airliner&fuel=solid#studies) | Start with the **Studies** tab. Select two investigations and choose **Compare selected** to inspect their reported conditions side by side. The cabin settings are illustrative research inputs. |
 | [ISS · Liquid droplets](https://flameatlas-evidence-studio.kh-ng-gian-l-5063.chatgpt.site/studio/?env=iss&fuel=liquid#runs) | Open a FLEX run, inspect its original values and units, then select a second run for comparison. |
-| [3D laboratory · Station hardware](https://flameatlas-evidence-studio.kh-ng-gian-l-5063.chatgpt.site/studio/#hardware) | Choose **CIR** or **MSG** under **ISS facilities**. Rotate the model, select a component and use **Play assembly** to see how the parts fit together. Five additional scenes illustrate the experiments. |
+| [3D laboratory · Station hardware](https://flameatlas-evidence-studio.kh-ng-gian-l-5063.chatgpt.site/studio/#hardware) | Inspect **CIR**, **MSG** or **FIR** from the ISS equipment cards. Select a component to highlight it in the model, rotate the view and use **Play assembly**. Five additional scenes illustrate the experiments. |
 
 The public atlas contains **10 investigations**, **42 sources**, **292 imported runs** and **17 numerical observations**. The browser demo uses a versioned data snapshot and opens without an API key.
 
