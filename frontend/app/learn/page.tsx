@@ -63,7 +63,7 @@ export default function LearnPage() {
           <details><summary>What should you report for test 114?</summary><p>The source table contains 0 mmHg. FlameAtlas preserves that entry and treats pressure as unavailable in comparisons. State this gap explicitly when discussing transferability.</p></details></article>
       </div>
       <p>This lesson supports training and evidence review. Follow mission-approved procedures for onboard operations and incident response.</p>
-      <a href="/studio/?env=iss&fuel=liquid#coverage">Review evidence coverage for an ISS scenario</a>
+      <a href="/studio/?env=iss&fuel=liquid#gaps">Review evidence coverage for an ISS scenario</a>
     </section>
   </main>;
 }
