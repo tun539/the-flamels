@@ -1,23 +1,18 @@
 // Project convex equipment surfaces from model coordinates into the canvas.
 // Distances and assembly paths are illustrative and carry no engineering units.
-const msg = new URLSearchParams(location.search).get('scene') === 'msg';
-const components = msg ? [
-  ['Rack frame','Supports the sealed experiment workspace.'],
-  ['Work volume','The glovebox provides a sealed space for experiments.'],
-  ['Glove ports','Two front access ports illustrate how the crew handles a sample.'],
-  ['Transfer airlock','A compartment beneath the workspace provides access for sample transfer.']
-] : [
-  ['Rack frame','Supports the chamber and experiment hardware.'],
-  ['Combustion chamber','The enclosed vessel contains the experiment.'],
-  ['Chamber access','The cutaway separates the front closure to reveal the sample area.'],
-  ['Sample area','The marker shows an illustrative experiment position inside the chamber.']
-];
+const params = new URLSearchParams(location.search);
+const facilities = await fetch('./facilities.json').then(response => response.json());
+const requested = params.get('scene');
+const scene = Object.hasOwn(facilities, requested) ? requested : 'cir';
+const {name, source, parts: components} = facilities[scene];
 const el = id => document.getElementById(id);
-el('title').textContent = msg ? 'Microgravity Science Glovebox' : 'Combustion Integrated Rack';
-el('source').href = 'https://www.nasa.gov/glenn/glenn-expertise-space-exploration/physical-sciences-program/science-facilities-on-the-iss/' + (msg?'microgravity-science-glovebox-msg/':'fluids-combustion-facility/');
+el('title').textContent = name;
+el('source').href = source;
 const canvas = document.querySelector('canvas'), ctx = canvas.getContext('2d');
 const select = el('part');
 components.forEach(([name],i)=>select.add(new Option(name,String(i))));
+const initialPart = params.get('part') ?? '0';
+if (components[Number(initialPart)]) select.value = String(Number(initialPart));
 let yaw=-0.47, pitch=0.18, progress=0, playing=false, last=0, drag=null;
 const faces=[];
 function face(part,points,color){ faces.push({part,points,color}); }
@@ -37,7 +32,16 @@ function geometry(){
   for(const x of [-1.4,1.4])for(const z of [-.62,.62])box(0,x,0,z,.12,3.5,.12,'#73939e');
   for(const y of [-1.68,1.68])box(0,0,y,0,2.9,.14,1.38,'#456976');
   const lift=progress*.55;
-  if(msg){
+  if(scene === 'fir'){
+    box(1,0,-.35,0,2.48,.14,1.24,'#819da8');
+    for(const x of [-.7,.7])box(1,x,-.25,0,.1,.1,1.16,'#bed1d8');
+    box(2,0,.4,-.36+lift,.49,1.3,.32,'#75aeb6');
+    box(2,0,.97,-.04+lift,1.06,.35,.77,'#5593a1');
+    ring(2,0,.61,.33+lift,.21,.11,.16,'#a9d7d9');
+    box(3,0,.11,.25+lift*1.35,.93,.12,.69,'#d5a16b');
+    box(4,0,-1.02,-.04,2.25,.97,1.18,'#446777');
+  }else if(scene === 'msg'){
+    box(4,0,.77,.59+lift*.55,2.41,.52,.065,'#8db5bc');
     box(1,0,.36,-.52,2.55,1.55,.1,'#396878');
     box(1,0,-.39,0,2.55,.12,1.35,'#538897');
     for(const x of [-1.22,1.22])box(1,x,.35,0,.12,1.55,1.36,'#51828a');

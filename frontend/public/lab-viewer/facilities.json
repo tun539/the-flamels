@@ -1,0 +1,34 @@
+{
+  "cir": {
+    "name": "Combustion Integrated Rack",
+    "source": "https://www.nasa.gov/glenn/glenn-expertise-space-exploration/physical-sciences-program/science-facilities-on-the-iss/fluids-combustion-facility/",
+    "parts": [
+      ["Rack frame", "Supports the chamber and experiment hardware."],
+      ["Combustion chamber", "The enclosed vessel contains the experiment."],
+      ["Chamber closure", "The cutaway separates the front closure to reveal the sample area."],
+      ["Sample mount", "The mount shows an illustrative experiment position inside the chamber."]
+    ]
+  },
+  "msg": {
+    "name": "Microgravity Science Glovebox",
+    "source": "https://www.nasa.gov/glenn/glenn-expertise-space-exploration/physical-sciences-program/science-facilities-on-the-iss/microgravity-science-glovebox-msg/",
+    "parts": [
+      ["Rack frame", "Supports the sealed experiment workspace."],
+      ["Work volume", "The glovebox provides a sealed space for experiments."],
+      ["Glove ports", "The front access ports let the crew handle samples."],
+      ["Transfer airlock", "The lower compartment provides access for sample transfer."],
+      ["Front window", "The window lets the crew observe the experiment."]
+    ]
+  },
+  "fir": {
+    "name": "Fluids Integrated Rack",
+    "source": "https://gipoc.grc.nasa.gov/wp/fcf-fir/",
+    "parts": [
+      ["Rack frame", "Supports the optical bench and payload hardware."],
+      ["Optical bench", "The bench provides a mounting platform for instruments."],
+      ["Microscope assembly", "This example payload represents the Light Microscopy Module."],
+      ["Sample stage", "The stage shows an illustrative sample position beneath the optics."],
+      ["Instrument enclosure", "The enclosure represents the space for supporting instrumentation."]
+    ]
+  }
+}

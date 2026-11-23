@@ -4,6 +4,7 @@ import type {ScenarioSession} from '../present/workspace-state';
 import {fuelLabels, type FuelFilter} from '../present/studio-context';
 import {platformLink} from './platform-links';
 import styles from './studio.module.css';
+import facilities from '../../public/lab-viewer/facilities.json';
 
 const scenes = [
   {name: 'Droplet extinction', study: 'FLEX', route: '/phenomena/flame-extinction', detail: 'Explore the droplet and the optical diagnostics.'},
@@ -33,18 +34,37 @@ export function StudioReadout({scenario, fuel, studies, coverage}: {
 }
 
 export function StudioHardware({platformUrl, onAsk}: {platformUrl?: string; onAsk: (study: string) => void}) {
-  const [active, setActive] = useState('FLEX');
+  const [active, setActive] = useState('CIR');
+  const [part, setPart] = useState(0);
   const ids: Record<string, string> = {FLEX:'flex', 'BASS-II':'bass', Saffire:'saffire', ACME:'gas', SAME:'smoke'};
-  const facility = active === 'CIR' || active === 'MSG';
-  const viewer = facility ? '/lab-viewer/station.html' : '/lab-viewer/index.html';
+  const facilityId = active.toLowerCase() as keyof typeof facilities;
+  const facility = facilities[facilityId];
+  const viewer = facility
+    ? '/lab-viewer/station.html?scene='+facilityId+'&part='+part
+    : '/lab-viewer/index.html?scene='+ids[active];
   return <div>
     <h2>Experimental hardware</h2>
-    <label>3D scene <select value={active} onChange={event=>setActive(event.target.value)}>
-      {scenes.map(scene=><option key={scene.study} value={scene.study}>{scene.study} · {scene.name}</option>)}
-      <optgroup label="ISS facilities"><option value="CIR">CIR · Combustion Integrated Rack</option><option value="MSG">MSG · Microgravity Science Glovebox</option></optgroup>
+    <div className={styles.cards} aria-label="ISS facilities">
+      {Object.entries(facilities).map(([id, equipment]) => <article key={id}>
+        <span>{id.toUpperCase()}</span>
+        <h3>{equipment.name}</h3>
+        <p>{equipment.parts.map(([label]) => label).join(' · ')}</p>
+        <button aria-pressed={active === id.toUpperCase()} onClick={() => {setActive(id.toUpperCase()); setPart(0);}}>Inspect {id.toUpperCase()}</button>
+      </article>)}
+    </div>
+    <label>3D scene <select value={active} onChange={event => {setActive(event.target.value); setPart(0);}}>
+      <optgroup label="ISS facilities">{Object.entries(facilities).map(([id, equipment]) =>
+        <option key={id} value={id.toUpperCase()}>{id.toUpperCase()} · {equipment.name}</option>
+      )}</optgroup>
+      {scenes.map(scene => <option key={scene.study} value={scene.study}>{scene.study} · {scene.name}</option>)}
     </select></label>
-    <iframe title={active+' interactive 3D model'} src={viewer+'?scene='+(facility ? active.toLowerCase() : ids[active])} style={{width:'100%',height:'clamp(420px,65vh,680px)',border:'1px solid #365764',borderRadius:22,marginTop:12}}/>
-    <p>Explore five experiment scenes from SpaceFire-AI and two ISS facility cutaways. Select a collection below to review the experimental evidence.</p>
+    {facility && <fieldset className={styles.parts}>
+      <legend>Components of {facility.name}</legend>
+      {facility.parts.map(([label], index) => <button key={label} aria-pressed={part === index} onClick={() => setPart(index)}>{label}</button>)}
+      <p aria-live="polite">{facility.parts[part][1]} <a href={facility.source}>NASA facility documentation</a></p>
+    </fieldset>}
+    <iframe title={active+' interactive 3D model'} src={viewer} className={styles.hardwareViewer}/>
+    <p>Facility cutaways use illustrative geometry. Select an experiment below to review its evidence.</p>
     <div className={styles.cards}>
       {scenes.map(scene => <article key={scene.route}>
         <span>{scene.study}</span><h3>{scene.name}</h3><p>{scene.detail}</p>
