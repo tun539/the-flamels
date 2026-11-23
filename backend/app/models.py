@@ -34,6 +34,10 @@ class Run(BaseModel):
     geometry: str | None = None
     measurement: str | None = None
     source_locator: str
+    source_url: HttpUrl | None = None
+    oxygen_context: Literal['ambient', 'oxidizer_stream', 'unknown'] = 'unknown'
+    atmosphere_basis: Literal['measured', 'source_reported', 'test_matrix', 'assumed', 'derived', 'model_output', 'unknown'] = 'unknown'
+    material_phase: Literal['solid', 'liquid', 'gas', 'aerosol'] | None = None
 
 class Investigation(BaseModel):
     model_config = ConfigDict(extra='forbid')
@@ -55,6 +59,8 @@ class Investigation(BaseModel):
         if len(ids)!=len(set(ids)):raise ValueError('Duplicate run id')
         allowed={str(source.url) for source in self.sources}
         for run in self.runs:
+            if run.source_url and str(run.source_url) not in allowed:
+                raise ValueError('Run must cite an investigation source URL')
             mids=[m.id for m in run.measurements]
             if len(mids)!=len(set(mids)):raise ValueError('Duplicate measurement id within run')
             if any(str(m.source_url) not in allowed for m in run.measurements):raise ValueError('Measurement must cite an investigation source URL')

@@ -1,0 +1,22 @@
+.panel { margin-block: 22px; border: 1px solid #385268; border-radius: 14px; padding: clamp(12px, 3vw, 24px); min-width: 0; }
+.heading { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; }
+.checks { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); gap: 10px; list-style: none; padding: 0; }
+.checks > li { margin: 0; border: 1px solid #385268; border-radius: 8px; padding: 12px; }
+.checks > li > span, .checks > li > strong { display: block; }
+.controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr)); gap: 12px; }
+.status { color: #f4c58d; font-weight: 600; }
+.plot { display: block; max-height: 380px; margin: 12px auto; color: #b6c9db; }
+.plot text { fill: currentColor; font-size: 13px; }
+.window { fill: #f4c58d22; stroke: #f4c58d88; stroke-dasharray: 4 3; }
+.observed { fill: #58d5e9; }
+.pointLink:hover .observed, .pointLink:hover .matrix { stroke: white; stroke-width: 2; }
+.matrix { fill: none; stroke: #c3a1f7; stroke-width: 2; }
+.target { fill: none; stroke: #f4c58d; stroke-width: 2; }
+.legend { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; font-size: .85rem; }
+.legend span { width: .75em; height: .75em; display: inline-block; }
+.targetKey { border: 2px solid #f4c58d; border-radius: 50%; }
+.observedKey { background: #58d5e9; border-radius: 50%; }
+.matrixKey { border: 2px solid #c3a1f7; }
+.scroll { overflow: auto; max-height: 26rem; margin-block: 12px; }
+.panel details { margin-block: 10px; }
+.planner { border-top: 1px solid #385268; margin-top: 16px; padding-top: 12px; }

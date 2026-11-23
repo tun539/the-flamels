@@ -19,3 +19,14 @@ SourceDocument and EvidenceChunk are stored in separate migrated tables. data/re
 Import mapping maps incoming top-level column names to canonical fields. Unit choices apply to run oxygen fraction, pressure and airflow; original_values records the supplied value, unit and conversion factor. Default canonical units are fraction, kPa and m/s. No combinations of conditions are generated.
 
 Source archive: data/sources/nasa-combustion.html.gz; checksum refers to decompressed bytes. Paper checksums refer to connector-extracted text, which is not publicly redistributed.
+
+### Run atmosphere and provenance
+
+| Field | Values |
+| --- | --- |
+| `source_url` | HTTPS or HTTP source already present on the investigation. Optional for legacy records with one unambiguous source. |
+| `oxygen_context` | `ambient`, `oxidizer_stream`, or `unknown` |
+| `atmosphere_basis` | `measured`, `source_reported`, `test_matrix`, `assumed`, `derived`, `model_output`, or `unknown` |
+| `material_phase` | `solid`, `liquid`, `gas`, `aerosol`, or null |
+
+FLEX is attached to the existing `flex` investigation. Stable run IDs use the unique PSI test number. The import preserves source header text, raw values and units under `original_values`. A pressure of zero for test 114 is preserved in the source field and stored as null in `pressure_kpa`. The source-reported atmosphere basis does not imply independent confirmation by a measuring instrument.

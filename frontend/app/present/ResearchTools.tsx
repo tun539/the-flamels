@@ -4,6 +4,14 @@ import data from './data.generated.json';
 import ScenarioExplorer from './ScenarioExplorer';
 import {retrieveEvidence, type EvidenceResult} from './evidence';
 import {downloadFile} from './exports';
+import RunExplorer from '../studio/RunExplorer';
+import Dictation from '../studio/Dictation';
+import EvidenceCoverage from '../components/EvidenceCoverage';
+import {StudioHardware, StudioModel, StudioReadout} from '../studio/StudioPanels';
+import {studioCollection, studyFuel} from '../studio/collection';
+import {fuelLabels, isFuelFilter, studioTabs} from './studio-context';
+import {platformLink} from '../studio/platform-links';
+import studioStyles from '../studio/studio.module.css';
 import styles from './presentation.module.css';
 
 type Study = (typeof data.studies)[number];
@@ -24,7 +32,7 @@ function RunTable({study}:{study:Study}) {
     <table><caption>{study.acronym} · Actual imported run combinations</caption><thead><tr>{runFields.map(([key,label])=><th key={key}>{label}</th>)}<th>Observations and source</th></tr></thead>
       <tbody>{study.runs.map(run=><tr key={run.id}>{runFields.map(([key])=><td key={key}>{display(run[key as keyof typeof run])}</td>)}<td>
         {run.measurements.length ? run.measurements.map(m=><div key={m.id}>{m.quantity}: {m.value} {m.unit}<small>{m.method}</small></div>) : 'No numerical observations reported'}
-        <a href={study.sources[0].url} target="_blank" rel="noreferrer">{run.source_locator} ↗</a>
+        <a href={('source_url' in run && typeof run.source_url === 'string' ? run.source_url : study.sources.length === 1 ? study.sources[0].url : undefined)} target="_blank" rel="noreferrer">{run.source_locator} ↗</a>
       </td></tr>)}</tbody>
     </table>
   </div>;
@@ -43,26 +51,44 @@ function Comparison({studies}:{studies:Study[]}) {
     {studies.map(s=><RunTable key={s.id} study={s}/>) }
   </div>;
 }
-export default function ResearchTools() {
-  const {view,update,save,load,reset,removeSaved,share,message,link,ready,dirty}=useResearchSession();
+export default function ResearchTools({studio=false,platformUrl}:{studio?:boolean;platformUrl?:string} = {}) {
+  const {view,update,save,load,reset,removeSaved,share,message,link,ready,dirty}=useResearchSession(studio);
   const {tool,query,theme,availability,selected,compare,question,submitted}=view;
+  const fuel = studio ? view.fuel ?? 'all' : 'all';
+  const collection = studioCollection(fuel);
   const evidence:EvidenceResult[]=submitted?retrieveEvidence(submitted,data.resources):[];
-  const studies=data.studies.filter(s=>(theme==='all'||s.theme===theme)&&(availability==='all'||(availability==='runs'?s.runs.length>0:s.runs.length===0))&&[s.acronym,s.title,s.objectives,s.material].join(' ').toLowerCase().includes(query.toLowerCase()));
+  const studies=collection.studies.filter(s=>(theme==='all'||s.theme===theme)&&(availability==='all'||(availability==='runs'?s.runs.length>0:s.runs.length===0))&&[s.id,s.acronym,s.title,s.objectives,s.material].join(' ').toLowerCase().includes(query.toLowerCase()));
   const selection=data.studies.filter(s=>selected.includes(s.id));
   function toggle(id:string) {update({selected:selected.includes(id)?selected.filter(x=>x!==id):selected.length<4?[...selected,id]:selected,compare:false})}
   function search(text:string) {update({submitted:text,question:text})}
   function exportComparison() {downloadFile('flameatlas-investigation-comparison.json',JSON.stringify({schema_version:2,mode:'curated_repository_snapshot',data_version:data.data_version,investigations:selection,limitations:['Descriptive comparison of imported evidence, not a fire-hazard ranking. Missing fields remain unknown.']},null,2))}
-  return <div className={styles.researchCard}>
+  function askFromStudio(question:string) {update({tool:'evidence',question,submitted:question})}
+  function openStudy(id:string) {update({tool:'explore',query:id,theme:'all',availability:'all',compare:false})}
+  return <div className={studio ? studioStyles.workspace : undefined}>
+    {studio&&<nav className={studioStyles.navigation} aria-label="Studio tools">
+      {studioTabs.map(tab=><button key={tab.id} aria-pressed={tool===tab.id} onClick={()=>update({tool:tab.id})}>
+        {tab.label}<small aria-hidden="true">{tab.hint}</small>
+      </button>)}
+    </nav>}
+    <div className={studioStyles.workspaceContent}>
+    {studio&&<StudioReadout scenario={view.scenario} fuel={fuel} coverage={collection.coverage} studies={collection.studies.length}/>}
+    <div className={styles.researchCard}>
     <div className={styles.sessionToolbar} aria-label="Research session controls"><div><strong>Research session {dirty&&<span className={styles.unsaved}>· Unsaved changes</span>}</strong><small>Save settings in this browser or share an explicit view link. Links include search terms and scenario inputs.</small></div><button disabled={!ready} onClick={save}>Save session</button><button disabled={!ready} onClick={load}>Restore saved</button><button disabled={!ready} onClick={()=>void share()}>Share research view</button><button disabled={!ready} onClick={reset}>Reset view</button><button disabled={!ready} onClick={removeSaved}>Delete saved session</button></div>
     {message&&<p role="status" className={styles.sessionMessage}>{message}</p>}
     {link&&<label className={styles.shareLink}>Research-view link<input aria-label="Research-view link" readOnly value={link} onFocus={e=>e.target.select()}/></label>}
 
-    <div className={styles.toolTabs} role="group" aria-label="Research tools">
+    {studio ? <div className={styles.chartControls}>
+      <label>Fuel class<select aria-label="Fuel class" value={fuel} onChange={e=>{
+        if(isFuelFilter(e.target.value))update({fuel:e.target.value,compare:false,
+          scenario:{...view.scenario,gapFilters:undefined}});
+      }}>{Object.entries(fuelLabels).map(([value,label])=><option key={value} value={value}>{label}</option>)}</select></label>
+      <small>Fuel class describes the collection’s research subject. Check each run for its reported material.</small>
+    </div> : <div className={styles.toolTabs} role="group" aria-label="Research tools">
       <button aria-pressed={tool==='explore'} onClick={()=>update({tool:'explore'})}>Explore & compare</button>
       <button aria-pressed={tool==='scenario'} onClick={()=>update({tool:'scenario'})}>Scenario explorer</button>
       <button aria-pressed={tool==='evidence'} onClick={()=>update({tool:'evidence'})}>Evidence search</button>
       <span>REPOSITORY SNAPSHOT · NO API KEY REQUIRED</span>
-    </div>
+    </div>}
     {tool==='explore'?<div>
       <div className={styles.chartControls}>
         <label className={styles.searchLabel}>Search investigations<input aria-label="Search investigations" maxLength={240} value={query} onChange={e=>update({query:e.target.value})} placeholder="BASS, CFI-G, smoke…"/></label>
@@ -78,22 +104,37 @@ export default function ResearchTools() {
         {studies.map(s=><article key={s.id}>
           <div className={styles.investigationMeta}><span>{s.theme.toUpperCase()}</span><label><input type="checkbox" aria-label={`Compare ${s.acronym}`} checked={selected.includes(s.id)} disabled={!selected.includes(s.id)&&selected.length>=4} onChange={()=>toggle(s.id)}/>Compare</label></div>
           <h3>{s.acronym}</h3><h4>{s.title}</h4><p>{s.objectives}</p>
-          <small>{s.runs.length} imported runs · {s.runs.reduce((n,r)=>n+r.measurements.length,0)} numerical observations · {display(s.verification)}</small>
+          <small>{studio&&<>{fuelLabels[studyFuel(s.id)]} · </>}{s.runs.length} imported runs · {s.runs.reduce((n,r)=>n+r.measurements.length,0)} numerical observations · {display(s.verification)}</small>
           <details><summary>Inspect investigation and sources</summary><p className={styles.researchNote}>{s.limitations}</p><RunTable study={s}/>{s.sources.map(source=><a key={source.url} href={source.url} target="_blank" rel="noreferrer">{source.title} ↗<small>{source.locator}</small></a>)}</details>
         </article>)}
       </div>}
       {!studies.length&&!compare&&<p className={styles.researchNote}>No investigations match these filters. Change the search, theme or data-availability filter.</p>}
-    </div>:tool==='scenario'?<ScenarioExplorer value={view.scenario} onChange={scenario=>update({scenario})}/>:<div>
+    </div>:tool==='scenario'||tool==='brief'?<ScenarioExplorer value={view.scenario}
+      onChange={scenario=>update({scenario})} onAsk={askFromStudio} brief={studio}
+      studies={collection.studies} coverage={collection.coverage} onStudy={studio?openStudy:undefined}/>
+    :tool==='gaps'?view.scenario.evaluated?<EvidenceCoverage section="gaps" scenario={view.scenario.evaluated}
+      input={collection.coverage} dataVersion={data.data_version} filters={view.scenario.gapFilters}
+      onChange={gapFilters=>update({scenario:{...view.scenario,gapFilters}})} onAsk={askFromStudio}/>
+      :<div><h2>Evidence Gap Map</h2><p>Evaluate a scenario to define the target atmosphere and matching window.</p>
+        <button onClick={()=>update({tool:'brief'})}>Open Scenario brief</button></div>
+    :tool==='runs'?<RunExplorer input={collection.coverage} scenario={view.scenario} platformUrl={platformUrl}/>
+    :tool==='model'?<StudioModel scenario={view.scenario} fuel={fuel} coverage={collection.coverage} platformUrl={platformUrl}/>
+    :tool==='hardware'?<StudioHardware platformUrl={platformUrl} onAsk={askFromStudio}/>
+    :<div>
       <h3>Ask the curated evidence</h3><p className={styles.researchNote}>Deterministic keyword retrieval across reviewed summaries and published findings. Context-only sources are excluded. Results are cited summaries and findings, not model-generated answers or safety recommendations.</p>
       <form onSubmit={e=>{e.preventDefault();search(question)}} className={styles.evidenceForm}>
         <label>Research question<input aria-label="Research question" required minLength={2} maxLength={2000} value={question} onChange={e=>update({question:e.target.value})} placeholder="PMMA burning rate, smoke detection, PSI-99…"/></label>
         <button className={styles.primaryButton}>Retrieve evidence</button>
       </form>
+      {studio&&<><Dictation onTranscript={question=>update({question})}/>
+        <a href={platformLink(platformUrl,'/copilot')}>{platformUrl?'Open extended Research Copilot ↗':'Set up the extended Research Copilot ↗'}</a></>}
       <div className={styles.questionExamples}>{['heat-release rate','smoke detection','PSI-99'].map(q=><button key={q} className={styles.textButton} onClick={()=>search(q)}>{q} ↗</button>)}</div>
       {submitted&&question!==submitted&&<p role="status" className={styles.sessionMessage}>The research question has changed. Retrieve evidence again to update the cited results.</p>}
       {submitted&&<div aria-live="polite"><div className={styles.evidenceResultHead}><p>{evidence.length} cited passages · Evidence retrieval mode<br/><strong>Query: {submitted}</strong></p><button className={styles.textButton} onClick={()=>downloadFile('flameatlas-evidence-search.json',JSON.stringify({question:submitted,mode:'Evidence retrieval mode',data_version:data.data_version,citations:evidence,limitations:['Lexical retrieval from curated sources; not an exhaustive literature review or a generated scientific conclusion.']},null,2))}>Export cited results ↓</button></div>
         {!evidence.length?<p className={styles.emptyPlot}>Insufficient evidence in the current dataset. Try an investigation accession or a more specific material or measurement term. A missing search result does not establish the absence of evidence in the wider literature.</p>:<div className={styles.evidenceResults}>{evidence.map(c=><article key={c.id}><span className={styles.sourceTag}>{c.type.replaceAll('_',' ').toUpperCase()}</span><p>{c.text}</p><a href={c.url} target="_blank" rel="noreferrer">{c.title} ↗</a><small>{c.locator} · Evidence ID: {c.id}</small><details><summary>Applicability and limitations</summary><p>{c.limitations}</p></details></article>)}</div>}
       </div>}
     </div>}
+    </div>
+    </div>
   </div>;
 }

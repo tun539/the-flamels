@@ -58,8 +58,8 @@ test('import, measured observations, comparison and export round trip',async({pa
  await page.getByRole('button',{name:'Confirm import'}).click();await expect(page.getByText('Imported 1 records.',{exact:true})).toBeVisible();
  await page.getByRole('button',{name:'Explore',exact:true}).click();
  await page.getByLabel('Search studies').fill('E2E');await page.getByRole('button',{name:'Search',exact:true}).click();
- await expect(page.getByRole('heading',{name:'E2E fixture',exact:true})).toBeVisible();
- await page.getByRole('button',{name:'View evidence →'}).click();
+ const fixture=page.locator('section').filter({has:page.getByRole('heading',{name:'E2E fixture',exact:true})});
+ await fixture.getByRole('button',{name:'View evidence →'}).click();
  await expect(page.getByRole('img',{name:/Observed points/})).toBeVisible();
  await expect(page.getByText('Record status: synthetic.',{exact:false})).toBeVisible();
  const downloadPromise=page.waitForEvent('download');await page.getByRole('button',{name:'Download JSON'}).click();

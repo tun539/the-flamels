@@ -1,0 +1,2 @@
+# Preserve exact source bytes for the checked import on every platform.
+data/sources/psi69-flex-experimental-table.csv -text
