@@ -1,0 +1,14 @@
+.page { padding: clamp(18px, 4vw, 52px); }
+.page nav { gap: 12px 24px; }
+.page section { scroll-margin-top: 18px; border-radius: 22px; }
+.hero { padding: clamp(20px, 5vw, 58px); border: 1px solid #365768; border-radius: 26px; background: radial-gradient(ellipse at 90% 12%, #19444a, #112637 65%); }
+.hero p { max-width: 58ch; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 16px; }
+.grid article { border-radius: 16px; border: 1px solid #365768; background: #112637; padding: 16px; }
+.grid h3 { margin-top: 0; }
+.grid ol { padding-inline-start: 22px; }
+.table { overflow-x: auto; border-radius: 14px; border: 1px solid #365768; padding: 12px; }
+.terms > div { grid-template-columns: minmax(120px, 1fr) 3fr; gap: 12px; }
+.terms dt, .grid summary { font-weight: 700; }
+.grid summary { cursor: pointer; color: #70dcdb; }
+@media (max-width: 540px) { .terms > div { grid-template-columns: 1fr; gap: 2px; } }

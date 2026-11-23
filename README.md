@@ -7,6 +7,7 @@
 **[Launch the airliner demo ↗](https://flameatlas-evidence-studio.kh-ng-gian-l-5063.chatgpt.site/studio/?env=airliner&fuel=solid#studies)**　·　[Explore the 3D lab](https://flameatlas-evidence-studio.kh-ng-gian-l-5063.chatgpt.site/studio/#hardware)　·　[Open presentation mode](https://flameatlas-evidence-studio.kh-ng-gian-l-5063.chatgpt.site/present/)
 
 ## Try the demo
+[Open the Flame in Freefall lesson](https://flameatlas-evidence-studio.kh-ng-gian-l-5063.chatgpt.site/learn/) to follow FLEX and BASS-II from flight hardware to data review.
 
 | Open a view | What to try |
 | --- | --- |

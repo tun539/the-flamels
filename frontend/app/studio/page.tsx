@@ -17,6 +17,7 @@ export default function StudioPage() {
       <Link href="/" className={styles.brand}>Flame<span>Atlas</span><small>THE FLAMELS</small></Link>
       <nav aria-label="Project navigation">
         <Link href="/present">Presentation</Link>
+        <Link href="/learn/">Learning lab</Link>
         <Link href="/platform">Extended platform</Link>
         <a href="https://github.com/tun539/the-flamels">GitHub ↗</a>
       </nav>

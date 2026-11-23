@@ -1,0 +1,32 @@
+[
+  {
+    "test": "1",
+    "fuel": "Methanol",
+    "pressure": "757.7",
+    "oxygen": "0.21",
+    "initial": "1.69",
+    "visible": "0.89",
+    "time": "4.3",
+    "end": "Disruption"
+  },
+  {
+    "test": "2",
+    "fuel": "Methanol",
+    "pressure": "762",
+    "oxygen": "0.21",
+    "initial": "1.86",
+    "visible": "0.94",
+    "time": "5",
+    "end": "Extinction"
+  },
+  {
+    "test": "114",
+    "fuel": "Methanol",
+    "pressure": "0",
+    "oxygen": "0.2",
+    "initial": "3.23",
+    "visible": "1.68",
+    "time": "18.9",
+    "end": "Extinction"
+  }
+]
